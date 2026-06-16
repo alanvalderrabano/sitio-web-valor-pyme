@@ -42,6 +42,9 @@ python3 -m http.server 4321
 ## Ronda de feedback v2 (aplicada 2026-06-15)
 Heroes con fondo de color de ruta vibrante (H1 −20%, líneas más gruesas/contrastantes, imagen más grande, CTAs legibles) · header morado intenso global (logo blanco) · estaciones con banda vibrante (cards blancas, número y tag vibrantes, 4 en una fila en Digi/Talento) · franja B&N con parallax tras Beneficios · CTA diagnóstico sin líneas, más corto y ancho · journey full-bleed con vehículos bici/teleférico/moto/dirigible. Sin cambios: combinación, beneficios, contenidos, otras rutas, footer.
 
+## Logos de partners (2026-06-16)
+Colocados desde `drive-logos/` en `site/assets/logos/partners/`: **Bci, Blue Express, Defontana, Organízame (OMIA), Microsoft, OTIC, Mis Abogados, Pyme UC**. Faltan archivos usables (siguen como placeholder de texto): **Fintegram, Walmart** (solo `.ai`), **Salcobrand, Buk, Rindegastos** — conseguir PNG/SVG y reemplazar el `<span class="ph">` por `<img>` en la card correspondiente.
+
 ## Pendientes / decisiones para el cliente
 - **Vehículos del journey como imágenes reales:** hoy son SVG (tipo correcto: bici/teleférico/moto/dirigible). Faltan fotos reales con fondo transparente — el cliente debe proveerlas o aprobar sourcing con licencia.
 - **Recorte del sujeto en heroes:** para que las líneas pasen entre el fondo y la persona se necesita remoción de fondo de las fotos (pendiente).
