@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valor Pyme — Las rutas del metro Pyme para hacer crecer tu negocio</title>
+<meta name="description" content="Valor Pyme es una red de soluciones para el viaje de las pymes de Chile. Elige tu ruta: Capital, Mercado, Digitalización o Talento y Gestión.">
+<meta property="og:title" content="Valor Pyme — Las rutas del metro Pyme">
+<meta property="og:description" content="Una red de soluciones para el viaje de las pymes de Chile. Sube a tu ruta.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/photos/foto-ref-04.png">
+<link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-ruta="">
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="nav__logo" href="index.html" aria-label="Valor Pyme — inicio"><img src="assets/logos/logo-horizontal-dark.svg" alt="Valor Pyme"></a>
+    <nav class="nav__menu" aria-label="Principal">
+      <div class="nav__item">
+        <button aria-haspopup="true" aria-expanded="false">Rutas Pyme
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown" role="menu">
+          <a class="drop-route" href="ruta-capital.html" role="menuitem"><span class="drop-route__dot dot--capital">C</span><span><span class="drop-route__t">Ruta Capital</span><span class="drop-route__d">Acceso financiero y bancarización</span></span></a>
+          <a class="drop-route" href="ruta-mercado.html" role="menuitem"><span class="drop-route__dot dot--mercado">M</span><span><span class="drop-route__t">Ruta Mercado</span><span class="drop-route__d">Nuevos clientes y logística</span></span></a>
+          <a class="drop-route" href="ruta-digitalizacion.html" role="menuitem"><span class="drop-route__dot dot--digitalizacion">D</span><span><span class="drop-route__t">Ruta Digitalización</span><span class="drop-route__d">Automatiza y profesionaliza</span></span></a>
+          <a class="drop-route" href="ruta-talento.html" role="menuitem"><span class="drop-route__dot dot--talento">T</span><span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span></a>
+        </div>
+      </div>
+      <a href="#">Nosotros</a><a href="#">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a><a href="#">Contacto</a>
+    </nav>
+    <a href="#" class="btn btn--sm nav__cta desktop">Registrarme</a>
+    <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="ruta-capital.html">Ruta Capital</a><a href="ruta-mercado.html">Ruta Mercado</a><a href="ruta-digitalizacion.html">Ruta Digitalización</a><a href="ruta-talento.html">Ruta Talento y Gestión</a>
+  <a href="#">Nosotros</a><a href="#">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a><a href="#">Contacto</a>
+  <a href="#" class="btn">Registrarme</a>
+</div>
+
+<main>
+<!-- HERO -->
+<section class="hero" style="--ruta:var(--color-corp);--ruta-ink:#FFFFFF;--ruta-soft:var(--color-lavanda);--ruta-deep:var(--color-morado)">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="hero__badge"><span class="rline" style="background:var(--color-corp)">★</span> Red de soluciones para pymes · Chile</span>
+      <h1 class="reveal">Emprender es un viaje. Súbete al metro Pyme y elige tu ruta.</h1>
+      <p class="hero__sub reveal d1">Valor Pyme conecta a las pymes de Chile con soluciones de grandes empresas, instituciones y universidades. Cuatro rutas, muchas estaciones, una sola comunidad para tu crecimiento.</p>
+      <div class="hero__cta reveal d2">
+        <a href="#rutas" class="btn btn--onfill">Ver las rutas <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#" class="btn btn--ghost">Registrarme</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <svg class="lines-svg lines-svg--back" viewBox="0 0 600 600" aria-hidden="true">
+        <path class="route-line draw" style="stroke:var(--color-amarillo)" d="M-40 430 C 120 470 170 300 360 340 S 640 250 700 300"/>
+        <path class="route-line draw d2" style="stroke:var(--color-verde)" d="M-40 540 C 160 560 260 430 470 470 S 660 430 740 450"/>
+      </svg>
+      <div class="photo-frame parallax" data-parallax="0.08"><img class="photo-frame__img" src="assets/photos/foto-ref-04.png" width="480" height="600" alt="Emprendedora chilena en su negocio"></div>
+      <svg class="lines-svg lines-svg--front" viewBox="0 0 600 600" aria-hidden="true">
+        <path class="route-line draw d3" style="stroke:#FFFFFF" d="M-30 70 C 140 20 280 120 400 70 S 600 30 700 110"/>
+        <path class="route-line draw d4" style="stroke:var(--color-rosa)" d="M-30 280 C 70 360 70 540 210 580 S 380 620 520 590"/>
+        <circle class="station station-pop" cx="400" cy="70" r="13" style="fill:#FFFFFF"/>
+        <circle class="station station-pop" cx="210" cy="580" r="13" style="fill:var(--color-rosa)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- RUTAS -->
+<section class="section" id="rutas">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Las 4 rutas</span>
+      <h2>Cada ruta, una estación más cerca de tu crecimiento</h2>
+      <p class="lead">Elige la línea que resuelve tu desafío de hoy. Y cuando dos rutas se cruzan, aparecen estaciones de combinación con beneficios únicos.</p>
+    </div>
+    <div class="grid-2">
+      <a class="route-card reveal" href="ruta-capital.html" style="--ruta:#FFF200">
+        <div class="route-card__top"><span class="route-card__dot dot--capital" style="background:#FFF200;color:#2A0A4A">C</span><h3>Ruta Capital</h3></div>
+        <span class="tag" style="color:#7A6A00;background:#FFFBCC">Eje financiero</span>
+        <p>Accede al capital que impulsa tu crecimiento: bancarización, scoring y orden de tu caja con Bci y Fintegram.</p>
+        <span class="link-more" style="color:#7A6A00">Explorar ruta <span class="arrow">→</span></span>
+      </a>
+      <a class="route-card reveal d1" href="ruta-mercado.html" style="--ruta:#2F2927">
+        <div class="route-card__top"><span class="route-card__dot dot--mercado">M</span><h3>Ruta Mercado</h3></div>
+        <span class="tag" style="color:#2F2927;background:#ECE9E7">Ventas y logística</span>
+        <p>Conecta con nuevos clientes en marketplaces de alto tráfico y logística: Walmart, BlueExpress, Salcobrand.</p>
+        <span class="link-more" style="color:#2F2927">Explorar ruta <span class="arrow">→</span></span>
+      </a>
+      <a class="route-card reveal d2" href="ruta-digitalizacion.html" style="--ruta:#FF005B">
+        <div class="route-card__top"><span class="route-card__dot dot--digitalizacion">D</span><h3>Ruta Digitalización</h3></div>
+        <span class="tag" style="color:#A8003C;background:#FFE3EE">Procesos internos</span>
+        <p>Automatiza y profesionaliza tu operación con ERP, RR.HH. y gastos: Defontana, Buk, Rindegastos, OMIA.</p>
+        <span class="link-more" style="color:#A8003C">Explorar ruta <span class="arrow">→</span></span>
+      </a>
+      <a class="route-card reveal d3" href="ruta-talento.html" style="--ruta:#00C168">
+        <div class="route-card__top"><span class="route-card__dot dot--talento">T</span><h3>Ruta Talento y Gestión</h3></div>
+        <span class="tag" style="color:#00733E;background:#D4FBE8">Equipo y capacidades</span>
+        <p>Forma a tu equipo y consolida tu gestión: Pyme UC, Microsoft Elevate, OTIC CChC, Mis Abogados.</p>
+        <span class="link-more" style="color:#00733E">Explorar ruta <span class="arrow">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey" aria-label="El viaje en el metro Pyme">
+  <div class="journey__track">
+    <svg class="journey__line" viewBox="0 0 1200 124" preserveAspectRatio="none" aria-hidden="true">
+      <path class="route-line" style="stroke:var(--color-amarillo);stroke-width:9" d="M0 88 C 220 30 360 30 560 74 S 920 118 1200 60"/>
+      <path class="route-line" style="stroke:var(--color-corp);stroke-width:9" d="M0 50 C 240 96 420 40 640 70 S 1000 96 1200 44"/>
+      <circle cx="560" cy="68" r="11" style="fill:var(--color-rosa);stroke:#fff;stroke-width:4"/>
+      <circle cx="980" cy="92" r="11" style="fill:var(--color-verde);stroke:#fff;stroke-width:4"/>
+    </svg>
+    <img class="journey__vehicle" src="assets/img/veh-capital.png" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="diag reveal">
+      <h2>¿No sabes por dónde empezar tu viaje?</h2>
+      <p>Haz el diagnóstico oficial de Valor Pyme, evalúa las dimensiones de tu negocio y obtén una ruta personalizada con las estaciones exactas para tus necesidades actuales.</p>
+      <a href="#" class="btn btn--onfill">Descubrir mi ruta <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><img src="assets/logos/logo-horizontal-white.svg" alt="Valor Pyme"><p style="color:rgba(255,255,255,.7);font-size:14px;max-width:34ch">Una red de soluciones para el viaje de las pymes de Chile. Cada ruta, una estación más cerca de tu crecimiento.</p></div>
+      <div><h4>Rutas</h4><a href="ruta-capital.html">Ruta Capital</a><a href="ruta-mercado.html">Ruta Mercado</a><a href="ruta-digitalizacion.html">Ruta Digitalización</a><a href="ruta-talento.html">Ruta Talento y Gestión</a></div>
+      <div><h4>Programa</h4><a href="#">Nosotros</a><a href="#">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a></div>
+      <div><h4>Súmate</h4><a href="#">Registrarme</a><a href="#">Diagnóstico</a><a href="#">Contacto</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year>2026</span> Valor Pyme · Chile</span><span>Términos · Privacidad</span></div>
+  </div>
+</footer>
+<script src="script.js?v=4" defer></script>
+</body>
+</html>
