@@ -43,7 +43,7 @@ python3 -m http.server 4321
 Heroes con fondo de color de ruta vibrante (H1 −20%, líneas más gruesas/contrastantes, imagen más grande, CTAs legibles) · header morado intenso global (logo blanco) · estaciones con banda vibrante (cards blancas, número y tag vibrantes, 4 en una fila en Digi/Talento) · franja B&N con parallax tras Beneficios · CTA diagnóstico sin líneas, más corto y ancho · journey full-bleed con vehículos bici/teleférico/moto/dirigible. Sin cambios: combinación, beneficios, contenidos, otras rutas, footer.
 
 ## Logos de partners (2026-06-16)
-En `site/assets/logos/partners/`: **Bci, Blue Express, Defontana, Organízame (OMIA), Microsoft, OTIC, Mis Abogados, Pyme UC, Fintegram, Walmart, Salcobrand (Open), Rindegastos**. (Walmart y Salcobrand venían en `.ai` → renderizados a PNG; Fintegram/Rindegastos desde los zips de la carpeta de Drive de Ari.) **Único pendiente: Buk** — no estaba en el Drive; sigue como placeholder de texto. Para colocarlo: PNG/SVG → reemplazar el `<span class="ph">Buk</span>` por `<img>` en `ruta-digitalizacion.html`.
+En `site/assets/logos/partners/`: **todos los logos reales colocados** — Bci, Blue Express, Defontana, Organízame (OMIA), Microsoft, OTIC, Mis Abogados, Pyme UC, Fintegram, Walmart, Salcobrand (Open), Rindegastos y Buk. (Walmart y Salcobrand venían en `.ai` → renderizados a PNG; Fintegram/Rindegastos desde los zips de la carpeta de Drive de Ari; Buk en SVG.) Ya no quedan placeholders de texto en las cards de estaciones.
 
 ## Pendientes / decisiones para el cliente
 - **Vehículos del journey como imágenes reales:** hoy son SVG (tipo correcto: bici/teleférico/moto/dirigible). Faltan fotos reales con fondo transparente — el cliente debe proveerlas o aprobar sourcing con licencia.
