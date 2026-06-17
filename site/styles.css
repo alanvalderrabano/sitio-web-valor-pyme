@@ -80,7 +80,7 @@
 
 /* ===== Temas por ruta (data-ruta en <body>) ===== */
 body[data-ruta="capital"]        { --ruta: #FFF200; --ruta-ink: #2A0A4A; --ruta-soft:#FFFBCC; --ruta-deep:#7A6A00; }
-body[data-ruta="mercado"]        { --ruta: #2F2927; --ruta-ink: #FFFFFF; --ruta-soft:#ECE9E7; --ruta-deep:#000000; }
+body[data-ruta="mercado"]        { --ruta: #330559; --ruta-ink: #FFFFFF; --ruta-soft:#E7DEF2; --ruta-deep:#220A40; }
 body[data-ruta="digitalizacion"] { --ruta: #FF005B; --ruta-ink: #FFFFFF; --ruta-soft:#FFE3EE; --ruta-deep:#A8003C; }
 body[data-ruta="talento"]        { --ruta: #00C168; --ruta-ink: #FFFFFF; --ruta-soft:#D4FBE8; --ruta-deep:#00733E; }
 
@@ -178,7 +178,7 @@ p { margin: 0; }
 .drop-route__t { font-weight: 700; color: var(--color-texto-dark); font-size: 15px; }
 .drop-route__d { font-size: 13px; color: var(--color-gris); }
 .dot--capital { background:#FFF200; color:#2A0A4A; box-shadow: inset 0 0 0 2px rgba(42,10,74,.16); } /* amarillo de marca con anillo para legibilidad sobre blanco */
-.dot--mercado { background:#2F2927; }
+.dot--mercado { background:#330559; }
 .dot--digitalizacion { background:#FF005B; }
 .dot--talento { background:#00C168; color:#06301D; }
 
@@ -203,6 +203,9 @@ p { margin: 0; }
 .hero .btn--ruta:hover { background: var(--color-morado); color: #fff; }
 .hero .btn--ghost { color: var(--ruta-ink); box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--ruta-ink) 38%, transparent); }
 .hero .btn--ghost:hover { background: var(--ruta-ink); color: var(--ruta); box-shadow: none; }
+/* Mercado: hero en morado profundo → CTA primario blanco para contraste */
+body[data-ruta="mercado"] .hero .btn--ruta { background: #fff; color: #330559; }
+body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #fff; }
 
 /* Visual del hero: foto + líneas cruzadas */
 .hero__visual { position: relative; aspect-ratio: 1/1; }
@@ -338,7 +341,7 @@ p { margin: 0; }
 .otras-rutas .route-card h3 { margin-bottom: 6px; }
 .otras-rutas .route-card__dot { box-shadow: none; }
 .otras-rutas .route-card__dot.dot--capital        { background:#FFF3A6; color:#7A6A00; }
-.otras-rutas .route-card__dot.dot--mercado        { background:#DAD6D3; color:#2F2927; }
+.otras-rutas .route-card__dot.dot--mercado        { background:#D8CCEC; color:#330559; }
 .otras-rutas .route-card__dot.dot--digitalizacion { background:#FFC7DC; color:#A8003C; }
 .otras-rutas .route-card__dot.dot--talento        { background:#A6EFC8; color:#00733E; }
 
@@ -365,6 +368,8 @@ p { margin: 0; }
 .journey { overflow: hidden; padding: 6px 0 18px; }
 .journey__track { position: relative; height: 150px; }
 .journey__line { position: absolute; inset: 0; width: 100%; height: 100%; }
+.journey__dot { position: absolute; width: 18px; height: 18px; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 4px #fff; z-index: 1; }
+@media (max-width: 620px){ .journey__dot { width: 13px; height: 13px; box-shadow: 0 0 0 3px #fff; } }
 .journey__vehicle { position: absolute; bottom: 12px; left: -14%; height: clamp(76px, 9.5vw, 116px); width: auto; animation: ride 17s linear infinite, bob 3.2s ease-in-out infinite; filter: drop-shadow(0 10px 14px rgba(51,5,89,.18)); }
 @keyframes ride { from { left: -14%; } to { left: 110%; } }
 @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
