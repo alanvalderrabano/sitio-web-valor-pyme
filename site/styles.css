@@ -554,8 +554,8 @@ body.menu-open { overflow: hidden; }
 .hp-pill .d { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 12px; }
 .hp-pill--capital { background: var(--c-amarillo); color: #2A0A4A; animation-duration: 24s; }
 .hp-pill--capital .d { background: #2A0A4A; color: var(--c-amarillo); }
-.hp-pill--mercado { background: #fff; color: var(--c-morado-deep); animation-duration: 20s; animation-delay: -5s; }
-.hp-pill--mercado .d { background: var(--c-morado-deep); color: #fff; }
+.hp-pill--mercado { background: var(--c-morado-deep); color: #fff; animation-duration: 20s; animation-delay: -5s; }
+.hp-pill--mercado .d { background: #fff; color: var(--c-morado-deep); }
 .hp-pill--digital { background: var(--c-rosa); color: #fff; animation-duration: 26s; animation-delay: -11s; }
 .hp-pill--digital .d { background: #fff; color: var(--c-rosa); }
 .hp-pill--talento { background: var(--c-verde); color: #06301D; animation-duration: 22s; animation-delay: -16s; }
@@ -667,7 +667,7 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ===================== 4 · Diagnóstico — break morado ===================== */
-.hp-diag { background: #330559; position: relative; overflow: hidden; color: #fff; text-align: center; padding-block: clamp(64px,9vw,120px); }
+.hp-diag { background: #6126FF; position: relative; overflow: hidden; color: #fff; text-align: center; padding-block: clamp(64px,9vw,120px); }
 .hp-diag__glow { display: none; }
 .hp-diag .container { position: relative; z-index: 2; }
 .hp-diag .hp-eyebrow { color: var(--c-amarillo); justify-content: center; }
