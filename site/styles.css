@@ -504,7 +504,7 @@ body.menu-open { overflow: hidden; }
 /* ===================== 1 · HERO break morado + orbit ===================== */
 .hp-hero {
   position: relative; overflow: hidden; color: #fff;
-  background: #330559;
+  background: #6126FF;
   padding-block: clamp(56px, 8vw, 104px);
 }
 .hp-hero__glow {
