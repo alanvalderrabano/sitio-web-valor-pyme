@@ -596,14 +596,14 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 760px){ .hp-overlap { grid-template-columns: 1fr; } .hp-chal--br { border-top: 1px solid var(--color-borde); } }
 
 /* ===================== 3 · 4 rutas — scroll horizontal anclado (lavanda) ===================== */
-.hp-routes { background: var(--c-lavanda); position: relative; }
+.hp-routes { background: var(--c-lavanda); position: relative; padding-top: clamp(40px,6vw,72px); }
 .hp-routes__intro { padding-block: clamp(48px,6vw,80px) 0; text-align: center; }
 .hp-routes__intro .hp-scrollcue { margin-top: 20px; }
 .hp-routes__intro .hp-eyebrow { color: var(--c-morado); justify-content: center; }
 .hp-routes__intro h2 { color: var(--c-morado-deep); margin: 0 auto 14px; max-width: 20ch; }
 .hp-routes__intro p { color: var(--color-gris); font-size: var(--text-lead); max-width: 56ch; margin: 0 auto; }
 
-.hp-hscroll-wrap { height: 300vh; position: relative; margin-top: clamp(-40px,-3.5vw,-20px); }
+.hp-hscroll-wrap { height: 220vh; position: relative; }
 .hp-hscroll-sticky {
   position: sticky; top: var(--header-h); height: calc(100svh - var(--header-h));
   overflow: hidden; display: grid; grid-template-columns: .72fr 1.28fr;
@@ -612,8 +612,9 @@ body.menu-open { overflow: hidden; }
 }
 .hp-hscroll-head { align-self: center; }
 .hp-hscroll-head .hp-eyebrow { color: var(--c-morado); }
-.hp-hscroll-head h2 { color: var(--c-morado-deep); font-size: clamp(1.8rem,3.6vw,2.8rem); margin-bottom: 14px; max-width: 14ch; }
-.hp-hscroll-head p { color: var(--color-gris); font-size: var(--text-body); max-width: 34ch; }
+.hp-hscroll-head h2 { color: var(--c-morado-deep); font-size: clamp(1.8rem,3.6vw,2.8rem); margin-bottom: 14px; max-width: 18ch; }
+.hp-hscroll-head p { color: var(--color-gris); font-size: var(--text-body); max-width: 38ch; }
+.hp-hscroll-head .hp-scrollcue { margin-top: 22px; }
 .hp-hscroll-viewport { position: relative; overflow: hidden; align-self: center; }
 .hp-rail { display: flex; gap: 24px; will-change: transform; padding: 30px 0; }
 .hp-rcard {
@@ -657,6 +658,7 @@ body.menu-open { overflow: hidden; }
   .hp-rail { flex-direction: column; transform: none !important; }
   .hp-rcard { flex: 1 1 auto; }
   .hp-metroline { display: none; }
+  .hp-hscroll-head .hp-scrollcue { display: none; }
 }
 
 /* ===================== 4 · Diagnóstico — break morado ===================== */
