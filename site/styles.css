@@ -596,19 +596,19 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 760px){ .hp-overlap { grid-template-columns: 1fr; } .hp-chal--br { border-top: 1px solid var(--color-borde); } }
 
 /* ===================== 3 · 4 rutas — scroll horizontal anclado (lavanda) ===================== */
-.hp-routes { background: var(--c-lavanda); position: relative; padding-top: clamp(40px,6vw,72px); }
+.hp-routes { background: var(--c-lavanda); position: relative; padding-top: clamp(8px,2vw,24px); }
 .hp-routes__intro { padding-block: clamp(48px,6vw,80px) 0; text-align: center; }
 .hp-routes__intro .hp-scrollcue { margin-top: 20px; }
 .hp-routes__intro .hp-eyebrow { color: var(--c-morado); justify-content: center; }
 .hp-routes__intro h2 { color: var(--c-morado-deep); margin: 0 auto 14px; max-width: 20ch; }
 .hp-routes__intro p { color: var(--color-gris); font-size: var(--text-lead); max-width: 56ch; margin: 0 auto; }
 
-.hp-hscroll-wrap { height: 220vh; position: relative; }
+.hp-hscroll-wrap { height: 200vh; position: relative; }
 .hp-hscroll-sticky {
   position: sticky; top: var(--header-h); height: calc(100svh - var(--header-h));
   overflow: hidden; display: grid; grid-template-columns: .72fr 1.28fr;
   align-items: center; gap: clamp(20px,3vw,48px);
-  padding-inline: var(--pad-x); max-width: var(--maxw); margin-inline: auto;
+  padding: clamp(20px,3vh,40px) var(--pad-x); max-width: var(--maxw); margin-inline: auto;
 }
 .hp-hscroll-head { align-self: center; }
 .hp-hscroll-head .hp-eyebrow { color: var(--c-morado); }
@@ -622,6 +622,7 @@ body.menu-open { overflow: hidden; }
   border: 1px solid var(--color-borde); padding: 28px; position: relative; overflow: hidden;
   box-shadow: var(--shadow-sm); transition: transform .3s var(--ease), box-shadow .3s;
   --rc: var(--c-morado);
+  display: flex; flex-direction: column; min-height: clamp(380px, 56vh, 520px);
 }
 .hp-rcard:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 .hp-rcard::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--rc); }
@@ -630,7 +631,11 @@ body.menu-open { overflow: hidden; }
 .hp-rcard h3 { font-size: 22px; color: var(--c-morado-deep); }
 .hp-rcard__tag { display: inline-flex; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 6px 14px; border-radius: var(--radius-pill); margin-bottom: 14px; }
 .hp-rcard p { font-size: var(--text-sm); color: var(--color-gris); margin-bottom: 16px; }
-.hp-rcard .link-more { color: var(--rc); }
+.hp-rcard__logos { display: flex; flex-direction: column; gap: 8px; margin: 2px 0 18px; }
+.hp-rcard__logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--c-lavanda); border-radius: 12px; padding: 11px; }
+.hp-rcard__logo img { max-height: 28px; max-width: 66%; width: auto; object-fit: contain; filter: grayscale(1); opacity: .82; transition: filter .3s, opacity .3s; }
+.hp-rcard:hover .hp-rcard__logo img { filter: none; opacity: 1; }
+.hp-rcard .link-more { color: var(--rc); margin-top: auto; }
 
 /* Indicador "Desliza →": cue de que la sección se recorre a la derecha */
 .hp-scrollcue {
