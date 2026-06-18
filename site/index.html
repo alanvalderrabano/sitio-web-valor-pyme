@@ -77,7 +77,7 @@
 }
 </script>
 </head>
-<body data-ruta="">
+<body data-ruta="" class="hp">
 
 <header class="site-header">
   <div class="container nav">
@@ -109,97 +109,107 @@
 </div>
 
 <main>
-<!-- ============ SECCIÓN 1 — HERO (ATTENTION) ============ -->
-<section class="hero" style="--ruta:var(--color-corp);--ruta-ink:#FFFFFF;--ruta-soft:var(--color-lavanda);--ruta-deep:var(--color-morado)">
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <span class="hero__badge"><span class="rline" style="background:var(--color-corp)">★</span> Red de soluciones para pymes · Chile</span>
-      <h1 class="reveal">Emprender es siempre un viaje.</h1>
-      <p class="hero__sub reveal d1"><strong style="font-weight:700;opacity:1">Una red de soluciones para acompañar el crecimiento de tu pyme.</strong><br>Valor Pyme conecta a las pymes y emprendedores de Chile con soluciones de grandes empresas, banca, universidades e instituciones. Cuatro rutas, muchas estaciones, una sola comunidad.</p>
-      <div class="hero__cta reveal d2">
-        <a href="#suscripcion" class="btn btn--onfill">Súmate gratis <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="#diagnostico" class="btn btn--ghost">Descubre tu ruta</a>
+<!-- ============ SECCIÓN 1 — HERO (ATTENTION) · break morado + orbit ============ -->
+<section class="hp-hero">
+  <div class="hp-hero__glow parallax" data-parallax="0.12" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hp-hero__grid">
+      <div class="hp-hero__copy">
+        <span class="hp-hero__badge"><span class="rline">★</span> Red de soluciones para pymes · Chile</span>
+        <h1 class="hp-display reveal">Emprender es siempre un viaje.</h1>
+        <p class="hp-hero__sub reveal d1"><strong>Una red de soluciones para acompañar el crecimiento de tu pyme.</strong><br>Valor Pyme conecta a las pymes y emprendedores de Chile con soluciones de grandes empresas, banca, universidades e instituciones. Cuatro rutas, muchas estaciones, una sola comunidad.</p>
+        <div class="hp-hero__cta reveal d2">
+          <a href="#suscripcion" class="btn btn--onfill">Súmate gratis <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#diagnostico" class="btn btn--ghost">Descubre tu ruta</a>
+        </div>
       </div>
-    </div>
-    <div class="hero__visual">
-      <svg class="lines-svg lines-svg--back" viewBox="0 0 600 600" aria-hidden="true">
-        <path class="route-line draw" style="stroke:var(--color-amarillo)" d="M-40 430 C 120 470 170 300 360 340 S 640 250 700 300"/>
-        <path class="route-line draw d2" style="stroke:var(--color-verde)" d="M-40 540 C 160 560 260 430 470 470 S 660 430 740 450"/>
-      </svg>
-      <div class="photo-frame parallax" data-parallax="0.08"><img class="photo-frame__img" src="assets/photos/foto-ref-04.png" width="480" height="600" alt="Emprendedora chilena en su negocio"></div>
-      <svg class="lines-svg lines-svg--front" viewBox="0 0 600 600" aria-hidden="true">
-        <path class="route-line draw d3" style="stroke:#FFFFFF" d="M-30 70 C 140 20 280 120 400 70 S 600 30 700 110"/>
-        <path class="route-line draw d4" style="stroke:var(--color-rosa)" d="M-30 280 C 70 360 70 540 210 580 S 380 620 520 590"/>
-        <circle class="station station-pop" cx="400" cy="70" r="13" style="fill:#FFFFFF"/>
-        <circle class="station station-pop" cx="210" cy="580" r="13" style="fill:var(--color-rosa)"/>
-      </svg>
+      <div class="hp-orbit reveal d1" aria-hidden="true">
+        <span class="orbit-ring orbit-ring--1"></span>
+        <span class="orbit-ring orbit-ring--2"></span>
+        <div class="hp-orbit__core"><img src="assets/logos/isotipo-white.svg" alt=""></div>
+        <span class="hp-orbit__dot"></span>
+        <span class="hp-pill hp-pill--capital"><span class="d">C</span> Ruta Capital</span>
+        <span class="hp-pill hp-pill--mercado"><span class="d">M</span> Ruta Mercado</span>
+        <span class="hp-pill hp-pill--digital"><span class="d">D</span> Digitalización</span>
+        <span class="hp-pill hp-pill--talento"><span class="d">T</span> Talento</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SECCIÓN 2 — ACOMPAÑAMIENTO (INTEREST) ============ -->
-<section class="section">
+<!-- ============ SECCIÓN 2 — ACOMPAÑAMIENTO (INTEREST) · blanco + card overlap ============ -->
+<section class="hp-acomp hp-section">
   <div class="container">
-    <div class="split">
-      <div class="split__copy">
-        <span class="eyebrow">No estás solo</span>
-        <h2>No tienes que recorrer el camino solo.</h2>
-        <p class="lead" style="margin-bottom:18px">Hacer crecer una pyme está lleno de cruces de camino: conseguir capital, llegar a más clientes, ordenar la gestión, formar un equipo. En Valor Pyme reunimos en un mismo lugar las soluciones de grandes empresas, banca, universidades e instituciones, para que avances acompañado y con herramientas reales. Cuatro rutas que se convierten en una sola red.</p>
-        <p style="font-family:var(--font-display);font-weight:800;color:var(--color-corp);font-size:var(--text-lead);margin-bottom:18px">La mayor comunidad de pymes y emprendedores de Chile — +150.000 visitas al mes.</p>
+    <div class="hp-acomp__grid">
+      <div class="reveal">
+        <span class="hp-eyebrow">No estás solo</span>
+        <h2 class="hp-h2">No tienes que recorrer el camino solo.</h2>
+      </div>
+      <div class="reveal d1">
+        <p>Hacer crecer una pyme está lleno de cruces de camino: conseguir capital, llegar a más clientes, ordenar la gestión, formar un equipo. En Valor Pyme reunimos en un mismo lugar las soluciones de grandes empresas, banca, universidades e instituciones, para que avances acompañado y con herramientas reales. Cuatro rutas que se convierten en una sola red.</p>
+        <p class="hp-acomp__stat">La mayor comunidad de pymes y emprendedores de Chile — <span class="hp-acomp__count" data-count="150000" data-suffix="+">+150.000</span> visitas al mes.</p>
         <a href="#tres-pasos" class="link-more">Conoce cómo funciona <span class="arrow">→</span></a>
       </div>
-      <div class="split__media reveal">
-        <svg class="lines-svg lines-svg--back" viewBox="0 0 600 510" aria-hidden="true">
-          <path class="route-line draw" style="stroke:var(--color-corp)" d="M-40 360 C 140 400 220 240 410 290 S 650 220 720 270"/>
-          <path class="route-line draw d2" style="stroke:var(--color-amarillo)" d="M-40 460 C 160 470 260 360 470 400 S 660 360 740 380"/>
-        </svg>
-        <div class="photo-frame"><img class="photo-frame__img" src="assets/photos/foto-ref-05.png" width="560" height="476" loading="lazy" alt="Emprendedoras colaborando en un taller"></div>
-        <svg class="lines-svg lines-svg--front" viewBox="0 0 600 510" aria-hidden="true">
-          <path class="route-line draw d3" style="stroke:var(--color-rosa)" d="M-30 120 C 150 70 290 150 410 110 S 600 80 700 150"/>
-          <circle class="station station-pop" cx="410" cy="110" r="12" style="fill:var(--color-rosa)"/>
-        </svg>
-      </div>
+    </div>
+    <div class="hp-overlap reveal d1">
+      <div class="hp-chal"><span class="hp-chal__n">01</span><div><h3>Conseguir capital</h3><p>Bancarización, orden de tu caja y servicios financieros para crecer.</p></div></div>
+      <div class="hp-chal"><span class="hp-chal__n">02</span><div><h3>Llegar a más clientes</h3><p>Nuevos canales de venta y logística para distribuir en todo Chile.</p></div></div>
+      <div class="hp-chal hp-chal--br"><span class="hp-chal__n">03</span><div><h3>Ordenar la gestión</h3><p>Digitaliza y profesionaliza tu operación con ERP y herramientas.</p></div></div>
+      <div class="hp-chal hp-chal--br"><span class="hp-chal__n">04</span><div><h3>Formar un equipo</h3><p>Capacitación, mentorías y formación para fortalecer tu talento.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ SECCIÓN 3 — LAS 4 RUTAS (INTEREST) ============ -->
-<section class="section" id="rutas" style="padding-top:0">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Las 4 rutas</span>
-      <h2>Cada empresa tiene desafíos distintos. Encuentra tu ruta.</h2>
-      <p class="lead">Elige la línea que resuelve tu desafío de hoy. Y cuando dos rutas se cruzan, aparecen estaciones de combinación con beneficios únicos.</p>
+<!-- ============ SECCIÓN 3 — LAS 4 RUTAS (INTEREST) · lavanda + scroll horizontal anclado ============ -->
+<section class="hp-routes" id="rutas">
+  <div class="container hp-routes__intro reveal">
+    <span class="hp-eyebrow">Las 4 rutas</span>
+    <h2 class="hp-h2">Cada empresa tiene desafíos distintos. Encuentra tu ruta.</h2>
+    <p>Elige la línea que resuelve tu desafío de hoy. Y cuando dos rutas se cruzan, aparecen estaciones de combinación con beneficios únicos.</p>
+  </div>
+  <div class="hp-hscroll-wrap" data-hscroll>
+    <div class="hp-hscroll-sticky">
+      <div class="hp-hscroll-head">
+        <span class="hp-eyebrow">Recorre las rutas</span>
+        <h2>Una sola red, cuatro caminos.</h2>
+        <p>Desliza para conocer cada ruta y los desafíos que resuelve.</p>
+      </div>
+      <div class="hp-hscroll-viewport">
+        <div class="hp-rail" data-rail>
+          <a class="hp-rcard" href="/ruta-capital" style="--rc:#FFF200">
+            <div class="hp-rcard__top"><span class="hp-rcard__dot" style="color:#2A0A4A">C</span><h3>Ruta Capital</h3></div>
+            <span class="hp-rcard__tag" style="color:#7A6A00;background:#FFFBCC">Eje financiero</span>
+            <p>Accede al capital que impulsa tu crecimiento: bancarización, orden de tu caja y servicios financieros.</p>
+            <span class="link-more" style="color:#7A6A00">Explorar ruta <span class="arrow">→</span></span>
+          </a>
+          <a class="hp-rcard" href="/ruta-mercado" style="--rc:#330559">
+            <div class="hp-rcard__top"><span class="hp-rcard__dot">M</span><h3>Ruta Mercado</h3></div>
+            <span class="hp-rcard__tag" style="color:#330559;background:#E7DEF2">Ventas y logística</span>
+            <p>Llega a nuevos clientes en marketplaces de alto tráfico y resuelve tu logística y distribución en todo Chile.</p>
+            <span class="link-more" style="color:#330559">Explorar ruta <span class="arrow">→</span></span>
+          </a>
+          <a class="hp-rcard" href="/ruta-digitalizacion" style="--rc:#FF005B">
+            <div class="hp-rcard__top"><span class="hp-rcard__dot">D</span><h3>Ruta Digitalización</h3></div>
+            <span class="hp-rcard__tag" style="color:#A8003C;background:#FFE3EE">Procesos internos</span>
+            <p>Digitaliza y profesionaliza tu operación: ERP, gestión y herramientas para ordenar, controlar y escalar.</p>
+            <span class="link-more" style="color:#A8003C">Explorar ruta <span class="arrow">→</span></span>
+          </a>
+          <a class="hp-rcard" href="/ruta-talento" style="--rc:#00C168">
+            <div class="hp-rcard__top"><span class="hp-rcard__dot">T</span><h3>Ruta Talento y Gestión</h3></div>
+            <span class="hp-rcard__tag" style="color:#00733E;background:#D4FBE8">Equipo y capacidades</span>
+            <p>Forma a tu equipo y fortalece tu gestión con capacitación, mentorías y formación.</p>
+            <span class="link-more" style="color:#00733E">Explorar ruta <span class="arrow">→</span></span>
+          </a>
+        </div>
+        <svg class="hp-beam" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+          <path stroke="rgba(97,38,255,.18)" d="M0 20 H1200"/>
+          <path class="beam-flow" stroke="#6126FF" d="M0 20 H1200"/>
+        </svg>
+      </div>
     </div>
-    <div class="grid-2">
-      <a class="route-card reveal" href="/ruta-capital" style="--ruta:#FFF200">
-        <div class="route-card__top"><span class="route-card__dot dot--capital" style="background:#FFF200;color:#2A0A4A">C</span><h3>Ruta Capital</h3></div>
-        <span class="tag" style="color:#7A6A00;background:#FFFBCC">Eje financiero</span>
-        <p>Accede al capital que impulsa tu crecimiento: bancarización, orden de tu caja y servicios financieros.</p>
-        <span class="link-more" style="color:#7A6A00">Explorar ruta <span class="arrow">→</span></span>
-      </a>
-      <a class="route-card reveal d1" href="/ruta-mercado" style="--ruta:#330559">
-        <div class="route-card__top"><span class="route-card__dot dot--mercado">M</span><h3>Ruta Mercado</h3></div>
-        <span class="tag" style="color:#330559;background:#E7DEF2">Ventas y logística</span>
-        <p>Llega a nuevos clientes en marketplaces de alto tráfico y resuelve tu logística y distribución en todo Chile.</p>
-        <span class="link-more" style="color:#330559">Explorar ruta <span class="arrow">→</span></span>
-      </a>
-      <a class="route-card reveal d2" href="/ruta-digitalizacion" style="--ruta:#FF005B">
-        <div class="route-card__top"><span class="route-card__dot dot--digitalizacion">D</span><h3>Ruta Digitalización</h3></div>
-        <span class="tag" style="color:#A8003C;background:#FFE3EE">Procesos internos</span>
-        <p>Digitaliza y profesionaliza tu operación: ERP, gestión y herramientas para ordenar, controlar y escalar.</p>
-        <span class="link-more" style="color:#A8003C">Explorar ruta <span class="arrow">→</span></span>
-      </a>
-      <a class="route-card reveal d3" href="/ruta-talento" style="--ruta:#00C168">
-        <div class="route-card__top"><span class="route-card__dot dot--talento">T</span><h3>Ruta Talento y Gestión</h3></div>
-        <span class="tag" style="color:#00733E;background:#D4FBE8">Equipo y capacidades</span>
-        <p>Forma a tu equipo y fortalece tu gestión con capacitación, mentorías y formación.</p>
-        <span class="link-more" style="color:#00733E">Explorar ruta <span class="arrow">→</span></span>
-      </a>
-    </div>
-    <div class="center" style="margin-top:clamp(28px,4vw,44px)">
-      <a href="/rutas" class="btn btn--ghost">Ver todas las rutas</a>
-    </div>
+  </div>
+  <div class="container center" style="padding-bottom:clamp(48px,6vw,80px)">
+    <a href="/rutas" class="btn btn--ghost">Ver todas las rutas</a>
   </div>
 </section>
 
@@ -216,24 +226,28 @@
   </div>
 </section>
 
-<!-- ============ SECCIÓN 4 — DIAGNÓSTICO (INTEREST→DESIRE) ============ -->
-<section class="section" id="diagnostico" style="padding-top:0">
-  <div class="container">
-    <div class="diag reveal">
-      <h2>¿No sabes cuál es el mejor camino para tu empresa?</h2>
-      <p>Responde el diagnóstico de Valor Pyme, evalúa las dimensiones de tu negocio y obtén una ruta personalizada con las estaciones exactas para tus necesidades de hoy.</p>
-      <a href="#diagnostico" class="btn btn--onfill">Descubrir mi ruta <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
+<!-- ============ SECCIÓN 4 — DIAGNÓSTICO (INTEREST→DESIRE) · break morado ============ -->
+<section class="hp-diag" id="diagnostico">
+  <div class="hp-diag__glow parallax" data-parallax="0.1" aria-hidden="true"></div>
+  <div class="container reveal">
+    <span class="hp-eyebrow">Tu ruta personalizada</span>
+    <h2 class="hp-h2">¿No sabes cuál es el mejor camino para tu empresa?</h2>
+    <p>Responde el diagnóstico de Valor Pyme, evalúa las dimensiones de tu negocio y obtén una ruta personalizada con las estaciones exactas para tus necesidades de hoy.</p>
+    <a href="#diagnostico" class="btn btn--onfill">Descubrir mi ruta <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </section>
 
-<!-- ============ SECCIÓN 5 — ALIADOS (DESIRE / prueba social) ============ -->
-<section class="section" id="aliados" style="padding-top:0">
+<!-- ============ SECCIÓN 5 — ALIADOS (DESIRE / prueba social) · blanco + beam ============ -->
+<section class="hp-allies hp-section" id="aliados">
+  <svg class="hp-allies__beam" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <path stroke="rgba(97,38,255,.14)" d="M0 30 H1200"/>
+    <path class="beam-flow" d="M0 30 H1200"/>
+  </svg>
   <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">El motor del viaje</span>
-      <h2>El motor del viaje: empresas con soluciones para los desafíos de las pymes.</h2>
-      <p class="lead">Grandes empresas, banca, universidades e instituciones se suman a Valor Pyme con soluciones y beneficios exclusivos para la comunidad. Encuentra la ruta que más te sirva, descubre los recursos de nuestros aliados y combínalos a tu manera.</p>
+    <div class="hp-allies__intro reveal">
+      <span class="hp-eyebrow">El motor del viaje</span>
+      <h2 class="hp-h2">El motor del viaje: empresas con soluciones para los desafíos de las pymes.</h2>
+      <p>Grandes empresas, banca, universidades e instituciones se suman a Valor Pyme con soluciones y beneficios exclusivos para la comunidad. Encuentra la ruta que más te sirva, descubre los recursos de nuestros aliados y combínalos a tu manera.</p>
     </div>
     <ul class="logo-grid reveal">
       <li class="logo-cell" title="Inclusión y educación financiera para un crecimiento sostenible."><img src="assets/logos/partners/bci.png" width="150" height="60" loading="lazy" alt="Bci"></li>
@@ -244,7 +258,6 @@
       <li class="logo-cell" title="Capacitación y desarrollo de talento para aumentar la productividad de las pymes."><img src="assets/logos/partners/otic.png" width="150" height="60" loading="lazy" alt="OTIC CChC"></li>
       <li class="logo-cell" title="Tecnología, inteligencia artificial y herramientas digitales para acelerar la transformación pyme."><img src="assets/logos/partners/microsoft.png" width="150" height="60" loading="lazy" alt="Microsoft"></li>
       <li class="logo-cell"><img src="assets/logos/partners/buk.svg" width="150" height="60" loading="lazy" alt="Buk"></li>
-      <li class="logo-cell"><img src="assets/logos/partners/omia.png" width="150" height="60" loading="lazy" alt="OMIA"></li>
       <li class="logo-cell"><img src="assets/logos/partners/rindegastos.png" width="150" height="60" loading="lazy" alt="Rindegastos"></li>
       <li class="logo-cell"><img src="assets/logos/partners/fintegram.png" width="150" height="60" loading="lazy" alt="Fintegram"></li>
       <li class="logo-cell"><img src="assets/logos/partners/salcobrand.png" width="150" height="60" loading="lazy" alt="Salcobrand"></li>
@@ -256,65 +269,71 @@
   </div>
 </section>
 
-<!-- ============ SECCIÓN 6 — TRES PASOS (ACTION) ============ -->
-<section class="section" id="tres-pasos" style="padding-top:0">
+<!-- ============ SECCIÓN 6 — BREAK B&N (NUEVO) · oscuro + foto parallax ============ -->
+<section class="hp-bn" aria-label="Empresas en constante movimiento">
+  <div class="hp-bn__bg parallax" data-parallax="0.14" aria-hidden="true">
+    <img src="assets/img/franja-bn-mercado.jpg" width="1600" height="900" loading="lazy" alt="">
+  </div>
+  <div class="hp-bn__overlay" aria-hidden="true"></div>
+  <div class="container reveal">
+    <span class="hp-eyebrow">Empresas en constante movimiento</span>
+    <h2 class="hp-h2">Avanzar también es elegir mejor la siguiente ruta.</h2>
+  </div>
+</section>
+
+<!-- ============ SECCIÓN 7 — TRES PASOS (ACTION) · break verde ============ -->
+<section class="hp-steps hp-section" id="tres-pasos">
+  <div class="hp-steps__glow" aria-hidden="true"></div>
   <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Cómo funciona</span>
-      <h2>Comienza tu viaje en tres pasos.</h2>
+    <div class="hp-steps__intro reveal">
+      <span class="hp-eyebrow">Cómo funciona</span>
+      <h2 class="hp-h2">Comienza tu viaje en tres pasos.</h2>
     </div>
-    <ol class="steps">
-      <li class="step reveal">
-        <span class="step__num">1</span>
+    <ol class="hp-steps__grid">
+      <li class="hp-tstep reveal">
+        <span class="hp-tstep__num">1</span>
         <h3>Crea tu cuenta</h3>
         <p>Regístrate gratis en menos de un minuto. Sin costo y sin permanencia.</p>
       </li>
-      <li class="step reveal d1">
-        <span class="step__num">2</span>
+      <li class="hp-tstep reveal d1">
+        <span class="hp-tstep__num">2</span>
         <h3>Completa tu perfil</h3>
         <p>Cuéntanos de tu pyme para recibir rutas, recursos y beneficios pensados para ti.</p>
       </li>
-      <li class="step reveal d2">
-        <span class="step__num">3</span>
+      <li class="hp-tstep reveal d2">
+        <span class="hp-tstep__num">3</span>
         <h3>Explora y conecta</h3>
         <p>Recorre las rutas, accede a los beneficios de los aliados y súmate a la comunidad.</p>
       </li>
     </ol>
     <div class="center" style="margin-top:clamp(28px,4vw,44px)">
-      <a href="#suscripcion" class="btn">Crear mi cuenta gratis <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#suscripcion" class="btn btn--onfill">Crear mi cuenta gratis <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ============ SECCIÓN 7 — COMUNIDAD / SUSCRIPCIÓN (DESIRE→ACTION · la OFERTA) ============ -->
-<section class="section" id="suscripcion" style="padding-top:0">
+<!-- ============ SECCIÓN 8 — COMUNIDAD / SUSCRIPCIÓN · break rosa→morado (la OFERTA) ============ -->
+<section class="hp-sub hp-section" id="suscripcion">
+  <div class="hp-sub__glow" aria-hidden="true"></div>
   <div class="container">
-    <div class="community">
-      <div class="community__media reveal">
-        <svg class="lines-svg lines-svg--back" viewBox="0 0 600 510" aria-hidden="true">
-          <path class="route-line draw" style="stroke:var(--color-amarillo)" d="M-40 360 C 140 400 220 240 410 290 S 650 220 720 270"/>
-          <path class="route-line draw d2" style="stroke:var(--color-verde)" d="M-40 460 C 160 470 260 360 470 400 S 660 360 740 380"/>
-        </svg>
-        <div class="photo-frame"><img class="photo-frame__img" src="assets/photos/foto-ref-06.png" width="560" height="476" loading="lazy" alt="Comunidad de emprendedores y pymes de Chile"></div>
-        <svg class="lines-svg lines-svg--front" viewBox="0 0 600 510" aria-hidden="true">
-          <path class="route-line draw d3" style="stroke:var(--color-rosa)" d="M-30 130 C 150 80 290 160 410 120 S 600 90 700 160"/>
-          <circle class="station station-pop" cx="410" cy="120" r="12" style="fill:var(--color-rosa)"/>
-        </svg>
+    <div class="hp-sub__grid">
+      <div class="hp-sub__media reveal">
+        <img src="assets/photos/foto-ref-06.png" width="560" height="504" loading="lazy" alt="Comunidad de emprendedores y pymes de Chile">
       </div>
-      <div class="community__copy reveal d1">
-        <span class="eyebrow">Comunidad Valor Pyme · gratis</span>
-        <h2>Sé parte de la mayor comunidad de pymes y emprendedores de Chile.</h2>
-        <p class="lead" style="margin-bottom:22px">Apoyamos el crecimiento de las pequeñas y medianas empresas de Chile. Con <strong>más de 150.000 visitas al mes</strong> y una amplia gama de recursos gratuitos a tu disposición, te damos el impulso que necesitas para llevar tu negocio al siguiente nivel. Súmate sin costo y comienza tu viaje hoy.</p>
-        <ul class="offer-stack">
+      <div class="reveal d1">
+        <span class="hp-eyebrow">Comunidad Valor Pyme · gratis</span>
+        <h2 class="hp-h2">Sé parte de la mayor comunidad de pymes y emprendedores de Chile.</h2>
+        <p class="hp-sub__lead">Apoyamos el crecimiento de las pequeñas y medianas empresas de Chile. Con <strong>más de 150.000 visitas al mes</strong> y una amplia gama de recursos gratuitos a tu disposición, te damos el impulso que necesitas para llevar tu negocio al siguiente nivel. Súmate sin costo y comienza tu viaje hoy.</p>
+        <ul class="hp-offer">
           <li>Acceso a las <strong>4 rutas</strong>: Capital, Mercado, Digitalización y Talento y Gestión.</li>
           <li><strong>Beneficios exclusivos</strong> de los aliados para la comunidad.</li>
           <li><strong>Contenidos</strong>: novedades y datos clave para tu pyme.</li>
           <li><strong>Formación</strong>: cursos, talleres y mentorías para impulsar tu negocio.</li>
           <li><strong>Diagnóstico</strong> para encontrar tu ruta personalizada.</li>
         </ul>
-        <p class="offer-guarantee">Gratis. Sin costo y sin permanencia.</p>
-        <div class="hero__cta">
-          <a href="#suscripcion" class="btn">Súmate gratis <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="hp-sub__guarantee">Gratis. Sin costo y sin permanencia.</p>
+        <div class="hp-hero__cta">
+          <a href="#suscripcion" class="btn btn--onfill">Súmate gratis <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a href="#" class="btn btn--ghost">Súmate a la conversación</a>
         </div>
       </div>
@@ -322,12 +341,12 @@
   </div>
 </section>
 
-<!-- ============ SECCIÓN 8 — PREGUNTAS FRECUENTES (ACTION + AEO) ============ -->
-<section class="section faq-section" style="padding-top:0">
+<!-- ============ SECCIÓN 9 — PREGUNTAS FRECUENTES (ACTION + AEO) · lavanda ============ -->
+<section class="hp-faq hp-section">
   <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Preguntas frecuentes</span>
-      <h2>Preguntas frecuentes.</h2>
+    <div class="hp-faq__intro reveal">
+      <span class="hp-eyebrow">Preguntas frecuentes</span>
+      <h2 class="hp-h2">Preguntas frecuentes.</h2>
     </div>
     <div class="faq reveal">
       <details class="faq__item">
@@ -366,6 +385,6 @@
     <div class="footer-bottom"><span>© <span data-year>2026</span> Valor Pyme · Chile</span><span>Términos · Privacidad</span></div>
   </div>
 </footer>
-<script src="script.js?v=4" defer></script>
+<script src="script.js?v=5" defer></script>
 </body>
 </html>

@@ -83,6 +83,65 @@
     update();
   }
 
+  /* ---- Scroll horizontal anclado (HOME · 4 rutas) ---- */
+  var hWrap = document.querySelector('[data-hscroll]');
+  var hRail = hWrap ? hWrap.querySelector('[data-rail]') : null;
+  if (hWrap && hRail) {
+    var hTicking = false;
+    function hUpdate() {
+      hTicking = false;
+      // En móvil/tablet (≤900px) el sticky está desactivado por CSS: no transformamos.
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        hRail.style.transform = '';
+        return;
+      }
+      var rect = hWrap.getBoundingClientRect();
+      var sticky = hWrap.querySelector('.hp-hscroll-sticky');
+      var vp = hWrap.querySelector('.hp-hscroll-viewport');
+      if (!sticky || !vp) return;
+      var scrollable = hWrap.offsetHeight - sticky.offsetHeight; // recorrido total del wrapper
+      if (scrollable <= 0) { hRail.style.transform = ''; return; }
+      var prog = (-rect.top) / scrollable;
+      if (prog < 0) prog = 0; else if (prog > 1) prog = 1;
+      var maxX = hRail.scrollWidth - vp.clientWidth; // cuánto debe desplazarse el riel
+      if (maxX < 0) maxX = 0;
+      hRail.style.transform = 'translate3d(' + (-prog * maxX).toFixed(1) + 'px,0,0)';
+    }
+    window.addEventListener('scroll', function () {
+      if (!hTicking) { window.requestAnimationFrame(hUpdate); hTicking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', hUpdate);
+    hUpdate();
+  }
+
+  /* ---- Contador count-up (HOME · +150.000) ---- */
+  var counters = [].slice.call(document.querySelectorAll('[data-count]'));
+  if (counters.length) {
+    function formatNum(n) { return n.toLocaleString('es-CL'); }
+    function runCount(el) {
+      if (reduce) { return; } // respeta reduced-motion: deja el valor estático del HTML
+      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var suffix = el.getAttribute('data-suffix') || '';
+      var dur = 1400, start = null;
+      function tick(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = suffix + formatNum(Math.round(target * eased));
+        if (p < 1) window.requestAnimationFrame(tick);
+      }
+      window.requestAnimationFrame(tick);
+    }
+    if ('IntersectionObserver' in window && !reduce) {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { runCount(en.target); cio.unobserve(en.target); }
+        });
+      }, { threshold: 0.6 });
+      counters.forEach(function (el) { cio.observe(el); });
+    }
+  }
+
   /* ---- Año dinámico en footer ---- */
   var y = document.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
