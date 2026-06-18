@@ -86,6 +86,7 @@
   /* ---- Scroll horizontal anclado (HOME · 4 rutas) ---- */
   var hWrap = document.querySelector('[data-hscroll]');
   var hRail = hWrap ? hWrap.querySelector('[data-rail]') : null;
+  var hMetro = hWrap ? hWrap.querySelector('[data-metroline]') : null;
   if (hWrap && hRail) {
     var hTicking = false;
     function hUpdate() {
@@ -93,6 +94,7 @@
       // En móvil/tablet (≤900px) el sticky está desactivado por CSS: no transformamos.
       if (window.matchMedia('(max-width: 900px)').matches) {
         hRail.style.transform = '';
+        if (hMetro) hMetro.style.transform = '';
         return;
       }
       var rect = hWrap.getBoundingClientRect();
@@ -106,6 +108,14 @@
       var maxX = hRail.scrollWidth - vp.clientWidth; // cuánto debe desplazarse el riel
       if (maxX < 0) maxX = 0;
       hRail.style.transform = 'translate3d(' + (-prog * maxX).toFixed(1) + 'px,0,0)';
+      // Línea ondulada de metro: corre hacia la derecha conforme avanza el scroll.
+      // El SVG mide 220% del ancho del contenedor. Sus translate% son relativos a su
+      // propio ancho: -54.5% deja su mitad derecha cubriendo el viewport, 0% deja su
+      // mitad izquierda. Al pasar de -54.5%→0% el trazo se desplaza a la derecha sin
+      // dejar hueco a ningún lado.
+      if (hMetro) {
+        hMetro.style.transform = 'translate3d(' + (-54.5 + prog * 54.5).toFixed(2) + '%,0,0)';
+      }
     }
     window.addEventListener('scroll', function () {
       if (!hTicking) { window.requestAnimationFrame(hUpdate); hTicking = true; }

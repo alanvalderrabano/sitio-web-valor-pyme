@@ -13,7 +13,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
@@ -166,6 +166,7 @@
     <span class="hp-eyebrow">Las 4 rutas</span>
     <h2 class="hp-h2">Cada empresa tiene desafíos distintos. Encuentra tu ruta.</h2>
     <p>Elige la línea que resuelve tu desafío de hoy. Y cuando dos rutas se cruzan, aparecen estaciones de combinación con beneficios únicos.</p>
+    <span class="hp-scrollcue">Desliza para recorrer las rutas <span class="cue-arrow"><svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M2 7h14M12 2l5 5-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
   </div>
   <div class="hp-hscroll-wrap" data-hscroll>
     <div class="hp-hscroll-sticky">
@@ -201,28 +202,17 @@
             <span class="link-more" style="color:#00733E">Explorar ruta <span class="arrow">→</span></span>
           </a>
         </div>
-        <svg class="hp-beam" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
-          <path stroke="rgba(97,38,255,.18)" d="M0 20 H1200"/>
-          <path class="beam-flow" stroke="#6126FF" d="M0 20 H1200"/>
-        </svg>
+        <div class="hp-metroline" aria-hidden="true">
+          <svg data-metroline viewBox="0 0 1200 56" preserveAspectRatio="none">
+            <path stroke="rgba(97,38,255,.14)" d="M-40 28 Q 60 6 160 28 T 360 28 T 560 28 T 760 28 T 960 28 T 1160 28 T 1360 28"/>
+            <path stroke="#6126FF" d="M-40 28 Q 60 6 160 28 T 360 28 T 560 28 T 760 28 T 960 28 T 1160 28 T 1360 28"/>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
   <div class="container center" style="padding-bottom:clamp(48px,6vw,80px)">
     <a href="/rutas" class="btn btn--ghost">Ver todas las rutas</a>
-  </div>
-</section>
-
-<!-- JOURNEY (strip de transición) -->
-<section class="journey" aria-label="El viaje en el metro Pyme">
-  <div class="journey__track">
-    <svg class="journey__line" viewBox="0 0 1200 124" preserveAspectRatio="none" aria-hidden="true">
-      <path class="route-line" style="stroke:var(--color-amarillo);stroke-width:9" d="M0 88 C 220 30 360 30 560 74 S 920 118 1200 60"/>
-      <path class="route-line" style="stroke:var(--color-corp);stroke-width:9" d="M0 50 C 240 96 420 40 640 70 S 1000 96 1200 44"/>
-    </svg>
-    <span class="journey__dot" style="left:46.667%;top:54.839%;background:var(--color-rosa)"></span>
-    <span class="journey__dot" style="left:81.667%;top:74.194%;background:var(--color-verde)"></span>
-    <img class="journey__vehicle" src="assets/img/veh-mercado.png" alt="" aria-hidden="true">
   </div>
 </section>
 
@@ -239,10 +229,12 @@
 
 <!-- ============ SECCIÓN 5 — ALIADOS (DESIRE / prueba social) · blanco + beam ============ -->
 <section class="hp-allies hp-section" id="aliados">
-  <svg class="hp-allies__beam" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
-    <path stroke="rgba(97,38,255,.14)" d="M0 30 H1200"/>
-    <path class="beam-flow" d="M0 30 H1200"/>
-  </svg>
+  <div class="hp-allies__beam" aria-hidden="true">
+    <svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+      <path stroke="rgba(97,38,255,.14)" d="M0 28 Q 100 6 200 28 T 400 28 T 600 28 T 800 28 T 1000 28 T 1200 28"/>
+      <path stroke="#6126FF" d="M0 28 Q 100 6 200 28 T 400 28 T 600 28 T 800 28 T 1000 28 T 1200 28"/>
+    </svg>
+  </div>
   <div class="container">
     <div class="hp-allies__intro reveal">
       <span class="hp-eyebrow">El motor del viaje</span>
@@ -271,7 +263,7 @@
 
 <!-- ============ SECCIÓN 6 — BREAK B&N (NUEVO) · oscuro + foto parallax ============ -->
 <section class="hp-bn" aria-label="Empresas en constante movimiento">
-  <div class="hp-bn__bg parallax" data-parallax="0.14" aria-hidden="true">
+  <div class="hp-bn__bg parallax" data-parallax="0.55" aria-hidden="true">
     <img src="assets/img/franja-bn-mercado.jpg" width="1600" height="900" loading="lazy" alt="">
   </div>
   <div class="hp-bn__overlay" aria-hidden="true"></div>
@@ -385,6 +377,6 @@
     <div class="footer-bottom"><span>© <span data-year>2026</span> Valor Pyme · Chile</span><span>Términos · Privacidad</span></div>
   </div>
 </footer>
-<script src="script.js?v=5" defer></script>
+<script src="script.js?v=6" defer></script>
 </body>
 </html>

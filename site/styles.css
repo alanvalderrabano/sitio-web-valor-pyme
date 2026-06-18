@@ -504,12 +504,11 @@ body.menu-open { overflow: hidden; }
 /* ===================== 1 · HERO break morado + orbit ===================== */
 .hp-hero {
   position: relative; overflow: hidden; color: #fff;
-  background: var(--grad-hero);
+  background: #330559;
   padding-block: clamp(56px, 8vw, 104px);
 }
 .hp-hero__glow {
-  position: absolute; inset: -20% -10%; z-index: 0; pointer-events: none;
-  background: var(--glow-mint), var(--glow-rosa);
+  display: none;
 }
 .hp-hero .container { position: relative; z-index: 2; }
 .hp-hero__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
@@ -576,7 +575,7 @@ body.menu-open { overflow: hidden; }
 
 /* ===================== 2 · Acompañamiento blanco + card overlap ===================== */
 .hp-acomp { background: #FBFAFF; padding-top: clamp(80px, 10vw, 150px); }
-.hp-acomp__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.hp-acomp__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
 .hp-acomp .hp-eyebrow { color: var(--c-rosa); }
 .hp-acomp h2 { color: var(--c-morado-deep); margin-bottom: 18px; }
 .hp-acomp p { color: var(--color-gris); font-size: var(--text-lead); line-height: 1.55; margin-bottom: 18px; }
@@ -584,7 +583,7 @@ body.menu-open { overflow: hidden; }
 .hp-acomp__count { color: var(--c-rosa); }
 /* Card flotante numerada que pisa el borde hero→blanco */
 .hp-overlap {
-  margin-top: clamp(-110px, -9vw, -70px); position: relative; z-index: 5;
+  margin-top: clamp(36px, 5vw, 64px); position: relative; z-index: 5;
   background: #fff; border-radius: var(--radius-xl); box-shadow: 0 40px 90px rgba(51,5,89,.22);
   padding: clamp(28px, 4vw, 48px);
   display: grid; grid-template-columns: 1fr 1fr; gap: 10px clamp(24px,3vw,40px);
@@ -598,12 +597,13 @@ body.menu-open { overflow: hidden; }
 
 /* ===================== 3 · 4 rutas — scroll horizontal anclado (lavanda) ===================== */
 .hp-routes { background: var(--c-lavanda); position: relative; }
-.hp-routes__intro { padding-block: clamp(56px,7vw,96px) 0; text-align: center; }
+.hp-routes__intro { padding-block: clamp(48px,6vw,80px) 0; text-align: center; }
+.hp-routes__intro .hp-scrollcue { margin-top: 20px; }
 .hp-routes__intro .hp-eyebrow { color: var(--c-morado); justify-content: center; }
 .hp-routes__intro h2 { color: var(--c-morado-deep); margin: 0 auto 14px; max-width: 20ch; }
 .hp-routes__intro p { color: var(--color-gris); font-size: var(--text-lead); max-width: 56ch; margin: 0 auto; }
 
-.hp-hscroll-wrap { height: 360vh; position: relative; }
+.hp-hscroll-wrap { height: 300vh; position: relative; margin-top: clamp(-40px,-3.5vw,-20px); }
 .hp-hscroll-sticky {
   position: sticky; top: var(--header-h); height: calc(100svh - var(--header-h));
   overflow: hidden; display: grid; grid-template-columns: .72fr 1.28fr;
@@ -630,11 +630,24 @@ body.menu-open { overflow: hidden; }
 .hp-rcard__tag { display: inline-flex; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 6px 14px; border-radius: var(--radius-pill); margin-bottom: 14px; }
 .hp-rcard p { font-size: var(--text-sm); color: var(--color-gris); margin-bottom: 16px; }
 .hp-rcard .link-more { color: var(--rc); }
-/* línea de metro SVG que fluye bajo el riel */
-.hp-beam { position: absolute; left: 0; right: 0; bottom: 18px; height: 40px; z-index: 0; pointer-events: none; opacity: .9; }
-.hp-beam path { fill: none; stroke-width: 3; stroke-linecap: round; }
-.hp-beam .beam-flow { stroke-dasharray: 14 16; animation: ecosystem-beam-flow 1.6s linear infinite; }
-@keyframes ecosystem-beam-flow { to { stroke-dashoffset: -60; } }
+
+/* Indicador "Desliza →": cue de que la sección se recorre a la derecha */
+.hp-scrollcue {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 800; font-size: 14px;
+  letter-spacing: .02em; color: var(--c-morado);
+  background: rgba(97,38,255,.08); border: 1px solid rgba(97,38,255,.18);
+  padding: 8px 16px; border-radius: var(--radius-pill);
+}
+.hp-scrollcue .cue-arrow { display: inline-flex; animation: cue-slide 1.4s var(--ease) infinite; }
+.hp-scrollcue svg { display: block; }
+@keyframes cue-slide { 0%,100% { transform: translateX(0); opacity: .65; } 50% { transform: translateX(7px); opacity: 1; } }
+
+/* Línea ondulada de Valor Pyme (sistema metro) que se desplaza a la derecha
+   conforme avanza el scroll horizontal del riel. Misma altura abajo. */
+.hp-metroline { position: absolute; left: 0; right: 0; bottom: 6px; height: 56px; z-index: 0; pointer-events: none; overflow: hidden; }
+.hp-metroline svg { position: absolute; left: 0; top: 0; height: 100%; width: 220%; will-change: transform; }
+.hp-metroline path { fill: none; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
 
 @media (max-width: 900px) {
   /* Móvil/tablet: desactivar sticky, apilar vertical */
@@ -643,12 +656,12 @@ body.menu-open { overflow: hidden; }
   .hp-hscroll-viewport { overflow: visible; }
   .hp-rail { flex-direction: column; transform: none !important; }
   .hp-rcard { flex: 1 1 auto; }
-  .hp-beam { display: none; }
+  .hp-metroline { display: none; }
 }
 
 /* ===================== 4 · Diagnóstico — break morado ===================== */
-.hp-diag { background: var(--grad-hero); position: relative; overflow: hidden; color: #fff; text-align: center; padding-block: clamp(64px,9vw,120px); }
-.hp-diag__glow { position: absolute; inset: -20% -10%; background: var(--glow-rosa); z-index: 0; }
+.hp-diag { background: #330559; position: relative; overflow: hidden; color: #fff; text-align: center; padding-block: clamp(64px,9vw,120px); }
+.hp-diag__glow { display: none; }
 .hp-diag .container { position: relative; z-index: 2; }
 .hp-diag .hp-eyebrow { color: var(--c-amarillo); justify-content: center; }
 .hp-diag h2 { color: #fff; max-width: 28ch; margin: 0 auto 16px; }
@@ -662,15 +675,15 @@ body.menu-open { overflow: hidden; }
 .hp-allies__intro .hp-eyebrow { color: var(--c-rosa); justify-content: center; }
 .hp-allies__intro h2 { color: var(--c-morado-deep); max-width: 24ch; margin: 0 auto 14px; }
 .hp-allies__intro p { color: var(--color-gris); font-size: var(--text-lead); max-width: 64ch; margin: 0 auto; }
-.hp-allies__beam { position: absolute; left: -5%; right: -5%; top: 50%; height: 60px; z-index: 0; opacity: .5; pointer-events: none; }
-.hp-allies__beam path { fill: none; stroke-width: 3; }
-.hp-allies__beam .beam-flow { stroke: var(--c-morado); stroke-dasharray: 16 20; animation: ecosystem-beam-flow 2s linear infinite; }
+.hp-allies__beam { position: absolute; left: -5%; right: -5%; top: 50%; transform: translateY(-50%); height: 56px; z-index: 0; opacity: .6; pointer-events: none; }
+.hp-allies__beam svg { width: 100%; height: 100%; display: block; }
+.hp-allies__beam path { fill: none; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
 .hp-allies .logo-grid { position: relative; z-index: 2; }
 
 /* ===================== 6 · Break B&N oscuro + parallax ===================== */
 .hp-bn { position: relative; overflow: hidden; min-height: clamp(380px, 50vw, 560px); display: grid; place-items: center; text-align: center; background: var(--c-dark); }
-.hp-bn__bg { position: absolute; inset: -12% 0; z-index: 0; }
-.hp-bn__bg img { width: 100%; height: 124%; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(.7); }
+.hp-bn__bg { position: absolute; inset: -28% 0; z-index: 0; }
+.hp-bn__bg img { width: 100%; height: 156%; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(.7); }
 .hp-bn__overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(22,22,22,.55), rgba(22,22,22,.82)); }
 .hp-bn .container { position: relative; z-index: 2; padding-block: clamp(60px,8vw,100px); }
 .hp-bn .hp-eyebrow { color: var(--c-mint); justify-content: center; }
@@ -693,8 +706,8 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 760px){ .hp-steps__grid { grid-template-columns: 1fr; } }
 
 /* ===================== 8 · Comunidad/Suscripción — break rosa→morado ===================== */
-.hp-sub { background: var(--grad-suscripcion); color: #fff; position: relative; overflow: hidden; }
-.hp-sub__glow { position: absolute; inset: -20% -10%; z-index: 0; background: var(--glow-mint); }
+.hp-sub { background: #FF005B; color: #fff; position: relative; overflow: hidden; }
+.hp-sub__glow { display: none; }
 .hp-sub .container { position: relative; z-index: 2; }
 .hp-sub__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(28px,5vw,64px); align-items: center; }
 .hp-sub__media { position: relative; aspect-ratio: 4/3.6; }
@@ -704,7 +717,7 @@ body.menu-open { overflow: hidden; }
 .hp-sub__lead { color: rgba(255,255,255,.9); font-size: var(--text-lead); margin-bottom: 22px; line-height: 1.5; }
 .hp-sub__lead strong { color: #fff; }
 .hp-offer { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 12px; }
-.hp-offer li { position: relative; padding: 14px 16px 14px 50px; border-radius: var(--radius-md); background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); backdrop-filter: blur(6px); font-size: var(--text-sm); line-height: 1.45; }
+.hp-offer li { position: relative; padding: 14px 16px 14px 50px; border-radius: var(--radius-md); background: rgba(46,4,38,.22); border: 1px solid rgba(255,255,255,.30); backdrop-filter: blur(6px); font-size: var(--text-sm); line-height: 1.45; }
 .hp-offer li strong { color: #fff; }
 .hp-offer li::before {
   content: ""; position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%;
