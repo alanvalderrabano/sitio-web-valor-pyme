@@ -498,7 +498,7 @@ body.menu-open { overflow: hidden; }
   letter-spacing: .18em; text-transform: uppercase;
   display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px;
 }
-.hp-eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 3px; background: currentColor; opacity: .85; }
+.hp-eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 0; background: currentColor; opacity: .85; }
 .hp-section { padding-block: clamp(64px, 9vw, 130px); position: relative; }
 
 /* ===================== 1 · HERO break morado + orbit ===================== */
@@ -568,7 +568,7 @@ body.menu-open { overflow: hidden; }
 }
 .hp-orbit__dot {
   position: absolute; left: 50%; top: 8%; width: 12px; height: 12px; border-radius: 50%;
-  background: var(--c-mint); box-shadow: 0 0 0 4px rgba(166,255,217,.25);
+  background: #FFFFFF; box-shadow: 0 0 0 4px rgba(255,255,255,.25);
   animation: lateral-dot 4.5s ease-in-out infinite;
 }
 @keyframes lateral-dot { 0%,100% { opacity: .55; transform: translateX(0); } 55% { opacity: 1; transform: translateX(14px); } }
@@ -619,7 +619,7 @@ body.menu-open { overflow: hidden; }
 .hp-rcard__tag { display: inline-flex; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 6px 14px; border-radius: var(--radius-pill); margin-bottom: 14px; }
 .hp-rcard p { font-size: var(--text-sm); color: var(--color-gris); margin-bottom: 16px; }
 .hp-rcard__logos { display: flex; flex-direction: column; gap: 8px; margin: 2px 0 18px; }
-.hp-rcard__logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--c-lavanda); border-radius: 12px; padding: 11px; }
+.hp-rcard__logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--c-lavanda); border-radius: 0; padding: 11px; }
 .hp-rcard__logo img { max-height: 28px; max-width: 66%; width: auto; object-fit: contain; filter: grayscale(1); opacity: .82; transition: filter .3s, opacity .3s; }
 .hp-rcard:hover .hp-rcard__logo img { filter: none; opacity: 1; }
 .hp-rcard .link-more { color: var(--rc); margin-top: auto; }
