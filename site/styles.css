@@ -50,12 +50,12 @@
   --text-sm:      14px;
   --text-caption: 13px;
 
-  /* Radios */
-  --radius-xl: 30px;
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-sm: 10px;
-  --radius-pill: 999px;
+  /* Radios — brandbook: terminaciones rectas (0px). Círculos usan 50% directo. */
+  --radius-xl: 0;
+  --radius-lg: 0;
+  --radius-md: 0;
+  --radius-sm: 0;
+  --radius-pill: 0;
 
   /* Sistema de líneas */
   --linea-peso: 10.5px;
@@ -122,7 +122,7 @@ p { margin: 0; }
   letter-spacing: .14em; text-transform: uppercase; color: var(--ruta-deep);
   display: inline-flex; align-items: center; gap: 10px;
 }
-.eyebrow::before { content:""; width: 22px; height: 3px; border-radius: 3px; background: var(--ruta); }
+.eyebrow::before { content:""; width: 22px; height: 3px; border-radius: 0; background: var(--ruta); }
 .lead { font-size: var(--text-lead); color: var(--color-gris); line-height: 1.55; }
 
 /* ===================== Botones ===================== */
@@ -478,7 +478,7 @@ body.menu-open { overflow: hidden; }
 .faq__item summary:focus-visible { outline: 3px solid var(--color-corp-40); outline-offset: -3px; border-radius: var(--radius-md); }
 .faq__item summary h3 { font-size: 18px; color: var(--color-texto-dark); }
 .faq__icon { flex: 0 0 auto; width: 22px; height: 22px; position: relative; }
-.faq__icon::before, .faq__icon::after { content: ""; position: absolute; background: var(--color-corp); border-radius: 2px; transition: transform .25s var(--ease), opacity .25s; }
+.faq__icon::before, .faq__icon::after { content: ""; position: absolute; background: var(--color-corp); border-radius: 0; transition: transform .25s var(--ease), opacity .25s; }
 .faq__icon::before { top: 10px; left: 2px; width: 18px; height: 2px; }
 .faq__icon::after { left: 10px; top: 2px; width: 2px; height: 18px; }
 .faq__item[open] .faq__icon::after { transform: rotate(90deg); opacity: 0; }
