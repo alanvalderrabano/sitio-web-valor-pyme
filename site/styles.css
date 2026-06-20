@@ -185,6 +185,10 @@ p { margin: 0; }
 .drop-route { display: flex; align-items: center; gap: 14px; padding: 12px; border-radius: var(--radius-md); transition: background .2s; }
 .drop-route:hover { background: var(--color-soft); }
 .drop-route__dot { width: 38px; height: 38px; border-radius: 50%; flex: 0 0 auto; display: grid; place-items: center; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 18px; }
+/* Íconos oficiales de ruta (PNG circular, color de fondo incluido) — reemplazan letras C/M/D/T */
+.route-ico { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%; background: none !important; box-shadow: none !important; }
+.drop-route__dot.has-ico { background: none; padding: 0; }
+.drop-route__dot .route-ico { width: 38px; height: 38px; }
 .drop-route__t { font-weight: 700; color: var(--color-texto-dark); font-size: 15px; }
 .drop-route__d { font-size: 13px; color: var(--color-gris); }
 .dot--capital { background:#FFF21C; color:#2A0A4A; box-shadow: inset 0 0 0 2px rgba(42,10,74,.16); } /* amarillo de marca con anillo para legibilidad sobre blanco */
@@ -204,6 +208,8 @@ p { margin: 0; }
 .hero__grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: clamp(24px,4vw,64px); align-items: center; padding-block: clamp(40px, 4.5vw, 76px); position: relative; z-index: 2; }
 .hero__badge { display:inline-flex; align-items:center; gap:10px; background:#fff; border-radius: var(--radius-pill); padding: 8px 16px 8px 8px; box-shadow: var(--shadow-sm); font-weight:700; font-size:14px; color: var(--color-texto-dark); margin-bottom: 22px; }
 .hero__badge .rline { width: 30px; height: 30px; border-radius:50%; display:grid; place-items:center; color:#fff; font-family:var(--font-display); font-weight:800; }
+.hero__badge .rline.has-ico { background: none !important; }
+.hero__badge .rline .route-ico { width: 30px; height: 30px; }
 .hero__copy { align-self: center; }
 .hero h1 { font-size: var(--text-display); color: var(--ruta-ink); margin-bottom: 20px; max-width: 19ch; }
 .hero__sub { font-size: var(--text-lead); color: var(--ruta-ink); opacity: .82; max-width: 46ch; margin-bottom: 30px; }
@@ -303,6 +309,8 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 .combo__routes { display:flex; align-items:center; gap:10px; margin: 4px 0 14px; flex-wrap: wrap; }
 .route-pill { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; background: rgba(255,255,255,.12); padding:6px 12px 6px 6px; border-radius: var(--radius-pill); }
 .route-pill .d { width:22px; height:22px; border-radius:50%; display:grid; place-items:center; font-family:var(--font-display); font-weight:800; font-size:12px; }
+.route-pill .d.has-ico { background: none !important; }
+.route-pill .d .route-ico { width:22px; height:22px; }
 .combo__card h3 { color:#fff; font-size: 26px; margin-bottom: 6px; }
 .combo__benefit { margin-top: 16px; padding: 14px 16px; border-radius: var(--radius-md); background: var(--ruta); color: var(--ruta-ink); font-weight: 700; font-size: 14px; }
 .combo__lines { position:absolute; inset:0; z-index:1; opacity:.5; }
@@ -340,6 +348,8 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 .route-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 .route-card__top { display:flex; align-items:center; gap:14px; margin-bottom: 14px; }
 .route-card__dot { width: 48px; height: 48px; border-radius:50%; display:grid; place-items:center; color:#fff; font-family: var(--font-display); font-weight:800; font-size: 22px; }
+.route-card__dot.has-ico { background: none !important; box-shadow: none !important; }
+.route-card__dot .route-ico { width: 48px; height: 48px; }
 .route-card h3 { font-size: 21px; }
 .route-card .tag { margin-bottom: 10px; }
 .route-card p { font-size: var(--text-sm); color: var(--color-gris); margin-bottom: 14px; }
@@ -552,6 +562,8 @@ body.menu-open { overflow: hidden; }
   animation: route-square-orbit 22s linear infinite;
 }
 .hp-pill .d { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 12px; }
+.hp-pill .d.has-ico { background: none !important; }
+.hp-pill .d .route-ico { width: 22px; height: 22px; }
 .hp-pill--capital { background: var(--c-amarillo); color: #2A0A4A; animation-duration: 24s; }
 .hp-pill--capital .d { background: #2A0A4A; color: var(--c-amarillo); }
 .hp-pill--mercado { background: var(--c-morado-deep); color: #fff; animation-duration: 20s; animation-delay: -5s; }
@@ -614,7 +626,7 @@ body.menu-open { overflow: hidden; }
 .hp-rcard:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 .hp-rcard::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--rc); }
 .hp-rcard__top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-.hp-rcard__dot { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 22px; background: var(--rc); }
+.hp-rcard__icon { width: 48px; height: 48px; border-radius: 50%; object-fit: contain; display: block; }
 .hp-rcard h3 { font-size: 22px; color: var(--c-morado-deep); }
 .hp-rcard__tag { display: inline-flex; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 6px 14px; border-radius: var(--radius-pill); margin-bottom: 14px; }
 .hp-rcard p { font-size: var(--text-sm); color: var(--color-gris); margin-bottom: 16px; }
