@@ -124,6 +124,57 @@
     hUpdate();
   }
 
+  /* ---- Carrusel de aliados (HOME · "Nuestros Aliados") ---- */
+  var aCar = document.querySelector('[data-ally-carousel]');
+  if (aCar) {
+    var aVp = aCar.querySelector('[data-ally-viewport]');
+    var aTrack = aCar.querySelector('[data-ally-track]');
+    var aPrev = aCar.querySelector('[data-ally-prev]');
+    var aNext = aCar.querySelector('[data-ally-next]');
+    var aDotsWrap = document.querySelector('[data-ally-dots]');
+    var aCards = aTrack ? [].slice.call(aTrack.children) : [];
+    if (aVp && aTrack && aCards.length) {
+      var aIndex = 0;
+      var aDots = [];
+      if (aDotsWrap) {
+        aCards.forEach(function (c, i) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'hp-allies__dot';
+          b.setAttribute('aria-label', 'Ir al aliado ' + (i + 1));
+          b.addEventListener('click', function () { aIndex = i; aApply(); });
+          aDotsWrap.appendChild(b);
+          aDots.push(b);
+        });
+      }
+      function aStep() {
+        var cs = window.getComputedStyle(aTrack);
+        var gap = parseFloat(cs.columnGap || cs.gap) || 0;
+        return aCards[0].getBoundingClientRect().width + gap;
+      }
+      function aMaxShift() { return Math.max(0, aTrack.scrollWidth - aVp.clientWidth); }
+      function aMaxIndex() { var s = aStep(); var mi = s ? Math.round(aMaxShift() / s) : 0; return Math.min(mi, aCards.length - 1); }
+      function aApply() {
+        var s = aStep();
+        var mi = aMaxIndex();
+        if (aIndex < 0) aIndex = 0;
+        if (aIndex > mi) aIndex = mi;
+        var shift = Math.min(aIndex * s, aMaxShift());
+        aTrack.style.transform = 'translateX(' + (-shift).toFixed(1) + 'px)';
+        aDots.forEach(function (d, i) { d.classList.toggle('is-active', i === aIndex); });
+        if (aPrev) aPrev.disabled = aIndex <= 0;
+        if (aNext) aNext.disabled = aIndex >= mi;
+      }
+      if (aPrev) aPrev.addEventListener('click', function () { aIndex -= 1; aApply(); });
+      if (aNext) aNext.addEventListener('click', function () { aIndex += 1; aApply(); });
+      var aRz = false;
+      window.addEventListener('resize', function () {
+        if (!aRz) { window.requestAnimationFrame(function () { aApply(); aRz = false; }); aRz = true; }
+      });
+      aApply();
+    }
+  }
+
   /* ---- Contador count-up (HOME · +150.000) ---- */
   var counters = [].slice.call(document.querySelectorAll('[data-count]'));
   if (counters.length) {
