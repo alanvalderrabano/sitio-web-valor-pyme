@@ -608,7 +608,7 @@ body.menu-open { overflow: hidden; }
   display: none;
 }
 .hp-hero .container { position: relative; z-index: 2; }
-.hp-hero__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.hp-hero__grid { display: block; max-width: 560px; }
 .hp-hero__badge {
   display: inline-flex; align-items: center; gap: 10px;
   background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.24);
@@ -625,7 +625,7 @@ body.menu-open { overflow: hidden; }
 .hp-hero .btn--ghost { color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.4); }
 .hp-hero .btn--ghost:hover { background: #fff; color: var(--c-morado-deep); box-shadow: none; }
 
-/* Hero visual: video de fondo full-bleed + velo morado + isotipo animado */
+/* Hero visual: video de fondo full-bleed + velo morado */
 .hp-hero { isolation: isolate; }
 .hp-hero__bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 .hp-hero__veil {
@@ -638,13 +638,6 @@ body.menu-open { overflow: hidden; }
   -webkit-backdrop-filter: blur(22px) saturate(118%); backdrop-filter: blur(22px) saturate(118%);
   border: 1px solid rgba(255,255,255,.20); box-shadow: var(--shadow-md);
   padding: clamp(28px, 3.2vw, 46px);
-}
-.hp-hero__iso { display: grid; place-items: center; }
-.hp-hero__iso-video { width: 100%; max-width: 440px; aspect-ratio: 1; mix-blend-mode: screen; filter: drop-shadow(0 22px 36px rgba(0,0,0,.28)); }
-
-@media (max-width: 760px) {
-  .hp-hero__grid { grid-template-columns: 1fr; }
-  .hp-hero__iso { display: none; }
 }
 
 /* ===================== 2 · ¿Qué es Valor Pyme? (blanco) ===================== */
