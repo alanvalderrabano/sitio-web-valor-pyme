@@ -233,6 +233,61 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 .route-line { fill: none; stroke-width: var(--linea-peso); stroke-linecap: round; stroke-linejoin: round; }
 .station { stroke: #fff; stroke-width: 4; }
 
+/* ---- Hero (hub + rutas): líneas full-bleed (de borde a borde) + caja del texto ---- */
+.hero--framed { isolation: isolate; }
+.hero--framed .hero__lines { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero--framed .hero__lines svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.hero--framed .hero__lines .route-line { vector-effect: non-scaling-stroke; stroke-width: var(--linea-peso); }
+.hero--framed .hero__dot {
+  position: absolute; width: var(--estacion); height: var(--estacion); border-radius: 50%;
+  background: var(--ruta); box-shadow: 0 0 0 5px var(--c, #fff);
+  transform: translate(-50%, -50%);
+}
+.hero--framed .hero__copy {
+  background: rgba(255,255,255,.08);
+  -webkit-backdrop-filter: blur(16px) saturate(115%);
+  backdrop-filter: blur(16px) saturate(115%);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: var(--shadow-md);
+  padding: clamp(28px, 3.2vw, 48px);
+}
+
+/* ---- Hero v3: 3 capas — fondo (mitad derecha, full-bleed) → líneas → personaje ---- */
+.hero--framed { min-height: clamp(520px, 52vw, 640px); display: flex; align-items: center; }
+.hero--framed .hero__grid { width: 100%; }
+.hero__bg { position: absolute; inset: 0 0 0 50%; z-index: 0; overflow: hidden; }  /* corte recto mitad y mitad */
+.hero__bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero__bg::after { content:""; position:absolute; inset:0; }   /* sin degradado en desktop: borde recto */
+.hero__lines { filter: drop-shadow(0 1px 2px rgba(0,0,0,.12)); }
+.hero__stn { fill:#fff; }
+.hero__character {                              /* busto (cintura arriba) anclado al borde inferior */
+  position: absolute; z-index: 2; bottom: 0; right: 9%;
+  height: 84%; width: auto; max-width: 42%;
+  object-fit: contain; object-position: bottom; pointer-events: none;
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,.20));
+}
+@media (max-width: 900px){
+  .hero--framed { min-height: 580px; }
+  .hero__bg { inset: 0; }                                  /* fondo a todo el ancho */
+  .hero__bg::after { background: linear-gradient(180deg, var(--ruta) 0%, color-mix(in srgb,var(--ruta) 34%,transparent) 50%, transparent 100%); }
+  .hero__character { right: 50%; transform: translateX(50%); height: 52%; max-width: 70%; }
+  .hero--framed .hero__grid { align-items: flex-start; padding-top: 30px; }
+}
+
+/* ---- Sección con líneas full-bleed + caja de texto (descripción "por qué la ruta") ---- */
+.section--lines { overflow: hidden; }
+.section--lines .section__lines { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.section--lines .section__lines svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.section--lines .section__lines .route-line { vector-effect: non-scaling-stroke; stroke-width: var(--linea-peso); }
+.section--lines .section__stn { fill:#fff; }
+.section--lines .split { position: relative; z-index: 1; }
+.section--lines .split__copy {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  box-shadow: var(--shadow-md);
+  padding: clamp(26px, 3vw, 44px);
+}
+
 /* dibujo animado de líneas */
 .draw { stroke-dasharray: var(--len, 1200); stroke-dashoffset: var(--len, 1200); }
 .is-visible .draw { animation: draw 1.5s var(--ease) forwards; }
