@@ -13,7 +13,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=18">
+<link rel="stylesheet" href="styles.css?v=21">
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
@@ -111,7 +111,12 @@
 <main>
 <!-- ============ SECCIÓN 1 — HERO (ATTENTION) · break morado + orbit ============ -->
 <section class="hp-hero">
-  <div class="hp-hero__glow parallax" data-parallax="0.12" aria-hidden="true"></div>
+  <!-- Video de fondo full-bleed -->
+  <video class="hp-hero__bg" autoplay muted loop playsinline preload="auto" poster="assets/motion/hero-bg-poster.jpg" aria-hidden="true">
+    <source src="assets/motion/hero-bg.webm" type="video/webm">
+    <source src="assets/motion/hero-bg.mp4" type="video/mp4">
+  </video>
+  <div class="hp-hero__veil" aria-hidden="true"></div>
   <div class="container">
     <div class="hp-hero__grid">
       <div class="hp-hero__copy">
@@ -123,15 +128,8 @@
           <a href="#diagnostico" class="btn btn--ghost">Descubre tu ruta</a>
         </div>
       </div>
-      <div class="hp-orbit reveal d1" aria-hidden="true">
-        <span class="orbit-ring orbit-ring--1"></span>
-        <span class="orbit-ring orbit-ring--2"></span>
-        <div class="hp-orbit__core"><img src="assets/logos/isotipo-white.svg" alt=""></div>
-        <span class="hp-orbit__dot"></span>
-        <span class="hp-pill hp-pill--capital"><span class="d has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-capital.png" alt="" width="22" height="22"></span> Ruta Capital</span>
-        <span class="hp-pill hp-pill--mercado"><span class="d has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-mercado.png" alt="" width="22" height="22"></span> Ruta Mercado</span>
-        <span class="hp-pill hp-pill--digital"><span class="d has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-digitalizacion.png" alt="" width="22" height="22"></span> Digitalización</span>
-        <span class="hp-pill hp-pill--talento"><span class="d has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="22" height="22"></span> Talento</span>
+      <div class="hp-hero__iso reveal d1" aria-hidden="true">
+        <video class="hp-hero__iso-video" src="assets/motion/vp-iso-animation.webm" autoplay muted loop playsinline></video>
       </div>
     </div>
   </div>
@@ -213,8 +211,8 @@
         </div>
         <div class="hp-metroline" aria-hidden="true">
           <svg data-metroline viewBox="0 0 1200 56" preserveAspectRatio="none">
-            <path stroke="rgba(97,38,255,.14)" d="M-40 14 L166 14 A14 14 0 0 1 180 28 A14 14 0 0 0 194 42 L406 42 A14 14 0 0 0 420 28 A14 14 0 0 1 434 14 L646 14 A14 14 0 0 1 660 28 A14 14 0 0 0 674 42 L886 42 A14 14 0 0 0 900 28 A14 14 0 0 1 914 14 L1126 14 A14 14 0 0 1 1140 28 A14 14 0 0 0 1154 42 L1240 42"/>
-            <path stroke="#6126FF" d="M-40 14 L166 14 A14 14 0 0 1 180 28 A14 14 0 0 0 194 42 L406 42 A14 14 0 0 0 420 28 A14 14 0 0 1 434 14 L646 14 A14 14 0 0 1 660 28 A14 14 0 0 0 674 42 L886 42 A14 14 0 0 0 900 28 A14 14 0 0 1 914 14 L1126 14 A14 14 0 0 1 1140 28 A14 14 0 0 0 1154 42 L1240 42"/>
+            <path stroke="rgba(97,38,255,.14)" d="M-40 28 Q 10 14 60 28 T 160 28 T 260 28 T 360 28 T 460 28 T 560 28 T 660 28 T 760 28 T 860 28 T 960 28 T 1060 28 T 1160 28 T 1260 28"/>
+            <path stroke="#6126FF" d="M-40 28 Q 10 14 60 28 T 160 28 T 260 28 T 360 28 T 460 28 T 560 28 T 660 28 T 760 28 T 860 28 T 960 28 T 1060 28 T 1160 28 T 1260 28"/>
           </svg>
         </div>
       </div>
@@ -240,28 +238,52 @@
 <section class="hp-allies hp-section" id="aliados">
   <div class="hp-allies__beam" aria-hidden="true">
     <svg viewBox="0 0 1200 56" preserveAspectRatio="none">
-      <path stroke="rgba(97,38,255,.14)" d="M-40 14 L166 14 A14 14 0 0 1 180 28 A14 14 0 0 0 194 42 L406 42 A14 14 0 0 0 420 28 A14 14 0 0 1 434 14 L646 14 A14 14 0 0 1 660 28 A14 14 0 0 0 674 42 L886 42 A14 14 0 0 0 900 28 A14 14 0 0 1 914 14 L1126 14 A14 14 0 0 1 1140 28 A14 14 0 0 0 1154 42 L1240 42"/>
-      <path stroke="#6126FF" d="M-40 14 L166 14 A14 14 0 0 1 180 28 A14 14 0 0 0 194 42 L406 42 A14 14 0 0 0 420 28 A14 14 0 0 1 434 14 L646 14 A14 14 0 0 1 660 28 A14 14 0 0 0 674 42 L886 42 A14 14 0 0 0 900 28 A14 14 0 0 1 914 14 L1126 14 A14 14 0 0 1 1140 28 A14 14 0 0 0 1154 42 L1240 42"/>
+      <path stroke="rgba(97,38,255,.14)" d="M-40 28 Q 10 14 60 28 T 160 28 T 260 28 T 360 28 T 460 28 T 560 28 T 660 28 T 760 28 T 860 28 T 960 28 T 1060 28 T 1160 28 T 1260 28"/>
+      <path stroke="#6126FF" d="M-40 28 Q 10 14 60 28 T 160 28 T 260 28 T 360 28 T 460 28 T 560 28 T 660 28 T 760 28 T 860 28 T 960 28 T 1060 28 T 1160 28 T 1260 28"/>
     </svg>
   </div>
   <div class="container">
     <div class="hp-allies__intro reveal">
-      <span class="hp-eyebrow">Aliados destacados</span>
-      <h2 class="hp-h2">Una red construida para generar más oportunidades</h2>
-      <p class="hp-allies__lead">El motor del viaje: empresas con soluciones para los desafíos de las pymes</p>
-      <p>Reunimos empresas, instituciones y especialistas que colaboran para acercar soluciones reales a quienes emprenden.</p>
+      <span class="hp-eyebrow">Nuestros aliados</span>
+      <h2 class="hp-h2">El motor del viaje: empresas con soluciones para los desafíos de las pymes</h2>
     </div>
-    <ul class="logo-grid reveal">
-      <li class="logo-cell" title="Inclusión y educación financiera para un crecimiento sostenible."><img src="assets/logos/partners/bci.png" width="150" height="60" loading="lazy" alt="Bci"></li>
-      <li class="logo-cell" title="Logística, cobertura y distribución de tus productos en todo Chile."><img src="assets/logos/partners/blueexpress.png" width="150" height="60" loading="lazy" alt="Blue Express"></li>
-      <li class="logo-cell" title="Digitaliza la gestión de tu Pyme con ERP gratis y exclusivos descuentos para ordenar, controlar y escalar tu negocio."><img src="assets/logos/partners/defontana.png" width="150" height="60" loading="lazy" alt="Defontana"></li>
-      <li class="logo-cell" title="Formación, mentorías y evidencia para mejorar la productividad y el crecimiento de las PYMEs en Chile."><img src="assets/logos/partners/pymeuc.png" width="150" height="60" loading="lazy" alt="Facultad de Economía y Administración UC"></li>
-      <li class="logo-cell" title="Capacitación y desarrollo de talento para aumentar la productividad de las pymes de Chile."><img src="assets/logos/partners/otic.png" width="150" height="60" loading="lazy" alt="OTIC CChC"></li>
-      <li class="logo-cell" title="Tecnología, inteligencia artificial y herramientas digitales para acelerar la transformación pyme."><img src="assets/logos/partners/microsoft.png" width="150" height="60" loading="lazy" alt="Microsoft"></li>
-      <li class="logo-cell" title="Nuevos canales y oportunidades de venta para llevar tus productos a todo Chile."><img src="assets/logos/partners/walmart.png" width="150" height="60" loading="lazy" alt="Walmart Marketplace"></li>
+    <ul class="ally-grid reveal">
+      <li class="ally-card"><div class="ally-card__logo"><img src="assets/logos/partners/bci.png" loading="lazy" alt="Bci"></div><p>Inclusión y educación financiera para un crecimiento sostenible.</p></li>
+      <li class="ally-card"><div class="ally-card__logo"><img src="assets/logos/partners/blueexpress.png" loading="lazy" alt="Blue Express"></div><p>Logística, cobertura y distribución de tus productos en todo Chile.</p></li>
+      <li class="ally-card"><div class="ally-card__logo"><img src="assets/logos/partners/defontana.png" loading="lazy" alt="Defontana"></div><p>Digitaliza la gestión de tu Pyme con ERP gratis y exclusivos descuentos para ordenar, controlar y escalar tu negocio.</p></li>
+      <li class="ally-card"><div class="ally-card__logo"><img src="assets/logos/partners/pymeuc.png" loading="lazy" alt="Facultad de Economía y Administración UC"></div><p>Formación, mentorías y evidencia para mejorar la productividad y el crecimiento de las PYMEs en Chile.</p></li>
+      <li class="ally-card"><div class="ally-card__logo"><img src="assets/logos/partners/otic.png" loading="lazy" alt="OTIC CChC"></div><p>Capacitación y desarrollo de talento para aumentar la productividad de las pymes de Chile.</p></li>
+      <li class="ally-card"><div class="ally-card__logo"><img src="assets/logos/partners/microsoft.png" loading="lazy" alt="Microsoft"></div><p>Tecnología, inteligencia artificial y herramientas digitales para acelerar la transformación pyme.</p></li>
+      <li class="ally-card"><div class="ally-card__logo"><img src="assets/logos/partners/multigremial.png" loading="lazy" alt="Multigremial Nacional"></div><p>La voz de las pymes que impulsa mejores condiciones para emprender en Chile.</p></li>
+      <li class="ally-card"><div class="ally-card__logo"><img src="assets/logos/partners/walmart.png" loading="lazy" alt="Walmart Marketplace"></div><p>Nuevos canales y oportunidades de venta para llevar tus productos a todo Chile.</p></li>
     </ul>
     <div class="center" style="margin-top:clamp(28px,4vw,44px)">
       <a href="#aliados" class="btn btn--ghost">Conocer las alianzas</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRANJA CICLISTA (CTA aliados) · break morado + líneas v3 ============ -->
+<section class="hp-cyclist" aria-label="Encuentra la ruta que más te sirva y combínalos a tu manera">
+  <div class="hp-cyclist__lines" aria-hidden="true">
+    <svg viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice">
+      <path class="route-line" style="stroke:var(--c-amarillo)" d="M-80 110 L470 110 C560 110 560 230 650 230 L770 230 C860 230 860 350 950 350 L1030 350 C1120 350 1120 470 1210 470 L1520 470"/>
+      <path class="route-line" style="stroke:#2F2927" d="M-80 230 L210 230 C300 230 300 350 390 350 L470 350 C560 350 560 470 650 470 L1030 470 C1120 470 1120 350 1210 350 L1520 350"/>
+      <path class="route-line" style="stroke:var(--c-rosa)" d="M-80 350 L210 350 C300 350 300 230 390 230 L470 230 C560 230 560 110 650 110 L1030 110 C1120 110 1120 230 1210 230 L1520 230"/>
+      <path class="route-line" style="stroke:var(--c-verde)" d="M-80 470 L470 470 C560 470 560 350 650 350 L770 350 C860 350 860 230 950 230 L1030 230 C1120 230 1120 110 1210 110 L1520 110"/>
+      <circle class="hp-cyclist__stn" cx="300" cy="290" r="12"/>
+      <circle class="hp-cyclist__stn" cx="560" cy="170" r="12"/>
+      <circle class="hp-cyclist__stn" cx="560" cy="410" r="12"/>
+      <circle class="hp-cyclist__stn" cx="860" cy="290" r="12"/>
+      <circle class="hp-cyclist__stn" cx="1120" cy="170" r="12"/>
+      <circle class="hp-cyclist__stn" cx="1120" cy="410" r="12"/>
+    </svg>
+  </div>
+  <img class="hp-cyclist__photo" src="assets/img/cyclist-clean.png" alt="" aria-hidden="true">
+  <div class="container">
+    <div class="hp-cyclist__copy reveal">
+      <p class="hp-cyclist__l1">Encuentra la ruta que más te sirva, descubre los recursos que ofrecen nuestros aliados</p>
+      <p class="hp-cyclist__l2">y combínalos a tu manera</p>
     </div>
   </div>
 </section>

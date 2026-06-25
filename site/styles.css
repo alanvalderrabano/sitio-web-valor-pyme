@@ -501,6 +501,38 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 980px) { .logo-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .logo-grid { grid-template-columns: repeat(2, 1fr); } .logo-cell { min-height: 84px; padding: 16px; } }
 
+/* Aliados: cards con logo + descripción (cajas rectas) */
+.ally-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ally-card {
+  display: flex; flex-direction: column; gap: 14px;
+  background: #fff; border: 1px solid var(--color-borde); border-radius: 0;
+  padding: 24px 22px;
+  transition: transform .3s var(--ease), box-shadow .3s, border-color .3s;
+}
+.ally-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); border-color: var(--color-corp-40); }
+.ally-card__logo { height: 46px; display: flex; align-items: center; }
+.ally-card__logo img { max-height: 40px; max-width: 150px; width: auto; object-fit: contain; filter: grayscale(1); opacity: .78; transition: filter .3s, opacity .3s; }
+.ally-card:hover .ally-card__logo img { filter: none; opacity: 1; }
+.ally-card p { font-size: var(--text-sm); color: var(--color-gris); line-height: 1.5; margin: 0; }
+@media (max-width: 980px) { .ally-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .ally-grid { grid-template-columns: 1fr; } }
+
+/* Franja ciclista (CTA aliados): morado + líneas v3 + ciclista */
+.hp-cyclist { position: relative; overflow: hidden; isolation: isolate; background: #6126FF; color: #fff; display: grid; align-items: center; min-height: clamp(360px, 40vw, 540px); }
+.hp-cyclist__lines { position: absolute; inset: 0; z-index: 0; }
+.hp-cyclist__lines svg { width: 100%; height: 100%; display: block; }
+.hp-cyclist__lines .route-line { fill: none; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.hp-cyclist__stn { fill: #fff; }
+.hp-cyclist__photo { position: absolute; right: clamp(-40px, 2vw, 40px); bottom: 0; height: 88%; width: auto; z-index: 1; pointer-events: none; filter: drop-shadow(0 18px 30px rgba(0,0,0,.28)); }
+.hp-cyclist__copy { position: relative; z-index: 2; max-width: 560px; padding-block: clamp(40px, 6vw, 80px); }
+.hp-cyclist__l1, .hp-cyclist__l2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.35rem, 2.5vw, 2.1rem); line-height: 1.18; }
+.hp-cyclist__l2 { margin-top: clamp(48px, 8vw, 110px); margin-left: clamp(16px, 5vw, 80px); }
+@media (max-width: 760px) {
+  .hp-cyclist__photo { height: 64%; right: -14%; opacity: .4; }
+  .hp-cyclist__copy { max-width: none; }
+  .hp-cyclist__l2 { margin-left: 0; margin-top: 28px; }
+}
+
 /* Tres pasos */
 .steps {
   list-style: none; margin: 0; padding: 0;
@@ -593,52 +625,27 @@ body.menu-open { overflow: hidden; }
 .hp-hero .btn--ghost { color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.4); }
 .hp-hero .btn--ghost:hover { background: #fff; color: var(--c-morado-deep); box-shadow: none; }
 
-/* Orbit visual: anillos contrarrotando + pills de estación flotando */
-.hp-orbit { position: relative; aspect-ratio: 1/1; width: 100%; max-width: 520px; margin-inline: auto; }
-.hp-orbit__core {
-  position: absolute; inset: 30%; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.22), rgba(255,255,255,.04) 70%);
-  border: 1px solid rgba(255,255,255,.22); backdrop-filter: blur(4px);
-  display: grid; place-items: center;
+/* Hero visual: video de fondo full-bleed + velo morado + isotipo animado */
+.hp-hero { isolation: isolate; }
+.hp-hero__bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.hp-hero__veil {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(33,5,57,.34) 0%, rgba(45,10,74,.22) 50%, rgba(97,38,255,.16) 100%);
 }
-.hp-orbit__core img { width: 56%; height: auto; opacity: .96; }
-.orbit-ring { position: absolute; border-radius: 50%; border: 1.5px dashed rgba(255,255,255,.32); }
-.orbit-ring--1 { inset: 12%; border-color: rgba(255,255,255,.32); animation: orbit-spin 18s linear infinite; }
-.orbit-ring--2 { inset: 24%; border-color: rgba(255,242,28,.42); animation: orbit-spin 14s linear infinite reverse; }
-@keyframes orbit-spin { to { transform: rotate(1turn); } }
+.hp-hero__copy {
+  position: relative; align-self: center;
+  background: rgba(33, 5, 57, .30);
+  -webkit-backdrop-filter: blur(22px) saturate(118%); backdrop-filter: blur(22px) saturate(118%);
+  border: 1px solid rgba(255,255,255,.20); box-shadow: var(--shadow-md);
+  padding: clamp(28px, 3.2vw, 46px);
+}
+.hp-hero__iso { display: grid; place-items: center; }
+.hp-hero__iso-video { width: 100%; max-width: 440px; aspect-ratio: 1; mix-blend-mode: screen; filter: drop-shadow(0 22px 36px rgba(0,0,0,.28)); }
 
-.hp-pill {
-  position: absolute; left: 12%; top: 10%;
-  transform: translate3d(-50%,-50%,0);
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 7px 14px 7px 8px; border-radius: var(--radius-pill);
-  font-size: 13px; font-weight: 800; white-space: nowrap;
-  box-shadow: 0 10px 24px rgba(20,4,40,.28);
-  animation: route-square-orbit 22s linear infinite;
+@media (max-width: 760px) {
+  .hp-hero__grid { grid-template-columns: 1fr; }
+  .hp-hero__iso { display: none; }
 }
-.hp-pill .d { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 12px; }
-.hp-pill .d.has-ico { background: none !important; }
-.hp-pill .d .route-ico { width: 22px; height: 22px; }
-.hp-pill--capital { background: var(--c-amarillo); color: #2A0A4A; animation-duration: 24s; }
-.hp-pill--capital .d { background: #2A0A4A; color: var(--c-amarillo); }
-.hp-pill--mercado { background: var(--c-morado-deep); color: #fff; animation-duration: 20s; animation-delay: -5s; }
-.hp-pill--mercado .d { background: #fff; color: var(--c-morado-deep); }
-.hp-pill--digital { background: var(--c-rosa); color: #fff; animation-duration: 26s; animation-delay: -11s; }
-.hp-pill--digital .d { background: #fff; color: var(--c-rosa); }
-.hp-pill--talento { background: var(--c-verde); color: #06301D; animation-duration: 22s; animation-delay: -16s; }
-.hp-pill--talento .d { background: #06301D; color: var(--c-verde); }
-@keyframes route-square-orbit {
-  0%,100% { left: 12%; top: 10%; }
-  25% { left: 86%; top: 24%; }
-  50% { left: 80%; top: 84%; }
-  75% { left: 10%; top: 72%; }
-}
-.hp-orbit__dot {
-  position: absolute; left: 50%; top: 8%; width: 12px; height: 12px; border-radius: 50%;
-  background: #FFFFFF; box-shadow: 0 0 0 4px rgba(255,255,255,.25);
-  animation: lateral-dot 4.5s ease-in-out infinite;
-}
-@keyframes lateral-dot { 0%,100% { opacity: .55; transform: translateX(0); } 55% { opacity: 1; transform: translateX(14px); } }
 
 /* ===================== 2 · ¿Qué es Valor Pyme? (blanco) ===================== */
 .hp-acomp { background: #FBFAFF; padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(56px, 7vw, 104px); }
@@ -789,11 +796,8 @@ body.menu-open { overflow: hidden; }
 
 /* ---- prefers-reduced-motion: apaga orbits/auto-anim del home ---- */
 @media (prefers-reduced-motion: reduce) {
-  .orbit-ring, .hp-pill, .hp-orbit__dot, .beam-flow, .hp-allies__beam .beam-flow { animation: none !important; }
-  .hp-pill--capital { left: 14%; top: 12%; }
-  .hp-pill--mercado { left: 86%; top: 26%; }
-  .hp-pill--digital { left: 80%; top: 82%; }
-  .hp-pill--talento { left: 12%; top: 74%; }
+  .orbit-ring, .hp-orbit__dot, .beam-flow, .hp-allies__beam .beam-flow { animation: none !important; }
+  .hp-hero__bg { display: none; }
 }
 
 /* ===================== CONTACTO ===================== */
