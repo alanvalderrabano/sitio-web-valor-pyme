@@ -354,7 +354,7 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 .station-card > * { position: relative; z-index: 1; }
 
 /* ===================== Estaciones de combinación ===================== */
-.combo { background: var(--color-morado); color:#fff; border-radius: var(--radius-xl); overflow: hidden; position: relative; }
+.combo { background: var(--color-corp); color:#fff; border-radius: var(--radius-xl); overflow: hidden; position: relative; }
 .combo__inner { position: relative; z-index: 2; padding: clamp(34px,5vw,64px); display:grid; grid-template-columns: 1fr 1fr; gap: clamp(28px,4vw,56px); align-items:center; }
 .combo .eyebrow { color: #fff; }
 .combo .eyebrow::before { background:#fff; }
