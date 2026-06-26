@@ -551,14 +551,13 @@ body.menu-open { overflow: hidden; }
   .hp-allies__nav { width: 40px; height: 40px; }
 }
 
-/* Franja ciclista (CTA aliados): morado + líneas v3 + ciclista */
-.hp-cyclist { position: relative; overflow: hidden; isolation: isolate; background: #6126FF; color: #fff; display: grid; align-items: center; min-height: clamp(360px, 40vw, 540px); }
-.hp-cyclist__lines { position: absolute; inset: 0; z-index: 0; }
-.hp-cyclist__lines svg { width: 100%; height: 100%; display: block; }
-.hp-cyclist__lines .route-line { fill: none; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.hp-cyclist__stn { fill: #fff; }
-.hp-cyclist__photo { position: absolute; right: clamp(-40px, 2vw, 40px); bottom: 0; height: 88%; width: auto; z-index: 1; pointer-events: none; filter: drop-shadow(0 18px 30px rgba(0,0,0,.28)); }
-.hp-cyclist__copy { position: relative; z-index: 2; max-width: 560px; padding-block: clamp(40px, 6vw, 80px); }
+/* Franja ciclista (CTA aliados): foto de pared con líneas de marca + ciclista */
+.hp-cyclist { position: relative; overflow: hidden; isolation: isolate; background: #6126FF; color: #fff; display: grid; align-items: center; min-height: clamp(400px, 44vw, 600px); }
+.hp-cyclist__bg { position: absolute; inset: 0; z-index: 0; }
+.hp-cyclist__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; display: block; }
+.hp-cyclist__veil { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(15,3,33,.62) 0%, rgba(15,3,33,.42) 40%, rgba(15,3,33,.12) 72%, rgba(15,3,33,0) 100%); }
+.hp-cyclist__photo { position: absolute; right: clamp(-40px, 2vw, 40px); bottom: 0; height: 88%; width: auto; z-index: 2; pointer-events: none; filter: drop-shadow(0 18px 30px rgba(0,0,0,.28)); }
+.hp-cyclist__copy { position: relative; z-index: 3; max-width: 560px; padding-block: clamp(40px, 6vw, 80px); }
 .hp-cyclist__l1, .hp-cyclist__l2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.35rem, 2.5vw, 2.1rem); line-height: 1.18; }
 .hp-cyclist__l2 { margin-top: clamp(48px, 8vw, 110px); margin-left: clamp(16px, 5vw, 80px); }
 @media (max-width: 760px) {

@@ -13,7 +13,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=27">
+<link rel="stylesheet" href="styles.css?v=28">
 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
@@ -265,20 +265,11 @@
 
 <!-- ============ FRANJA CICLISTA (CTA aliados) · break morado + líneas v3 ============ -->
 <section class="hp-cyclist" aria-label="Encuentra la ruta que más te sirva y combínalos a tu manera">
-  <div class="hp-cyclist__lines" aria-hidden="true">
-    <svg viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice">
-      <path class="route-line" style="stroke:var(--c-amarillo)" d="M-80 110 L470 110 C560 110 560 230 650 230 L770 230 C860 230 860 350 950 350 L1030 350 C1120 350 1120 470 1210 470 L1520 470"/>
-      <path class="route-line" style="stroke:#2F2927" d="M-80 230 L210 230 C300 230 300 350 390 350 L470 350 C560 350 560 470 650 470 L1030 470 C1120 470 1120 350 1210 350 L1520 350"/>
-      <path class="route-line" style="stroke:var(--c-rosa)" d="M-80 350 L210 350 C300 350 300 230 390 230 L470 230 C560 230 560 110 650 110 L1030 110 C1120 110 1120 230 1210 230 L1520 230"/>
-      <path class="route-line" style="stroke:var(--c-verde)" d="M-80 470 L470 470 C560 470 560 350 650 350 L770 350 C860 350 860 230 950 230 L1030 230 C1120 230 1120 110 1210 110 L1520 110"/>
-      <circle class="hp-cyclist__stn" cx="300" cy="290" r="12"/>
-      <circle class="hp-cyclist__stn" cx="560" cy="170" r="12"/>
-      <circle class="hp-cyclist__stn" cx="560" cy="410" r="12"/>
-      <circle class="hp-cyclist__stn" cx="860" cy="290" r="12"/>
-      <circle class="hp-cyclist__stn" cx="1120" cy="170" r="12"/>
-      <circle class="hp-cyclist__stn" cx="1120" cy="410" r="12"/>
-    </svg>
-  </div>
+  <picture class="hp-cyclist__bg" aria-hidden="true">
+    <source srcset="assets/photos/brand/cyclist-wall.webp" type="image/webp">
+    <img src="assets/photos/brand/cyclist-wall.jpg" alt="" loading="lazy">
+  </picture>
+  <div class="hp-cyclist__veil" aria-hidden="true"></div>
   <img class="hp-cyclist__photo" src="assets/img/cyclist-clean.png" alt="" aria-hidden="true">
   <div class="container">
     <div class="hp-cyclist__copy reveal">
