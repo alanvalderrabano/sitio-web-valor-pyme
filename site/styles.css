@@ -896,3 +896,61 @@ body.menu-open { overflow: hidden; }
   .hp-form__row { grid-template-columns: 1fr; }
   .hp-form__actions .btn { width: 100%; justify-content: center; }
 }
+
+/* ===================== NOSOTROS ===================== */
+/* Intro centrado compartido */
+.np-intro { text-align: center; max-width: 760px; margin: 0 auto clamp(34px,4.5vw,52px); }
+.np-intro .hp-eyebrow { justify-content: center; }
+.np-intro h2 { color: var(--c-morado-deep); margin: 12px 0 14px; }
+.np-intro p { color: var(--color-gris); font-size: var(--text-lead); line-height: 1.55; }
+
+/* 3 · Propuesta de valor + pilares */
+.np-value { background: var(--c-lavanda); }
+.np-value .hp-eyebrow { color: var(--c-morado); }
+.np-pillars { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.np-pillar { display: flex; flex-direction: column; gap: 14px; background: #fff; border: 1px solid var(--color-borde); padding: 26px 22px; }
+.np-pillar__ico { width: 48px; height: 48px; display: grid; place-items: center; background: var(--c-lavanda); color: var(--c-morado); flex: 0 0 auto; }
+.np-pillar__ico svg { width: 24px; height: 24px; }
+.np-pillar h3 { font-family: var(--font-display); font-weight: 800; font-size: 17px; line-height: 1.25; color: var(--c-morado-deep); }
+
+/* 4 · Cómo funciona — recorrido */
+.np-flow { background: #fff; }
+.np-flow .hp-eyebrow { color: var(--c-rosa); }
+.np-recorrido { position: relative; list-style: none; margin: 0 auto clamp(28px,4vw,44px); padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 980px; }
+.np-recorrido::before { content: ""; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 3px; background: var(--c-lavanda); z-index: 0; }
+.np-rec { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 6px; }
+.np-rec__num { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--c-morado); color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 22px; }
+.np-rec h3 { font-family: var(--font-display); font-weight: 800; font-size: 16px; line-height: 1.2; color: var(--c-morado-deep); }
+
+/* 5 · Rutas (reusa hp-rcard) */
+.np-routes-sec { background: var(--c-lavanda); }
+.np-routes-sec .hp-eyebrow { color: var(--c-morado); }
+.np-routes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: clamp(28px,4vw,44px); }
+.np-routes .hp-rcard { flex: initial; min-height: 0; }
+
+/* 6 · Quiénes hacen posible (logos) */
+.np-socios { background: #fff; }
+.np-socios .hp-eyebrow { color: var(--c-rosa); }
+.np-logos { list-style: none; margin: 0 0 clamp(28px,4vw,44px); padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.np-logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--color-borde); padding: 26px 20px; min-height: 110px; }
+.np-logo img { max-height: 46px; max-width: 72%; width: auto; object-fit: contain; }
+
+/* 7 · Impacto (stats) */
+.np-impact { background: var(--c-lavanda); text-align: center; }
+.np-impact .hp-eyebrow { color: var(--c-morado); justify-content: center; }
+.np-impact h2 { color: var(--c-morado-deep); max-width: 24ch; margin: 12px auto 14px; }
+.np-impact__lead { color: var(--color-gris); font-size: var(--text-lead); max-width: 64ch; margin: 0 auto clamp(34px,4.5vw,52px); line-height: 1.55; }
+.np-stats { list-style: none; margin: 0 0 clamp(32px,4.5vw,48px); padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.np-stat { background: #fff; border: 1px solid var(--color-borde); padding: 28px 20px; }
+.np-stat__num { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; color: var(--c-morado); }
+.np-stat__unit { display: block; font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--c-morado-deep); margin-top: 4px; }
+.np-stat p { font-size: var(--text-sm); color: var(--color-gris); margin-top: 10px; line-height: 1.45; }
+
+@media (max-width: 900px) {
+  .np-pillars, .np-routes, .np-logos, .np-stats { grid-template-columns: repeat(2, 1fr); }
+  .np-recorrido { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; max-width: 460px; }
+  .np-recorrido::before { display: none; }
+}
+@media (max-width: 520px) {
+  .np-pillars, .np-routes, .np-logos, .np-stats, .np-recorrido { grid-template-columns: 1fr; }
+}
