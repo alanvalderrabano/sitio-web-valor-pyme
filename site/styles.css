@@ -189,8 +189,8 @@ p { margin: 0; }
 .route-ico { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%; background: none !important; box-shadow: none !important; }
 .drop-route__dot.has-ico { background: none; padding: 0; }
 .drop-route__dot .route-ico { width: 38px; height: 38px; }
-.drop-route__t { font-weight: 700; color: var(--color-texto-dark); font-size: 15px; }
-.drop-route__d { font-size: 13px; color: var(--color-gris); }
+.drop-route__t { display: block; font-weight: 700; color: var(--color-texto-dark); font-size: 15px; }
+.drop-route__d { display: block; margin-top: 2px; font-size: 13px; color: var(--color-gris); }
 .dot--capital { background:#FFF21C; color:#2A0A4A; box-shadow: inset 0 0 0 2px rgba(42,10,74,.16); } /* amarillo de marca con anillo para legibilidad sobre blanco */
 .dot--mercado { background:#330559; }
 .dot--digitalizacion { background:#FF2B5E; }
