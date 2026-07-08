@@ -557,6 +557,13 @@ body.menu-open { overflow: hidden; }
 .ally-card__desc { font-size: 15px; color: var(--color-gris); line-height: 1.5; margin: 0; }
 .ally-card__name { font-family: var(--font-display); font-weight: 800; color: var(--c-morado-deep); font-size: 16px; margin: 4px 0 0; }
 
+/* Desktop: 2 aliados a la vista (tarjetas amplias, no apretadas) — estructura Propuesta A */
+@media (min-width: 861px) {
+  .hp-allies__carousel .ally-card { flex: 0 0 calc(50% - 10px); min-width: 0; min-height: clamp(258px, 23vw, 296px); padding: 26px 22px; }
+  .hp-allies__carousel .ally-card__logo { height: 54px; }
+  .hp-allies__carousel .ally-card__logo img { max-height: 46px; max-width: 100%; }
+}
+
 @media (max-width: 860px) {
   .hp-allies__layout { grid-template-columns: 1fr; gap: 24px; }
   .ally-card { flex: 0 0 82%; }
@@ -669,7 +676,7 @@ body.menu-open { overflow: hidden; }
 .hp-hero__sub strong { color: #fff; }
 .hp-hero__cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .hp-hero .btn--onfill { background: #fff; color: var(--c-morado-deep); }
-.hp-hero .btn--onfill:hover { background: var(--c-amarillo); color: #2A0A4A; }
+.hp-hero .btn--onfill:hover { background: var(--c-morado-deep); color: #fff; }
 .hp-hero .btn--ghost { color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.4); }
 .hp-hero .btn--ghost:hover { background: #fff; color: var(--c-morado-deep); box-shadow: none; }
 
@@ -722,6 +729,47 @@ body.menu-open { overflow: hidden; }
   .hp-hero--split h1 { max-width: none; }
 }
 
+/* ===================== 2 · Convocatorias destacadas (lavanda · carrusel) ===================== */
+.hp-conv { background: var(--c-lavanda); }
+.hp-conv__intro { max-width: 62ch; margin-bottom: clamp(26px, 3.4vw, 44px); }
+.hp-conv__intro .hp-eyebrow { color: var(--c-morado); }
+.hp-conv__intro h2 { color: var(--c-morado-deep); }
+.hp-conv__intro p { color: var(--color-gris); font-size: var(--text-lead); line-height: 1.5; margin-top: 12px; max-width: 58ch; }
+.hp-conv__carousel { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(8px, 1.4vw, 16px); }
+.hp-conv__nav { width: 44px; height: 44px; flex: 0 0 auto; display: grid; place-items: center; cursor: pointer; background: #fff; color: var(--c-morado-deep); border: 1px solid var(--color-borde); transition: background .25s, color .25s, opacity .25s; }
+.hp-conv__nav:hover { background: var(--c-morado); color: #fff; }
+.hp-conv__nav:disabled { opacity: .35; cursor: default; }
+.hp-conv__nav:disabled:hover { background: #fff; color: var(--c-morado-deep); }
+.hp-conv__viewport { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; -ms-overflow-style: none; }
+.hp-conv__viewport::-webkit-scrollbar { display: none; }
+.hp-conv__track { list-style: none; margin: 0; padding: 6px 4px 8px; display: flex; gap: clamp(16px, 1.6vw, 22px); }
+.conv-card { flex: 0 0 clamp(280px, 30vw, 360px); scroll-snap-align: start; background: #fff; border: 1px solid var(--color-borde); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s var(--ease), box-shadow .3s; }
+.conv-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.conv-card__media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--c-lavanda); }
+.conv-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.conv-card__body { padding: 20px 22px 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex: 1; }
+.conv-card__tag { font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--c-morado); background: var(--c-lavanda); padding: 5px 12px; border-radius: var(--radius-pill); }
+.conv-card__title { font-size: 19px; color: var(--c-morado-deep); line-height: 1.2; }
+.conv-card__desc { font-size: 14px; color: var(--color-gris); line-height: 1.5; margin: 0; }
+.conv-card .link-more { color: var(--c-morado); margin-top: auto; }
+@media (max-width: 600px) {
+  .hp-conv__carousel { grid-template-columns: 1fr; }
+  .hp-conv__nav { display: none; }
+  .conv-card { flex-basis: 82%; }
+}
+
+/* Convocatorias · variante lado a lado (texto izq + carrusel der) — consistente con Aliados */
+.hp-conv--split .hp-conv__layout { display: grid; grid-template-columns: minmax(300px, 400px) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.hp-conv--split .hp-conv__intro { margin-bottom: 0; max-width: none; }
+.hp-conv--split .hp-conv__intro h2 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1.08; }
+.hp-conv__controls { display: flex; gap: 10px; margin-top: 28px; }
+.hp-conv--split .conv-card { flex-basis: calc(50% - clamp(8px, 0.8vw, 11px)); }
+.hp-conv--split .hp-conv__track { padding-inline: 0; }
+@media (max-width: 860px) {
+  .hp-conv--split .hp-conv__layout { grid-template-columns: 1fr; }
+  .hp-conv__controls { display: none; }
+}
+
 /* ===================== 2 · ¿Qué es Valor Pyme? (blanco) ===================== */
 .hp-acomp { background: #FBFAFF; padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(56px, 7vw, 104px); }
 .hp-acomp__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
@@ -732,7 +780,7 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 760px){ .hp-acomp__grid { grid-template-columns: 1fr; } }
 
 /* ===================== 3 · 4 rutas — scroll horizontal anclado (lavanda) ===================== */
-.hp-routes { background: var(--c-lavanda); position: relative; padding-top: clamp(8px,2vw,24px); }
+.hp-routes { background: var(--c-lavanda); position: relative; padding-block: clamp(8px,2vw,24px); }
 .hp-routes__intro { padding-block: clamp(48px,6vw,80px) 0; text-align: center; }
 .hp-routes__intro .hp-scrollcue { margin-top: 20px; }
 .hp-routes__intro .hp-eyebrow { color: var(--c-morado); justify-content: center; }
@@ -750,6 +798,7 @@ body.menu-open { overflow: hidden; }
 .hp-hscroll-head .hp-eyebrow { color: var(--c-morado); }
 .hp-hscroll-head h2 { color: var(--c-morado-deep); font-size: clamp(1.8rem,3.6vw,2.8rem); margin-bottom: 14px; max-width: 18ch; }
 .hp-hscroll-head p { color: var(--color-gris); font-size: var(--text-body); max-width: 38ch; }
+.hp-hscroll-cta { display: inline-flex; margin-top: 24px; }
 .hp-hscroll-head .hp-scrollcue { margin-top: 22px; }
 .hp-hscroll-viewport { position: relative; overflow: hidden; align-self: center; }
 .hp-rail { display: flex; gap: 24px; will-change: transform; padding: 30px 0; }
@@ -768,10 +817,12 @@ body.menu-open { overflow: hidden; }
 .hp-rcard__tag { display: inline-flex; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 6px 14px; border-radius: var(--radius-pill); margin-bottom: 14px; }
 .hp-rcard p { font-size: var(--text-sm); color: var(--color-gris); margin-bottom: 16px; }
 .hp-rcard__logos { display: flex; flex-direction: column; gap: 8px; margin: 2px 0 18px; }
-.hp-rcard__logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--c-lavanda); border-radius: 0; padding: 11px; }
-.hp-rcard__logo img { max-height: 28px; max-width: 66%; width: auto; object-fit: contain; filter: grayscale(1); opacity: .82; transition: filter .3s, opacity .3s; }
-.hp-rcard:hover .hp-rcard__logo img { filter: none; opacity: 1; }
+.hp-rcard__logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--c-lavanda); border-radius: 0; padding: 10px 12px; }
+.hp-rcard__logo img { max-height: 30px; max-width: 84%; width: auto; object-fit: contain; filter: grayscale(1); opacity: .72; transition: filter .35s var(--ease), opacity .35s var(--ease); }
+.hp-rcard__logo:hover img { filter: grayscale(0); opacity: 1; }
 .hp-rcard .link-more { color: var(--rc); margin-top: auto; }
+/* Home · 4 rutas: exactamente 2 cards completas por vista en desktop (sin corte) */
+@media (min-width: 901px) { .hp-rail .hp-rcard { flex: 0 0 calc(50% - 12px); } }
 
 /* Indicador "Desliza →": cue de que la sección se recorre a la derecha */
 .hp-scrollcue {
@@ -810,12 +861,15 @@ body.menu-open { overflow: hidden; }
 .hp-diag h2 { color: #fff; max-width: 28ch; margin: 0 auto 16px; }
 .hp-diag p { color: rgba(255,255,255,.85); max-width: 64ch; margin: 0 auto 28px; font-size: var(--text-lead); }
 .hp-diag .btn--onfill { background: #fff; color: var(--c-morado-deep); }
-.hp-diag .btn--onfill:hover { background: var(--c-amarillo); color: #2A0A4A; }
+.hp-diag .btn--onfill:hover { background: var(--c-morado-deep); color: #fff; }
 
 /* ===================== 5 · Aliados blanco (carrusel) ===================== */
 .hp-allies { background: #fff; position: relative; overflow: hidden; }
 .hp-allies__intro { text-align: left; position: relative; z-index: 2; }
-.hp-allies__intro h2 { color: var(--c-morado-deep); margin: 0; line-height: 1.06; }
+.hp .hp-allies__intro h2 { color: var(--c-morado-deep); margin: 0; line-height: 1.08; font-size: clamp(1.7rem, 2.8vw, 2.4rem); }
+.hp-allies__sub { font-family: var(--font-display); font-weight: 800; color: var(--c-morado); font-size: clamp(1rem, 1.35vw, 1.15rem); line-height: 1.3; margin: 14px 0 0; max-width: 42ch; }
+.hp-allies__lead { color: var(--color-gris); font-size: var(--text-lead); line-height: 1.55; margin: 12px 0 0; max-width: 46ch; }
+.hp-allies__cta { display: inline-flex; margin-top: 22px; }
 
 /* ===================== 6 · Break B&N oscuro + parallax ===================== */
 .hp-bn { position: relative; overflow: hidden; height: clamp(160px, 26vh, 320px); background: var(--c-dark); }
@@ -839,7 +893,7 @@ body.menu-open { overflow: hidden; }
 .hp-steps .btn--onfill:hover { background: #06301D; color: #fff; }
 @media (max-width: 760px){ .hp-steps__grid { grid-template-columns: 1fr; } }
 
-/* ===================== 8 · Blog destacado — fondo rosa ===================== */
+/* ===================== 8 · Blog destacado — fondo rosa · tarjetas con foto + barra amarilla ===================== */
 .hp-blog { background: #FF2B5E; color: #fff; position: relative; overflow: hidden; }
 .hp-blog .container { position: relative; z-index: 2; }
 .hp-blog__intro { text-align: center; margin-bottom: clamp(34px,4vw,54px); }
@@ -847,13 +901,18 @@ body.menu-open { overflow: hidden; }
 .hp-blog__intro h2 { color: #fff; max-width: 22ch; margin: 0 auto 14px; }
 .hp-blog__intro p { color: rgba(255,255,255,.92); font-size: var(--text-lead); max-width: 60ch; margin: 0 auto; line-height: 1.5; }
 .hp-blog__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(18px,2.4vw,28px); }
-.hp-blog__card { background: #fff; border-radius: var(--radius-lg); padding: clamp(22px,2.6vw,30px); display: flex; flex-direction: column; gap: 12px; box-shadow: 0 24px 54px rgba(46,4,38,.30); transition: transform .3s var(--ease), box-shadow .3s; }
+.hp-blog__card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 24px 54px rgba(46,4,38,.30); transition: transform .3s var(--ease), box-shadow .3s; }
 .hp-blog__card:hover { transform: translateY(-4px); box-shadow: 0 32px 64px rgba(46,4,38,.38); }
+.hp-blog__media { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--color-soft-2); }
+.hp-blog__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.hp-blog__card:hover .hp-blog__media img { transform: scale(1.06); }
+.hp-blog__bar { position: absolute; left: 0; bottom: 0; width: 100%; height: 6px; background: var(--c-amarillo); }
+.hp-blog__body { padding: clamp(22px,2.6vw,30px); display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .hp-blog__date { font-size: 13px; font-weight: 700; letter-spacing: .02em; color: var(--c-rosa); text-transform: uppercase; }
 .hp-blog__card h3 { font-size: clamp(17px,1.6vw,20px); line-height: 1.3; color: var(--c-morado-deep); margin: 0; flex: 1 1 auto; }
-.hp-blog__card .link-more { color: var(--c-rosa); margin-top: 2px; }
+.hp-blog__card .link-more { color: #7A6A00; margin-top: 2px; }
 .hp-blog .btn--onfill { background: #fff; color: var(--c-morado-deep); }
-.hp-blog .btn--onfill:hover { background: var(--c-amarillo); color: #2A0A4A; }
+.hp-blog .btn--onfill:hover { background: var(--c-morado-deep); color: #fff; }
 @media (max-width: 900px){ .hp-blog__grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; } }
 
 /* ===================== 9 · FAQ lavanda ===================== */
