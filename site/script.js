@@ -122,7 +122,9 @@
 
     searchBtn.addEventListener('click', openModal);
     modal.addEventListener('click', function (e) {
-      if (e.target.hasAttribute('data-ask-close')) closeModal();
+      // closest() sube desde el elemento clicado (p.ej. el <svg>/<path> dentro
+      // de la X) hasta el que lleva data-ask-close, para que la X cierre siempre.
+      if (e.target.closest('[data-ask-close]')) closeModal();
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !modal.hidden) closeModal();
