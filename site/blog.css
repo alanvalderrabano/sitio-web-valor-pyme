@@ -32,7 +32,12 @@
 .bl-hero { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: #6126FF; padding-block: clamp(52px, 7vw, 92px); }
 /* Fondo morado sólido (sin degradado ni glow rosa). El video queda como textura
    sutil por detrás; al terminar se congela mostrando el isotipo tejido. */
-.bl-hero__bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: .5; pointer-events: none; }
+.bl-hero__bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: .5; pointer-events: none; transition: opacity .3s; }
+/* Frame final estático (isotipo). Al terminar el video, éste se oculta y aparece
+   la imagen — así el isotipo queda fijo para siempre, sin depender del loop. */
+.bl-hero__end { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none; transition: opacity .35s; }
+.bl-hero.is-ended .bl-hero__bg { opacity: 0; }
+.bl-hero.is-ended .bl-hero__end { opacity: .5; }
 .bl-hero .container { position: relative; z-index: 2; }
 .bl-hero__inner { max-width: 720px; }
 .bl-hero .hp-eyebrow { color: var(--c-amarillo); }
