@@ -328,6 +328,10 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 @media (max-width: 980px){ .grid-stations > .station-card { flex-basis: 44%; max-width: none; } }
 @media (max-width: 560px){ .grid-stations > .station-card { flex-basis: 100%; } }
 
+/* Variante para rutas con 4 estaciones: 2 columnas x 2 filas */
+.grid-stations--2col > .station-card { flex-basis: calc(50% - 12px); max-width: 520px; }
+@media (max-width: 560px){ .grid-stations--2col > .station-card { flex-basis: 100%; max-width: none; } }
+
 /* ===== Estaciones con fondo de color de ruta vibrante ===== */
 .estaciones-band { background: var(--ruta); }
 .estaciones-band .eyebrow { color: var(--ruta-ink); }
@@ -435,6 +439,10 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 .site-footer a { display:block; color: rgba(255,255,255,.82); font-size: 14px; padding: 5px 0; }
 .site-footer a:hover { color:#fff; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.14); margin-top: 40px; padding-top: 22px; display:flex; justify-content: space-between; gap:16px; flex-wrap:wrap; font-size: 13px; color: rgba(255,255,255,.6); }
+.footer-social { display: flex; gap: 10px; margin-top: 20px; }
+.footer-social a { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50%; background: rgba(255,255,255,.1); color: #fff; transition: background .25s, color .25s, transform .25s; }
+.footer-social a:hover { background: var(--c-morado); color: #fff; transform: translateY(-2px); }
+.footer-social svg { width: 18px; height: 18px; display: block; }
 
 /* ===================== Franja B&N con parallax ===================== */
 .bw-band { position: relative; overflow: hidden; min-height: clamp(280px, 36vw, 420px); display: grid; place-items: center; text-align: center; }
