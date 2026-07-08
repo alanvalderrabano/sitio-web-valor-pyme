@@ -2,6 +2,21 @@
 (function () {
   'use strict';
 
+  /* ===================== LISTING: video del hero (vp-lines) — más lento, sin loop ===================== */
+  var heroVideo = document.querySelector('[data-bl-hero-video]');
+  if (heroVideo) {
+    var SPEED = 0.6; // más lento que el original, pero no tanto
+    function slowDown() { try { heroVideo.playbackRate = SPEED; } catch (e) {} }
+    slowDown();
+    heroVideo.addEventListener('loadedmetadata', slowDown);
+    heroVideo.addEventListener('play', slowDown);
+    // Al terminar: se queda congelado en el último frame (sin loop y sin reiniciar)
+    heroVideo.addEventListener('ended', function () {
+      heroVideo.pause();
+      heroVideo.currentTime = Math.max(0, heroVideo.duration - 0.05);
+    });
+  }
+
   /* ===================== LISTING: filtros por categoría (tabs) ===================== */
   var tabs = document.querySelectorAll('[data-bl-tab]');
   var cards = [].slice.call(document.querySelectorAll('[data-bl-card]'));

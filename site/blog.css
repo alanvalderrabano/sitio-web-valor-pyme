@@ -29,9 +29,10 @@
    1 · BLOG LISTING
    ===================================================================== */
 /* Hero */
-.bl-hero { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: var(--grad-hero); padding-block: clamp(52px, 7vw, 92px); }
+.bl-hero { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: #6126FF; padding-block: clamp(52px, 7vw, 92px); }
+/* Fondo morado sólido (sin degradado ni glow rosa). El video queda como textura
+   sutil por detrás; al terminar se congela mostrando el isotipo tejido. */
 .bl-hero__bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: .5; pointer-events: none; }
-.bl-hero::after { content:""; position: absolute; inset: 0; z-index: 1; background: radial-gradient(120% 120% at 85% 10%, rgba(255,43,94,.34), transparent 55%); pointer-events: none; }
 .bl-hero .container { position: relative; z-index: 2; }
 .bl-hero__inner { max-width: 720px; }
 .bl-hero .hp-eyebrow { color: var(--c-amarillo); }

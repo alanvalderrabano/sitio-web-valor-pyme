@@ -202,18 +202,29 @@
     }
   })();
 
-  /* ---- Hero split: asegura reproducción de la animación de líneas ----
-     El primer fotograma del video no tiene líneas (se dibujan con el tiempo).
-     Nos colocamos primero en un fotograma "rico" y luego intentamos reproducir:
-     si el autoplay se bloquea o el navegador lo pausa, el panel nunca se ve vacío. */
+  /* ---- Hero split: animación del isotipo (una vez, sin loop) ----
+     Reproduce la animación una sola vez y queda parada en el isotipo completo
+     (último fotograma). Si el autoplay se bloquea o el navegador la pausa al
+     arranque, saltamos directo al isotipo completo para no dejarla a medias. */
   (function () {
     var anims = document.querySelectorAll('.hp-hero__anim');
     if (!anims.length || reduce) return;
+    function freezeEnd(v) {
+      try { v.currentTime = Math.max(0, (v.duration || 6.2) - 0.05); } catch (e) {}
+    }
     anims.forEach(function (v) {
+      // Si el navegador la pausa a mitad (política de energía/autoplay), saltamos
+      // al isotipo completo en vez de dejarla congelada a medias.
+      v.addEventListener('pause', function () {
+        if (v.currentTime > 0.2 && v.currentTime < v.duration - 0.1) freezeEnd(v);
+      });
       function start() {
-        try { v.currentTime = Math.min(2.4, (v.duration || 3) - 0.1); } catch (e) {}
         var p = v.play();
-        if (p && p.catch) p.catch(function () {}); // bloqueado: queda el fotograma rico
+        if (p && p.catch) p.catch(function () { freezeEnd(v); }); // bloqueado → isotipo completo
+        // Safety: si nunca arrancó, congela en el isotipo completo
+        window.setTimeout(function () {
+          if (v.paused && v.currentTime < 0.2) freezeEnd(v);
+        }, 800);
       }
       if (v.readyState >= 1) start();
       else v.addEventListener('loadedmetadata', start, { once: true });

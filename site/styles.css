@@ -682,8 +682,8 @@ body.menu-open { overflow: hidden; }
 .hp-hero--split { overflow: hidden; padding-block: clamp(60px, 8vw, 112px); }
 .hp-hero--split .hp-hero__watermark {
   position: absolute; z-index: 0; pointer-events: none;
-  top: -30%; right: -8%; width: 60vw; height: 120%;
-  background: radial-gradient(closest-side, rgba(255,255,255,.16), rgba(255,255,255,0) 70%);
+  top: -30%; left: -12%; width: 55vw; height: 120%;
+  background: radial-gradient(closest-side, rgba(255,255,255,.14), rgba(255,255,255,0) 70%);
 }
 .hp-hero--split .container { position: relative; z-index: 2; }
 .hp-hero__split {
@@ -695,15 +695,23 @@ body.menu-open { overflow: hidden; }
 .hp-hero--split h1 { max-width: 15ch; }
 .hp-hero--split .hp-hero__sub { max-width: 46ch; }
 
-/* Panel de animación: el degradado morado y las líneas blancas ya vienen
-   "horneados" en el propio video (sin mix-blend, para no sangrar sobre overlays). */
+/* Panel de animación: el morado del hero (#6126FF) va horneado en el propio
+   video, sin borde ni sombra. Además se difuminan los bordes con una máscara
+   para que el cuadro se funda con el hero (sin caja) y no se note ninguna
+   costura por el ligero cambio de tono del video (yuv) vs. el CSS. */
 .hp-hero__media {
   position: relative; aspect-ratio: 1 / 1; width: 100%;
   max-width: 460px; margin-inline: auto;
-  background: radial-gradient(120% 120% at 20% 0%, #7C4BFF 0%, #5A1FE6 45%, #3D0FA6 100%);
-  border: 1px solid rgba(255,255,255,.22);
-  box-shadow: var(--shadow-md);
+  background: #6126FF;
   overflow: hidden;
+  -webkit-mask:
+    linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask:
+    linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 10%, #000 90%, transparent 100%);
+  mask-composite: intersect;
 }
 .hp-hero__anim {
   position: absolute; inset: 0; width: 100%; height: 100%;
