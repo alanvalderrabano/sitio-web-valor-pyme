@@ -367,6 +367,54 @@
     }
   }
 
+  /* ---- Carrusel de convocatorias (HOME · debajo del hero) ---- */
+  var cvCar = document.querySelector('[data-conv-carousel]');
+  if (cvCar) {
+    var cvVp = cvCar.querySelector('[data-conv-viewport]');
+    var cvTrack = cvCar.querySelector('[data-conv-track]');
+    var cvPrev = cvCar.querySelector('[data-conv-prev]');
+    var cvNext = cvCar.querySelector('[data-conv-next]');
+    var cvCards = cvTrack ? [].slice.call(cvTrack.children) : [];
+    if (cvVp && cvCards.length) {
+      function cvStep() {
+        var cs = window.getComputedStyle(cvTrack);
+        var gap = parseFloat(cs.columnGap || cs.gap) || 0;
+        return cvCards[0].getBoundingClientRect().width + gap;
+      }
+      function cvUpdate() {
+        var max = cvVp.scrollWidth - cvVp.clientWidth;
+        if (cvPrev) cvPrev.disabled = cvVp.scrollLeft <= 8;
+        if (cvNext) cvNext.disabled = cvVp.scrollLeft >= max - 8;
+      }
+      if (cvPrev) cvPrev.addEventListener('click', function () { cvVp.scrollLeft -= cvStep(); cvUpdate(); });
+      if (cvNext) cvNext.addEventListener('click', function () { cvVp.scrollLeft += cvStep(); cvUpdate(); });
+      var cvTick = false;
+      cvVp.addEventListener('scroll', function () {
+        if (!cvTick) { window.requestAnimationFrame(function () { cvUpdate(); cvTick = false; }); cvTick = true; }
+      }, { passive: true });
+      window.addEventListener('resize', cvUpdate);
+      cvUpdate();
+    }
+  }
+
+  /* ---- Hero: congelar el video en el estado de líneas (evita el final "plano") ---- */
+  var heroBg = document.querySelector('.hp-hero__bg');
+  if (heroBg) {
+    var HERO_FREEZE_AT = 11; // seg · congelado del hero. 11 = isotipo + líneas de color (ACTUAL, aprobado). 14.5 = solo isotipo blanco limpio sin líneas (versión anterior — cambiar a 14.5 si piden dejarlo "como estaba").
+    var heroFrozen = false;
+    function heroFreezeCheck() {
+      var d = heroBg.duration || 0;
+      var stop = d ? Math.min(HERO_FREEZE_AT, d - 0.05) : HERO_FREEZE_AT;
+      if (!heroFrozen && heroBg.currentTime >= stop) {
+        heroFrozen = true;
+        heroBg.pause();
+      }
+    }
+    heroBg.addEventListener('timeupdate', heroFreezeCheck);
+    // Fallback: si el video termina antes de congelarse, deja el último frame quieto.
+    heroBg.addEventListener('ended', function () { heroFrozen = true; });
+  }
+
   /* ---- Contador count-up (HOME · +150.000) ---- */
   var counters = [].slice.call(document.querySelectorAll('[data-count]'));
   if (counters.length) {
