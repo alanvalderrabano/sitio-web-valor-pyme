@@ -360,7 +360,7 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 .station-card h3 { font-size: var(--text-h3); }
 .station-card p { font-size: var(--text-sm); color: var(--color-gris); }
 .station-card .link-more { margin-top: auto; padding-top: 8px; color: var(--ruta-deep); }
-.station-card__num { position:absolute; right: 20px; top: 18px; font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height:1; color: var(--ruta-soft); z-index:0; }
+.station-card__num { display: none; }
 .station-card > * { position: relative; z-index: 1; }
 
 /* ===================== Estaciones de combinación ===================== */
