@@ -5,15 +5,29 @@
   /* ===================== LISTING: video del hero (vp-lines) — más lento, sin loop ===================== */
   var heroVideo = document.querySelector('[data-bl-hero-video]');
   if (heroVideo) {
-    var SPEED = 0.6; // más lento que el original, pero no tanto
+    var SPEED = 0.85; // más lento que el original, pero no tanto
+    heroVideo.loop = false; // fuerza sin loop aunque el HTML venga cacheado con loop
+    heroVideo.removeAttribute('loop');
+    var frozen = false;
     function slowDown() { try { heroVideo.playbackRate = SPEED; } catch (e) {} }
+    function freezeAtEnd() {
+      var d = heroVideo.duration;
+      if (!d || isNaN(d)) return;
+      if (heroVideo.currentTime >= d - 0.10) {
+        frozen = true;
+        heroVideo.pause();
+        try { heroVideo.currentTime = d - 0.03; } catch (e) {}
+      }
+    }
     slowDown();
     heroVideo.addEventListener('loadedmetadata', slowDown);
-    heroVideo.addEventListener('play', slowDown);
-    // Al terminar: se queda congelado en el último frame (sin loop y sin reiniciar)
-    heroVideo.addEventListener('ended', function () {
-      heroVideo.pause();
-      heroVideo.currentTime = Math.max(0, heroVideo.duration - 0.05);
+    // Vigilamos el tiempo y pausamos al llegar al final: se queda en el isotipo.
+    heroVideo.addEventListener('timeupdate', freezeAtEnd);
+    heroVideo.addEventListener('ended', function () { frozen = true; heroVideo.pause(); });
+    // Si algo intenta reiniciarlo (p. ej. HTML cacheado con loop), lo pausamos en seco.
+    heroVideo.addEventListener('play', function () {
+      slowDown();
+      if (frozen) { heroVideo.pause(); try { heroVideo.currentTime = heroVideo.duration - 0.03; } catch (e) {} }
     });
   }
 
