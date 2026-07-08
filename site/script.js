@@ -31,6 +31,195 @@
     });
   }
 
+  /* ============================================================
+     Buscador IA (lupa en el nav → popup) · endpoint /api/ask
+     Se inyecta en todas las páginas desde el JS compartido.
+     ============================================================ */
+  (function () {
+    var nav = document.querySelector('.site-header .nav');
+    if (!nav) return;
+
+    var SUGGESTIONS = [
+      '¿Qué es Valor Pyme?',
+      '¿Cuánto cuesta sumarme?',
+      '¿Cuáles son las 4 rutas?',
+      '¿Quiénes son los aliados?',
+      '¿Cómo empiezo?'
+    ];
+
+    /* --- Botón lupa en el nav (antes del CTA / burger) --- */
+    var searchBtn = document.createElement('button');
+    searchBtn.type = 'button';
+    searchBtn.className = 'nav__search';
+    searchBtn.setAttribute('aria-label', 'Buscar / Preguntar a la IA');
+    searchBtn.setAttribute('aria-haspopup', 'dialog');
+    searchBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+    var cta = nav.querySelector('.nav__cta');
+    var burgerBtn = nav.querySelector('.nav__burger');
+    nav.insertBefore(searchBtn, cta || burgerBtn || null);
+
+    /* --- Modal (una sola vez por página) --- */
+    var modal = document.createElement('div');
+    modal.className = 'vp-ask';
+    modal.id = 'vpAsk';
+    modal.hidden = true;
+    modal.innerHTML =
+      '<div class="vp-ask__backdrop" data-ask-close></div>' +
+      '<div class="vp-ask__dialog" role="dialog" aria-modal="true" aria-labelledby="vpAskTitle">' +
+        '<button class="vp-ask__x" type="button" aria-label="Cerrar" data-ask-close>' +
+          '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>' +
+        '</button>' +
+        '<span class="vp-ask__badge">IA · Valor Pyme</span>' +
+        '<h2 class="vp-ask__title" id="vpAskTitle">¿Tienes dudas? <em>Pregúntale a la IA de Valor Pyme.</em></h2>' +
+        '<form class="vp-ask__form" data-ask-form autocomplete="off">' +
+          '<input class="vp-ask__input" type="text" name="q" data-ask-input ' +
+            'placeholder="Pregúntame sobre Valor Pyme… rutas, aliados, cómo sumarte" ' +
+            'aria-label="Escribe tu pregunta">' +
+          '<button class="vp-ask__send" type="submit" aria-label="Preguntar">' +
+            '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '</button>' +
+        '</form>' +
+        '<div class="vp-ask__chips" data-ask-chips></div>' +
+        '<div class="vp-ask__answer" data-ask-answer hidden></div>' +
+        '<p class="vp-ask__disc">Respuestas generadas con IA en base a la información oficial de Valor Pyme.</p>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    var dialog = modal.querySelector('.vp-ask__dialog');
+    var form = modal.querySelector('[data-ask-form]');
+    var input = modal.querySelector('[data-ask-input]');
+    var chipsWrap = modal.querySelector('[data-ask-chips]');
+    var answerEl = modal.querySelector('[data-ask-answer]');
+    var busy = false;
+    var lastFocus = null;
+    var history = []; // [{role, content}] para dar contexto a las repreguntas
+
+    SUGGESTIONS.forEach(function (q) {
+      var c = document.createElement('button');
+      c.type = 'button';
+      c.className = 'vp-ask__chip';
+      c.textContent = q;
+      c.addEventListener('click', function () { input.value = q; ask(q); });
+      chipsWrap.appendChild(c);
+    });
+
+    function openModal() {
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      document.body.classList.add('vp-ask-open');
+      requestAnimationFrame(function () {
+        modal.classList.add('is-open');
+        input.focus();
+      });
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.classList.remove('vp-ask-open');
+      window.setTimeout(function () { modal.hidden = true; }, 220);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    searchBtn.addEventListener('click', openModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target.hasAttribute('data-ask-close')) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+    // Trampa de foco simple dentro del diálogo
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var f = dialog.querySelectorAll('button, input, [href], [tabindex]:not([tabindex="-1"])');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      ask(input.value);
+    });
+
+    function setAnswer(html) {
+      answerEl.hidden = false;
+      answerEl.innerHTML = html;
+    }
+
+    function ask(q) {
+      q = (q || '').trim();
+      if (!q || busy) return;
+      busy = true;
+      input.value = q;
+      chipsWrap.style.display = 'none';
+      setAnswer(
+        '<div class="vp-ask__q">' + escapeHtml(q) + '</div>' +
+        '<div class="vp-ask__a" data-a><span class="vp-ask__typing"><i></i><i></i><i></i></span></div>'
+      );
+      var aEl = answerEl.querySelector('[data-a]');
+      answerEl.scrollTop = 0;
+
+      history.push({ role: 'user', content: q });
+
+      fetch('/api/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history.slice(-8) })
+      }).then(function (res) {
+        if (!res.ok || !res.body) throw new Error('bad response ' + res.status);
+        var reader = res.body.getReader();
+        var decoder = new TextDecoder();
+        var acc = '';
+        aEl.textContent = '';
+        function pump() {
+          return reader.read().then(function (r) {
+            if (r.done) {
+              history.push({ role: 'assistant', content: acc });
+              busy = false;
+              return;
+            }
+            acc += decoder.decode(r.value, { stream: true });
+            aEl.textContent = acc;
+            answerEl.scrollTop = answerEl.scrollHeight;
+            return pump();
+          });
+        }
+        return pump();
+      }).catch(function () {
+        busy = false;
+        if (aEl) {
+          aEl.innerHTML = 'Ups, no pudimos responder en este momento. Escríbenos en ' +
+            '<a href="/contacto">la página de contacto</a> y te ayudamos.';
+        }
+      });
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, function (c) {
+        return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+      });
+    }
+  })();
+
+  /* ---- Hero split: asegura reproducción de la animación de líneas ----
+     El primer fotograma del video no tiene líneas (se dibujan con el tiempo).
+     Nos colocamos primero en un fotograma "rico" y luego intentamos reproducir:
+     si el autoplay se bloquea o el navegador lo pausa, el panel nunca se ve vacío. */
+  (function () {
+    var anims = document.querySelectorAll('.hp-hero__anim');
+    if (!anims.length || reduce) return;
+    anims.forEach(function (v) {
+      function start() {
+        try { v.currentTime = Math.min(2.4, (v.duration || 3) - 0.1); } catch (e) {}
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {}); // bloqueado: queda el fotograma rico
+      }
+      if (v.readyState >= 1) start();
+      else v.addEventListener('loadedmetadata', start, { once: true });
+    });
+  })();
+
   /* ---- Longitud real de cada path para animar el trazo ---- */
   document.querySelectorAll('.route-line.draw').forEach(function (p) {
     try {

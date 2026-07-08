@@ -64,3 +64,20 @@
 - **Color card Capital** `#FFF200` vs `#FF8500` (P-02): se mantuvo `#FFF200` por coherencia con `rutas.html`.
 - **SEO:** dar de alta valorpyme.cl en la cuenta GSC de BnO para validar queries del home (no estaba disponible en esta corrida).
 - **Optimización de imágenes pendiente:** falta `cwebp`/`svgo` en la máquina (`brew install webp`) para servir WebP y bajar peso (~1.7 MB el home).
+
+## 8. HECHO: heroes distintos (Nosotros/Contacto) + Buscador IA (2026-07-07)
+### Heroes split (Nosotros y Contacto)
+- Antes ambos heroes eran idénticos al HOME (video morado + caja glass). Ahora usan un **hero SPLIT** distinto: copy a la izquierda + **panel cuadrado con la animación de líneas de marca** a la derecha (`.hp-hero--split`, `.hp-hero__lead`, `.hp-hero__media`, `.hp-hero__anim`). CSS en `styles.css` (bloque "Hero SPLIT").
+- **Fix de Contacto:** el H1 "¿Necesitas contactarnos?" ya NO se sale de ninguna caja (ahora vive en su columna). En móvil el panel va arriba (`order:-1`) y el título cabe.
+- **Asset de animación:** `site/assets/motion/vp-lines.{webm,mp4}` + `vp-lines-poster.jpg`. Es la animación del isotipo/líneas (venía de `valor-pyme-landing-repo/assets/motion/vp-iso-animation-3.webm`, blanco sobre negro). **Se le horneó el degradado morado de marca dentro del propio video** (composite luma-mask con `tools`/ffmpeg): fondo #7C4BFF→#3D0FA6 + líneas blancas.
+  - **GOTCHA (por qué se horneó):** primero se usó `mix-blend-mode:screen` sobre el `<video>` (blanco/negro) para "quitar" el negro. Chromium **sangra** el video con blend a través de overlays `position:fixed` (el popup) — ni `isolation:isolate` lo contuvo. Solución: quitar el blend y hornear el fondo en el asset. NO reintroducir `mix-blend-mode` sobre video.
+  - **GOTCHA (fotograma vacío):** el primer fotograma del video no tiene líneas (se dibujan con el tiempo). En `script.js` hay un "nudge" que hace `currentTime=2.4` (fotograma rico) y luego `play()`, para que el panel nunca se vea vacío aunque el autoplay se bloquee.
+
+### Buscador IA (lupa en el nav → popup) · TODAS las páginas
+- **Front-end:** todo se **inyecta desde `script.js`** (botón `.nav__search` en el nav + modal `.vp-ask`). NO se tocó el HTML de cada página para esto → aparece solo en las 10 páginas que cargan `script.js`. CSS del popup y la lupa al final de `styles.css` (bloque "BUSCADOR IA"). Estilo calcado de la referencia BnO Growth Summit (badge, input negro con botón degradado, chips de sugerencias, disclaimer).
+- **Back-end (OpenAI):** `functions/api/ask.js` = **Cloudflare Pages Function** (proxy seguro). El cliente hace `POST /api/ask` con `{messages:[...]}` y recibe la respuesta en **streaming de texto plano**. La función arma el system prompt con el contexto de Valor Pyme (qué es, 4 rutas, aliados, cómo sumarse, gratis, contacto) y llama a OpenAI Chat Completions con `stream:true`.
+- **⚠️ PENDIENTE PARA QUE FUNCIONE EN PROD (lo hace Alan en Cloudflare):**
+  1. En Cloudflare Pages → proyecto → **Settings → Environment variables**: agregar **`OPENAI_API_KEY`** = la key de OpenAI (secreto). Opcional **`OPENAI_MODEL`** (por defecto `gpt-4o-mini`).
+  2. Confirmar que Cloudflare detecta el directorio **`functions/`** (está en la raíz del repo, `output dir = site`). Si `/api/ask` da 404 tras el deploy, la alternativa es mover `functions/` dentro de `site/` (`site/functions/api/ask.js`) y re-desplegar.
+  3. La key **NUNCA** va al repo ni al cliente (vive solo en el entorno de Cloudflare). Localmente (`python http.server`) el endpoint da 404 → el popup muestra un fallback amable hacia `/contacto` (esperado).
+- **Cache-bust:** `styles.css?v=34`, `script.js?v=11` en las 10 páginas (index, rutas, 4 rutas, nosotros, contacto, blog, blog-post).

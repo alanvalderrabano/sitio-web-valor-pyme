@@ -13,7 +13,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=32">
+<link rel="stylesheet" href="styles.css?v=34">
 
 <!-- JSON-LD: AboutPage + Organization -->
 <script type="application/ld+json">
@@ -64,20 +64,25 @@
 </div>
 
 <main>
-<!-- ============ 1 — HERO (video de fondo + caja glass) ============ -->
-<section class="hp-hero">
-  <video class="hp-hero__bg" autoplay muted loop playsinline preload="auto" poster="assets/motion/hero-bg-poster.jpg" aria-hidden="true">
-    <source src="assets/motion/hero-bg.webm" type="video/webm">
-    <source src="assets/motion/hero-bg.mp4" type="video/mp4">
-  </video>
+<!-- ============ 1 — HERO (split: copy + animación de líneas de marca) ============ -->
+<section class="hp-hero hp-hero--split">
+  <span class="hp-hero__watermark" aria-hidden="true"></span>
   <div class="container">
-    <div class="hp-hero__grid">
-      <div class="hp-hero__copy">
-        <h1 class="hp-display reveal">Emprender es siempre un viaje.</h1>
-        <p class="hp-hero__sub reveal d1"><strong>Y en cada etapa, contar con las conexiones correctas puede marcar la diferencia.</strong><br>Valor Pyme es una red de soluciones creada para acompañar a emprendedores y pymes en su crecimiento.</p>
-        <div class="hp-hero__cta reveal d2">
+    <div class="hp-hero__split">
+      <div class="hp-hero__lead">
+        <span class="hp-eyebrow reveal">Quiénes somos</span>
+        <h1 class="hp-display reveal d1">Emprender es siempre un viaje.</h1>
+        <p class="hp-hero__sub reveal d2"><strong>Y en cada etapa, contar con las conexiones correctas puede marcar la diferencia.</strong><br>Valor Pyme es una red de soluciones creada para acompañar a emprendedores y pymes en su crecimiento.</p>
+        <div class="hp-hero__cta reveal d3">
           <a href="/rutas" class="btn btn--onfill">Conoce nuestras rutas <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#proposito" class="btn btn--ghost">Nuestra propuesta</a>
         </div>
+      </div>
+      <div class="hp-hero__media reveal d2" aria-hidden="true">
+        <video class="hp-hero__anim" autoplay muted loop playsinline preload="auto" poster="assets/motion/vp-lines-poster.jpg">
+          <source src="assets/motion/vp-lines.webm" type="video/webm">
+          <source src="assets/motion/vp-lines.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
@@ -251,6 +256,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=9" defer></script>
+<script src="script.js?v=11" defer></script>
 </body>
 </html>
