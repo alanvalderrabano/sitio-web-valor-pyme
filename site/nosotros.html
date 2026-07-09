@@ -13,7 +13,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=39">
+<link rel="stylesheet" href="styles.css?v=43">
 
 <!-- JSON-LD: AboutPage + Organization -->
 <script type="application/ld+json">
@@ -49,18 +49,39 @@
           <a class="drop-route" href="/ruta-talento" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span></a>
         </div>
       </div>
-      <a href="/nosotros" aria-current="page">Nosotros</a><a href="/#aliados">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a><a href="/contacto">Contacto</a>
+      <a href="/#aliados">Alianzas</a>
+      <a href="/nosotros" aria-current="page">Nosotros</a>
+      <div class="nav__item">
+        <a class="nav__item-link" href="/blog" aria-haspopup="true">Comunidad
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown dropdown--community" role="menu">
+          <a class="drop-route drop-route--simple" href="/blog" role="menuitem"><span><span class="drop-route__t">Blog</span><span class="drop-route__d">Artículos y novedades</span></span></a>
+          <a class="drop-route drop-route--simple" href="#" role="menuitem"><span><span class="drop-route__t">Foro</span><span class="drop-route__d">Conversaciones de la comunidad</span></span></a>
+          <a class="drop-route drop-route--simple" href="#" role="menuitem"><span><span class="drop-route__t">Recursos</span><span class="drop-route__d">Guías y herramientas</span></span></a>
+        </div>
+      </div>
     </nav>
-    <a href="/#suscripcion" class="btn btn--sm nav__cta desktop">Suscríbete gratis</a>
+    <a href="/#suscripcion" class="btn btn--sm nav__cta desktop">Suscríbete</a>
+    <a href="/#diagnostico" class="btn btn--sm nav__cta desktop">Encuentra tu ruta</a>
     <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="/rutas">Rutas Pyme</a>
-  <a href="/ruta-capital">Ruta Capital</a><a href="/ruta-mercado">Ruta Mercado</a><a href="/ruta-digitalizacion">Ruta Digitalización</a><a href="/ruta-talento">Ruta Talento y Gestión</a>
-  <a href="/nosotros" aria-current="page">Nosotros</a><a href="/#aliados">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a><a href="/contacto">Contacto</a>
-  <a href="/#suscripcion" class="btn">Suscríbete gratis</a>
+  <a href="/ruta-capital" class="mobile-menu__sub">Ruta Capital</a>
+  <a href="/ruta-mercado" class="mobile-menu__sub">Ruta Mercado</a>
+  <a href="/ruta-digitalizacion" class="mobile-menu__sub">Ruta Digitalización</a>
+  <a href="/ruta-talento" class="mobile-menu__sub">Ruta Talento y Gestión</a>
+  <a href="/#aliados">Alianzas</a>
+  <a href="/nosotros">Nosotros</a>
+  <a href="/blog">Comunidad</a>
+  <a href="/blog" class="mobile-menu__sub">Blog</a>
+  <a href="#" class="mobile-menu__sub">Foro</a>
+  <a href="#" class="mobile-menu__sub">Recursos</a>
+  <a href="/#suscripcion" class="btn">Suscríbete</a>
+  <a href="/#diagnostico" class="btn">Encuentra tu ruta</a>
 </div>
 
 <main>

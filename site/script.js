@@ -386,8 +386,15 @@
         if (cvPrev) cvPrev.disabled = cvVp.scrollLeft <= 8;
         if (cvNext) cvNext.disabled = cvVp.scrollLeft >= max - 8;
       }
-      if (cvPrev) cvPrev.addEventListener('click', function () { cvVp.scrollLeft -= cvStep(); cvUpdate(); });
-      if (cvNext) cvNext.addEventListener('click', function () { cvVp.scrollLeft += cvStep(); cvUpdate(); });
+      function cvGo(dir) {
+        var step = cvStep();
+        var current = Math.round(cvVp.scrollLeft / step);
+        var target = Math.max(0, Math.min(cvCards.length - 1, current + dir));
+        cvVp.scrollTo({ left: target * step, behavior: reduce ? 'auto' : 'smooth' });
+        window.setTimeout(cvUpdate, reduce ? 0 : 280);
+      }
+      if (cvPrev) cvPrev.addEventListener('click', function () { cvGo(-1); });
+      if (cvNext) cvNext.addEventListener('click', function () { cvGo(1); });
       var cvTick = false;
       cvVp.addEventListener('scroll', function () {
         if (!cvTick) { window.requestAnimationFrame(function () { cvUpdate(); cvTick = false; }); cvTick = true; }
