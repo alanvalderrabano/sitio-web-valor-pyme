@@ -31,7 +31,16 @@
     if (params.get('tipo') && META.tipos[params.get('tipo')]) state.tipo = params.get('tipo');
     if (params.get('ruta') && META.rutas[params.get('ruta')]) state.ruta = params.get('ruta');
 
-    function buildChips(groupId, kind) {
+    var groups = {};
+    function setFilter(kind, value) {
+      state[kind] = value;
+      var g = groups[kind];
+      if (g) { syncPressed(g.box, value); if (g.sel) g.sel.value = value; }
+      render(); updateUrl();
+    }
+
+    // Cada grupo genera chips (escritorio) + un <select> equivalente (móvil)
+    function buildGroup(groupId, kind) {
       var box = document.getElementById(groupId);
       if (!box) return;
       var col = kind === 'tipo' ? 'tipos' : 'rutas';
@@ -39,6 +48,9 @@
       Object.keys(META[col]).forEach(function (k) {
         items.push({ v: k, label: kind === 'tipo' ? (META.tipos[k].plural || META.tipos[k].label) : META.rutas[k].label });
       });
+      var sel = document.createElement('select');
+      sel.className = 'rc-select';
+      sel.setAttribute('aria-label', kind === 'tipo' ? 'Filtrar por tipo de recurso' : 'Filtrar por ruta');
       items.forEach(function (it) {
         var b = document.createElement('button');
         b.type = 'button'; b.className = 'rc-chip';
@@ -47,11 +59,16 @@
         var dot = (kind === 'ruta' && it.v !== 'all')
           ? '<span class="rc-chip__dot" style="background:' + rutaMeta(it.v).color + '"></span>' : '';
         b.innerHTML = dot + '<span>' + esc(it.label) + '</span>';
-        b.addEventListener('click', function () {
-          state[kind] = it.v; syncPressed(box, it.v); render(); updateUrl();
-        });
+        b.addEventListener('click', function () { setFilter(kind, it.v); });
         box.appendChild(b);
+        var o = document.createElement('option');
+        o.value = it.v; o.textContent = it.label;
+        if (state[kind] === it.v) o.selected = true;
+        sel.appendChild(o);
       });
+      sel.addEventListener('change', function () { setFilter(kind, sel.value); });
+      box.appendChild(sel);
+      groups[kind] = { box: box, sel: sel };
     }
 
     function syncPressed(box, value) {
@@ -99,14 +116,11 @@
     }
 
     if (resetEl) resetEl.addEventListener('click', function () {
-      state = { tipo: 'all', ruta: 'all' };
-      syncPressed(document.getElementById('fg-tipo'), 'all');
-      syncPressed(document.getElementById('fg-ruta'), 'all');
-      render(); updateUrl();
+      setFilter('tipo', 'all'); setFilter('ruta', 'all');
     });
 
-    buildChips('fg-tipo', 'tipo');
-    buildChips('fg-ruta', 'ruta');
+    buildGroup('fg-tipo', 'tipo');
+    buildGroup('fg-ruta', 'ruta');
     render();
   }).catch(function () {
     grid.innerHTML = '<div class="rc-empty"><strong>No se pudieron cargar los recursos</strong>Intenta recargar la página.</div>';
