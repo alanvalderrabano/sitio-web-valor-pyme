@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "tipos": {
+      "ebook":      { "label": "E-book",     "plural": "E-books" },
+      "infografia": { "label": "Infografía", "plural": "Infografías" },
+      "video":      { "label": "Cápsula",    "plural": "Cápsulas / Videos" }
+    },
+    "rutas": {
+      "capital":        { "label": "Capital",           "color": "var(--ruta-capital-c)" },
+      "mercado":        { "label": "Mercado",           "color": "var(--ruta-mercado-c)" },
+      "digitalizacion": { "label": "Digitalización",    "color": "var(--ruta-digitalizacion-c)" },
+      "talento":        { "label": "Talento y Gestión", "color": "var(--ruta-talento-c)" }
+    }
+  },
+  "recursos": [
+    {
+      "slug": "guia-financiamiento-pyme",
+      "titulo": "Guía de financiamiento para tu pyme",
+      "tipo": "ebook",
+      "ruta": "capital",
+      "portada": "assets/photos/brand/split-capital.jpg",
+      "resumen": "Conoce las alternativas de financiamiento disponibles y cómo elegir la más conveniente para el momento de tu negocio.",
+      "descripcion": "Una guía práctica para entender las opciones de financiamiento y bancarización disponibles para tu pyme, con criterios claros para decidir.",
+      "about": {
+        "contiene": "Un recorrido por créditos, líneas de capital de trabajo, factoring y fondos estatales, con ejemplos y una checklist para postular.",
+        "sirve": "Para ordenar tus finanzas y acceder a financiamiento en mejores condiciones, evitando errores comunes al pedir capital.",
+        "aprende": "A comparar alternativas, preparar tu carpeta financiera y proyectar el impacto del financiamiento en tu flujo de caja.",
+        "dirigido": "Pymes que buscan crecer, invertir o estabilizar su operación y quieren tomar mejores decisiones de financiamiento."
+      },
+      "cta": { "label": "Descargar e-book" },
+      "descarga": "form",
+      "media": { "tipo": "imagen", "src": "assets/photos/brand/split-capital.jpg" }
+    },
+    {
+      "slug": "5-canales-para-vender-mas",
+      "titulo": "5 canales para vender más este año",
+      "tipo": "infografia",
+      "ruta": "mercado",
+      "portada": "assets/photos/brand/split-mercado.jpg",
+      "resumen": "Una infografía con los canales de venta con mayor potencial para pymes y cómo empezar en cada uno.",
+      "descripcion": "Un vistazo rápido y accionable a los 5 canales que hoy están abriendo más oportunidades comerciales para las pymes de Chile.",
+      "about": {
+        "contiene": "Un resumen visual de 5 canales (marketplaces, redes, retail, exportación y venta directa) con ventajas y primeros pasos.",
+        "sirve": "Para identificar dónde vale la pena invertir tu tiempo comercial y diversificar tus fuentes de venta.",
+        "aprende": "A reconocer qué canal se ajusta mejor a tu producto y cómo dar el primer paso en cada uno.",
+        "dirigido": "Pymes que quieren llegar a nuevos clientes y expandir sus fronteras comerciales."
+      },
+      "cta": { "label": "Descargar infografía" },
+      "descarga": "form",
+      "media": { "tipo": "imagen", "src": "assets/photos/brand/split-mercado.jpg" }
+    },
+    {
+      "slug": "automatiza-tu-pyme-20-min",
+      "titulo": "Automatiza tu pyme en 20 minutos",
+      "tipo": "video",
+      "ruta": "digitalizacion",
+      "portada": "assets/photos/brand/split-digitalizacion.jpg",
+      "resumen": "Cápsula en video con herramientas simples para automatizar tareas repetitivas y ganar tiempo cada semana.",
+      "descripcion": "Una cápsula práctica que muestra, paso a paso, cómo automatizar tareas cotidianas de tu pyme con herramientas accesibles.",
+      "about": {
+        "contiene": "Una demostración en video con 3 automatizaciones fáciles de implementar sin conocimientos técnicos.",
+        "sirve": "Para dejar de perder tiempo en tareas manuales y enfocarte en lo que hace crecer tu negocio.",
+        "aprende": "A configurar tus primeras automatizaciones y detectar qué procesos conviene digitalizar primero.",
+        "dirigido": "Pymes que quieren profesionalizar su operación y aún hacen todo de forma manual."
+      },
+      "cta": { "label": "Ver cápsula" },
+      "descarga": { "href": "#video" },
+      "media": { "tipo": "video", "provider": "youtube", "id": "aqz-KE-bpKQ" }
+    },
+    {
+      "slug": "forma-y-reten-a-tu-equipo",
+      "titulo": "Cómo formar y retener a tu equipo",
+      "tipo": "ebook",
+      "ruta": "talento",
+      "portada": "assets/photos/brand/split-talento.jpg",
+      "resumen": "E-book con prácticas concretas para capacitar, motivar y retener talento en una pyme.",
+      "descripcion": "Una guía para construir un equipo comprometido: desde la capacitación hasta la retención, pensada para la realidad de una pyme.",
+      "about": {
+        "contiene": "Metodologías simples de formación, evaluación y reconocimiento, con plantillas listas para usar.",
+        "sirve": "Para reducir la rotación, mejorar el clima y elevar la productividad de tu equipo.",
+        "aprende": "A diseñar un plan de formación básico y a implementar prácticas de retención de bajo costo.",
+        "dirigido": "Pymes que quieren fortalecer su gestión interna y cuidar a las personas que hacen crecer el negocio."
+      },
+      "cta": { "label": "Descargar e-book" },
+      "descarga": "form",
+      "media": { "tipo": "imagen", "src": "assets/photos/brand/split-talento.jpg" }
+    }
+  ]
+}
