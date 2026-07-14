@@ -166,7 +166,11 @@ p { margin: 0; }
 .site-header__top .nav__cta:first-child:hover { background: var(--color-morado); }
 .site-header__top .nav__cta:last-child { background: transparent; color: #fff; }
 .site-header__top .nav__cta:last-child:hover { background: rgba(255,255,255,.14); }
-@media (max-width: 900px) { .site-header__top { display: none; } }
+@media (max-width: 900px) {
+  /* En móvil el top bar sigue visible con los 2 CTAs a su ancho natural */
+  .site-header__top-inner { justify-content: flex-start; }
+  .site-header__top .nav__cta.desktop { display: inline-flex; flex: 0 0 auto; white-space: nowrap; padding: 0 14px; font-size: 12px; letter-spacing: 0; }
+}
 .nav { display: flex; align-items: center; gap: 28px; height: var(--header-h); }
 .nav__logo { display: flex; align-items: center; }
 .nav__logo img { height: 34px; width: auto; }

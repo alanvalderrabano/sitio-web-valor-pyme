@@ -12,7 +12,7 @@ import json, os, re, html
 
 SITE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site")
 BASE_URL = "https://www.valorpyme.cl/"
-CSS_V = "recursos.css?v=7"
+CSS_V = "recursos.css?v=10"
 
 TYPE_ICON = {
     "ebook": '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 015.5 4H11v15H5.5A1.5 1.5 0 014 17.5v-12z" stroke="currentColor" stroke-width="1.7"/><path d="M20 5.5A1.5 1.5 0 0018.5 4H13v15h5.5a1.5 1.5 0 001.5-1.5v-12z" stroke="currentColor" stroke-width="1.7"/></svg>',
@@ -146,7 +146,7 @@ def build():
             '<link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">\n'
             '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
             '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-            '<link rel="stylesheet" href="styles.css?v=44">\n'
+            '<link rel="stylesheet" href="styles.css?v=46">\n'
             '<link rel="stylesheet" href="' + CSS_V + '">\n'
             '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>\n'
             '</head>\n<body data-ruta="" class="hp">\n\n'
