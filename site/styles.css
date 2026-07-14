@@ -157,6 +157,16 @@ p { margin: 0; }
   transition: box-shadow .3s, background .3s;
 }
 .site-header.scrolled { box-shadow: var(--shadow-sm); }
+/* Top bar: barra superior oscura (estilo sitio actual) con botones de acción */
+.site-header__top { background: var(--color-gris-oscuro); }
+.site-header__top-inner { display: flex; align-items: stretch; justify-content: flex-end; gap: 0; min-height: 44px; }
+.site-header__top .nav__cta { height: 44px; margin: 0; padding: 0 22px; border-radius: 0; font-size: 13px; font-weight: 700; letter-spacing: .01em; box-shadow: none; transform: none; }
+.site-header__top .nav__cta:hover { transform: none; box-shadow: none; }
+.site-header__top .nav__cta:first-child { background: var(--color-corp); color: #fff; }
+.site-header__top .nav__cta:first-child:hover { background: var(--color-morado); }
+.site-header__top .nav__cta:last-child { background: transparent; color: #fff; }
+.site-header__top .nav__cta:last-child:hover { background: rgba(255,255,255,.14); }
+@media (max-width: 900px) { .site-header__top { display: none; } }
 .nav { display: flex; align-items: center; gap: 28px; height: var(--header-h); }
 .nav__logo { display: flex; align-items: center; }
 .nav__logo img { height: 34px; width: auto; }
@@ -560,7 +570,8 @@ body.menu-open { overflow: hidden; }
 }
 .ally-card:hover { transform: translateY(-4px); border-color: var(--c-morado); }
 .ally-card__logo { height: 64px; display: flex; align-items: center; justify-content: center; }
-.ally-card__logo img { max-height: 60px; max-width: 180px; width: auto; object-fit: contain; }
+.ally-card__logo img { max-height: 60px; max-width: 180px; width: auto; object-fit: contain; margin: 0 auto; }
+.ally-card__logo img[src*="FACEA19"], .ally-card__logo img[src*="otic.png"] { max-height: 76px; }
 .ally-card__desc { font-size: 15px; color: var(--color-gris); line-height: 1.5; margin: 0; }
 .ally-card__name { font-family: var(--font-display); font-weight: 800; color: var(--c-morado-deep); font-size: 16px; margin: 4px 0 0; }
 
@@ -569,6 +580,7 @@ body.menu-open { overflow: hidden; }
   .hp-allies__carousel .ally-card { flex: 0 0 calc(50% - 10px); min-width: 0; min-height: clamp(258px, 23vw, 296px); padding: 26px 22px; }
   .hp-allies__carousel .ally-card__logo { height: 54px; }
   .hp-allies__carousel .ally-card__logo img { max-height: 46px; max-width: 100%; }
+  .hp-allies__carousel .ally-card__logo img[src*="FACEA19"], .hp-allies__carousel .ally-card__logo img[src*="otic.png"] { max-height: 60px; }
 }
 
 @media (max-width: 860px) {
@@ -827,6 +839,7 @@ body.menu-open { overflow: hidden; }
 .hp-rcard__logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--c-lavanda); border-radius: 0; padding: 10px 12px; }
 .hp-rcard__logo img { max-height: 30px; max-width: 84%; width: auto; object-fit: contain; filter: grayscale(1); opacity: .72; transition: filter .35s var(--ease), opacity .35s var(--ease); }
 .hp-rcard__logo:hover img { filter: grayscale(0); opacity: 1; }
+.hp-rcard[href="/ruta-talento"] .hp-rcard__logo img { max-height: 50px; }
 .hp-rcard .link-more { color: var(--rc); margin-top: auto; }
 /* Home · 4 rutas: exactamente 2 cards completas por vista en desktop (sin corte) */
 @media (min-width: 901px) { .hp-rail .hp-rcard { flex: 0 0 calc(50% - 12px); } }

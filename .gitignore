@@ -3,3 +3,6 @@
 node_modules/
 .cache/
 .claude/
+
+# Servidor local de desarrollo (rutas limpias)
+site/serve.py
