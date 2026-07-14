@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contacto — Valor Pyme | Escríbenos y te respondemos</title>
-<meta name="description" content="¿Necesitas contactar a Valor Pyme? Escríbenos para consultas, alianzas, prensa o ayuda de la comunidad. Cuéntanos tu motivo y te responderemos lo antes posible.">
+<meta name="description" content="Estamos aquí para ayudarte. Completa el formulario y nuestro equipo te responderá según el motivo de tu consulta.">
 <meta property="og:title" content="Contacto — Valor Pyme">
-<meta property="og:description" content="¿Necesitas contactarnos? Escríbenos para consultas, alianzas, prensa o ayuda de la comunidad y te responderemos lo antes posible.">
+<meta property="og:description" content="Estamos aquí para ayudarte. Completa el formulario y nuestro equipo te responderá según el motivo de tu consulta.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.valorpyme.cl/contacto">
 <meta property="og:image" content="assets/photos/brand/bn-home.jpg">
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=40">
+<link rel="stylesheet" href="styles.css?v=43">
 
-<!-- JSON-LD: FAQPage (respuestas PROVISIONALES — pendiente validación del cliente) -->
+<!-- JSON-LD: FAQPage -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -26,7 +26,7 @@
       "name": "¿Cuánto tiempo demora la respuesta?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Respondemos los mensajes en días hábiles, normalmente dentro de 2 a 3 días. Según el volumen de consultas el plazo puede variar."
+        "text": "Nuestro equipo revisa cada solicitud y procura responder en un plazo de 3 a 7 días hábiles."
       }
     },
     {
@@ -34,7 +34,7 @@
       "name": "¿Cómo recibiré la respuesta?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Te responderemos al correo electrónico que indiques en el formulario, por lo que te recomendamos revisar que esté escrito correctamente."
+        "text": "La respuesta será enviada al correo electrónico que registres en el formulario."
       }
     },
     {
@@ -42,7 +42,7 @@
       "name": "¿Qué sucede después de enviar mi consulta?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tu mensaje llega a nuestro equipo, que lo deriva al área correspondiente según el motivo seleccionado. Cuando esté en revisión, te contactaremos al correo registrado."
+        "text": "Tu solicitud será derivada al equipo correspondiente según el motivo de contacto seleccionado para que pueda ser gestionada de forma adecuada."
       }
     },
     {
@@ -50,7 +50,7 @@
       "name": "¿Puedo contactar a Valor Pyme para proponer una alianza o colaboración?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. Selecciona el motivo «Quiero ser partner o aliado» o «Quiero colaborar con Valor Pyme» y cuéntanos tu propuesta. Nuestro equipo la revisará y se pondrá en contacto contigo."
+        "text": "Sí. Si representas una empresa, organización, institución o medio de comunicación, selecciona la categoría correspondiente y nos pondremos en contacto contigo."
       }
     }
   ]
@@ -74,18 +74,39 @@
           <a class="drop-route" href="/ruta-talento" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span></a>
         </div>
       </div>
-      <a href="/nosotros">Nosotros</a><a href="#">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a><a href="/contacto" aria-current="page">Contacto</a>
+      <a href="/#aliados">Alianzas</a>
+      <a href="/nosotros">Nosotros</a>
+      <div class="nav__item">
+        <a class="nav__item-link" href="/blog" aria-haspopup="true">Recursos
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown dropdown--community" role="menu">
+          <a class="drop-route drop-route--simple" href="/blog" role="menuitem"><span><span class="drop-route__t">Blog</span><span class="drop-route__d">Artículos y novedades</span></span></a>
+          <a class="drop-route drop-route--simple" href="#" role="menuitem"><span><span class="drop-route__t">Foro</span><span class="drop-route__d">Conversaciones de la comunidad</span></span></a>
+          <a class="drop-route drop-route--simple" href="#" role="menuitem"><span><span class="drop-route__t">Recursos</span><span class="drop-route__d">Guías y herramientas</span></span></a>
+        </div>
+      </div>
     </nav>
-    <a href="#mensaje" class="btn btn--sm nav__cta desktop">Contáctanos</a>
+    <a href="/#suscripcion" class="btn btn--sm nav__cta desktop">Suscríbete</a>
+    <a href="/#diagnostico" class="btn btn--sm nav__cta desktop">Encuentra tu ruta</a>
     <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="/rutas">Rutas Pyme</a>
-  <a href="/ruta-capital">Ruta Capital</a><a href="/ruta-mercado">Ruta Mercado</a><a href="/ruta-digitalizacion">Ruta Digitalización</a><a href="/ruta-talento">Ruta Talento y Gestión</a>
-  <a href="/nosotros">Nosotros</a><a href="#">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a><a href="/contacto" aria-current="page">Contacto</a>
-  <a href="#mensaje" class="btn">Contáctanos</a>
+  <a href="/ruta-capital" class="mobile-menu__sub">Ruta Capital</a>
+  <a href="/ruta-mercado" class="mobile-menu__sub">Ruta Mercado</a>
+  <a href="/ruta-digitalizacion" class="mobile-menu__sub">Ruta Digitalización</a>
+  <a href="/ruta-talento" class="mobile-menu__sub">Ruta Talento y Gestión</a>
+  <a href="/#aliados">Alianzas</a>
+  <a href="/nosotros">Nosotros</a>
+  <a href="/blog">Recursos</a>
+  <a href="/blog" class="mobile-menu__sub">Blog</a>
+  <a href="#" class="mobile-menu__sub">Foro</a>
+  <a href="#" class="mobile-menu__sub">Recursos</a>
+  <a href="/#suscripcion" class="btn">Suscríbete</a>
+  <a href="/#diagnostico" class="btn">Encuentra tu ruta</a>
 </div>
 
 <main>
@@ -97,7 +118,7 @@
       <div class="hp-hero__lead">
         <span class="hp-eyebrow reveal">Hablemos</span>
         <h1 class="hp-display reveal d1">¿Necesitas contactarnos?</h1>
-        <p class="hp-hero__sub reveal d2">Cuéntanos qué necesitas y nuestro equipo te orientará. Elige un motivo, escríbenos tu mensaje y te responderemos lo antes posible.</p>
+        <p class="hp-hero__sub reveal d2">Estamos aquí para ayudarte. Completa el formulario y nuestro equipo te responderá según el motivo de tu consulta.</p>
         <div class="hp-hero__cta reveal d3">
           <a href="#mensaje" class="btn btn--onfill">Contáctanos <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a href="#ayuda" class="btn btn--ghost">Ver motivos</a>
@@ -114,51 +135,49 @@
 <section class="hp-section hp-contacto-help" id="ayuda">
   <div class="container">
     <div class="hp-contacto-help__intro reveal">
-      <span class="hp-eyebrow">Motivos de contacto</span>
       <h2 class="hp-h2">¿Cómo podemos ayudarte?</h2>
-      <p>Elige la opción que mejor describe tu necesidad. Te llevaremos al formulario con el motivo ya seleccionado.</p>
     </div>
     <ul class="hp-motivos reveal" role="list">
       <li><a class="hp-motivo" href="#mensaje" data-motivo="Quiero ser partner o aliado">
         <span class="hp-motivo__ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <span class="hp-motivo__t">Quiero ser partner o aliado</span>
+        <span class="hp-motivo__copy"><span class="hp-motivo__t">Quiero ser partner o aliado</span><span class="hp-motivo__d">¿Representas una empresa u organización interesada en aportar soluciones al ecosistema pyme? Envíanos tus datos y nosotros te contactaremos cuando abramos la convocatoria de nuevos partners.</span></span>
         <span class="hp-motivo__arrow" aria-hidden="true">→</span>
       </a></li>
       <li><a class="hp-motivo" href="#mensaje" data-motivo="Tengo una consulta sobre Valor Pyme">
         <span class="hp-motivo__ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <span class="hp-motivo__t">Tengo una consulta sobre Valor Pyme</span>
+        <span class="hp-motivo__copy"><span class="hp-motivo__t">Tengo una consulta sobre Valor Pyme</span><span class="hp-motivo__d">Si quieres saber más sobre la comunidad, las rutas, beneficios, actividades o cómo participar, estaremos encantados de ayudarte.</span></span>
         <span class="hp-motivo__arrow" aria-hidden="true">→</span>
       </a></li>
       <li><a class="hp-motivo" href="#mensaje" data-motivo="Soy parte de la comunidad y necesito ayuda">
         <span class="hp-motivo__ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <span class="hp-motivo__t">Soy parte de la comunidad y necesito ayuda</span>
+        <span class="hp-motivo__copy"><span class="hp-motivo__t">Soy parte de la comunidad y necesito ayuda</span><span class="hp-motivo__d">¿Tienes dudas sobre tu registro, acceso a contenidos, beneficios o actividades? Cuéntanos qué necesitas y te apoyaremos.</span></span>
         <span class="hp-motivo__arrow" aria-hidden="true">→</span>
       </a></li>
       <li><a class="hp-motivo" href="#mensaje" data-motivo="Quiero colaborar con Valor Pyme">
         <span class="hp-motivo__ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <span class="hp-motivo__t">Quiero colaborar con Valor Pyme</span>
+        <span class="hp-motivo__copy"><span class="hp-motivo__t">Quiero colaborar con Valor Pyme</span><span class="hp-motivo__d">Si tienes una propuesta, iniciativa o proyecto que pueda aportar valor a emprendedores y pymes, queremos conocerla.</span></span>
         <span class="hp-motivo__arrow" aria-hidden="true">→</span>
       </a></li>
       <li><a class="hp-motivo" href="#mensaje" data-motivo="Prensa o comunicaciones">
         <span class="hp-motivo__ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <span class="hp-motivo__t">Prensa o comunicaciones</span>
+        <span class="hp-motivo__copy"><span class="hp-motivo__t">Prensa o comunicaciones</span><span class="hp-motivo__d">Para solicitudes de prensa, entrevistas, vocerías, colaboraciones editoriales o consultas relacionadas con comunicaciones.</span></span>
         <span class="hp-motivo__arrow" aria-hidden="true">→</span>
       </a></li>
       <li><a class="hp-motivo" href="#mensaje" data-motivo="Otro">
         <span class="hp-motivo__ico" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h.01M12 12h.01M19 12h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <span class="hp-motivo__t">Otro</span>
+        <span class="hp-motivo__copy"><span class="hp-motivo__t">Otro</span><span class="hp-motivo__d">¿Tu consulta no encaja en las categorías anteriores? Escríbenos y encontraremos la mejor forma de ayudarte.</span></span>
         <span class="hp-motivo__arrow" aria-hidden="true">→</span>
       </a></li>
     </ul>
@@ -172,8 +191,7 @@
       <span class="hp-eyebrow">Escríbenos</span>
       <!-- H3 según el doc: el H1 de la página es el hero, mantenemos jerarquía -->
       <h3 class="hp-h2">Envíanos tu mensaje</h3>
-      <!-- PENDIENTE: texto de apoyo bajo el formulario no venía en el doc. Texto provisional: -->
-      <p>Completa el formulario y te contactaremos al correo que nos indiques. Mientras más detalles nos des, mejor podremos ayudarte.</p>
+      <p>Completa tus datos y cuéntanos cómo podemos ayudarte. Nuestro equipo revisará tu solicitud y la derivará al área correspondiente.</p>
     </div>
 
     <!--
@@ -226,11 +244,7 @@
   </div>
 </section>
 
-<!-- ============ SECCIÓN 4 — FAQ (acordeón · respuestas PROVISIONALES) ============ -->
-<!--
-  PENDIENTE: el doc del cliente NO trae las respuestas de las FAQ.
-  Las respuestas a continuación son PROPUESTAS provisionales, sujetas a validación del cliente.
--->
+<!-- ============ SECCIÓN 4 — FAQ (acordeón) ============ -->
 <section class="hp-faq hp-section">
   <div class="container">
     <div class="hp-faq__intro reveal">
@@ -240,19 +254,19 @@
     <div class="faq reveal">
       <details class="faq__item">
         <summary><h3>¿Cuánto tiempo demora la respuesta?</h3><span class="faq__icon" aria-hidden="true"></span></summary>
-        <div class="faq__a"><p>Respondemos los mensajes en días hábiles, normalmente dentro de 2 a 3 días. Según el volumen de consultas el plazo puede variar.</p></div>
+        <div class="faq__a"><p>Nuestro equipo revisa cada solicitud y procura responder en un plazo de 3 a 7 días hábiles.</p></div>
       </details>
       <details class="faq__item">
         <summary><h3>¿Cómo recibiré la respuesta?</h3><span class="faq__icon" aria-hidden="true"></span></summary>
-        <div class="faq__a"><p>Te responderemos al correo electrónico que indiques en el formulario, por lo que te recomendamos revisar que esté escrito correctamente.</p></div>
+        <div class="faq__a"><p>La respuesta será enviada al correo electrónico que registres en el formulario.</p></div>
       </details>
       <details class="faq__item">
         <summary><h3>¿Qué sucede después de enviar mi consulta?</h3><span class="faq__icon" aria-hidden="true"></span></summary>
-        <div class="faq__a"><p>Tu mensaje llega a nuestro equipo, que lo deriva al área correspondiente según el motivo seleccionado. Cuando esté en revisión, te contactaremos al correo registrado.</p></div>
+        <div class="faq__a"><p>Tu solicitud será derivada al equipo correspondiente según el motivo de contacto seleccionado para que pueda ser gestionada de forma adecuada.</p></div>
       </details>
       <details class="faq__item">
         <summary><h3>¿Puedo contactar a Valor Pyme para proponer una alianza o colaboración?</h3><span class="faq__icon" aria-hidden="true"></span></summary>
-        <div class="faq__a"><p>Sí. Selecciona el motivo «Quiero ser partner o aliado» o «Quiero colaborar con Valor Pyme» y cuéntanos tu propuesta. Nuestro equipo la revisará y se pondrá en contacto contigo.</p></div>
+        <div class="faq__a"><p>Sí. Si representas una empresa, organización, institución o medio de comunicación, selecciona la categoría correspondiente y nos pondremos en contacto contigo.</p></div>
       </details>
     </div>
   </div>

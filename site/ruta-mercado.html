@@ -12,7 +12,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=40">
+<link rel="stylesheet" href="styles.css?v=43">
 </head>
 <body data-ruta="mercado">
 
@@ -28,31 +28,27 @@
           <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </a>
         <div class="dropdown" role="menu">
-          <a class="drop-route" href="/ruta-capital" role="menuitem">
-            <span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-capital.png" alt="" width="38" height="38"></span>
-            <span><span class="drop-route__t">Ruta Capital</span><span class="drop-route__d">Acceso financiero y bancarización</span></span>
-          </a>
-          <a class="drop-route" href="/ruta-mercado" role="menuitem" aria-current="page">
-            <span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-mercado.png" alt="" width="38" height="38"></span>
-            <span><span class="drop-route__t">Ruta Mercado</span><span class="drop-route__d">Nuevos clientes y logística</span></span>
-          </a>
-          <a class="drop-route" href="/ruta-digitalizacion" role="menuitem">
-            <span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-digitalizacion.png" alt="" width="38" height="38"></span>
-            <span><span class="drop-route__t">Ruta Digitalización</span><span class="drop-route__d">Automatiza y profesionaliza</span></span>
-          </a>
-          <a class="drop-route" href="/ruta-talento" role="menuitem">
-            <span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="38" height="38"></span>
-            <span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span>
-          </a>
+          <a class="drop-route" href="/ruta-capital" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-capital.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Capital</span><span class="drop-route__d">Acceso financiero y bancarización</span></span></a>
+          <a class="drop-route" href="/ruta-mercado" role="menuitem" aria-current="page"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-mercado.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Mercado</span><span class="drop-route__d">Nuevos clientes y logística</span></span></a>
+          <a class="drop-route" href="/ruta-digitalizacion" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-digitalizacion.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Digitalización</span><span class="drop-route__d">Automatiza y profesionaliza</span></span></a>
+          <a class="drop-route" href="/ruta-talento" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span></a>
         </div>
       </div>
+      <a href="/#aliados">Alianzas</a>
       <a href="/nosotros">Nosotros</a>
-      <a href="#">Aliados</a>
-      <a href="#">Comunidad</a>
-      <a href="#">Recursos</a>
-      <a href="/contacto">Contacto</a>
+      <div class="nav__item">
+        <a class="nav__item-link" href="/blog" aria-haspopup="true">Recursos
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown dropdown--community" role="menu">
+          <a class="drop-route drop-route--simple" href="/blog" role="menuitem"><span><span class="drop-route__t">Blog</span><span class="drop-route__d">Artículos y novedades</span></span></a>
+          <a class="drop-route drop-route--simple" href="#" role="menuitem"><span><span class="drop-route__t">Foro</span><span class="drop-route__d">Conversaciones de la comunidad</span></span></a>
+          <a class="drop-route drop-route--simple" href="#" role="menuitem"><span><span class="drop-route__t">Recursos</span><span class="drop-route__d">Guías y herramientas</span></span></a>
+        </div>
+      </div>
     </nav>
-    <a href="#" class="btn btn--sm nav__cta desktop">Registrarme</a>
+    <a href="/#suscripcion" class="btn btn--sm nav__cta desktop">Suscríbete</a>
+    <a href="/#diagnostico" class="btn btn--sm nav__cta desktop">Encuentra tu ruta</a>
     <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -60,16 +56,18 @@
 <!-- ============ MENÚ MÓVIL ============ -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/rutas">Rutas Pyme</a>
-  <a href="/ruta-capital">Ruta Capital</a>
-  <a href="/ruta-mercado" aria-current="page">Ruta Mercado</a>
-  <a href="/ruta-digitalizacion">Ruta Digitalización</a>
-  <a href="/ruta-talento">Ruta Talento y Gestión</a>
+  <a href="/ruta-capital" class="mobile-menu__sub">Ruta Capital</a>
+  <a href="/ruta-mercado" class="mobile-menu__sub">Ruta Mercado</a>
+  <a href="/ruta-digitalizacion" class="mobile-menu__sub">Ruta Digitalización</a>
+  <a href="/ruta-talento" class="mobile-menu__sub">Ruta Talento y Gestión</a>
+  <a href="/#aliados">Alianzas</a>
   <a href="/nosotros">Nosotros</a>
-  <a href="#">Aliados</a>
-  <a href="#">Comunidad</a>
-  <a href="#">Recursos</a>
-  <a href="/contacto">Contacto</a>
-  <a href="#" class="btn">Registrarme</a>
+  <a href="/blog">Recursos</a>
+  <a href="/blog" class="mobile-menu__sub">Blog</a>
+  <a href="#" class="mobile-menu__sub">Foro</a>
+  <a href="#" class="mobile-menu__sub">Recursos</a>
+  <a href="/#suscripcion" class="btn">Suscríbete</a>
+  <a href="/#diagnostico" class="btn">Encuentra tu ruta</a>
 </div>
 
 <main>
@@ -119,7 +117,6 @@
     </div>
     <div class="grid-stations grid-stations--2col">
       <article class="station-card reveal">
-        <span class="station-card__num">01</span>
         <div class="station-card__logo"><img src="assets/logos/partners/walmart.png" alt="Walmart Marketplace"></div>
         <span class="tag">Vitrina online.</span>
         <h3>Walmart Marketplace</h3>
@@ -128,7 +125,6 @@
         <a href="#" class="link-more">Postular mis productos. <span class="arrow">→</span></a>
       </article>
       <article class="station-card reveal d1">
-        <span class="station-card__num">02</span>
         <div class="station-card__logo"><img src="assets/logos/partners/blueexpress.png" alt="Blue Express"></div>
         <span class="tag">Logista para no frenar la venta.</span>
         <h3>Blue Express</h3>
@@ -137,7 +133,6 @@
         <a href="#" class="link-more">Activar mi cupón. <span class="arrow">→</span></a>
       </article>
       <article class="station-card reveal d2">
-        <span class="station-card__num">03</span>
         <div class="station-card__logo"><img src="assets/logos/partners/sawu.png" alt="SAWU" style="max-height:46px"></div>
         <span class="tag">Oportunidades B2B</span>
         <h3>SAWU</h3>
@@ -146,7 +141,6 @@
         <a href="#" class="link-more">Ver oportunidades B2B <span class="arrow">→</span></a>
       </article>
       <article class="station-card reveal d3">
-        <span class="station-card__num">04</span>
         <div class="station-card__logo"><img src="assets/logos/partners/salcobrand.png" alt="Salcobrand"></div>
         <span class="tag">Farma/retail</span>
         <h3>Salcobrang</h3>
@@ -210,14 +204,14 @@
 
 <!-- ============ FRANJA B&N (parallax) ============ -->
 <section class="bw-band">
-  <div class="bw-band__bg parallax" data-parallax="1.05" style="background-image:url(assets/img/franja-bn-mercado.jpg)"></div>
+  <div class="bw-band__bg bw-band__bg--mercado" style="background-image:url(assets/img/franja-bn-mercado.jpg)"></div>
   <div class="bw-band__overlay"></div>
   <svg class="bw-band__line" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <path class="route-line" style="stroke:var(--ruta);stroke-width:9" d="M-40 110 L470 110 A60 60 0 0 1 530 170 A60 60 0 0 0 590 230 L1240 230"/>
   </svg>
   <div class="container">
     <span class="eyebrow">El viaje pyme</span>
-    <h2>Cada cliente nuevo es una estación más en tu viaje.</h2>
+    <h2>Abrir mercado también es descubrir nuevos caminos para crecer.</h2>
   </div>
 </section>
 
