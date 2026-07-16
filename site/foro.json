@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "titulo": "Foro Valor Pyme",
+    "rutas": {
+      "capital":        { "label": "Capital",            "color": "#FFF21C" },
+      "mercado":        { "label": "Mercado",            "color": "#330559" },
+      "digitalizacion": { "label": "Digitalización",     "color": "#FF2B5E" },
+      "talento":        { "label": "Talento y Gestión",  "color": "#00BD70" },
+      "general":        { "label": "Comunidad",          "color": "#6126FF" }
+    }
+  },
+  "temas": [
+    {
+      "slug": "foro-desafio-financiamiento",
+      "ruta": "capital",
+      "titulo": "¿Cuál ha sido tu mayor desafío para acceder a financiamiento?",
+      "resumen": "El acceso a capital sigue siendo uno de los mayores dolores de cabeza para las pymes chilenas. Queremos escuchar tu experiencia real: qué te frenó y cómo lo resolviste.",
+      "fecha": "2026-07-10",
+      "fecha_label": "10 de julio, 2026",
+      "lectura": "Tema abierto",
+      "contexto": [
+        "Conseguir financiamiento es, para muchos emprendedores, el primer gran muro del viaje. Historial crediticio corto, garantías que no alcanzan, tasas altas o simplemente no saber a qué puerta tocar: los obstáculos son distintos para cada negocio, pero casi todos han pasado por alguno.",
+        "En la Ruta Capital reunimos aliados y herramientas para ordenar tus finanzas y acceder a financiamiento, pero antes queremos entender tu realidad. Tu experiencia le sirve a otra pyme que hoy está atascada en el mismo punto."
+      ],
+      "pregunta": "¿Cuál fue el obstáculo más difícil que enfrentaste para conseguir capital, y qué hiciste (o harías distinto) para superarlo?",
+      "comentarios": [
+        { "nombre": "María José Contreras", "empresa": "Almacén Doña Mary · Maipú", "fecha_label": "11 de julio, 2026", "texto": "Lo más difícil fue no tener historial. Llevaba dos años vendiendo pero todo informal, así que en el banco no existía. Empecé a bancarizar todo y a los seis meses ya me evaluaron distinto. Formalizarse aburre, pero abre puertas." },
+        { "nombre": "Rodrigo Salas", "empresa": "Taller RS Metalmecánica · Rancagua", "fecha_label": "12 de julio, 2026", "texto": "A mí me pedían garantías que no tenía. Terminé usando un fondo de garantía estatal y ahí sí me aprobaron el crédito. Ojalá lo hubiera sabido antes, perdí como un año dando vueltas." },
+        { "nombre": "Camila Fuentes", "empresa": "Repostería Dulce Sur · Temuco", "fecha_label": "12 de julio, 2026", "texto": "Mi consejo: llega con los números ordenados. La primera vez fui sin flujo de caja proyectado y me dijeron que no. La segunda llevé todo claro y cambió la conversación por completo." }
+      ]
+    },
+    {
+      "slug": "foro-herramienta-digital-ordenar-negocio",
+      "ruta": "digitalizacion",
+      "titulo": "¿Qué herramienta digital te ayudó a ordenar mejor tu negocio?",
+      "resumen": "Una planilla, una app de facturación, un punto de venta… A veces una sola herramienta cambia el día a día de una pyme. Cuéntanos cuál fue la tuya y por qué.",
+      "fecha": "2026-07-08",
+      "fecha_label": "8 de julio, 2026",
+      "lectura": "Tema abierto",
+      "contexto": [
+        "Digitalizar no siempre significa un gran sistema ni una inversión enorme. Muchas veces empieza con reemplazar el cuaderno por una planilla, o el WhatsApp desordenado por una herramienta simple que te ahorra horas cada semana.",
+        "Queremos armar, entre toda la comunidad, una lista real de herramientas que funcionan para pymes de verdad — no las que salen en la publicidad, sino las que tú usas cada día."
+      ],
+      "pregunta": "¿Qué herramienta digital (gratuita o de pago) marcó un antes y un después en la gestión de tu negocio, y para qué la usas?",
+      "comentarios": [
+        { "nombre": "Ignacio Bravo", "empresa": "Distribuidora IB · San Bernardo", "fecha_label": "9 de julio, 2026", "texto": "Un sistema de boleta y factura electrónica. Antes perdía medio día haciendo documentos a mano; ahora emito en segundos y el SII lo tengo al día sin estrés." },
+        { "nombre": "Paulina Rojas", "empresa": "Peluquería Estilo P · La Serena", "fecha_label": "10 de julio, 2026", "texto": "Una app de agenda con recordatorios automáticos. Bajé un montón las horas perdidas por clientas que no llegaban. Se avisan solas y yo me dedico a atender." },
+        { "nombre": "Diego Araya", "empresa": "Ferretería El Clavo · Concepción", "fecha_label": "11 de julio, 2026", "texto": "Una simple planilla de inventario compartida en la nube. Suena básico, pero dejé de comprar cosas que ya tenía y de quedarme sin lo que sí se vende." }
+      ]
+    },
+    {
+      "slug": "foro-primeros-clientes",
+      "ruta": "mercado",
+      "titulo": "¿Cómo conseguiste tus primeros clientes fuera de tu círculo cercano?",
+      "resumen": "Vender a familiares y amigos es fácil; el salto real es llegar a quien no te conoce. Comparte qué te funcionó para conseguir a esos primeros clientes desconocidos.",
+      "fecha": "2026-07-05",
+      "fecha_label": "5 de julio, 2026",
+      "lectura": "Tema abierto",
+      "contexto": [
+        "Casi todo negocio parte vendiéndole a los conocidos. El problema es que ese mercado se agota rápido, y ahí llega la pregunta incómoda: ¿cómo consigo clientes que no me conocen ni me tienen confianza todavía?",
+        "No hay una sola respuesta. Redes sociales, boca a boca, alianzas, ferias, marketplaces… lo que a uno le funciona a otro no. Por eso queremos juntar experiencias concretas de la comunidad."
+      ],
+      "pregunta": "¿Cuál fue el primer canal o acción que te trajo clientes fuera de tu círculo, y qué le dirías a alguien que recién está empezando a buscarlos?",
+      "comentarios": [
+        { "nombre": "Valentina Muñoz", "empresa": "Velas Aroma Nativa · Valparaíso", "fecha_label": "6 de julio, 2026", "texto": "Ferias de emprendedores. Vender cara a cara me enseñó a explicar mi producto y varias clientas de esas ferias hoy me compran online todos los meses." },
+        { "nombre": "Cristián Herrera", "empresa": "Servicios TI Herrera · Antofagasta", "fecha_label": "7 de julio, 2026", "texto": "Alianzas con otros negocios que le vendían al mismo cliente que yo, pero sin competir. Nos recomendábamos entre nosotros. Cero costo y clientes con confianza previa." }
+      ]
+    },
+    {
+      "slug": "foro-retener-equipo",
+      "ruta": "talento",
+      "titulo": "¿Cómo logras retener a tu equipo cuando no puedes competir en sueldo?",
+      "resumen": "Las pymes rara vez ganan la guerra del sueldo contra las grandes empresas. Pero muchas sí logran equipos leales y comprometidos. ¿Cuál es tu secreto?",
+      "fecha": "2026-07-02",
+      "fecha_label": "2 de julio, 2026",
+      "lectura": "Tema abierto",
+      "contexto": [
+        "Formar a alguien, que rinda bien y que después se vaya a los pocos meses es una de las frustraciones más caras para una pyme. Y competir sueldo contra sueldo con una gran empresa casi nunca es posible.",
+        "Sin embargo, hay negocios pequeños con equipos que llevan años y se ponen la camiseta. Algo hacen bien. Queremos aprender de esas historias y armar ideas aplicables para cualquier pyme."
+      ],
+      "pregunta": "Más allá del sueldo, ¿qué has hecho para que tu equipo se quede y se comprometa con tu negocio?",
+      "comentarios": [
+        { "nombre": "Andrea Pizarro", "empresa": "Café de Barrio · Ñuñoa", "fecha_label": "3 de julio, 2026", "texto": "Horarios flexibles y tratarlos como personas, no como número. Cuando alguien tiene un tema familiar, damos permiso sin drama. Eso se devuelve en compromiso, lo he visto." },
+        { "nombre": "Felipe Navarro", "empresa": "Constructora Navarro Ltda. · Chillán", "fecha_label": "4 de julio, 2026", "texto": "Los hago crecer. Al maestro más comprometido lo capacité y hoy lidera cuadrillas. Saber que acá pueden avanzar hace que no se vayan a la primera oferta." }
+      ]
+    }
+  ]
+}
