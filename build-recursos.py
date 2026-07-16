@@ -12,7 +12,7 @@ import json, os, re, html
 
 SITE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site")
 BASE_URL = "https://www.valorpyme.cl/"
-CSS_V = "recursos.css?v=10"
+CSS_V = "recursos.css?v=11"
 
 TYPE_ICON = {
     "ebook": '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 015.5 4H11v15H5.5A1.5 1.5 0 014 17.5v-12z" stroke="currentColor" stroke-width="1.7"/><path d="M20 5.5A1.5 1.5 0 0018.5 4H13v15h5.5a1.5 1.5 0 001.5-1.5v-12z" stroke="currentColor" stroke-width="1.7"/></svg>',
@@ -57,7 +57,7 @@ def detail_html(r, rutas):
             '<a href="/recursos" class="rd-back"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Centro de Recursos</a>'
             '<div class="rd-badges">'
             '<span class="rd-badge rd-badge--type">' + TYPE_ICON.get(r["tipo"], "") + tipo_label + '</span>'
-            '<span class="rd-badge rd-badge--ruta" style="background:' + rm["color"] + '"><span class="rc-dot"></span>Ruta ' + e(rm["label"]) + '</span>'
+            '<span class="rd-badge rd-badge--ruta" style="color:' + rm["color"] + '"><img class="rd-ruta-ico" src="assets/icons/rutas/ruta-' + r["ruta"] + '.png" alt="" width="20" height="20">Ruta ' + e(rm["label"]) + '</span>'
             '</div>'
             '<h1>' + e(r["titulo"]) + '</h1>'
             '<p class="rd-hero__desc">' + e(desc) + '</p>'

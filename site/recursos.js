@@ -94,7 +94,7 @@
             '<span class="rc-card__type">' + (TYPE_ICON[r.tipo] || '') + tipoLabel(r.tipo) + '</span>' +
           '</div>' +
           '<div class="rc-card__body">' +
-            '<span class="rc-card__ruta" style="color:' + rm.color + '"><span class="rc-dot" style="background:' + rm.color + '"></span>Ruta ' + esc(rm.label) + '</span>' +
+            '<span class="rc-card__ruta" style="color:' + rm.color + '"><img class="rc-ruta-ico" src="assets/icons/rutas/ruta-' + esc(r.ruta) + '.png" alt="" width="20" height="20" loading="lazy">Ruta ' + esc(rm.label) + '</span>' +
             '<h3 class="rc-card__title">' + esc(r.titulo) + '</h3>' +
             '<p class="rc-card__desc">' + esc(r.resumen) + '</p>' +
             '<span class="rc-card__cta">' + esc((r.cta && r.cta.label) || 'Ver recurso') +
