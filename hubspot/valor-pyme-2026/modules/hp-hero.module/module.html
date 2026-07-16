@@ -1,0 +1,25 @@
+{# ============================================================
+   MÓDULO · Home Hero
+   Sección de apertura con video de fondo full-bleed + copy + CTA.
+   Editable: título, bajada, texto y enlace del botón.
+   El video de fondo es un asset decorativo del theme.
+   ============================================================ #}
+<section class="hp-hero">
+  <video class="hp-hero__bg" autoplay muted playsinline preload="auto" poster="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/motion/hero-bg-poster.jpg" aria-hidden="true">
+    <source src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/motion/hero-bg.webm" type="video/webm">
+    <source src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/motion/hero-bg.mp4" type="video/mp4">
+  </video>
+  <div class="container">
+    <div class="hp-hero__grid">
+      <div class="hp-hero__copy">
+        {% if module.heading %}<h1 class="hp-display reveal">{{ module.heading }}</h1>{% endif %}
+        {% if module.subtext %}<div class="hp-hero__sub reveal d1">{{ module.subtext }}</div>{% endif %}
+        {% if module.cta_text %}
+        <div class="hp-hero__cta reveal d2">
+          <a href="{{ module.cta_url.href }}" class="btn btn--onfill">{{ module.cta_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Antetítulo", "type": "text", "required": false, "default": "Cómo ser parte" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Comienza tu viaje en tres pasos" },
+  {
+    "id": "steps", "name": "steps", "label": "Pasos", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 3 },
+    "default": [
+      {
+        "title": "Crea tu cuenta",
+        "desc": "Regístrate gratis y accede al ecosistema Valor Pyme."
+      },
+      {
+        "title": "Completa tu perfil",
+        "desc": "Cuéntanos más sobre tu empresa para recomendarte contenidos y oportunidades relevantes."
+      },
+      {
+        "title": "Explora y conecta",
+        "desc": "Accede a beneficios, recursos, iniciativas y espacios de aprendizaje junto a otras pymes."
+      }
+    ],
+    "children": [
+      { "id": "title", "name": "title", "label": "Título", "type": "text", "required": false, "default": "" },
+      { "id": "desc", "name": "desc", "label": "Descripción", "type": "text", "required": false, "default": "" }
+    ]
+  },
+  { "id": "cta_text", "name": "cta_text", "label": "Texto del botón", "type": "text", "required": false, "default": "Quiero ser parte" },
+  { "id": "cta_url", "name": "cta_url", "label": "Enlace del botón", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "#suscripcion" } }
+]

@@ -1,0 +1,13 @@
+{
+  "label": "Home · Hero",
+  "content_types": [
+    "SITE_PAGE",
+    "LANDING_PAGE"
+  ],
+  "is_available_for_new_content": true,
+  "global": false,
+  "categories": [
+    "media"
+  ],
+  "smart_type": "NOT_SMART"
+}

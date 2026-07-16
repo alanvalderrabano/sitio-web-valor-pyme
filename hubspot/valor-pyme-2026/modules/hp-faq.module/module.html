@@ -1,0 +1,35 @@
+{# MÓDULO · Home Preguntas frecuentes — repeater de preguntas con <details>/<summary>. Además genera un JSON-LD FAQPage (schema.org) dinámico desde el mismo repeater para AEO/SEO. #}
+<section class="hp-faq hp-section">
+  <div class="container">
+    <div class="hp-faq__intro reveal">
+      {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+    </div>
+    <div class="faq reveal">
+      {% for item in module.items %}
+      <details class="faq__item">
+        <summary><h3>{{ item.question }}</h3><span class="faq__icon" aria-hidden="true"></span></summary>
+        <div class="faq__a">{{ item.answer }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% if module.items %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in module.items %}{
+      "@type": "Question",
+      "name": {{ item.question|escape_jsonvalue }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer|striptags|trim|escape_jsonvalue }}
+      }
+    }{% if not loop.last %},{% endif %}{% endfor %}
+  ]
+}
+</script>
+{% endif %}

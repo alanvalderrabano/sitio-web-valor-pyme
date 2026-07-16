@@ -1,0 +1,24 @@
+{# MÓDULO · Home Tres pasos — pasos para unirse al ecosistema. El número se pinta con loop.index; las clases reveal/d1/d2 se calculan por índice. Conserva el div glow y el SVG arrow. #}
+<section class="hp-steps hp-section" id="suscripcion">
+  <div class="hp-steps__glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hp-steps__intro reveal">
+      {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+    </div>
+    <ol class="hp-steps__grid">
+      {% for step in module.steps %}
+      <li class="hp-tstep reveal{% if loop.index0 > 0 %} d{{ loop.index0 }}{% endif %}">
+        <span class="hp-tstep__num">{{ loop.index }}</span>
+        {% if step.title %}<h3>{{ step.title }}</h3>{% endif %}
+        {% if step.desc %}<p>{{ step.desc }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    {% if module.cta_text %}
+    <div class="center" style="margin-top:clamp(28px,4vw,44px)">
+      <a href="{{ module.cta_url.href }}" class="btn btn--onfill">{{ module.cta_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    {% endif %}
+  </div>
+</section>

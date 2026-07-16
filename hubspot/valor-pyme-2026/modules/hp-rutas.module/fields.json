@@ -1,0 +1,278 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "required": false,
+    "default": "Las 4 rutas"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Cada empresa tiene desafíos distintos. Encuentra tu ruta."
+  },
+  {
+    "id": "bodytext",
+    "name": "bodytext",
+    "label": "Párrafo introductorio",
+    "type": "richtext",
+    "required": false,
+    "default": "Hemos organizado nuestras soluciones en cuatro rutas para ayudarte a avanzar según las necesidades de tu negocio."
+  },
+  {
+    "id": "cta_text",
+    "name": "cta_text",
+    "label": "Texto del botón",
+    "type": "text",
+    "required": false,
+    "default": "Ver todas las rutas"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Enlace del botón",
+    "type": "url",
+    "required": false,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "/rutas"
+    }
+  },
+  {
+    "id": "routes",
+    "name": "routes",
+    "label": "Rutas",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 4
+    },
+    "default": [
+      {
+        "route_url": {
+          "type": "EXTERNAL",
+          "href": "/ruta-capital"
+        },
+        "color": "#FFF21C",
+        "icon_filename": "ruta-capital.png",
+        "title": "Ruta Capital",
+        "tag_text": "Fortalece la salud financiera",
+        "tag_style": "color:#7A6A00;background:#FFFBCC",
+        "desc": "Explora alternativas de financiamiento, inversión y herramientas económicas para dar solidez financiera a tu operación.",
+        "link_color": "#7A6A00",
+        "logos": [
+          {
+            "filename": "bci.png",
+            "alt": "Bci"
+          },
+          {
+            "filename": "fintegram.png",
+            "alt": "Fintegram"
+          },
+          {
+            "filename": "cobranzaonline.png",
+            "alt": "Cobranza Online"
+          }
+        ]
+      },
+      {
+        "route_url": {
+          "type": "EXTERNAL",
+          "href": "/ruta-mercado"
+        },
+        "color": "#330559",
+        "icon_filename": "ruta-mercado.png",
+        "title": "Ruta Mercado",
+        "tag_text": "Conexión Comercial y Mercado",
+        "tag_style": "color:#330559;background:#E7DEF2",
+        "desc": "Conecta con nuevos clientes, canales de venta y redes comerciales para expandir tus fronteras y vender más.",
+        "link_color": "#330559",
+        "logos": [
+          {
+            "filename": "walmart.png",
+            "alt": "Walmart Marketplace"
+          },
+          {
+            "filename": "blueexpress.png",
+            "alt": "Blue Express"
+          },
+          {
+            "filename": "sawu-horizontal.png",
+            "alt": "Sawu"
+          }
+        ]
+      },
+      {
+        "route_url": {
+          "type": "EXTERNAL",
+          "href": "/ruta-digitalizacion"
+        },
+        "color": "#FF2B5E",
+        "icon_filename": "ruta-digitalizacion.png",
+        "title": "Ruta Digitalización",
+        "tag_text": "Transformación Tecnológica",
+        "tag_style": "color:#A8003C;background:#FFE3EE",
+        "desc": "Adopta herramientas digitales, softwares y procesos modernos para automatizar tareas y optimizar tu tiempo.",
+        "link_color": "#A8003C",
+        "logos": [
+          {
+            "filename": "defontana.png",
+            "alt": "Defontana"
+          },
+          {
+            "filename": "buk.svg",
+            "alt": "Buk"
+          },
+          {
+            "filename": "rindegastos.png",
+            "alt": "Rindegastos"
+          },
+          {
+            "filename": "omia.png",
+            "alt": "OMIA"
+          },
+          {
+            "filename": "kalamar.png",
+            "alt": "Kalamar"
+          }
+        ]
+      },
+      {
+        "route_url": {
+          "type": "EXTERNAL",
+          "href": "/ruta-talento"
+        },
+        "color": "#00BD70",
+        "icon_filename": "ruta-talento.png",
+        "title": "Ruta Talento y Gestión",
+        "tag_text": "Capacitación y Procesos",
+        "tag_style": "color:#00733E;background:#D4FBE8",
+        "desc": "Desarrolla las habilidades de tu equipo y mejora la gestión interna para liderar una pyme eficiente y sostenible.",
+        "link_color": "#00733E",
+        "logos": [
+          {
+            "filename": "FACEA19.png",
+            "alt": "FACEA UC"
+          },
+          {
+            "filename": "microsoft.png",
+            "alt": "Microsoft"
+          },
+          {
+            "filename": "otic.png",
+            "alt": "OTIC CChC"
+          }
+        ]
+      }
+    ],
+    "children": [
+      {
+        "id": "route_url",
+        "name": "route_url",
+        "label": "Enlace de la ruta",
+        "type": "url",
+        "required": false,
+        "default": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      },
+      {
+        "id": "color",
+        "name": "color",
+        "label": "Color (ej. #FFF21C)",
+        "type": "text",
+        "required": false,
+        "default": "#FFF21C"
+      },
+      {
+        "id": "icon_filename",
+        "name": "icon_filename",
+        "label": "Ícono (nombre de archivo, ej. ruta-capital.png)",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "tag_text",
+        "name": "tag_text",
+        "label": "Texto de la etiqueta",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "tag_style",
+        "name": "tag_style",
+        "label": "Estilo de la etiqueta (ej. color:#7A6A00;background:#FFFBCC)",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "desc",
+        "name": "desc",
+        "label": "Descripción",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "link_color",
+        "name": "link_color",
+        "label": "Color del enlace 'Ver ruta'",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "logos",
+        "name": "logos",
+        "label": "Logos de partners",
+        "type": "group",
+        "occurrence": {
+          "min": 0,
+          "max": null,
+          "default": 3
+        },
+        "default": [
+          {
+            "filename": "bci.png",
+            "alt": "Bci"
+          }
+        ],
+        "children": [
+          {
+            "id": "filename",
+            "name": "filename",
+            "label": "Logo (nombre de archivo)",
+            "type": "text",
+            "required": false,
+            "default": ""
+          },
+          {
+            "id": "alt",
+            "name": "alt",
+            "label": "Texto alternativo",
+            "type": "text",
+            "required": false,
+            "default": ""
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "label": "Valor Pyme 2026",
+  "preview_path": "./templates/home.html",
+  "enable_domain_stylesheets": false,
+  "version": "1.0.0",
+  "author": {
+    "name": "Valor Pyme",
+    "url": "https://www.valorpyme.cl"
+  },
+  "documentation_url": "https://www.valorpyme.cl"
+}

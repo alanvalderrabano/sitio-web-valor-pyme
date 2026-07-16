@@ -1,0 +1,34 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Antetítulo", "type": "text", "required": false, "default": "Preguntas frecuentes" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Preguntas frecuentes" },
+  {
+    "id": "items", "name": "items", "label": "Preguntas", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 5 },
+    "default": [
+      {
+        "question": "¿Qué es Valor Pyme?",
+        "answer": "<p>Una comunidad gratuita que conecta emprendedores y pymes con soluciones, oportunidades, formación y beneficios para apoyar su crecimiento.</p>"
+      },
+      {
+        "question": "¿Tiene algún costo participar?",
+        "answer": "<p>No. El acceso a la comunidad es gratuito.</p>"
+      },
+      {
+        "question": "¿Necesito ser cliente de alguna empresa socia?",
+        "answer": "<p>No. Puedes registrarte y explorar las oportunidades disponibles para tu negocio.</p>"
+      },
+      {
+        "question": "¿Cómo sé qué ruta es la adecuada para mí?",
+        "answer": "<p>Puedes explorar las rutas o realizar el diagnóstico para descubrir las alternativas más relevantes según tu situación.</p>"
+      },
+      {
+        "question": "¿Qué beneficios obtengo al registrarme?",
+        "answer": "<p>Acceso a recursos, contenidos, actividades, oportunidades y soluciones ofrecidas por los socios y partners del ecosistema.</p>"
+      }
+    ],
+    "children": [
+      { "id": "question", "name": "question", "label": "Pregunta", "type": "text", "required": false, "default": "" },
+      { "id": "answer", "name": "answer", "label": "Respuesta", "type": "richtext", "required": false, "default": "" }
+    ]
+  }
+]

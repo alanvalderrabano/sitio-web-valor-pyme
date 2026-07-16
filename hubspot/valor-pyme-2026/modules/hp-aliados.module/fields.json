@@ -1,0 +1,148 @@
+[
+  {
+    "id": "badge",
+    "name": "badge",
+    "label": "Badge",
+    "type": "text",
+    "required": false,
+    "default": "Nuestros Aliados"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Una red construida para generar más oportunidades"
+  },
+  {
+    "id": "subtitle",
+    "name": "subtitle",
+    "label": "Subtítulo",
+    "type": "text",
+    "required": false,
+    "default": "El motor del viaje: empresas con soluciones para los desafíos de las pymes"
+  },
+  {
+    "id": "lead",
+    "name": "lead",
+    "label": "Párrafo introductorio",
+    "type": "text",
+    "required": false,
+    "default": "Reunimos empresas, instituciones y especialistas que colaboran para acercar soluciones reales a quienes emprenden."
+  },
+  {
+    "id": "cta_text",
+    "name": "cta_text",
+    "label": "Texto del botón",
+    "type": "text",
+    "required": false,
+    "default": "Conocer las alianzas"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Enlace del botón",
+    "type": "url",
+    "required": false,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "#"
+    }
+  },
+  {
+    "id": "allies",
+    "name": "allies",
+    "label": "Aliados",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 8
+    },
+    "default": [
+      {
+        "logo_filename": "bci.png",
+        "alt": "Bci",
+        "desc": "Inclusión y educación financiera para un crecimiento sostenible.",
+        "name": "Bci"
+      },
+      {
+        "logo_filename": "blueexpress.png",
+        "alt": "Blue Express",
+        "desc": "Logística, cobertura y distribución de tus productos en todo Chile.",
+        "name": "Blue Express"
+      },
+      {
+        "logo_filename": "defontana.png",
+        "alt": "Defontana",
+        "desc": "Digitaliza la gestión de tu Pyme con ERP gratis y exclusivos descuentos para ordenar, controlar y escalar tu negocio.",
+        "name": "Defontana"
+      },
+      {
+        "logo_filename": "FACEA19.png",
+        "alt": "Facultad de Economía y Administración UC",
+        "desc": "Formación, mentorías y evidencia para mejorar la productividad y el crecimiento de la PYMEs en Chile.",
+        "name": "Facultad de Economía y Administración UC"
+      },
+      {
+        "logo_filename": "otic.png",
+        "alt": "OTIC CChC",
+        "desc": "Capacitación y desarrollo de talento para aumentar la productividad de las pymes de Chile.",
+        "name": "OTIC CChC"
+      },
+      {
+        "logo_filename": "microsoft.png",
+        "alt": "Microsoft",
+        "desc": "Tecnología, inteligencia artificial y herramientas digitales para acelerar la transformación pyme.",
+        "name": "Microsoft"
+      },
+      {
+        "logo_filename": "multigremial.png",
+        "alt": "Multigremial Nacional",
+        "desc": "La voz de las pymes que impulsa mejores condiciones para emprender en Chile.",
+        "name": "Multigremial Nacional"
+      },
+      {
+        "logo_filename": "walmart.png",
+        "alt": "Walmart Marketplace",
+        "desc": "Nuevos canales y oportunidades de venta para llevar tus productos a todo Chile.",
+        "name": "Walmart Marketplace"
+      }
+    ],
+    "children": [
+      {
+        "id": "logo_filename",
+        "name": "logo_filename",
+        "label": "Archivo del logo (ej: bci.png)",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "alt",
+        "name": "alt",
+        "label": "Texto alternativo del logo",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "desc",
+        "name": "desc",
+        "label": "Descripción",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "item_name",
+        "name": "item_name",
+        "label": "Nombre del aliado",
+        "type": "text",
+        "required": false,
+        "default": ""
+      }
+    ]
+  }
+]

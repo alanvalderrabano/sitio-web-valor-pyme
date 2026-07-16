@@ -1,0 +1,18 @@
+[
+  {
+    "id": "line1",
+    "name": "line1",
+    "label": "Línea 1",
+    "type": "text",
+    "required": false,
+    "default": "Encuentra la ruta que más te sirva, descubre los recursos que ofrecen nuestros aliados"
+  },
+  {
+    "id": "line2",
+    "name": "line2",
+    "label": "Línea 2",
+    "type": "text",
+    "required": false,
+    "default": "y combínalos a tu manera"
+  }
+]

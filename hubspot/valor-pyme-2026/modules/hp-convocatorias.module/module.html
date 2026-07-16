@@ -1,0 +1,37 @@
+{# MÓDULO · Home Convocatorias — carrusel de convocatorias/programas/beneficios destacados #}
+{% set fallback_images = ["blog-a.jpg", "blog-b.jpg", "blog-c.jpg", "blog-d.jpg"] %}
+<section class="hp-conv hp-conv--split hp-section" id="convocatorias">
+  <div class="container">
+    <div class="hp-conv__layout reveal" data-conv-carousel>
+      <div class="hp-conv__intro">
+        {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+        {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+        {% if module.intro %}<p>{{ module.intro }}</p>{% endif %}
+        <div class="hp-conv__controls">
+          <button class="hp-conv__nav" type="button" data-conv-prev aria-label="Convocatoria anterior">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="hp-conv__nav" type="button" data-conv-next aria-label="Convocatoria siguiente">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="hp-conv__viewport" data-conv-viewport>
+        <ul class="hp-conv__track" data-conv-track>
+          {% for card in module.cards %}
+          {% set fallback = fallback_images[loop.index0 % 4] %}
+          <li class="conv-card">
+            <div class="conv-card__media"><img src="{{ card.image.src or 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/' ~ fallback }}" alt="{{ card.image.alt }}" loading="lazy"></div>
+            <div class="conv-card__body">
+              {% if card.tag %}<span class="conv-card__tag">{{ card.tag }}</span>{% endif %}
+              {% if card.title %}<h3 class="conv-card__title">{{ card.title }}</h3>{% endif %}
+              {% if card.desc %}<p class="conv-card__desc">{{ card.desc }}</p>{% endif %}
+              {% if card.link_text %}<a href="{{ card.link_url.href }}" class="link-more">{{ card.link_text }} <span class="arrow">→</span></a>{% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

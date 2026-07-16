@@ -1,0 +1,134 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Antetítulo",
+    "type": "text",
+    "required": false,
+    "default": "Blog"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Historias, aprendizajes y tendencias para pymes"
+  },
+  {
+    "id": "bodytext",
+    "name": "bodytext",
+    "label": "Párrafo introductorio",
+    "type": "richtext",
+    "required": false,
+    "default": "Descubre contenidos que te ayudarán a enfrentar desafíos, identificar oportunidades y fortalecer el crecimiento de tu empresa."
+  },
+  {
+    "id": "posts",
+    "name": "posts",
+    "label": "Artículos",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 3
+    },
+    "default": [
+      {
+        "image": {
+          "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-a.jpg",
+          "alt": ""
+        },
+        "date": "15 de junio, 2026",
+        "title": "Cómo preparar la logística de tu Pyme para entregar una mejor experiencia a tus clientes",
+        "link_url": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      },
+      {
+        "image": {
+          "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-b.jpg",
+          "alt": ""
+        },
+        "date": "28 de mayo, 2026",
+        "title": "Ley 40 Horas: guía práctica para que tu Pyme se adapte a los nuevos dictámenes de la Dirección del Trabajo",
+        "link_url": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      },
+      {
+        "image": {
+          "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-c.jpg",
+          "alt": ""
+        },
+        "date": "25 de mayo, 2026",
+        "title": "Operación Renta 2026: 3 indicadores que tu Pyme debería revisar hoy",
+        "link_url": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": "image",
+        "name": "image",
+        "label": "Imagen",
+        "type": "image",
+        "required": false,
+        "default": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "id": "date",
+        "name": "date",
+        "label": "Fecha",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "link_url",
+        "name": "link_url",
+        "label": "Enlace",
+        "type": "url",
+        "required": false,
+        "default": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cta_text",
+    "name": "cta_text",
+    "label": "Texto del botón",
+    "type": "text",
+    "required": false,
+    "default": "Ir al blog"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Enlace del botón",
+    "type": "url",
+    "required": false,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "#"
+    }
+  }
+]

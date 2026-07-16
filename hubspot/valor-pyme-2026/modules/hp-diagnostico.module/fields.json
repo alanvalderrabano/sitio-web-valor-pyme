@@ -1,0 +1,45 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Antetítulo",
+    "type": "text",
+    "required": false,
+    "default": "Tu ruta personalizada"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "¿No sabes cuál es el mejor camino para tu empresa?"
+  },
+  {
+    "id": "bodytext",
+    "name": "bodytext",
+    "label": "Párrafo",
+    "type": "richtext",
+    "required": false,
+    "default": "Cada pyme enfrenta desafíos distintos. Descubre las oportunidades más relevantes para tu negocio y encuentra la ruta que mejor se adapta a tus necesidades."
+  },
+  {
+    "id": "cta_text",
+    "name": "cta_text",
+    "label": "Texto del botón",
+    "type": "text",
+    "required": false,
+    "default": "Descubrir mi ruta"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Enlace del botón",
+    "type": "url",
+    "required": false,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "#diagnostico"
+    }
+  }
+]

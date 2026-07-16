@@ -1,0 +1,32 @@
+{# MÓDULO · Home Blog destacado — grilla de artículos con imagen, fecha, título y CTA al blog #}
+{% set fallback_images = ["blog-a.jpg", "blog-b.jpg", "blog-c.jpg"] %}
+<section class="hp-blog hp-section" id="blog">
+  <div class="container">
+    <div class="hp-blog__intro reveal">
+      {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+      {% if module.bodytext %}<p>{{ module.bodytext }}</p>{% endif %}
+    </div>
+    <ul class="hp-blog__grid reveal">
+      {% for post in module.posts %}
+      {% set fallback = fallback_images[loop.index0 % 3] %}
+      <li class="hp-blog__card">
+        <div class="hp-blog__media">
+          <img src="{{ post.image.src or 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/' ~ fallback }}" alt="{{ post.image.alt }}" loading="lazy">
+          <span class="hp-blog__bar"></span>
+        </div>
+        <div class="hp-blog__body">
+          {% if post.date %}<time class="hp-blog__date">{{ post.date }}</time>{% endif %}
+          {% if post.title %}<h3>{{ post.title }}</h3>{% endif %}
+          <a href="{{ post.link_url.href }}" class="link-more">Leer más <span class="arrow">→</span></a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if module.cta_text %}
+    <div class="center" style="margin-top:clamp(28px,4vw,44px)">
+      <a href="{{ module.cta_url.href }}" class="btn btn--onfill">{{ module.cta_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    {% endif %}
+  </div>
+</section>
