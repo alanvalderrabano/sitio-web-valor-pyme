@@ -122,6 +122,7 @@
   font-size: 12px; font-weight: 700; letter-spacing: .02em;
 }
 .rc-card__ruta .rc-dot { width: 9px; height: 9px; border-radius: 50%; }
+.rc-ruta-ico { width: 20px; height: 20px; border-radius: 50%; flex: 0 0 auto; object-fit: contain; }
 .rc-card__title { font-size: 20px; line-height: 1.15; color: var(--color-texto-dark); }
 .rc-card__desc { font-size: 14.5px; line-height: 1.5; color: var(--color-texto-body); margin: 0; }
 .rc-card__cta {
@@ -145,7 +146,8 @@
 .rd-badge { display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 14px; font-size: 13px; font-weight: 700; white-space: nowrap; }
 .rd-badge--type svg { width: 15px; height: 15px; flex: 0 0 auto; }
 .rd-badge--type { background: var(--color-lavanda); color: var(--color-morado); }
-.rd-badge--ruta { color: #fff; }
+.rd-badge--ruta { background: #fff; box-shadow: inset 0 0 0 1.5px currentColor; }
+.rd-badge--ruta .rd-ruta-ico { width: 20px; height: 20px; border-radius: 50%; flex: 0 0 auto; object-fit: contain; margin-left: -3px; }
 .rd-badge .rc-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; }
 .rd-hero h1 { font-size: clamp(32px, 4.6vw, 52px); margin-bottom: 16px; }
 .rd-hero__desc { font-size: 17px; line-height: 1.55; color: var(--color-texto-body); max-width: 54ch; margin-bottom: 26px; }
