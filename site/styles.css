@@ -510,6 +510,7 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 /* ===== Menú móvil ===== */
 .mobile-menu { position: fixed; inset: var(--header-h) 0 0 0; background:#fff; z-index: 99; transform: translateX(100%); transition: transform .35s var(--ease); padding: 24px var(--pad-x); overflow-y:auto; display:flex; flex-direction:column; gap: 6px; }
 .mobile-menu.open { transform: none; }
+.mobile-menu__label { font-size: 18px; font-weight: 600; padding: 14px 0; border-bottom: 1px solid var(--color-borde); color: var(--color-texto-dark); }
 .mobile-menu a { font-size: 18px; font-weight: 600; padding: 14px 0; border-bottom: 1px solid var(--color-borde); color: var(--color-texto-dark); }
 .mobile-menu a.mobile-menu__sub { padding-left: 18px; font-size: 14px; color: var(--color-gris); }
 .mobile-menu .btn { margin-top: 18px; color: #fff; border-bottom: none; justify-content: center; }
