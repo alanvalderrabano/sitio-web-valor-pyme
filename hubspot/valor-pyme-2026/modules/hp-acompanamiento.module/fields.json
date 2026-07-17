@@ -1,0 +1,37 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título",
+    "type": "text",
+    "required": false,
+    "default": "No tienes que recorrer el camino solo."
+  },
+  {
+    "id": "bodytext",
+    "name": "bodytext",
+    "label": "Texto",
+    "type": "richtext",
+    "required": false,
+    "default": "<p>Valor Pyme red de soluciones que conecta emprendedores y pymes con soluciones concretas para crecer.</p><p>Reunimos a socios, partners en un mismo ecosistema para facilitar el acceso a herramientas, oportunidades, formación y acompañamiento en cada etapa del viaje empresarial.</p><p>Porque crecer no debería depender únicamente del esfuerzo individual.</p>"
+  },
+  {
+    "id": "link_text",
+    "name": "link_text",
+    "label": "Texto del enlace",
+    "type": "text",
+    "required": false,
+    "default": "Conoce nuestra historia"
+  },
+  {
+    "id": "link_url",
+    "name": "link_url",
+    "label": "Enlace",
+    "type": "url",
+    "required": false,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "#"
+    }
+  }
+]

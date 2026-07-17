@@ -1,0 +1,15 @@
+{# MÓDULO · Home Franja ciclista — banda con foto de ciclista y copy sobre fondo #}
+<section class="hp-cyclist" aria-label="Encuentra la ruta que más te sirva y combínalos a tu manera">
+  <picture class="hp-cyclist__bg" aria-hidden="true">
+    <source srcset="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/cyclist-wall.webp" type="image/webp">
+    <img src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/cyclist-wall.jpg" alt="" loading="lazy">
+  </picture>
+  <div class="hp-cyclist__veil" aria-hidden="true"></div>
+  <img class="hp-cyclist__photo" src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/img/cyclist-clean.png" alt="" aria-hidden="true">
+  <div class="container">
+    <div class="hp-cyclist__copy reveal">
+      {% if module.line1 %}<p class="hp-cyclist__l1">{{ module.line1 }}</p>{% endif %}
+      {% if module.line2 %}<p class="hp-cyclist__l2">{{ module.line2 }}</p>{% endif %}
+    </div>
+  </div>
+</section>

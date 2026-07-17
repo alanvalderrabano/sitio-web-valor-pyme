@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foro — Valor Pyme | La comunidad de pymes de Chile conversa</title>
+<meta name="description" content="Conversaciones abiertas por Valor Pyme para que las pymes de Chile compartan experiencias sobre financiamiento, digitalización, ventas y equipos. Participa y aprende de otros emprendedores.">
+<meta property="og:title" content="Foro — Valor Pyme">
+<meta property="og:description" content="Un espacio para que las pymes de Chile compartan experiencias reales. Entra a la conversación y participa.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.valorpyme.cl/foro">
+<meta property="og:image" content="assets/photos/brand/blog-a.jpg">
+<link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css?v=57">
+<link rel="stylesheet" href="blog.css?v=3">
+<link rel="stylesheet" href="foro.css?v=2">
+
+<!-- JSON-LD: DiscussionForum + Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Foro Valor Pyme",
+  "url": "https://www.valorpyme.cl/foro",
+  "description": "Conversaciones abiertas por Valor Pyme para la comunidad de pymes de Chile.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Valor Pyme",
+    "logo": "https://www.valorpyme.cl/assets/logos/logo-horizontal-dark.svg"
+  }
+}
+</script>
+</head>
+<body data-ruta="" class="hp">
+
+<header class="site-header">
+  <div class="site-header__top">
+    <div class="container site-header__top-inner">
+      <a href="/#suscripcion" class="btn btn--sm nav__cta desktop">Suscríbete</a>
+      <a href="/#diagnostico" class="btn btn--sm nav__cta desktop">Encuentra tu ruta</a>
+    </div>
+  </div>
+  <div class="container nav">
+    <a class="nav__logo" href="/" aria-label="Valor Pyme — inicio"><img src="assets/logos/logo-horizontal-dark.svg" alt="Valor Pyme"></a>
+    <nav class="nav__menu" aria-label="Principal">
+      <div class="nav__item">
+        <a class="nav__item-link" href="/rutas" aria-haspopup="true">Rutas Pyme
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown" role="menu">
+          <a class="drop-route" href="/ruta-capital" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-capital.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Capital</span><span class="drop-route__d">Acceso financiero y bancarización</span></span></a>
+          <a class="drop-route" href="/ruta-mercado" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-mercado.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Mercado</span><span class="drop-route__d">Nuevos clientes y logística</span></span></a>
+          <a class="drop-route" href="/ruta-digitalizacion" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-digitalizacion.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Digitalización</span><span class="drop-route__d">Automatiza y profesionaliza</span></span></a>
+          <a class="drop-route" href="/ruta-talento" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span></a>
+        </div>
+      </div>
+      <a href="/#aliados">Alianzas</a>
+      <a href="/nosotros">Nosotros</a>
+      <div class="nav__item">
+        <button type="button" class="nav__item-link" aria-haspopup="true">Recursos
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown dropdown--community" role="menu">
+          <a class="drop-route drop-route--simple" href="/blog" role="menuitem"><span><span class="drop-route__t">Blog</span><span class="drop-route__d">Artículos y novedades</span></span></a>
+          <a class="drop-route drop-route--simple" href="/foro" role="menuitem" aria-current="page"><span><span class="drop-route__t">Foro</span><span class="drop-route__d">Conversaciones de la comunidad</span></span></a>
+          <a class="drop-route drop-route--simple" href="/recursos" role="menuitem"><span><span class="drop-route__t">Recursos</span><span class="drop-route__d">Guías y herramientas</span></span></a>
+        </div>
+      </div>
+      <a href="/contacto">Contacto</a>
+    </nav>
+    <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/rutas">Rutas Pyme</a>
+  <a href="/ruta-capital" class="mobile-menu__sub">Ruta Capital</a>
+  <a href="/ruta-mercado" class="mobile-menu__sub">Ruta Mercado</a>
+  <a href="/ruta-digitalizacion" class="mobile-menu__sub">Ruta Digitalización</a>
+  <a href="/ruta-talento" class="mobile-menu__sub">Ruta Talento y Gestión</a>
+  <a href="/#aliados">Alianzas</a>
+  <a href="/nosotros">Nosotros</a>
+  <span class="mobile-menu__label">Recursos</span>
+  <a href="/blog" class="mobile-menu__sub">Blog</a>
+  <a href="/foro" class="mobile-menu__sub">Foro</a>
+  <a href="/recursos" class="mobile-menu__sub">Recursos</a>
+  <a href="/contacto">Contacto</a>
+</div>
+
+<main>
+<!-- ============ HERO (estilo recursos: patrón del isotipo animado) ============ -->
+<section class="fr-hero">
+    <svg class="fr-hero__pattern" viewBox="0 0 1440 718" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><path pathLength="1" d="M374.849 273.185C405.166 287.959 435.595 305.269 465.405 324.553L471.266 328.387L465.405 332.221C435.708 351.449 405.222 368.759 374.849 383.589L372.707 384.661L370.622 383.476C335.121 363.515 298.211 346.43 261.075 332.672L249.523 328.387L261.075 324.158C298.211 310.4 335.121 293.372 370.622 273.355L372.707 272.17L374.849 273.242L374.849 273.185ZM862.287 -391.944C861.949 -304.941 848.537 -218.839 822.447 -135.895L818.727 -123.998L813.938 -135.557C781.085 -215.004 763.841 -299.189 762.601 -385.91C762.601 -387.489 762.658 -388.899 762.714 -390.365C762.714 -390.873 762.714 -391.436 762.771 -392L677.229 -392C677.229 -391.436 677.229 -390.873 677.286 -390.365C677.286 -388.899 677.398 -387.433 677.398 -386.023C676.215 -299.189 658.915 -215.004 626.062 -135.557L621.273 -123.998L617.553 -135.895C591.463 -218.839 578.107 -304.941 577.713 -391.944L492.51 -391.944C490.65 -121.009 270.599 99.0652 -4.14441e-05 100.87L-3.77175e-05 186.125C87.0627 186.463 173.167 199.884 256.06 225.99L267.95 229.711L256.455 234.505C176.943 267.491 92.5288 284.745 5.52241 285.872L1.40875 285.759C0.957938 285.759 0.50714 285.759 0.0563299 285.759L0.0563337 371.297C0.0563337 371.297 0.56348 371.297 0.788885 371.297C2.70483 371.241 4.05724 371.184 5.35332 371.184C92.5287 372.312 176.943 389.622 256.455 422.552L267.95 427.345L256.06 431.066C173.224 457.173 87.119 470.592 -2.52682e-05 470.931L-2.15416e-05 556.186C270.655 557.991 490.65 778.122 492.51 1049L577.713 1049C578.051 960.925 591.745 873.696 618.455 789.794C631.021 750.324 646.518 711.53 664.55 674.484C679.371 643.979 696.783 613.306 716.168 583.308L720 577.388L723.832 583.308C743.104 613.137 760.348 643.585 775.168 673.92L776.239 676.063L775.055 678.149C755.051 713.785 737.976 750.662 724.283 787.708L720 799.266L715.774 787.708C707.885 766.45 698.587 744.572 687.993 722.525C676.553 748.688 666.41 775.528 657.901 802.255L644.771 843.417C665.565 908.092 676.553 975.078 677.455 1042.8L677.568 1046.01C677.568 1047.08 677.624 1047.98 677.624 1048.89L762.432 1048.89C762.432 1048.21 762.433 1047.53 762.489 1046.86L762.602 1042.85C763.785 956.02 781.085 871.722 813.938 792.331L818.728 780.829L822.447 792.726C848.537 875.67 861.949 961.827 862.287 1048.94L947.49 1048.94C949.237 778.347 1169.35 557.991 1440 556.13L1440 470.874C1371.31 470.592 1302.56 462.022 1235.61 445.444L1196.62 461.796C1171.37 472.397 1146.07 485.14 1121.28 499.687C1143.65 507.694 1166.19 514.912 1188.28 521.114L1199.77 524.328L1189.07 529.572C1072.93 586.353 977.694 681.645 920.892 797.913L915.652 808.626L912.44 797.124C901.395 757.428 888.096 719.199 872.994 683.393L870.458 677.642C867.302 670.312 863.977 663.038 860.878 656.384L858.85 652.043L851.749 637.326C850.51 634.676 849.213 632.138 848.03 629.657L846.002 625.767C845.043 623.794 844.029 621.82 843.015 619.846L840.874 615.73L839.239 612.629C835.238 604.904 831.632 598.194 828.138 591.936L826.053 588.214C810.669 560.867 793.595 533.632 775.224 507.469L773.252 504.649L775.45 501.999C810.782 459.146 850.397 419.563 893.167 384.209L895.816 382.01L898.634 383.984C924.837 402.366 951.942 419.507 979.385 434.844L985.414 438.227L979.948 442.4C935.149 476.57 893.9 515.927 857.328 559.344L863.02 569.493C876.318 593.288 888.772 617.816 899.986 642.457C947.715 579.305 1005.25 525.4 1071.07 482.152C1097.38 464.954 1124.55 449.617 1152.16 436.479C1161.62 431.968 1171.2 427.683 1180.56 423.736C1260.63 390.073 1345.78 372.368 1433.58 371.184C1435.21 371.184 1436.68 371.241 1438.14 371.297C1438.7 371.297 1439.32 371.297 1439.89 371.354L1439.89 285.759C1439.27 285.759 1438.65 285.759 1438.03 285.816L1433.75 285.929C1345.78 284.688 1260.63 267.039 1180.56 233.377C1143.09 217.645 1106.34 198.079 1071.35 175.13C1005.25 131.826 947.659 77.9209 899.93 14.6558C888.716 39.2401 876.262 63.7677 862.907 87.6189L857.215 97.7687C894.125 141.581 935.206 180.712 979.836 214.77L985.302 218.942L979.272 222.325C964.508 230.614 949.237 239.918 931.655 251.251C951.829 266.814 973.186 281.756 995.107 295.683L1008.24 304.028C1028.19 292.3 1046.61 282.376 1064.98 273.41L1067.12 272.339L1069.21 273.523C1104.71 293.484 1141.56 310.569 1178.7 324.327L1190.25 328.613L1178.7 332.898C1141.56 346.6 1104.71 363.685 1069.21 383.702L1067.12 384.886L1064.98 383.815C1003.17 354.325 905.452 288.861 857.441 242.793C772.688 161.541 715.943 79.2738 686.133 24.1283C671.538 48.0923 656.041 70.9853 639.981 92.1301L632.937 101.433C644.489 120.21 654.407 135.434 664.438 149.756L666.41 152.576L664.212 155.226C637.445 187.704 607.748 218.716 575.853 247.53C599.577 264.671 621.949 282.263 642.404 299.856L643.531 300.815C669.171 276.907 693.684 251.477 716.337 225.201L719.775 221.198L723.212 225.201C753.923 260.78 787.509 294.443 823.123 325.173L827.124 328.613L823.123 332.052C787.283 362.952 753.36 396.952 722.367 432.983L721.747 433.716C702.024 456.665 683.259 480.855 665.79 505.608L665.001 506.736C646.405 533.237 629.105 560.641 613.722 588.157L611.017 596.277L606.171 588.721C572.022 543.894 532.688 502.62 489.242 466.025L479.098 471.72C455.149 485.14 430.636 497.545 406.18 508.766C469.237 556.469 523.109 613.982 566.274 679.785L567.57 681.814L566.612 684.07C551.566 719.819 538.38 757.935 527.391 797.236L524.179 808.739L518.939 798.026C462.193 681.814 366.903 586.466 250.707 529.629L240 524.385L251.496 521.171C291.111 510.119 329.373 496.869 365.156 481.701C396.149 468.619 427.65 453.113 458.868 435.689C487.044 419.901 514.487 402.591 541.085 383.984L543.902 382.01L546.551 384.209C578.896 410.936 609.89 440.652 638.798 472.679C655.929 448.941 673.51 426.555 691.092 406.143L692.106 405.016C667.931 379.022 642.179 354.212 615.525 331.263L614.792 330.642C591.801 310.907 567.739 292.131 543.057 274.708L541.817 273.862C514.431 254.634 486.762 237.267 458.925 221.649C428.27 204.507 397.502 189.339 367.128 176.427L365.382 175.694C328.979 160.357 290.885 147.106 251.496 136.167L240 132.953L250.707 127.709C366.903 70.9286 462.137 -24.3635 518.939 -140.631L524.179 -151.345L527.391 -139.842C538.38 -100.485 551.566 -62.4242 566.612 -26.6756L567.57 -24.4199L566.217 -22.3902C523.052 43.4687 469.237 100.982 406.18 148.685C430.805 159.962 455.318 172.424 479.098 185.674L489.242 191.369C533.59 153.929 573.036 112.373 607.185 67.3201C627.978 39.9165 647.251 10.4829 664.55 -20.2475C684.668 -55.9962 701.855 -93.0419 715.605 -130.369L719.831 -141.928L724.114 -130.369C737.807 -93.2675 754.881 -56.3907 774.886 -20.7548L776.07 -18.6685L775.055 -16.5258C765.814 2.41989 755.614 21.309 743.949 41.1569L751.67 53.0543C765.983 75.1012 781.31 96.5281 797.258 116.714C808.979 98.558 818.446 82.8824 826.898 67.771C843.973 37.1533 859.188 6.31002 872.092 -24.0256L872.599 -25.2095L873.163 -26.5063C888.209 -62.1985 901.395 -100.315 912.383 -139.729L915.595 -151.232L920.836 -140.519C977.582 -24.307 1072.87 71.0415 1189.01 127.822L1199.72 133.066L1188.22 136.28C1166.19 142.426 1143.65 149.644 1121.22 157.707C1145.96 172.255 1171.26 184.998 1196.56 195.598L1235.5 211.95C1302.67 195.316 1371.36 186.802 1439.89 186.52L1439.89 101.265C1169.35 99.4038 949.293 -120.84 947.377 -391.606L862.174 -391.606L862.287 -391.944Z"/></svg>
+    <span class="fr-hero__scrim" aria-hidden="true"></span>
+    <div class="container">
+      <div class="fr-hero__inner reveal">
+        <h1>Conversaciones reales entre pymes que están creciendo.</h1>
+        <p class="fr-hero__sub">Valor Pyme abre los temas y la comunidad los responde. Un espacio para compartir experiencias sobre financiamiento, digitalización, ventas y equipos — sin teoría, con lo que de verdad te pasó en el negocio.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section class="section fr-how">
+  <div class="container">
+    <div class="fr-how__grid">
+      <div class="fr-step reveal">
+        <span class="fr-step__n">1</span>
+        <h3>Abrimos el tema</h3>
+        <p>El equipo de Valor Pyme propone una pregunta pensada para el día a día de tu pyme.</p>
+      </div>
+      <div class="fr-step reveal d1">
+        <span class="fr-step__n">2</span>
+        <h3>Tú participas</h3>
+        <p>Entras a la conversación y dejas tu experiencia o tu duda en un comentario.</p>
+      </div>
+      <div class="fr-step reveal d2">
+        <span class="fr-step__n">3</span>
+        <h3>La comunidad aprende</h3>
+        <p>Tu aporte queda visible para que otros emprendedores aprendan de casos reales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LISTADO DE TEMAS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="fr-index-head reveal">
+      <span class="hp-eyebrow">Conversaciones abiertas</span>
+      <h2 class="hp-h2">Elige un tema y súmate a la conversación</h2>
+      <p>Estos son los temas que la comunidad está conversando ahora. Entra al que más te interese y comparte tu experiencia.</p>
+    </div>
+    <div class="fr-grid" id="fr-grid" aria-live="polite">
+      <!-- Renderizado por foro.js desde /foro.json -->
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><img src="assets/logos/logo-horizontal-white.svg" alt="Valor Pyme"><p style="color:rgba(255,255,255,.7);font-size:14px;max-width:34ch">Una red de soluciones para el viaje de las pymes de Chile. Cada ruta, una estación más cerca de tu crecimiento.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/valorpyme.cl" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8.4h2.83l.42-3.28H13.5V7.72c0-.95.26-1.6 1.63-1.6h1.74V3.19c-.3-.04-1.33-.13-2.53-.13-2.5 0-4.22 1.53-4.22 4.34v2.42H7.28v3.28h2.84v8.4h3.38z"/></svg></a>
+          <a href="https://www.instagram.com/valorpyme.cl" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/valor-pyme/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Rutas</h4><a href="/rutas">Ver todas las rutas</a><a href="/ruta-capital">Ruta Capital</a><a href="/ruta-mercado">Ruta Mercado</a><a href="/ruta-digitalizacion">Ruta Digitalización</a><a href="/ruta-talento">Ruta Talento y Gestión</a></div>
+      <div><h4>Programa</h4><a href="/nosotros">Nosotros</a><a href="#aliados">Aliados</a><a href="/foro">Comunidad</a><a href="/recursos">Recursos</a></div>
+      <div><h4>Súmate</h4><a href="#suscripcion">Registrarme</a><a href="#diagnostico">Diagnóstico</a><a href="/contacto">Contacto</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year>2026</span> Valor Pyme · Chile</span><span>Términos · Privacidad</span></div>
+  </div>
+</footer>
+
+<script src="script.js?v=17" defer></script>
+<script src="blog.js?v=5" defer></script>
+<script src="foro.js?v=1" defer></script>
+</body>
+</html>

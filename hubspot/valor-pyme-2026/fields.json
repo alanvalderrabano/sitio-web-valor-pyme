@@ -1,0 +1,28 @@
+[
+  {
+    "type": "group",
+    "name": "colores_marca",
+    "label": "Colores de marca",
+    "expanded": false,
+    "children": [
+      {
+        "type": "color",
+        "name": "morado_corporativo",
+        "label": "Morado corporativo",
+        "default": { "color": "#6126FF", "opacity": 100 }
+      },
+      {
+        "type": "color",
+        "name": "morado_deep",
+        "label": "Morado profundo",
+        "default": { "color": "#330559", "opacity": 100 }
+      },
+      {
+        "type": "color",
+        "name": "rosa",
+        "label": "Rosa",
+        "default": { "color": "#FF2B5E", "opacity": 100 }
+      }
+    ]
+  }
+]

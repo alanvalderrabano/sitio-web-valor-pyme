@@ -1,0 +1,36 @@
+{# MÓDULO · Home Rutas — scroll horizontal anclado (data-hscroll/data-rail) con las 4 rutas y metroline SVG #}
+<section class="hp-routes" id="rutas">
+  <div class="hp-hscroll-wrap" data-hscroll>
+    <div class="hp-hscroll-sticky">
+      <div class="hp-hscroll-head">
+        {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+        {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+        {% if module.bodytext %}{{ module.bodytext }}{% endif %}
+        {% if module.cta_text %}<a href="{{ module.cta_url.href }}" class="btn btn--ghost hp-hscroll-cta">{{ module.cta_text }}</a>{% endif %}
+      </div>
+      <div class="hp-hscroll-viewport">
+        <div class="hp-rail" data-rail>
+          {% for route in module.routes %}
+          <a class="hp-rcard" href="{{ route.route_url.href }}" style="--rc:{{ route.color }}">
+            <div class="hp-rcard__top"><img class="hp-rcard__icon" src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/' ~ route.icon_filename }}" alt="" width="48" height="48"><h3>{{ route.title }}</h3></div>
+            <span class="hp-rcard__tag" style="{{ route.tag_style }}">{{ route.tag_text }}</span>
+            <p>{{ route.desc }}</p>
+            <div class="hp-rcard__logos">
+              {% for logo in route.logos %}
+              <span class="hp-rcard__logo"><img src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/logos/partners/' ~ logo.filename }}" alt="{{ logo.alt }}" loading="lazy"></span>
+              {% endfor %}
+            </div>
+            <span class="link-more" style="color:{{ route.link_color }}">Ver ruta <span class="arrow">→</span></span>
+          </a>
+          {% endfor %}
+        </div>
+        <div class="hp-metroline" aria-hidden="true">
+          <svg data-metroline viewBox="0 0 1200 56" preserveAspectRatio="none">
+            <path stroke="rgba(97,38,255,.14)" d="M-40 28 L 1260 28"/>
+            <path stroke="#6126FF" d="M-40 28 L 1260 28"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

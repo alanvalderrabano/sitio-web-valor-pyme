@@ -1,0 +1,29 @@
+{# MÓDULO · Home Aliados — carrusel de logos de aliados con intro y CTA #}
+<section class="hp-allies hp-section" id="aliados">
+  <div class="container">
+    <div class="hp-allies__layout">
+      <div class="hp-allies__intro reveal">
+        {% if module.badge %}<span class="hp-allies__badge">{{ module.badge }}</span>{% endif %}
+        {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+        {% if module.subtitle %}<p class="hp-allies__sub">{{ module.subtitle }}</p>{% endif %}
+        {% if module.lead %}<p class="hp-allies__lead">{{ module.lead }}</p>{% endif %}
+        {% if module.cta_text %}<a href="{{ module.cta_url.href }}" class="btn btn--ghost hp-allies__cta">{{ module.cta_text }}</a>{% endif %}
+      </div>
+      <div class="hp-allies__carousel reveal d1" data-ally-carousel>
+        <button class="hp-allies__nav" type="button" data-ally-prev aria-label="Aliado anterior">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="hp-allies__viewport" data-ally-viewport>
+          <ul class="hp-allies__track" data-ally-track>
+            {% for ally in module.allies %}
+            <li class="ally-card"><div class="ally-card__logo"><img src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/logos/partners/' ~ ally.logo_filename }}" loading="lazy" alt="{{ ally.alt }}"></div><p class="ally-card__desc">{{ ally.desc }}</p><p class="ally-card__name">{{ ally.item_name }}</p></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <button class="hp-allies__nav" type="button" data-ally-next aria-label="Aliado siguiente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+<!--
+  templateType: page
+  label: Home · Valor Pyme
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   HOME · Valor Pyme
+   Cada sección es un módulo independiente y editable desde el
+   editor de páginas. El look & feel vive en el design system
+   (styles.css). Header/footer son partials globales reutilizables.
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+</head>
+<body class="hp" data-ruta="">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% module "hero"           path="../modules/hp-hero" %}
+    {% module "convocatorias"  path="../modules/hp-convocatorias" %}
+    {% module "acompanamiento" path="../modules/hp-acompanamiento" %}
+    {% module "rutas"          path="../modules/hp-rutas" %}
+    {% module "diagnostico"    path="../modules/hp-diagnostico" %}
+    {% module "aliados"        path="../modules/hp-aliados" %}
+    {% module "franja"         path="../modules/hp-franja-ciclista" %}
+    {% module "pasos"          path="../modules/hp-tres-pasos" %}
+    {% module "blog"           path="../modules/hp-blog-destacado" %}
+    {% module "faq"            path="../modules/hp-faq" %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

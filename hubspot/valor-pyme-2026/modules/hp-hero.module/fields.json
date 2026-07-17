@@ -1,0 +1,34 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H1)",
+    "type": "text",
+    "required": false,
+    "default": "Emprender es siempre un viaje."
+  },
+  {
+    "id": "subtext",
+    "name": "subtext",
+    "label": "Bajada",
+    "type": "richtext",
+    "required": false,
+    "default": "<strong>Una red de soluciones para acompañar el crecimiento de tu pyme.</strong><br>Accede a oportunidades, herramientas, formación, beneficios y una comunidad diseñada para ayudarte a enfrentar los desafíos de emprender y avanzar con más apoyo, información y conexiones."
+  },
+  {
+    "id": "cta_text",
+    "name": "cta_text",
+    "label": "Texto del botón",
+    "type": "text",
+    "required": false,
+    "default": "Suscríbete gratis"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Enlace del botón",
+    "type": "url",
+    "required": false,
+    "default": { "type": "EXTERNAL", "href": "#suscripcion" }
+  }
+]

@@ -1,0 +1,151 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "required": false,
+    "default": "Convocatorias destacadas"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Oportunidades en ruta: Beneficios activos para avanzar."
+  },
+  {
+    "id": "intro",
+    "name": "intro",
+    "label": "Párrafo introductorio",
+    "type": "richtext",
+    "required": false,
+    "default": "El viaje no se detiene. Accede a las convocatorias, programas y fondos disponibles hoy para inyectar fuerza a tu negocio."
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Tarjetas",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 4
+    },
+    "default": [
+      {
+        "image": {
+          "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-a.jpg",
+          "alt": ""
+        },
+        "tag": "Convocatoria",
+        "title": "Postula a financiamiento para tu pyme",
+        "desc": "Accede a fondos y líneas de crédito disponibles para impulsar el crecimiento de tu negocio.",
+        "link_text": "Ver convocatoria",
+        "link_url": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      },
+      {
+        "image": {
+          "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-b.jpg",
+          "alt": ""
+        },
+        "tag": "Programa",
+        "title": "Programa de digitalización 2026",
+        "desc": "Herramientas digitales y acompañamiento para modernizar la gestión de tu pyme.",
+        "link_text": "Ver programa",
+        "link_url": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      },
+      {
+        "image": {
+          "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-c.jpg",
+          "alt": ""
+        },
+        "tag": "Beneficio",
+        "title": "Beneficio destacado del mes",
+        "desc": "Descuentos y soluciones exclusivas de nuestros aliados, pensadas para tu negocio.",
+        "link_text": "Ver beneficio",
+        "link_url": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      },
+      {
+        "image": {
+          "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-d.jpg",
+          "alt": ""
+        },
+        "tag": "Formación",
+        "title": "Capacitación gratuita para tu equipo",
+        "desc": "Cursos y talleres para desarrollar las habilidades clave de tu pyme.",
+        "link_text": "Ver más",
+        "link_url": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": "image",
+        "name": "image",
+        "label": "Imagen",
+        "type": "image",
+        "required": false,
+        "default": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "id": "tag",
+        "name": "tag",
+        "label": "Etiqueta",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "desc",
+        "name": "desc",
+        "label": "Descripción",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "link_text",
+        "name": "link_text",
+        "label": "Texto del enlace",
+        "type": "text",
+        "required": false,
+        "default": "Ver más"
+      },
+      {
+        "id": "link_url",
+        "name": "link_url",
+        "label": "Enlace",
+        "type": "url",
+        "required": false,
+        "default": {
+          "type": "EXTERNAL",
+          "href": "#"
+        }
+      }
+    ]
+  }
+]

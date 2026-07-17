@@ -1,0 +1,13 @@
+{
+  "label": "Home · Acompañamiento",
+  "content_types": [
+    "SITE_PAGE",
+    "LANDING_PAGE"
+  ],
+  "is_available_for_new_content": true,
+  "global": false,
+  "categories": [
+    "text"
+  ],
+  "smart_type": "NOT_SMART"
+}
