@@ -311,8 +311,8 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
     linear-gradient(158deg, rgba(255,255,255,.05), rgba(0,0,0,.05));
 }
 .hero-v2__panel::before {
-  content: ""; position: absolute; inset: clamp(24px, 3vw, 48px);
-  border: 1px solid rgba(255,255,255,.28); pointer-events: none;
+  content: ""; position: absolute; inset: clamp(28px, 3.4vw, 52px);
+  border: 2px solid #3ED17E; pointer-events: none;
 }
 .hero-v2__copy {
   position: relative; z-index: 2;
