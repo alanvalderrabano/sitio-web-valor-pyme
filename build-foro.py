@@ -18,7 +18,7 @@ import json, os, re, html
 
 SITE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site")
 BASE_URL = "https://www.valorpyme.cl/"
-CSS_STYLES = "styles.css?v=59"
+CSS_STYLES = "styles.css?v=60"
 CSS_BLOG = "blog.css?v=3"
 CSS_FORO = "foro.css?v=2"
 

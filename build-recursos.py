@@ -146,7 +146,7 @@ def build():
             '<link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">\n'
             '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
             '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-            '<link rel="stylesheet" href="styles.css?v=59">\n'
+            '<link rel="stylesheet" href="styles.css?v=60">\n'
             '<link rel="stylesheet" href="' + CSS_V + '">\n'
             '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>\n'
             '</head>\n<body data-ruta="" class="hp">\n\n'
