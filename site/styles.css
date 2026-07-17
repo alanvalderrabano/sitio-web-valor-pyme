@@ -310,12 +310,19 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
     radial-gradient(120% 46% at 20% 60%, rgba(255,58,120,.42), rgba(255,58,120,0) 62%),
     linear-gradient(158deg, rgba(255,255,255,.05), rgba(0,0,0,.05));
 }
+/* Card con glassmorphism (mismo tratamiento que Ruta Capital/Mercado): la línea
+   decorativa queda por detrás y se difumina a través del vidrio. Colores sin cambios. */
 .hero-v2__panel::before {
-  content: ""; position: absolute; inset: clamp(28px, 3.4vw, 52px);
-  border: 2px solid #3ED17E; pointer-events: none;
+  content: ""; position: absolute; inset: clamp(28px, 3.4vw, 52px); z-index: 2;
+  border: 2px solid #3ED17E;
+  background: rgba(255,255,255,.08);
+  -webkit-backdrop-filter: blur(16px) saturate(115%);
+  backdrop-filter: blur(16px) saturate(115%);
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
 }
 .hero-v2__copy {
-  position: relative; z-index: 2;
+  position: relative; z-index: 3;
   padding: clamp(32px, 5.2vw, 84px) clamp(24px,3vw,56px) clamp(32px,5.2vw,84px) clamp(48px, 6.4vw, 116px);
   max-width: 640px;
 }
