@@ -845,9 +845,10 @@ body.menu-open { overflow: hidden; }
 .hp-rcard__logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--c-lavanda); border-radius: 0; padding: 10px 12px; }
 .hp-rcard__logo img { max-height: 30px; max-width: 84%; width: auto; object-fit: contain; filter: grayscale(1); opacity: .72; transition: filter .35s var(--ease), opacity .35s var(--ease); }
 .hp-rcard__logo:hover img { filter: grayscale(0); opacity: 1; }
-.hp-rcard[href="/ruta-talento"] .hp-rcard__logo img { max-height: 50px; }
-/* Solo el logo de Sawu (Ruta Mercado) más alto para que se distinga */
-.hp-rcard[href="/ruta-mercado"] .hp-rcard__logo img[src*="sawu"] { max-height: 60px; }
+.hp-rcard[href^="/ruta-talento"] .hp-rcard__logo img { max-height: 50px; }
+/* Solo el logo de Sawu (Ruta Mercado) más alto para que se distinga.
+   href^= porque HubSpot agrega ?hsLang=es al enlace. */
+.hp-rcard[href^="/ruta-mercado"] .hp-rcard__logo img[src*="sawu"] { max-height: 60px; }
 .hp-rcard .link-more { color: var(--rc); margin-top: auto; }
 /* Home · 4 rutas: exactamente 2 cards completas por vista en desktop (sin corte) */
 @media (min-width: 901px) { .hp-rail .hp-rcard { flex: 0 0 calc(50% - 12px); } }
