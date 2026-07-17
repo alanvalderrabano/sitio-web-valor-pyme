@@ -12,7 +12,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=61">
+<link rel="stylesheet" href="styles.css?v=62">
 </head>
 <body data-ruta="digitalizacion">
 
@@ -75,26 +75,31 @@
 </div>
 
 <main>
-<!-- ============ HERO ============ -->
-<section class="hero hero--framed">
-  <!-- Líneas full-bleed: de borde a borde (sin padding), por detrás del contenido -->
-  <div class="hero__bg" aria-hidden="true"><img src="assets/photos/brand/hero-bg-digitalizacion.jpg" alt=""></div>
-  <div class="hero__lines" aria-hidden="true">
-    <img src="assets/lines/lineas-hero-digitalizacion.webp?v=7" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-  </div>
+<!-- ============ HERO (V2: foto + panel violeta) ============ -->
+<section class="hero-v2" aria-label="Ruta Digitalización">
+  <div class="container hero-v2__inner">
+    <!-- Foto: ceramista en su taller -->
+    <div class="hero-v2__photo">
+      <img class="hero-v2__photo-bg" src="assets/photos/brand/hero-bg-digitalizacion.jpg" alt="" aria-hidden="true">
+      <img class="hero-v2__char" src="assets/photos/brand/hero-char-digitalizacion.webp" width="1856" height="2304" alt="Ceramista chilena usando herramientas digitales en su taller">
+    </div>
 
-  <img class="hero__character" src="assets/photos/brand/hero-char-digitalizacion.webp" width="1856" height="2304" alt="Ceramista chilena en su taller de ceramica">
-
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <h1 class="reveal">Menos planillas. Más control para crecer.</h1>
-      <p class="hero__sub reveal d1">Si buscas ahorrar tiempo y simplificar el trabajo diario, Ruta Digitalización te ayuda a ordenar procesos, automatizar gestiones y avanzar con herramientas simples.</p>
-      <div class="hero__cta reveal d2">
-        <a href="#estaciones" class="btn btn--ruta">Ver estaciones <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="#" class="btn btn--ghost">Registrarme</a>
+    <!-- Panel de copy -->
+    <div class="hero-v2__panel">
+      <div class="hero-v2__copy">
+        <h1 class="reveal">Menos planillas.<br>Más control<br>para crecer.</h1>
+        <p class="hero-v2__sub reveal d1">Si buscas ahorrar tiempo y simplificar el trabajo diario, Ruta Digitalización te ayuda a ordenar procesos, automatizar gestiones y avanzar con herramientas simples.</p>
+        <div class="hero-v2__cta reveal d2">
+          <a href="#estaciones" class="btn btn--onfill">Ver estaciones <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#" class="btn btn--ghost">Registrarme <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
       </div>
     </div>
 
+    <!-- Línea de ruta que cruza foto + panel -->
+    <svg class="hero-v2__line" viewBox="0 0 1200 460" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-20 255 C 110 250 175 152 285 152 C 400 152 470 284 560 284 C 740 284 1000 250 1220 248"/>
+    </svg>
   </div>
 </section>
 
@@ -123,7 +128,6 @@
       <article class="station-card reveal">
         <div class="station-card__logo"><img src="assets/logos/partners/omia.png" alt="OMIA"></div>
         <span class="tag">Cuando necesitas ordenar la gestión diaria.</span>
-        <h3>OMIA</h3>
         <p>Gestiona ventas, pagos, cobranzas y documentos tributarios desde una herramienta conectada al SII, con apoyo de IA para mirar mejor tus finanzas.</p>
         <div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">Beneficio: 60% de descuento para la comunidad Valor Pyme durante 2026.</div>
         <a href="#" class="link-more">Ordenar mi gestión <span class="arrow">→</span></a>
@@ -131,7 +135,6 @@
       <article class="station-card reveal d1">
         <div class="station-card__logo"><img src="assets/logos/partners/rindegastos.png" alt="Rindegastos"></div>
         <span class="tag">Cuando las rendiciones consumen demasiado tiempo.</span>
-        <h3>Rindegastos</h3>
         <p>Digitaliza comprobantes, reportes y aprobaciones para que tu equipo rinda gastos desde el celular y deje atrás recibos perdidos.</p>
         <div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">Beneficio: 20% de descuento en la solución durante 2026.</div>
         <a href="#" class="link-more">Digitalizar rendiciones <span class="arrow">→</span></a>
@@ -139,7 +142,6 @@
       <article class="station-card reveal d2">
         <div class="station-card__logo"><img src="assets/logos/partners/buk.svg" alt="Buk"></div>
         <span class="tag">Cuando la gestión de personas necesita estructura.</span>
-        <h3>Buk</h3>
         <p>Centraliza remuneraciones, asistencia, administración y desarrollo de personas en una plataforma pensada para ordenar el trabajo del equipo.</p>
         <div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">Beneficio: Buk Starter sin costo para microempresas y 20% de descuento en las primeras 3 facturas de planes avanzados.</div>
         <a href="#" class="link-more">Activar beneficio <span class="arrow">→</span></a>
@@ -148,8 +150,8 @@
         <div class="station-card__logo"><img src="assets/logos/partners/defontana.png" alt="Defontana Digital"></div>
         <span class="tag">Cuando necesitas digitalizar herramientas clave.</span>
         <h3>Defontana Digital</h3>
-        <p>Activa soluciones para facturación, certificado digital, POS, control de asistencia y CRM, según la necesidad actual de tu negocio.</p>
-        <div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">Beneficio: Acceso a descuentos para la comunidad Valor Pyme durante 2026: 15% en Factura Pro, 30% en certificado digital SII, 15% en POS Pro, 15% en control de asistencia y 15% en CRM Empresas.</div>
+        <p>Activa soluciones para facturación, certificado digital, POS, control de asistencia, CRM y ventas, según la necesidad actual de tu negocio.</p>
+        <div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">Beneficio: Descuentos durante 2026: 15% en Factura Pro, 30% en Certificado Digital SII, 15% en POS Pro, 15% en Control de Asistencia, 15% en CRM Empresas y 15% en Ventas.</div>
         <a href="#" class="link-more">Explorar herramientas <span class="arrow">→</span></a>
       </article>
       <article class="station-card reveal">
@@ -157,13 +159,12 @@
         <span class="tag">Cuando necesitas ordenar la contabilidad.</span>
         <h3>Contabilidad gratuita</h3>
         <p>Accede a contabilidad Defontana sin costo para pymes Valor Pyme, con acompañamiento educativo tributario guiado por Cintax.</p>
-        <div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">Beneficio: ERP gratuito para pymes de la comunidad Valor Pyme con facturación de hasta $8.000.000 mensuales o hasta 20 DTE.</div>
+        <div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">Beneficio: ERP gratuito para pymes con facturación de hasta $8.000.000 mensuales o hasta 20 DTE.</div>
         <a href="#" class="link-more">Activar contabilidad gratuita <span class="arrow">→</span></a>
       </article>
       <article class="station-card reveal d1">
         <div class="station-card__logo"><img src="assets/logos/partners/kalamar.png" alt="Kalamar"></div>
         <span class="tag">Cuando necesitas activar marketing digital.</span>
-        <h3>Kalamar</h3>
         <p>Automatiza campañas con IA para crear, optimizar y analizar acciones digitales que ayuden a llegar mejor a tus clientes.</p>
         <div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">Beneficio: 50% de descuento para clientes Valor Pyme durante 2026.</div>
         <a href="#" class="link-more">Impulsar marketing digital <span class="arrow">→</span></a>
