@@ -1691,7 +1691,7 @@ body.menu-open { overflow: hidden; }
 .np-socios .hp-eyebrow { color: var(--c-rosa); }
 .np-logos { list-style: none; margin: 0 0 clamp(28px,4vw,44px); padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .np-logo { display: grid; place-items: center; background: #fff; border: 1px solid var(--color-borde); padding: 26px 20px; min-height: 110px; }
-.np-logo img { max-height: 46px; max-width: 72%; width: auto; object-fit: contain; }
+.np-logo img { max-height: 80px; max-width: 72%; width: auto; object-fit: contain; }
 
 /* 7 · Impacto (stats) */
 .np-impact { background: var(--c-lavanda); text-align: center; }
