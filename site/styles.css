@@ -472,9 +472,7 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 .hero-v2__panel {
   position: relative; display: flex; align-items: center; overflow: hidden;
   background: var(--color-corp);
-  background-image:
-    radial-gradient(120% 46% at 20% 60%, rgba(255,58,120,.42), rgba(255,58,120,0) 62%),
-    linear-gradient(158deg, rgba(255,255,255,.05), rgba(0,0,0,.05));
+  background-image: linear-gradient(158deg, rgba(255,255,255,.05), rgba(0,0,0,.05));
 }
 /* Card con glassmorphism (mismo tratamiento que Ruta Capital/Mercado): la línea
    decorativa queda por detrás y se difumina a través del vidrio. Colores sin cambios. */
@@ -501,8 +499,23 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
 .hero-v2 .btn--ghost:hover { background: #fff; color: var(--color-corp); box-shadow: none; }
 
 /* Continuación de la línea de ruta sobre el panel (empalma con la línea de la foto) */
+/* Detrás del vidrio (::before, z2): nítida en los márgenes de la tarjeta y
+   difuminada a través del vidrio, como en Figma. */
 .hero-v2__line { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: visible; }
-.hero-v2__line path { fill: none; stroke: var(--color-rosa); stroke-width: 8; stroke-linecap: round; }
+.hero-v2__line path { fill: none; stroke: var(--color-rosa); stroke-width: 10; stroke-linecap: round; }
+/* Capa "solo línea" sobre la foto: se revela con barrido izq→der y empalma
+   con el trazado del panel (mismo mecanismo que Ruta Talento). */
+.hero-v2__photo-line {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  animation: talento-wipe .9s linear .15s forwards;
+}
+/* El panel arranca cuando el barrido de la foto llega al empalme. */
+body[data-ruta="digitalizacion"] .hero-v2 .hero-v2__line path {
+  animation: draw 1.3s var(--ease) 1.02s forwards;
+}
 
 /* Ruta Talento: Hero replicado desde Figma (foto izquierda + panel violeta). */
 .hero-v2--talento {
@@ -645,6 +658,14 @@ body[data-ruta="capital"] .hero--capital-v2 .hero__lines path {
 }
 body[data-ruta="mercado"] .hero--mercado-v2 .hero__lines path {
   stroke: #330559;
+}
+/* La línea del hero se dibuja al cargar (pathLength=100 normaliza el dash). */
+body[data-ruta="capital"] .hero--capital-v2 .hero__lines path,
+body[data-ruta="mercado"] .hero--mercado-v2 .hero__lines path,
+.hero-v2 .hero-v2__line path {
+  stroke-dasharray: 101;
+  stroke-dashoffset: 101;
+  animation: draw 1.7s var(--ease) .25s forwards;
 }
 body[data-ruta="capital"] .hero--capital-v2 .hero__character {
   left: clamp(180px, 24vw, 400px);
@@ -1013,6 +1034,9 @@ body[data-ruta="mercado"] .hero--mercado-v2 .btn--ghost:hover {
 .bw-band__bg--mercado { inset: 0; background-position: center top; }
 .bw-band__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,8,22,.56), rgba(14,8,22,.78)); }
 .bw-band__line { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; z-index: 1; opacity: .85; pointer-events: none; }
+/* La línea de la franja se dibuja al entrar en pantalla. */
+.bw-band__line .route-line { stroke-dasharray: 1000 1000; stroke-dashoffset: 1000; }
+.bw-band.is-visible .bw-band__line .route-line { animation: draw 1.7s var(--ease) forwards .15s; }
 .bw-band .container { position: relative; z-index: 2; }
 .bw-band .eyebrow { color: #fff; justify-content: center; }
 .bw-band .eyebrow::before { background: var(--ruta); }
