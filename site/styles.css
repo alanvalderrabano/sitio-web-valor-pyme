@@ -813,21 +813,31 @@ body.menu-open { overflow: hidden; }
   .hp-hero--split h1 { max-width: none; }
 }
 
-/* ---- Hero BANNER (Contacto): franja de patrón de marca (verde) + copy dividido ---- */
+/* ---- Hero BANNER (Contacto): franja superior con el patrón de aros (isotipo de
+   marca) sobre el morado con degradado, y debajo el copy dividido. La franja usa
+   el MISMO motion que Recursos: el trazo se DIBUJA y luego se RELLENA. ---- */
 .hp-hero--banner {
   position: relative; overflow: hidden;
   background: linear-gradient(158deg, #6126FF 0%, #5620E4 46%, #3E14A8 100%);
   padding-block: 0;
 }
-/* Franja superior a todo el ancho con el patrón de líneas de marca en verde */
+/* La franja es un <svg> con un <pattern> de aros; el path se traza y rellena. */
 .hp-hero--banner .hp-hero__band {
   display: block; width: 100%;
   height: clamp(120px, 15vw, 196px);
-  background-image: url("assets/lines/patron-lineas-verde.svg");
-  background-repeat: repeat;
-  background-position: center top;
-  background-size: clamp(130px, 15vw, 200px);
   position: relative; z-index: 1;
+}
+.hp-hero--banner .hp-hero__band .vp-rings {
+  fill: #00C168;
+  stroke: #00C168; stroke-width: 7; stroke-linejoin: round; stroke-linecap: round;
+  fill-opacity: 0;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: hpb-draw 2.1s var(--ease) .3s forwards, hpb-fill 1.1s ease 1.95s forwards;
+}
+@keyframes hpb-draw { to { stroke-dashoffset: 0; } }
+@keyframes hpb-fill { to { fill-opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .hp-hero--banner .hp-hero__band .vp-rings { fill-opacity: 1; stroke-dashoffset: 0; animation: none; }
 }
 .hp-hero--banner .container { position: relative; z-index: 2; }
 .hp-hero--banner .hp-hero__grid {
