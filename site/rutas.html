@@ -72,23 +72,27 @@
 
 <main>
 <!-- HERO -->
-<section class="hero hero--framed" style="--ruta:var(--color-corp);--ruta-ink:#FFFFFF;--ruta-soft:var(--color-lavanda);--ruta-deep:var(--color-morado)">
-  <!-- Capa 1: fondo (sin personas), mitad derecha full-bleed -->
-  <div class="hero__bg" aria-hidden="true"><img src="assets/photos/brand/hero-bg-hub.jpg" alt=""></div>
-  <!-- Capa 2: líneas brandbook (arcos de 1/4 de círculo + estaciones en cruces), full-bleed -->
-  <div class="hero__lines" aria-hidden="true">
-    <img src="assets/lines/lineas-hero-rutas.webp?v=2" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<section class="hero hero--framed hero--rutas-hub" style="--ruta:var(--color-corp);--ruta-ink:#FFFFFF;--ruta-soft:var(--color-lavanda);--ruta-deep:var(--color-morado)">
+  <div class="hero__lines hero__lines--rutas" aria-hidden="true">
+    <svg viewBox="0 0 1198 602" preserveAspectRatio="none" focusable="false">
+      <path class="route-line route-line--purple" pathLength="1000" d="M-24 136 H128 C218 136 240 279 394 279 H410 C440 279 460 268 480 256 C513 236 560 136 668 136 H864 C950 136 1000 60 1030 -44 H1224"/>
+      <path class="route-line route-line--green" pathLength="1000" d="M-24 106 H208 C300 106 356 99 397 60 C478 -17 552 -30 660 -16 C740 -35 840 -50 905 -50 C965 -50 995 33 1075 33 H1224"/>
+      <path class="route-line route-line--pink" pathLength="1000" d="M-24 116 H206 C272 116 276 28 332 28 C391 28 394 116 462 116 H1224"/>
+      <path class="route-line route-line--yellow" pathLength="1000" d="M-24 126 H268 C360 126 424 256 480 256 C528 256 565 327 654 327 C808 327 874 126 1064 126 H1224"/>
+    </svg>
+    <span class="hero__station hero__station--top"></span>
+    <span class="hero__station hero__station--mid"></span>
   </div>
-  <!-- Capa 3: personaje recortado, al frente -->
-  <img class="hero__character" src="assets/photos/brand/hero-char-hub.webp" width="1856" height="2304" alt="Duena de cafeteria chilena con delantal en su local">
 
   <div class="container hero__grid">
     <div class="hero__copy">
       <h1 class="reveal">Encuentra la ruta que tu pyme necesita para crecer</h1>
-      <p class="hero__sub reveal d1">Conectamos tu negocio con soluciones de grandes empresas y organizaciones. Cuatro rutas, muchas combinaciones, una sola comunidad para tu crecimiento.</p>
-      <div class="hero__cta reveal d2">
-        <a href="#rutas" class="btn btn--onfill">Ver las rutas <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="/#suscripcion" class="btn btn--ghost">Suscribirme</a>
+      <div class="hero__aside">
+        <p class="hero__sub reveal d1">Conectamos tu negocio con soluciones de grandes empresas y organizaciones. Cuatro rutas, muchas combinaciones, una sola comunidad para tu crecimiento.</p>
+        <div class="hero__cta reveal d2">
+          <a href="#rutas" class="btn btn--onfill">Ver las rutas <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/#suscripcion" class="btn btn--ghost">Suscribirme</a>
+        </div>
       </div>
     </div>
   </div>

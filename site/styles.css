@@ -292,6 +292,171 @@ body[data-ruta="mercado"] .hero .btn--ruta:hover { background: #220A40; color: #
   .hero--framed .hero__grid { align-items: flex-start; padding-top: 30px; }
 }
 
+/* Rutas generales: hero morado con mapa de líneas, como la nueva referencia visual. */
+.hero--rutas-hub {
+  min-height: clamp(500px, 50.2vw, 604px);
+  align-items: flex-end;
+  background: #6126FF;
+}
+.hero--rutas-hub .hero__grid {
+  grid-template-columns: 1fr;
+  padding-block: clamp(330px, 35vw, 500px) clamp(56px, 6vw, 72px);
+}
+.hero--rutas-hub .hero__copy {
+  display: grid;
+  grid-template-columns: minmax(500px, .98fr) minmax(300px, .62fr);
+  gap: clamp(44px, 8vw, 96px);
+  align-items: end;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.hero--rutas-hub h1 {
+  max-width: 21.5ch;
+  margin: 0;
+  font-size: clamp(46px, 4.7vw, 56px);
+  line-height: .95;
+  letter-spacing: 0;
+}
+.hero--rutas-hub .hero__aside {
+  max-width: 410px;
+  padding-bottom: clamp(2px, .65vw, 8px);
+}
+.hero--rutas-hub .hero__sub {
+  max-width: 42ch;
+  margin-bottom: 26px;
+  font-size: clamp(15px, 1.34vw, 18px);
+  line-height: 1.4;
+  opacity: .9;
+}
+.hero--rutas-hub .hero__cta {
+  gap: 12px;
+}
+.hero--rutas-hub .btn {
+  height: 48px;
+  padding-inline: 28px;
+  font-size: 15px;
+}
+.hero--rutas-hub .btn--ghost {
+  color: #fff;
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.54);
+}
+.hero--rutas-hub .hero__lines--rutas {
+  inset: 0;
+  z-index: 1;
+  filter: none;
+}
+.hero--rutas-hub .hero__lines--rutas svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+}
+.hero--rutas-hub .hero__lines .route-line {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.hero--rutas-hub .route-line--purple { stroke: #330559; }
+.hero--rutas-hub .route-line--green { stroke: #00BD70; }
+.hero--rutas-hub .route-line--pink { stroke: #FF2B5E; }
+.hero--rutas-hub .route-line--yellow { stroke: #FFF21C; }
+/* Animación de entrada: las líneas se dibujan y las estaciones aparecen al paso.
+   pathLength=1000 normaliza los guiones (vector-effect los mide en px de pantalla). */
+.hero--rutas-hub .route-line { stroke-dasharray: 1500 1500; stroke-dashoffset: 1500; }
+.hero--rutas-hub .is-visible .route-line { animation: draw 1.9s var(--ease) forwards; }
+.hero--rutas-hub .is-visible .route-line--pink { animation-delay: .18s; }
+.hero--rutas-hub .is-visible .route-line--purple { animation-delay: .36s; }
+.hero--rutas-hub .is-visible .route-line--yellow { animation-delay: .54s; }
+.hero--rutas-hub .hero__station { scale: 0; }
+.hero--rutas-hub .is-visible .hero__station--top { animation: station-pop-hub .5s var(--ease) forwards .75s; }
+.hero--rutas-hub .is-visible .hero__station--mid { animation: station-pop-hub .5s var(--ease) forwards 1.15s; }
+@keyframes station-pop-hub { 0% { scale: 0; } 60% { scale: 1.25; } 100% { scale: 1; } }
+.hero--rutas-hub .hero__station {
+  position: absolute;
+  width: clamp(36px, 4vw, 44px);
+  height: clamp(36px, 4vw, 44px);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 5px 14px rgba(26, 6, 70, .4);
+  transform: translate(-50%, -50%);
+}
+.hero--rutas-hub .hero__station--top {
+  left: 33.1%;
+  top: 10%;
+}
+.hero--rutas-hub .hero__station--mid {
+  left: 40.1%;
+  top: 42.5%;
+}
+@media (max-width: 900px) {
+  .hero--rutas-hub {
+    min-height: 0;
+    align-items: stretch;
+  }
+  .hero--rutas-hub .hero__lines--rutas {
+    bottom: auto;
+    height: clamp(210px, 56vw, 280px);
+  }
+  .hero--rutas-hub .hero__grid {
+    padding-block: clamp(180px, 48vw, 260px) clamp(34px, 8vw, 52px);
+  }
+  .hero--rutas-hub .hero__copy {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .hero--rutas-hub h1 {
+    max-width: 12.6ch;
+    font-size: clamp(38px, 12vw, 58px);
+  }
+  .hero--rutas-hub .hero__aside {
+    max-width: 520px;
+    padding-bottom: 0;
+  }
+  .hero--rutas-hub .hero__sub {
+    font-size: 15px;
+    line-height: 1.42;
+  }
+  .hero--rutas-hub .hero__lines--rutas svg {
+    width: 180%;
+    transform: translateX(-26%);
+  }
+  .hero--rutas-hub .hero__station {
+    width: 34px;
+    height: 34px;
+  }
+  .hero--rutas-hub .hero__station--top {
+    left: 33%;
+    top: 8.8%;
+  }
+  .hero--rutas-hub .hero__station--mid {
+    left: 3%;
+    top: 42.5%;
+  }
+}
+@media (max-width: 520px) {
+  .hero--rutas-hub .hero__grid {
+    padding-block: 210px 34px;
+  }
+  .hero--rutas-hub .hero__cta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .hero--rutas-hub .btn {
+    width: 100%;
+  }
+  .hero--rutas-hub .hero__lines--rutas svg {
+    width: 220%;
+    transform: translateX(-38%);
+  }
+}
+
 /* ===================== Hero V2 (full-bleed: foto + panel violeta) ===================== */
 .hero-v2 {
   position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
