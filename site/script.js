@@ -232,7 +232,7 @@
   });
 
   /* ---- Reveal + disparo de animaciones de líneas ---- */
-  var revealables = document.querySelectorAll('.reveal, .lines-svg, .hero__visual, .diag, .combo');
+  var revealables = document.querySelectorAll('.reveal, .lines-svg, .hero__lines--rutas, .bw-band, .hero__visual, .diag, .combo');
   if (!('IntersectionObserver' in window)) {
     revealables.forEach(function (el) { el.classList.add('is-visible'); });
     return;

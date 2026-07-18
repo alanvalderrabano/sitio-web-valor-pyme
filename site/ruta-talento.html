@@ -12,7 +12,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=61">
+<link rel="stylesheet" href="styles.css?v=103">
 </head>
 <body data-ruta="talento">
 
@@ -75,26 +75,25 @@
 </div>
 
 <main>
-<!-- ============ HERO ============ -->
-<section class="hero hero--framed">
-  <!-- Líneas full-bleed: de borde a borde (sin padding), por detrás del contenido -->
-  <div class="hero__bg" aria-hidden="true"><img src="assets/photos/brand/hero-bg-talento.jpg" alt=""></div>
-  <div class="hero__lines" aria-hidden="true">
-    <img src="assets/lines/lineas-hero-talento.webp?v=3" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<!-- ============ HERO (Figma: foto + panel violeta) ============ -->
+<section class="hero-v2 hero-v2--talento" aria-label="Ruta Talento y Gestión">
+  <div class="hero-v2__photo">
+    <img src="assets/photos/brand/hero-talento-photo-noline-v89.jpg" width="1270" height="1239" alt="Lider de equipo chilena presentando claves para hacer crecer una pyme">
+    <img src="assets/photos/brand/hero-talento-line-only-v89.png" width="1270" height="1239" alt="" aria-hidden="true" class="hero-v2__photo-line">
   </div>
 
-  <img class="hero__character" src="assets/photos/brand/hero-char-talento.webp" width="1856" height="2304" alt="Lider de equipo chilena en su espacio de trabajo">
-
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <h1 class="reveal">Tu pyme crece mejor cuando tu equipo crece.</h1>
-      <p class="hero__sub reveal d1">En la Ruta Talento y Gestión encuentras estaciones para fortalecer el liderazgo, capacitar al equipo y ordenar la gestión con herramientas y contenidos útiles para el día a día.</p>
-      <div class="hero__cta reveal d2">
-        <a href="#estaciones" class="btn btn--ruta">Ver estaciones <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="#" class="btn btn--ghost">Registrarme</a>
+  <div class="hero-v2__panel">
+    <svg class="hero-v2__line hero-v2__line--talento" viewBox="0 0 640 588" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-20 351 C 80 251 220 154 420 154 L 660 154" pathLength="100"/>
+    </svg>
+    <div class="hero-v2__copy">
+      <h1 class="reveal">Tu pyme<br>crece mejor<br>cuando tu<br>equipo crece.</h1>
+      <p class="hero-v2__sub reveal d1">En la Ruta Talento y Gestión encuentras estaciones para fortalecer el liderazgo, capacitar al equipo y ordenar la gestión con herramientas y contenidos útiles para el día a día.</p>
+      <div class="hero-v2__cta reveal d2">
+        <a href="#estaciones" class="btn btn--onfill">Ver estaciones <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#" class="btn btn--ghost">Registrarme <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -178,7 +177,7 @@
   <div class="bw-band__bg parallax" data-parallax="1.05" style="background-image:url(assets/img/franja-bn-talento.jpg)"></div>
   <div class="bw-band__overlay"></div>
   <svg class="bw-band__line" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <path class="route-line" style="stroke:var(--ruta);stroke-width:9" d="M-40 110 L470 110 A60 60 0 0 1 530 170 A60 60 0 0 0 590 230 L1240 230"/>
+    <path class="route-line" pathLength="1000" style="stroke:var(--ruta);stroke-width:9" d="M-40 110 L470 110 A60 60 0 0 1 530 170 A60 60 0 0 0 590 230 L1240 230"/>
   </svg>
   <div class="container">
     <span class="eyebrow">El viaje pyme</span>
