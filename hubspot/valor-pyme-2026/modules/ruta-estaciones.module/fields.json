@@ -1,0 +1,137 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Encuentra la estación que te ayudará a fortalecer las finanzas de tu pyme."
+  },
+  {
+    "id": "two_col",
+    "name": "two_col",
+    "label": "Grilla de 2 columnas (desactivar para 3 columnas)",
+    "type": "boolean",
+    "required": false,
+    "default": true
+  },
+  {
+    "id": "stations",
+    "name": "stations",
+    "label": "Estaciones",
+    "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "children": [
+      {
+        "id": "logo_filename",
+        "name": "logo_filename",
+        "label": "Logo (archivo en hubfs/logos/partners/)",
+        "type": "text",
+        "required": false,
+        "default": "bci.png"
+      },
+      {
+        "id": "logo_style",
+        "name": "logo_style",
+        "label": "Estilo del logo (opcional, p. ej. max-height:46px)",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "logo_alt",
+        "name": "logo_alt",
+        "label": "Texto alternativo del logo (si no hay título)",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "tag_text",
+        "name": "tag_text",
+        "label": "Tag",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título de la estación",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "desc",
+        "name": "desc",
+        "label": "Descripción",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "benefit",
+        "name": "benefit",
+        "label": "Beneficio (opcional)",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "cta_text",
+        "name": "cta_text",
+        "label": "Texto del enlace",
+        "type": "text",
+        "required": false,
+        "default": "Ver más"
+      },
+      {
+        "id": "cta_url",
+        "name": "cta_url",
+        "label": "Enlace",
+        "type": "url",
+        "required": false,
+        "default": { "type": "EXTERNAL", "href": "#" }
+      }
+    ],
+    "default": [
+      {
+        "logo_filename": "bci.png",
+        "tag_text": "Cuando necesitas separar la caja.",
+        "title": "Cuenta Digital BCI",
+        "desc": "Una cuenta corriente digital para operar tu pyme, ordenar movimientos y dejar de mezclar pagos del negocio con otros gastos.",
+        "benefit": "Beneficio: 3 meses sin comisión.",
+        "cta_text": "Abrir mi cuenta",
+        "cta_url": { "type": "EXTERNAL", "href": "#" }
+      },
+      {
+        "logo_filename": "bci.png",
+        "tag_text": "Cuando tu pyme innova y quiere crecer.",
+        "title": "Banca Nace BCI",
+        "desc": "Acompañamiento financiero, redes comerciales y espacios de conexión para pymes innovadoras que buscan avanzar con más herramientas.",
+        "benefit": "",
+        "cta_text": "Conocer Banca Nace",
+        "cta_url": { "type": "EXTERNAL", "href": "#" }
+      },
+      {
+        "logo_filename": "cobranzaonline.png",
+        "tag_text": "Cuando vender no basta si no te pagan.",
+        "title": "Cobranza Online",
+        "desc": "Gestión formal de cuentas impagas para recuperar flujo sin costo de acceso. Solo pagas comisión si recuperas tu dinero.",
+        "benefit": "Beneficio: 5 informes gratuitos en 2026 y acceso al Historial de Mora Cobranza Online.",
+        "cta_text": "Recuperar flujo",
+        "cta_url": { "type": "EXTERNAL", "href": "#" }
+      },
+      {
+        "logo_filename": "fintegram.png",
+        "tag_text": "Cuando necesitas ver tu radiografía financiera.",
+        "title": "Scoring Fintegram",
+        "desc": "Diagnóstico, score, perfil de riesgo y educación financiera para entender cómo aparece tu pyme antes de tocar nuevas puertas.",
+        "benefit": "Beneficio: 25% de descuento durante 2026.",
+        "cta_text": "Ver mi scoring",
+        "cta_url": { "type": "EXTERNAL", "href": "#" }
+      }
+    ]
+  }
+]

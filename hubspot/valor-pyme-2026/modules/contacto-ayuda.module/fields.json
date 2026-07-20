@@ -1,0 +1,22 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "¿Cómo podemos ayudarte?" },
+  { "id": "anchor", "name": "anchor", "label": "Ancla del formulario", "type": "text", "required": false, "default": "#mensaje" },
+  {
+    "id": "motivos", "name": "motivos", "label": "Motivos", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 6 },
+    "children": [
+      { "id": "icon", "name": "icon", "label": "Ícono", "type": "choice", "required": false, "default": "partner",
+        "choices": [["partner", "Partner (personas)"], ["question", "Consulta"], ["chat", "Ayuda (chat)"], ["heart", "Colaborar (corazón)"], ["press", "Prensa"], ["other", "Otro (puntos)"]] },
+      { "id": "title", "name": "title", "label": "Título", "type": "text", "required": false, "default": "" },
+      { "id": "desc", "name": "desc", "label": "Descripción", "type": "text", "required": false, "default": "" }
+    ],
+    "default": [
+      { "icon": "partner", "title": "Quiero ser partner o aliado", "desc": "¿Representas una empresa u organización interesada en aportar soluciones al ecosistema pyme? Envíanos tus datos y nosotros te contactaremos cuando abramos la convocatoria de nuevos partners." },
+      { "icon": "question", "title": "Tengo una consulta sobre Valor Pyme", "desc": "Si quieres saber más sobre la comunidad, las rutas, beneficios, actividades o cómo participar, estaremos encantados de ayudarte." },
+      { "icon": "chat", "title": "Soy parte de la comunidad y necesito ayuda", "desc": "¿Tienes dudas sobre tu registro, acceso a contenidos, beneficios o actividades? Cuéntanos qué necesitas y te apoyaremos." },
+      { "icon": "heart", "title": "Quiero colaborar con Valor Pyme", "desc": "Si tienes una propuesta, iniciativa o proyecto que pueda aportar valor a emprendedores y pymes, queremos conocerla." },
+      { "icon": "press", "title": "Prensa o comunicaciones", "desc": "Para solicitudes de prensa, entrevistas, vocerías, colaboraciones editoriales o consultas relacionadas con comunicaciones." },
+      { "icon": "other", "title": "Otro", "desc": "¿Tu consulta no encaja en las categorías anteriores? Escríbenos y encontraremos la mejor forma de ayudarte." }
+    ]
+  }
+]

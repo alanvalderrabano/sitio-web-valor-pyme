@@ -1,0 +1,19 @@
+{# MÓDULO · Nosotros Socios — intro + grilla de logos (repeater, archivos en
+   File Manager) + CTA. #}
+<section class="hp-section np-socios">
+  <div class="container">
+    <div class="np-intro reveal">
+      {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+      {% if module.bodytext %}<p>{{ module.bodytext }}</p>{% endif %}
+    </div>
+    <ul class="np-logos reveal" role="list">
+      {% for logo in module.logos %}
+      <li class="np-logo"><img src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/logos/partners/' ~ logo.filename }}" alt="{{ logo.alt }}" loading="lazy"></li>
+      {% endfor %}
+    </ul>
+    {% if module.cta_text %}<div class="center">
+      <a href="{{ module.cta_url.href }}" class="btn btn--ghost">{{ module.cta_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>{% endif %}
+  </div>
+</section>

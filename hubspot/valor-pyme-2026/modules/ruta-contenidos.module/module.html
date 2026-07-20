@@ -1,0 +1,17 @@
+{# MÓDULO · Ruta Contenidos — grilla de 3 tarjetas de blog (repeater). #}
+<section class="section blog-section">
+  <div class="container">
+    <div class="section-head reveal">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+      {% if module.lead %}<p class="lead">{{ module.lead }}</p>{% endif %}
+    </div>
+    <div class="grid-3">
+      {% for post in module.posts %}
+      <article class="blog-card reveal{% if loop.index == 2 %} d1{% elif loop.index == 3 %} d2{% elif loop.index >= 4 %} d3{% endif %}">
+        <div class="blog-card__img">{% if post.image.src %}<img src="{{ post.image.src }}"{% if post.image.width %} width="{{ post.image.width }}"{% endif %}{% if post.image.height %} height="{{ post.image.height }}"{% endif %} alt="{{ post.image.alt }}" loading="lazy">{% endif %}<span class="ribbon"></span></div>
+        <div class="blog-card__body"><h3>{{ post.title }}</h3><p>{{ post.desc }}</p><a href="{{ post.url.href }}" class="link-more">Leer más <span class="arrow">→</span></a></div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+{# MÓDULO · Nosotros Impacto — métricas con contador animado (data-count /
+   data-suffix disparan el conteo en main.js al entrar en pantalla) + CTA. #}
+<section class="hp-section np-impact">
+  <div class="container reveal">
+    {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+    {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+    {% if module.lead %}<p class="np-impact__lead">{{ module.lead }}</p>{% endif %}
+    <ul class="np-stats" role="list">
+      {% for s in module.stats %}
+      <li class="np-stat"><span class="np-stat__num" data-count="{{ s.count }}"{% if s.suffix %} data-suffix="{{ s.suffix }}"{% endif %}>{{ s.display }}</span><span class="np-stat__unit">{{ s.unit }}</span><p>{{ s.text }}</p></li>
+      {% endfor %}
+    </ul>
+    {% if module.cta_text %}<a href="{{ module.cta_url.href }}" class="btn btn--onfill">{{ module.cta_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>{% endif %}
+  </div>
+</section>

@@ -1,0 +1,98 @@
+<!--
+  templateType: page
+  label: Ruta Mercado · Valor Pyme
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   RUTA MERCADO · Valor Pyme
+   Misma familia de módulos genéricos que Ruta Capital; el
+   contenido se pasa por parámetros en cada módulo (editable en
+   el editor de páginas). Color por data-ruta="mercado".
+   Header/footer = partials globales existentes (no se re-suben).
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+</head>
+<body data-ruta="mercado">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% module "hero" path="../modules/ruta-hero-char"
+        variant="mercado"
+        bg_image={"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/hero-bg-mercado.jpg", "alt": ""}
+        character_image={"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/hero-char-mercado.webp", "alt": "Panadero chileno en su panadería", "width": 1856, "height": 2304}
+        line_path="M0 154H290C340 154 336 210 360 235C400 270 440 300 470 307C540 316 560 385 620 385C700 385 720 250 800 250C900 250 950 205 1010 205H1200"
+        heading="Tu producto<br>ya está. Ahora<br>encuentra el<br>camino."
+        subtext="Si quieres llegar a más clientes, vender por nuevos canales o mejorar tus despachos, Ruta Mercado reúne las estaciones que te ayudarán a abrir nuevas oportunidades de negocio."
+        cta1_text="Ver estaciones" cta1_url={"href": "#estaciones"}
+        cta2_text="Registrarme" cta2_url={"href": "#"} %}
+
+    {% module "intro" path="../modules/ruta-intro"
+        media_image={"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-mercado.jpg", "alt": "Emprendedora preparando productos para despacho en su negocio", "width": 600, "height": 510}
+        heading="¿Por qué tomar la ruta Mercado?"
+        lead="Muchas pymes no necesitan partir de cero: necesitan una ruta para llegar más lejos. Desde la venta online hasta la logística y la conexión con nuevos compradores, aquí encontrarás estaciones diseñadas para acompañar tu crecimiento comercial." %}
+
+    {% module "estaciones" path="../modules/ruta-estaciones"
+        heading="Elige la estación que te ayudará a llegar a más clientes"
+        stations=[
+          {"logo_filename": "walmart.png", "logo_alt": "Walmart Marketplace", "tag_text": "Vitrina online.", "desc": "Postula y vende tus productos en Walmart Marketplace, un canal de e-commerce con alto alcance en Chile.", "benefit": "Beneficio: 50% de descuento en la comisión por compra, con límites en el máximo de ventas.", "cta_text": "Postular mis productos."},
+          {"logo_filename": "blueexpress.png", "logo_alt": "Blue Express", "tag_text": "Logista para no frenar la venta.", "desc": "Activa un cupón para reducir el costo de tus primeros envíos del mes y mover pedidos de forma más simple.", "benefit": "Beneficio: 30% de descuento en los primeros 5 envíos del mes durante 2026.", "cta_text": "Activar mi cupón."},
+          {"logo_filename": "sawu.png", "logo_alt": "SAWU", "logo_style": "max-height:46px", "tag_text": "Oportunidades B2B", "desc": "Conecta con empresas compradoras que necesitan proveedores pyme y participa en procesos de cotización y adjudicación.", "benefit": "Beneficio: 20% de descuento en la comisión que se cobra a la pyme una vez adjudicada una licitación, durante un año.", "cta_text": "Ver oportunidades B2B"},
+          {"logo_filename": "salcobrand.png", "logo_alt": "Salcobrand", "tag_text": "Farma/retail", "desc": "Programa de innovación abierta de Salcobrand: espacio de retail y soluciones específicas para emprendedores.", "benefit": "", "cta_text": "Conocer el programa"}
+        ] %}
+
+    {% module "combo" path="../modules/ruta-combo" %}
+
+    {% module "beneficios" path="../modules/ruta-beneficios"
+        heading="Beneficios de la ruta Mercado"
+        benefits=[
+          {"icon": "clock", "title": "Más visibilidad", "text": "Llega a más clientes vendiendo online."},
+          {"icon": "chart", "title": "Mejor entrega", "text": "Reduce el costo de tus primeros despachos del mes."},
+          {"icon": "check", "title": "Más oportunidades", "text": "Conecta con compradores y procesos B2B."}
+        ] %}
+
+    {% module "franja" path="../modules/ruta-franja"
+        bg_mode="cover"
+        bg_image={"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/img/franja-bn-mercado.jpg", "alt": ""}
+        eyebrow="El viaje pyme"
+        heading="Abrir mercado también es descubrir nuevos caminos para crecer." %}
+
+    {% module "contenidos" path="../modules/ruta-contenidos"
+        heading="Aprende a abrir mercado"
+        lead="Contenidos sugeridos sobre venta online, logística, marketplaces, oportunidades B2B y preparación comercial."
+        posts=[
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-d.jpg", "alt": "Emprendedora trabajando en su negocio", "width": 640, "height": 400}, "title": "Vende online en marketplaces", "desc": "Cómo preparar tu catálogo y postular a canales de e-commerce con alto alcance."},
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-b.jpg", "alt": "Emprendedora revisando la logística de su negocio", "width": 640, "height": 400}, "title": "Logística y despacho sin frenos", "desc": "Reduce costos de envío y mueve tus pedidos de forma más simple."},
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-c.jpg", "alt": "Emprendedora conectando con compradores B2B", "width": 640, "height": 400}, "title": "Oportunidades B2B y preparación comercial", "desc": "Conecta con empresas compradoras y prepárate para procesos de cotización."}
+        ] %}
+
+    {% module "diagnostico" path="../modules/rutas-diagnostico"
+        heading="Haz el diagnóstico y encuentra tu próxima estación"
+        bodytext="Responde el diagnóstico y descubre si hoy necesitas vender online, mejorar despachos, buscar compradores B2B o avanzar por otra ruta."
+        cta_text="Descubrir mi ruta"
+        tight_top=false %}
+
+    {% module "otras" path="../modules/ruta-otras"
+        heading="Si tu próximo paso está en otra área, explora más rutas de la Red"
+        lead=""
+        routes=[
+          {"icon_filename": "ruta-capital.png", "tag_text": "Inclusión financiera", "tag_style": "color:#7A6A00;background:#FFFBCC", "title": "Ruta Capital", "desc": "Para ordenar caja, bancarizar y entender tu perfil financiero.", "link_color": "#7A6A00", "url": {"href": "/ruta-capital"}},
+          {"icon_filename": "ruta-digitalizacion.png", "tag_text": "Automatización y gestión interna", "tag_style": "color:#A8003C;background:#FFE3EE", "title": "Ruta Digitalización", "desc": "Para digitalizar procesos, automatizar tareas y usar datos.", "link_color": "#A8003C", "url": {"href": "/ruta-digitalizacion"}},
+          {"icon_filename": "ruta-talento.png", "tag_text": "Equipo y capacidades", "tag_style": "color:#00733E;background:#D4FBE8", "title": "Ruta Talento y Gestión", "desc": "Para aprender, planificar y tomar mejores decisiones.", "link_color": "#00733E", "url": {"href": "/ruta-talento"}}
+        ] %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

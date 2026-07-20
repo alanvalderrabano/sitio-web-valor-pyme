@@ -1,0 +1,24 @@
+{# MÓDULO · Ruta Hero (personaje + línea) — hero de Capital/Mercado: foto de
+   fondo a la izquierda, personaje recortado al frente y línea SVG animada que
+   se dibuja al cargar. Color según la variante (data-ruta en el <body>). #}
+<section class="hero hero--framed hero--{{ module.variant }}-v2">
+  {% if module.bg_image.src %}<div class="hero__bg" aria-hidden="true"><img src="{{ module.bg_image.src }}" alt=""></div>{% endif %}
+  <div class="hero__lines" aria-hidden="true">
+    <svg viewBox="0 0 1200 560" preserveAspectRatio="none" aria-hidden="true">
+      <path pathLength="100" d="{{ module.line_path }}" />
+    </svg>
+  </div>
+
+  {% if module.character_image.src %}<img class="hero__character" src="{{ module.character_image.src }}"{% if module.character_image.width %} width="{{ module.character_image.width }}"{% endif %}{% if module.character_image.height %} height="{{ module.character_image.height }}"{% endif %} alt="{{ module.character_image.alt }}">{% endif %}
+
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      {% if module.heading %}<h1 class="reveal">{{ module.heading|safe }}</h1>{% endif %}
+      {% if module.subtext %}<p class="hero__sub reveal d1">{{ module.subtext }}</p>{% endif %}
+      <div class="hero__cta reveal d2">
+        {% if module.cta1_text %}<a href="{{ module.cta1_url.href }}" class="btn btn--ruta">{{ module.cta1_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>{% endif %}
+        {% if module.cta2_text %}<a href="{{ module.cta2_url.href }}" class="btn btn--ghost">{{ module.cta2_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>

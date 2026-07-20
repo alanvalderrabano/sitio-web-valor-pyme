@@ -1,0 +1,97 @@
+<!--
+  templateType: page
+  label: Ruta Talento y Gestión · Valor Pyme
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   RUTA TALENTO Y GESTIÓN · Valor Pyme
+   Hero split (variante talento, línea verde animada) + módulos
+   genéricos reutilizables. Color por data-ruta="talento".
+   Header/footer = partials globales existentes (no se re-suben).
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+</head>
+<body data-ruta="talento">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% module "hero" path="../modules/ruta-hero-split"
+        variant="talento"
+        aria_label="Ruta Talento y Gestión"
+        photo_noline={"src": "https://sitio-web-valor-pyme.pages.dev/assets/photos/brand/hero-talento-photo-noline-v89.jpg", "alt": "Líder de equipo chilena presentando claves para hacer crecer una pyme", "width": 1270, "height": 1239}
+        photo_line={"src": "https://sitio-web-valor-pyme.pages.dev/assets/photos/brand/hero-talento-line-only-v89.png", "alt": "", "width": 1270, "height": 1239}
+        heading="Tu pyme<br>crece mejor<br>cuando tu<br>equipo crece."
+        subtext="En la Ruta Talento y Gestión encuentras estaciones para fortalecer el liderazgo, capacitar al equipo y ordenar la gestión con herramientas y contenidos útiles para el día a día."
+        cta1_text="Ver estaciones" cta1_url={"href": "#estaciones"}
+        cta2_text="Registrarme" cta2_url={"href": "#"}
+        line_viewbox="0 0 640 588"
+        line_path="M-20 351 C 80 251 220 154 420 154 L 660 154" %}
+
+    {% module "intro" path="../modules/ruta-intro"
+        media_image={"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-talento.jpg", "alt": "Emprendedora en su local revisando la gestión de su equipo", "width": 600, "height": 510}
+        heading=""
+        lead="Crecer no es solo vender más. También implica liderar mejor, formar al equipo, ordenar decisiones y entender los temas que impactan la operación. Ruta Talento y Gestión acompaña a las pymes que quieren dejar de reaccionar a diario y empezar a construir una gestión más clara y preparada." %}
+
+    {% module "estaciones" path="../modules/ruta-estaciones"
+        heading="Elige la estación que mejor fortalece la capacidad que tu pyme necesita hoy:"
+        two_col=false
+        stations=[
+          {"logo_filename": "microsoft.png", "logo_alt": "Microsoft Elevate", "tag_text": "Cuando necesitas fortalecer habilidades digitales.", "title": "Microsoft Elevate", "desc": "Cursos gratuitos y asincrónicos para desarrollar capacidades en IA, Copilot y seguridad digital, con foco en herramientas aplicables al trabajo diario.", "benefit": "Beneficio: Cursos gratuitos disponibles a través de Valor Pyme.", "cta_text": "Iniciar cursos gratuitos"},
+          {"logo_filename": "FACEA19.png", "logo_alt": "Pyme UC", "tag_text": "Cuando buscas formación empresarial.", "title": "Pyme UC", "desc": "Programas de formación, mentorías, cursos, talleres, seminarios y diplomados para fortalecer gestión empresarial, marketing, financiamiento y desarrollo del negocio.", "benefit": "Beneficio: 20% de descuento en cursos pagados durante 2026.", "cta_text": "Explorar programas UC"},
+          {"logo_filename": "misabogados.png", "logo_alt": "MisAbogados", "tag_text": "Cuando necesitas entender mejor temas legales.", "desc": "Contenido informativo gratuito sobre normativa laboral, cambios legales y orientación básica para cumplimiento y gestión laboral.", "benefit": "Beneficio: No hay beneficio comercial exclusivo; acceso a contenido informativo gratuito.", "cta_text": "Leer contenido legal"}
+        ] %}
+
+    {% module "beneficios" path="../modules/ruta-beneficios"
+        heading="Beneficios de la ruta Talento y Gestión"
+        benefits=[
+          {"icon": "clock", "title": "Más liderazgo", "text": "Fortalece la forma en que diriges, delegas y acompañas a tu equipo."},
+          {"icon": "chart", "title": "Más capacidades", "text": "Accede a formación para el líder y para quienes hacen crecer la operación."},
+          {"icon": "check", "title": "Más claridad", "text": "Ordena decisiones, gestión financiera y temas laborales con información útil."}
+        ] %}
+
+    {% module "franja" path="../modules/ruta-franja"
+        bg_mode="parallax"
+        bg_image={"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/img/franja-bn-talento.jpg", "alt": ""}
+        eyebrow="El viaje pyme"
+        heading="Un equipo que aprende es un negocio que avanza." %}
+
+    {% module "contenidos" path="../modules/ruta-contenidos"
+        heading="Aprende a gestionar mejor:"
+        lead="Contenidos sugeridos de blog y materiales asociados a liderazgo, gestión de equipos, normativa laboral, formación empresarial y desarrollo de capacidades."
+        posts=[
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-b.jpg", "alt": "Guías prácticas para liderar tu equipo", "width": 640, "height": 400}, "title": "Guías prácticas para liderar", "desc": "Contenidos explicados de forma simple para profesionalizar la gestión diaria."},
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-d.jpg", "alt": "Normativas laborales vigentes en Chile para pymes", "width": 640, "height": 400}, "title": "Normativas laborales vigentes", "desc": "Columnas informativas para operar con mayor seguridad y respaldo."},
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-a.jpg", "alt": "Estrategias para equipos de alto rendimiento", "width": 640, "height": 400}, "title": "Equipos de alto rendimiento", "desc": "Talleres digitales grabados y estrategias para desarrollar capacidades del equipo."}
+        ] %}
+
+    {% module "diagnostico" path="../modules/rutas-diagnostico"
+        heading="Encuentra tu próxima estación de gestión."
+        bodytext="Responde el diagnóstico y descubre si hoy necesitas fortalecer liderazgo, capacitar al equipo, ordenar finanzas, acceder a formación o avanzar por otra ruta."
+        cta_text="Descubrir mi ruta"
+        tight_top=false %}
+
+    {% module "otras" path="../modules/ruta-otras"
+        heading="Si tu prioridad no está en talento o gestión, sigue el viaje por otra ruta de la Red:"
+        lead=""
+        routes=[
+          {"icon_filename": "ruta-capital.png", "tag_text": "Financiamiento integrado", "tag_style": "color:#7A6A00;background:#FFFBCC", "title": "Ruta Capital", "desc": "Para ordenar caja, bancarizar y entender tu perfil financiero.", "link_color": "#7A6A00", "url": {"href": "/ruta-capital"}},
+          {"icon_filename": "ruta-mercado.png", "tag_text": "Ventas y distribución", "tag_style": "color:#330559;background:#E7DEF2", "title": "Ruta Mercado", "desc": "Para vender online, mejorar despachos y abrir oportunidades comerciales.", "link_color": "#330559", "url": {"href": "/ruta-mercado"}},
+          {"icon_filename": "ruta-digitalizacion.png", "tag_text": "Software y automatización", "tag_style": "color:#A8003C;background:#FFE3EE", "title": "Ruta Digitalización", "desc": "Para ordenar procesos, automatizar tareas y usar herramientas digitales.", "link_color": "#A8003C", "url": {"href": "/ruta-digitalizacion"}}
+        ] %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

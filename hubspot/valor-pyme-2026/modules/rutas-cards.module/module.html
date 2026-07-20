@@ -1,0 +1,21 @@
+{# MÓDULO · Rutas Tarjetas — grilla 2x2 con las 4 rutas. Cada tarjeta es un
+   ítem del repeater: título, tag (con estilo), descripción, ícono, colores y
+   enlace editables. Los íconos viven en File Manager (hubfs/icons/rutas/). #}
+<section class="section" id="rutas">
+  <div class="container">
+    <div class="section-head center reveal">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+      {% if module.lead %}<p class="lead">{{ module.lead }}</p>{% endif %}
+    </div>
+    <div class="grid-2">
+      {% for route in module.routes %}
+      <a class="route-card reveal{% if loop.index == 2 %} d1{% elif loop.index == 3 %} d2{% elif loop.index == 4 %} d3{% endif %}" href="{{ route.route_url.href }}" style="--ruta:{{ route.accent_color }}">
+        <div class="route-card__top"><span class="route-card__dot has-ico"><img class="route-ico" src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/' ~ route.icon_filename }}" alt="" width="48" height="48"></span><h3>{{ route.title }}</h3></div>
+        {% if route.tag_text %}<span class="tag" style="{{ route.tag_style }}">{{ route.tag_text }}</span>{% endif %}
+        {% if route.desc %}<p>{{ route.desc }}</p>{% endif %}
+        <span class="link-more" style="color:{{ route.link_color }}">{{ route.cta_text }} <span class="arrow">→</span></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

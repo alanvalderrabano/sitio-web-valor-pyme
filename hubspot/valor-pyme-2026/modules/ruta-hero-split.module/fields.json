@@ -1,0 +1,112 @@
+[
+  {
+    "id": "variant",
+    "name": "variant",
+    "label": "Variante",
+    "type": "choice",
+    "required": true,
+    "default": "digitalizacion",
+    "choices": [
+      ["digitalizacion", "Digitalización (línea rosa)"],
+      ["talento", "Talento (línea verde)"]
+    ]
+  },
+  {
+    "id": "aria_label",
+    "name": "aria_label",
+    "label": "Etiqueta accesible del hero",
+    "type": "text",
+    "required": false,
+    "default": "Ruta Digitalización"
+  },
+  {
+    "id": "photo_noline",
+    "name": "photo_noline",
+    "label": "Foto (sin la línea)",
+    "type": "image",
+    "required": false,
+    "default": {
+      "src": "https://sitio-web-valor-pyme.pages.dev/assets/photos/brand/hero-digi-photo-noline.jpg",
+      "alt": "Emprendedora usando una tablet en la barra de su cafetería",
+      "width": 636,
+      "height": 616
+    }
+  },
+  {
+    "id": "photo_line",
+    "name": "photo_line",
+    "label": "Capa de la línea (PNG con transparencia)",
+    "type": "image",
+    "required": false,
+    "default": {
+      "src": "https://sitio-web-valor-pyme.pages.dev/assets/photos/brand/hero-digi-line-only.png",
+      "alt": "",
+      "width": 636,
+      "height": 616
+    }
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H1, admite <br>)",
+    "type": "text",
+    "required": false,
+    "default": "Menos<br>planillas.<br>Más control<br>para crecer."
+  },
+  {
+    "id": "subtext",
+    "name": "subtext",
+    "label": "Bajada",
+    "type": "text",
+    "required": false,
+    "default": "Si buscas ahorrar tiempo y simplificar el trabajo diario, Ruta Digitalización te ayuda a ordenar procesos, automatizar gestiones y avanzar con herramientas simples."
+  },
+  {
+    "id": "cta1_text",
+    "name": "cta1_text",
+    "label": "CTA principal · texto",
+    "type": "text",
+    "required": false,
+    "default": "Ver estaciones"
+  },
+  {
+    "id": "cta1_url",
+    "name": "cta1_url",
+    "label": "CTA principal · enlace",
+    "type": "url",
+    "required": false,
+    "default": { "type": "EXTERNAL", "href": "#estaciones" }
+  },
+  {
+    "id": "cta2_text",
+    "name": "cta2_text",
+    "label": "CTA secundario · texto",
+    "type": "text",
+    "required": false,
+    "default": "Registrarme"
+  },
+  {
+    "id": "cta2_url",
+    "name": "cta2_url",
+    "label": "CTA secundario · enlace",
+    "type": "url",
+    "required": false,
+    "default": { "type": "EXTERNAL", "href": "#" }
+  },
+  {
+    "id": "line_viewbox",
+    "name": "line_viewbox",
+    "label": "viewBox de la línea del panel (avanzado)",
+    "type": "text",
+    "required": false,
+    "default": "0 0 640 616"
+  },
+  {
+    "id": "line_path",
+    "name": "line_path",
+    "label": "Trazo SVG de la línea del panel (avanzado)",
+    "type": "text",
+    "required": false,
+    "default": "M-4 375 C 200 373 440 379 644 380"
+  }
+]

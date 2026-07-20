@@ -1,0 +1,27 @@
+{# MÓDULO · Nosotros Propuesta de valor — intro + grilla de pilares (ícono
+   seleccionable + título) + CTA. #}
+<section class="hp-section np-value" id="proposito">
+  <div class="container">
+    <div class="np-intro reveal">
+      {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+      {% if module.bodytext %}<p>{{ module.bodytext }}</p>{% endif %}
+    </div>
+    <ul class="np-pillars reveal" role="list">
+      {% for p in module.pillars %}
+      <li class="np-pillar">
+        <span class="np-pillar__ico" aria-hidden="true">
+          {% if p.icon == "community" %}<svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% elif p.icon == "alliance" %}<svg viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% elif p.icon == "growth" %}<svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8M17 7h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% else %}<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>{% endif %}
+        </span>
+        {% if p.title %}<h3>{{ p.title }}</h3>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% if module.cta_text %}<div class="center" style="margin-top:clamp(28px,4vw,44px)">
+      <a href="{{ module.cta_url.href }}" class="btn btn--onfill">{{ module.cta_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>{% endif %}
+  </div>
+</section>

@@ -1,0 +1,25 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Suscripción gratuita para pymes de Chile" },
+  { "id": "heading", "name": "heading", "label": "Título (H1)", "type": "text", "required": false, "default": "Emprender es siempre un viaje y Valor Pyme está para acompañarte." },
+  { "id": "subtext", "name": "subtext", "label": "Bajada", "type": "text", "required": false, "default": "Únete gratuitamente a la comunidad de Valor Pyme y accede a herramientas, formación, oportunidades y beneficios diseñados para ayudarte a enfrentar los desafíos de hacer crecer tu negocio." },
+  { "id": "cta1_text", "name": "cta1_text", "label": "CTA principal · texto", "type": "text", "required": false, "default": "Suscribirme gratis" },
+  { "id": "cta1_url", "name": "cta1_url", "label": "CTA principal · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "#registro" } },
+  { "id": "cta2_text", "name": "cta2_text", "label": "CTA secundario · texto", "type": "text", "required": false, "default": "Ver beneficios" },
+  { "id": "cta2_url", "name": "cta2_url", "label": "CTA secundario · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "#beneficios" } },
+  { "id": "iso_image", "name": "iso_image", "label": "Isotipo (gráfico central)", "type": "image", "required": false, "default": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/motion/vp-lines-still.png", "alt": "" } },
+  {
+    "id": "pills", "name": "pills", "label": "Píldoras de ruta", "type": "group",
+    "occurrence": { "min": 0, "max": 4, "default": 4 },
+    "children": [
+      { "id": "text", "name": "text", "label": "Texto", "type": "text", "required": false, "default": "" },
+      { "id": "bg", "name": "bg", "label": "Color de fondo", "type": "text", "required": false, "default": "#FFF21C" },
+      { "id": "fg", "name": "fg", "label": "Color de texto", "type": "text", "required": false, "default": "#330559" }
+    ],
+    "default": [
+      { "text": "Ruta Capital", "bg": "#FFF21C", "fg": "#330559" },
+      { "text": "Ruta Mercado", "bg": "#330559", "fg": "#FFFFFF" },
+      { "text": "Ruta Digitalización", "bg": "#FF2B5E", "fg": "#FFFFFF" },
+      { "text": "Ruta Talento y Gestión", "bg": "#00BD70", "fg": "#FFFFFF" }
+    ]
+  }
+]

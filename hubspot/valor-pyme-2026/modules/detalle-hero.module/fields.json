@@ -1,0 +1,14 @@
+[
+  { "id": "back_text", "name": "back_text", "label": "Enlace volver · texto", "type": "text", "required": false, "default": "Centro de Recursos" },
+  { "id": "back_url", "name": "back_url", "label": "Enlace volver · destino", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/recursos" } },
+  { "id": "tipo", "name": "tipo", "label": "Tipo de recurso", "type": "choice", "required": false, "default": "ebook",
+    "choices": [["ebook", "E-book"], ["infografia", "Infografía"], ["video", "Cápsula"]] },
+  { "id": "ruta", "name": "ruta", "label": "Ruta", "type": "choice", "required": false, "default": "capital",
+    "choices": [["capital", "Capital"], ["mercado", "Mercado"], ["digitalizacion", "Digitalización"], ["talento", "Talento y Gestión"]] },
+  { "id": "heading", "name": "heading", "label": "Título (H1)", "type": "text", "required": false, "default": "Guía de financiamiento para tu pyme" },
+  { "id": "desc", "name": "desc", "label": "Descripción", "type": "text", "required": false, "default": "Una guía práctica para entender las opciones de financiamiento y bancarización disponibles para tu pyme, con criterios claros para decidir." },
+  { "id": "cta_text", "name": "cta_text", "label": "Botón · texto", "type": "text", "required": false, "default": "Descargar e-book" },
+  { "id": "cta_anchor", "name": "cta_anchor", "label": "Botón · ancla o enlace", "type": "text", "required": false, "default": "#descargar" },
+  { "id": "media", "name": "media", "label": "Imagen del recurso", "type": "image", "required": false,
+    "default": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-capital.jpg", "alt": "Guía de financiamiento para tu pyme" } }
+]

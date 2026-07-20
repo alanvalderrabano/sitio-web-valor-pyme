@@ -1,0 +1,56 @@
+{# MÓDULO · Recursos Biblioteca — filtros (chips + select móvil, taxonomía fija)
+   + grilla de tarjetas (repeater). El filtrado lo hace recursos.js sobre las
+   tarjetas ya renderizadas (data-tipo / data-ruta). #}
+{% set tipo_chip = [{"v":"ebook","l":"E-books"},{"v":"infografia","l":"Infografías"},{"v":"video","l":"Cápsulas / Videos"}] %}
+{% set ruta_chip = [{"v":"capital","l":"Capital"},{"v":"mercado","l":"Mercado"},{"v":"digitalizacion","l":"Digitalización"},{"v":"talento","l":"Talento y Gestión"}] %}
+{% set tipo_label = {"ebook":"E-book","infografia":"Infografía","video":"Cápsula"} %}
+{% set ruta_label = {"capital":"Capital","mercado":"Mercado","digitalizacion":"Digitalización","talento":"Talento y Gestión"} %}
+
+<section class="rc-filters">
+  <div class="container rc-filters__inner">
+    <div class="rc-fgroup" id="fg-tipo">
+      <span class="rc-fgroup__label">Tipo de recurso</span>
+      <button type="button" class="rc-chip" data-kind="tipo" data-value="all" aria-pressed="true"><span>Todos</span></button>
+      {% for t in tipo_chip %}<button type="button" class="rc-chip" data-kind="tipo" data-value="{{ t.v }}" aria-pressed="false"><span>{{ t.l }}</span></button>{% endfor %}
+      <select class="rc-select" data-kind="tipo" aria-label="Filtrar por tipo de recurso">
+        <option value="all">Todos</option>
+        {% for t in tipo_chip %}<option value="{{ t.v }}">{{ t.l }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="rc-fgroup" id="fg-ruta">
+      <span class="rc-fgroup__label">Ruta</span>
+      <button type="button" class="rc-chip" data-kind="ruta" data-value="all" aria-pressed="true"><span>Todas</span></button>
+      {% for r in ruta_chip %}<button type="button" class="rc-chip" data-kind="ruta" data-value="{{ r.v }}" aria-pressed="false"><span class="rc-chip__dot" style="background:var(--ruta-{{ r.v }}-c)"></span><span>{{ r.l }}</span></button>{% endfor %}
+      <select class="rc-select" data-kind="ruta" aria-label="Filtrar por ruta">
+        <option value="all">Todas</option>
+        {% for r in ruta_chip %}<option value="{{ r.v }}">{{ r.l }}</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+</section>
+
+<section class="rc-list">
+  <div class="container">
+    <div class="rc-list__meta">
+      <span class="rc-list__count" id="rc-count"></span>
+      <button type="button" class="rc-list__reset" id="rc-reset" hidden>Limpiar filtros</button>
+    </div>
+    <div class="rc-grid" id="rc-grid">
+      {% for res in module.resources %}
+      <a class="rc-card" href="{{ res.url.href }}" data-tipo="{{ res.tipo }}" data-ruta="{{ res.ruta }}">
+        <div class="rc-card__cover">
+          {% if res.portada.src %}<img src="{{ res.portada.src }}" alt="" loading="lazy">{% endif %}
+          <span class="rc-card__type">{% if res.tipo == "infografia" %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>{% elif res.tipo == "video" %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg>{% else %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 015.5 4H11v15H5.5A1.5 1.5 0 014 17.5v-12z" stroke="currentColor" stroke-width="1.7"/><path d="M20 5.5A1.5 1.5 0 0018.5 4H13v15h5.5a1.5 1.5 0 001.5-1.5v-12z" stroke="currentColor" stroke-width="1.7"/></svg>{% endif %}{{ tipo_label[res.tipo] }}</span>
+        </div>
+        <div class="rc-card__body">
+          <span class="rc-card__ruta" style="color:var(--ruta-{{ res.ruta }}-c)"><img class="rc-ruta-ico" src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/ruta-' ~ res.ruta ~ '.png' }}" alt="" width="20" height="20" loading="lazy">Ruta {{ ruta_label[res.ruta] }}</span>
+          <h3 class="rc-card__title">{{ res.titulo }}</h3>
+          <p class="rc-card__desc">{{ res.resumen }}</p>
+          <span class="rc-card__cta">{{ res.cta_label }}<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+      {% endfor %}
+      <div class="rc-empty" hidden><strong>Sin resultados</strong>No hay recursos que coincidan con estos filtros. Prueba con otra combinación.</div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Cómo funciona el ecosistema" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Encuentra la ruta que mejor se adapta a tu negocio." },
+  { "id": "bodytext", "name": "bodytext", "label": "Párrafo", "type": "text", "required": false, "default": "Cada pyme tiene necesidades distintas y no existe un único camino para crecer. Por eso organizamos nuestras soluciones en rutas que te ayudan a identificar oportunidades, acceder a herramientas y avanzar con mayor claridad." },
+  {
+    "id": "steps", "name": "steps", "label": "Pasos del recorrido", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "children": [
+      { "id": "step_title", "name": "step_title", "label": "Título del paso", "type": "text", "required": false, "default": "" }
+    ],
+    "default": [
+      { "step_title": "Diagnostica" },
+      { "step_title": "Descubre tu ruta" },
+      { "step_title": "Conecta con soluciones" },
+      { "step_title": "Crece acompañado" }
+    ]
+  },
+  { "id": "cta_text", "name": "cta_text", "label": "Botón · texto", "type": "text", "required": false, "default": "Descubrir mi ruta" },
+  { "id": "cta_url", "name": "cta_url", "label": "Botón · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/#diagnostico" } }
+]

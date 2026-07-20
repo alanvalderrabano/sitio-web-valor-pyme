@@ -1,0 +1,14 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Escríbenos" },
+  { "id": "heading", "name": "heading", "label": "Título", "type": "text", "required": false, "default": "Envíanos tu mensaje" },
+  { "id": "bodytext", "name": "bodytext", "label": "Párrafo", "type": "text", "required": false, "default": "Completa tus datos y cuéntanos cómo podemos ayudarte. Nuestro equipo revisará tu solicitud y la derivará al área correspondiente." },
+  {
+    "id": "form", "name": "form", "label": "Formulario de HubSpot",
+    "help_text": "Elige un formulario de HubSpot para capturar los mensajes en el CRM. Si lo dejas vacío, se muestra el formulario básico (solo valida en el navegador, sin envío real).",
+    "type": "form", "required": false,
+    "default": { "form_id": "", "response_type": "inline", "message": "¡Gracias! Recibimos tu mensaje y te contactaremos lo antes posible.", "form_type": "HUBSPOT" }
+  },
+  { "id": "consent_text", "name": "consent_text", "label": "Formulario básico · consentimiento", "type": "text", "required": false, "default": "Acepto que Valor Pyme trate mis datos personales para responder a esta solicitud, según su política de privacidad." },
+  { "id": "submit_text", "name": "submit_text", "label": "Formulario básico · botón", "type": "text", "required": false, "default": "Enviar mensaje" },
+  { "id": "success_text", "name": "success_text", "label": "Formulario básico · mensaje de éxito", "type": "text", "required": false, "default": "¡Gracias! Recibimos tu mensaje y te contactaremos al correo indicado lo antes posible." }
+]

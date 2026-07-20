@@ -1,0 +1,37 @@
+<!--
+  templateType: page
+  label: Página VP2026 (flexible · arrastrar y soltar)
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   PÁGINA VP2026 · plantilla flexible
+   Header/footer globales + un área de arrastrar y soltar donde
+   puedes agregar cualquier módulo del theme (hero, rutas, CTA,
+   formulario, etc.). Úsala para páginas nuevas o existentes
+   (p. ej. /suscripcion) y ármalas visualmente en el editor.
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+</head>
+<body class="hp" data-ruta="">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% dnd_area "contenido" label="Contenido de la página" %}
+    {% end_dnd_area %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

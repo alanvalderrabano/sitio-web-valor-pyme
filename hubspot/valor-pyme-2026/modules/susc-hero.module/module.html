@@ -1,0 +1,26 @@
+{# MÓDULO · Suscripción Hero — copy + isotipo con píldoras de ruta alrededor
+   (como el diseño original). Dos CTAs. #}
+<section class="hp-hero hp-hero--split susc-hero">
+  <span class="hp-hero__watermark" aria-hidden="true"></span>
+  <div class="container">
+    <div class="hp-hero__split">
+      <div class="hp-hero__lead">
+        {% if module.eyebrow %}<span class="hp-eyebrow reveal">{{ module.eyebrow }}</span>{% endif %}
+        {% if module.heading %}<h1 class="hp-display reveal d1">{{ module.heading }}</h1>{% endif %}
+        {% if module.subtext %}<p class="hp-hero__sub reveal d2">{{ module.subtext }}</p>{% endif %}
+        <div class="hp-hero__cta reveal d3">
+          {% if module.cta1_text %}<a href="{{ module.cta1_url.href }}" class="btn btn--onfill">{{ module.cta1_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>{% endif %}
+          {% if module.cta2_text %}<a href="{{ module.cta2_url.href }}" class="btn btn--ghost">{{ module.cta2_text }}</a>{% endif %}
+        </div>
+      </div>
+      <div class="hp-hero__media reveal d2">
+        <div class="susc-hero__graphic">
+          {% if module.iso_image.src %}<img class="susc-hero__iso" src="{{ module.iso_image.src }}" alt="" width="460" height="460">{% endif %}
+          {% for p in module.pills %}
+          <span class="susc-hero__pill susc-hero__pill--{{ loop.index }}" style="background:{{ p.bg }};color:{{ p.fg }}">{{ p.text }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

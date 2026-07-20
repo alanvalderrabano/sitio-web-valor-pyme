@@ -1,0 +1,56 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Beneficios de la ruta Capital"
+  },
+  {
+    "id": "benefits",
+    "name": "benefits",
+    "label": "Beneficios",
+    "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 3 },
+    "children": [
+      {
+        "id": "icon",
+        "name": "icon",
+        "label": "Ícono",
+        "type": "choice",
+        "required": false,
+        "default": "clock",
+        "choices": [
+          ["clock", "Reloj"],
+          ["chart", "Gráfico ascendente"],
+          ["check", "Check"],
+          ["shield", "Escudo"],
+          ["bolt", "Rayo"],
+          ["flow", "Círculo con play"]
+        ]
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "text",
+        "name": "text",
+        "label": "Descripción",
+        "type": "text",
+        "required": false,
+        "default": ""
+      }
+    ],
+    "default": [
+      { "icon": "clock", "title": "Caja más ordenada", "text": "Separa movimientos y opera con más orden." },
+      { "icon": "chart", "title": "Mejores señales", "text": "Entiende cómo se ve tu pyme y qué puedes mejorar." },
+      { "icon": "check", "title": "Flujo que vuelve", "text": "Gestiona pagos atrasados antes de que frenen tu avance." }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+{# MÓDULO · Ruta Beneficios — grilla de 3 beneficios con ícono seleccionable. #}
+<section class="section" style="background:var(--color-soft);padding-block:clamp(56px,8vw,112px)">
+  <div class="container">
+    <div class="section-head reveal">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+    </div>
+    <div class="grid-3">
+      {% for b in module.benefits %}
+      <article class="benefit reveal{% if loop.index == 2 %} d1{% elif loop.index == 3 %} d2{% elif loop.index >= 4 %} d3{% endif %}">
+        <span class="benefit__ico">
+          {% if b.icon == "chart" %}<svg viewBox="0 0 24 24" fill="none"><path d="M3 17l5-5 4 4 8-8M21 8v5h-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% elif b.icon == "check" %}<svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% elif b.icon == "shield" %}<svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.5 8-8 11-4.5-3-8-6-8-11V5l8-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% elif b.icon == "bolt" %}<svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% elif b.icon == "flow" %}<svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 7l5 3-5 3V9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% else %}<svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 5v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endif %}
+        </span>
+        {% if b.title %}<h3>{{ b.title }}</h3>{% endif %}
+        {% if b.text %}<p>{{ b.text }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+[
+  {
+    "id": "media_image",
+    "name": "media_image",
+    "label": "Foto",
+    "type": "image",
+    "required": false,
+    "default": {
+      "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-capital.jpg",
+      "alt": "Emprendedora ordenando las finanzas de su pyme",
+      "width": 600,
+      "height": 510
+    }
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "¿Por qué tomar la ruta Capital?"
+  },
+  {
+    "id": "lead",
+    "name": "lead",
+    "label": "Párrafo",
+    "type": "text",
+    "required": false,
+    "default": "Cada pyme enfrenta desafíos distintos, ya sea que necesites ordenar tus cuentas, entender tu situación financiera o recuperar pagos pendientes, la Ruta Capital reúne las estaciones que necesitas para avanzar con más claridad."
+  }
+]

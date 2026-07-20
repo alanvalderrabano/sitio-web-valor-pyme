@@ -1,0 +1,47 @@
+<!--
+  templateType: page
+  label: Ruta Capital · Valor Pyme
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   RUTA CAPITAL · Valor Pyme
+   Página de ruta armada con módulos genéricos reutilizables
+   (sirven también para Mercado / Digitalización / Talento).
+   El color de la ruta lo define data-ruta="capital" en el <body>.
+   Header/footer = partials globales existentes (no se re-suben).
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+</head>
+<body data-ruta="capital">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% module "hero"        path="../modules/ruta-hero-char" %}
+    {% module "intro"       path="../modules/ruta-intro" %}
+    {% module "estaciones"  path="../modules/ruta-estaciones" %}
+    {% module "beneficios"  path="../modules/ruta-beneficios" %}
+    {% module "franja"      path="../modules/ruta-franja" %}
+    {% module "contenidos"  path="../modules/ruta-contenidos" %}
+    {% module "diagnostico" path="../modules/rutas-diagnostico"
+        heading="Haz el diagnóstico y encuentra tu próxima estación"
+        bodytext="Responde el diagnóstico y descubre si hoy te conviene ordenar caja, mirar tu perfil, recuperar flujo o avanzar por otra ruta de la Red."
+        cta_text="Descubrir mi ruta"
+        tight_top=false %}
+    {% module "otras"       path="../modules/ruta-otras" %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

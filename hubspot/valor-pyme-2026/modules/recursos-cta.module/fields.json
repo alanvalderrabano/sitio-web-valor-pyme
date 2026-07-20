@@ -1,0 +1,6 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "¿Aún no eres parte de Valor Pyme?" },
+  { "id": "bodytext", "name": "bodytext", "label": "Párrafo", "type": "text", "required": false, "default": "Suscríbete gratis y accede a todos los recursos, oportunidades y beneficios de la red." },
+  { "id": "cta_text", "name": "cta_text", "label": "Botón · texto", "type": "text", "required": false, "default": "Suscríbete gratis" },
+  { "id": "cta_url", "name": "cta_url", "label": "Botón · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/#suscripcion" } }
+]

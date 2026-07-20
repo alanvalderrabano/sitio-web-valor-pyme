@@ -1,0 +1,79 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Aprende a leer tu ruta financiera"
+  },
+  {
+    "id": "lead",
+    "name": "lead",
+    "label": "Bajada",
+    "type": "text",
+    "required": false,
+    "default": "Contenidos simples sobre caja, F29, factoring, planificación y financiamiento formal."
+  },
+  {
+    "id": "posts",
+    "name": "posts",
+    "label": "Tarjetas de contenido",
+    "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 3 },
+    "children": [
+      {
+        "id": "image",
+        "name": "image",
+        "label": "Imagen",
+        "type": "image",
+        "required": false,
+        "default": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-a.jpg", "alt": "", "width": 640, "height": 400 }
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "desc",
+        "name": "desc",
+        "label": "Descripción",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "url",
+        "name": "url",
+        "label": "Enlace",
+        "type": "url",
+        "required": false,
+        "default": { "type": "EXTERNAL", "href": "#" }
+      }
+    ],
+    "default": [
+      {
+        "image": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-a.jpg", "alt": "Ordena tu caja y tu F29", "width": 640, "height": 400 },
+        "title": "Ordena tu caja y tu F29",
+        "desc": "Cómo separar movimientos, leer tu F29 y mantener la operación diaria bajo control.",
+        "url": { "type": "EXTERNAL", "href": "#" }
+      },
+      {
+        "image": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-b.jpg", "alt": "Factoring y flujo de caja", "width": 640, "height": 400 },
+        "title": "Factoring y flujo de caja",
+        "desc": "Recupera liquidez y gestiona pagos atrasados antes de que frenen tu avance.",
+        "url": { "type": "EXTERNAL", "href": "#" }
+      },
+      {
+        "image": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-c.jpg", "alt": "Planificación y financiamiento formal", "width": 640, "height": 400 },
+        "title": "Planificación y financiamiento formal",
+        "desc": "Prepárate para acceder al sistema financiero formal con un perfil más sólido.",
+        "url": { "type": "EXTERNAL", "href": "#" }
+      }
+    ]
+  }
+]

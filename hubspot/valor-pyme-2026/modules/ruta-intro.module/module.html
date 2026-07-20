@@ -1,0 +1,15 @@
+{# MÓDULO · Ruta Intro — franja con foto enmarcada + título y bajada
+   ("¿Por qué tomar la ruta?"). #}
+<section class="section section--lines">
+  <div class="container split">
+    <div class="split__media reveal">
+      <div class="photo-frame">
+        {% if module.media_image.src %}<img class="photo-frame__img" src="{{ module.media_image.src }}"{% if module.media_image.width %} width="{{ module.media_image.width }}"{% endif %}{% if module.media_image.height %} height="{{ module.media_image.height }}"{% endif %} alt="{{ module.media_image.alt }}" loading="lazy" style="aspect-ratio:4/3.4">{% endif %}
+      </div>
+    </div>
+    <div class="split__copy reveal d1">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+      {% if module.lead %}<p class="lead">{{ module.lead }}</p>{% endif %}
+    </div>
+  </div>
+</section>

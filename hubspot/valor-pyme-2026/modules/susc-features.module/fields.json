@@ -1,0 +1,22 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "¿Qué encontrarás al ser parte de la comunidad?" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Encuentra una ruta para avanzar según lo que tu pyme necesita hoy." },
+  {
+    "id": "cards", "name": "cards", "label": "Tarjetas", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "children": [
+      { "id": "icon", "name": "icon", "label": "Ícono", "type": "choice", "required": false, "default": "tools",
+        "choices": [["tools", "Herramientas"], ["learn", "Formación"], ["sales", "Ventas"], ["community", "Comunidad"]] },
+      { "id": "title", "name": "title", "label": "Título", "type": "text", "required": false, "default": "" },
+      { "id": "desc", "name": "desc", "label": "Descripción", "type": "text", "required": false, "default": "" }
+    ],
+    "default": [
+      { "icon": "tools", "title": "Herramientas para impulsar tu negocio", "desc": "Accede a soluciones y recursos que te ayudarán a enfrentar desafíos financieros, comerciales, operativos y de gestión." },
+      { "icon": "learn", "title": "Formación y aprendizaje", "desc": "Participa en actividades, contenidos y programas diseñados para fortalecer tus capacidades y las de tu equipo." },
+      { "icon": "sales", "title": "Oportunidades de venta", "desc": "Descubre nuevas oportunidades comerciales, conexiones estratégicas y beneficios exclusivos para tu empresa." },
+      { "icon": "community", "title": "Una comunidad que te acompaña", "desc": "Conecta con emprendedores, especialistas y organizaciones comprometidas con el desarrollo de las pymes." }
+    ]
+  },
+  { "id": "cta_text", "name": "cta_text", "label": "Botón · texto", "type": "text", "required": false, "default": "Quiero suscribirme" },
+  { "id": "cta_url", "name": "cta_url", "label": "Botón · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "#registro" } }
+]

@@ -1,0 +1,7 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "¿Por qué existe Valor Pyme?" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Las pymes enfrentan desafíos todos los días." },
+  { "id": "bodytext", "name": "bodytext", "label": "Párrafos (columna derecha)", "type": "richtext", "required": false, "default": "<p>Acceder a financiamiento, incorporar tecnología, encontrar oportunidades comerciales o fortalecer la gestión de un negocio no siempre es fácil.</p><p>Muchas veces las soluciones existen, pero están dispersas.</p><p>Valor Pyme nace para acercarlas y hacerlas más accesibles para quienes están construyendo empresa todos los días.</p>" },
+  { "id": "link_text", "name": "link_text", "label": "Enlace · texto", "type": "text", "required": false, "default": "Descubre cómo te ayudamos" },
+  { "id": "link_url", "name": "link_url", "label": "Enlace · destino", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "#proposito" } }
+]

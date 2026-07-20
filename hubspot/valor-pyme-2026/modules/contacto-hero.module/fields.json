@@ -1,0 +1,9 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Hablemos" },
+  { "id": "heading", "name": "heading", "label": "Título (H1)", "type": "text", "required": false, "default": "Hagamos red" },
+  { "id": "subtext", "name": "subtext", "label": "Bajada", "type": "text", "required": false, "default": "Porque para hacer crecer esta red es necesaria la participación de muchos, queremos escucharte. Si tienes una idea, dudas, comentarios o sugerencias, envíanos un mensaje y te responderemos lo antes posible." },
+  { "id": "cta1_text", "name": "cta1_text", "label": "CTA principal · texto", "type": "text", "required": false, "default": "Suscríbete gratis" },
+  { "id": "cta1_url", "name": "cta1_url", "label": "CTA principal · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/#suscripcion" } },
+  { "id": "cta2_text", "name": "cta2_text", "label": "CTA secundario · texto", "type": "text", "required": false, "default": "Ver motivos" },
+  { "id": "cta2_url", "name": "cta2_url", "label": "CTA secundario · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "#ayuda" } }
+]

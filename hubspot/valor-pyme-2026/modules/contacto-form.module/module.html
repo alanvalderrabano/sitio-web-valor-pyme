@@ -1,0 +1,84 @@
+{# MÓDULO · Contacto Formulario — si se elige un formulario de HubSpot (campo
+   "form") los mensajes entran al CRM; si no, cae al formulario básico con
+   prellenado de motivo desde las tarjetas y validación client-side. #}
+<section class="hp-section hp-contacto-form" id="mensaje">
+  <div class="container">
+    <div class="hp-contacto-form__intro reveal">
+      {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.heading %}<h3 class="hp-h2">{{ module.heading }}</h3>{% endif %}
+      {% if module.bodytext %}<p>{{ module.bodytext }}</p>{% endif %}
+    </div>
+
+    {% if module.form.form_id %}
+      {% form
+        form_to_use="{{ module.form.form_id }}"
+        response_response_type="{{ module.form.response_type }}"
+        response_message="{{ module.form.message }}"
+        response_redirect_id="{{ module.form.redirect_id }}"
+        response_redirect_url="{{ module.form.redirect_url }}"
+      %}
+    {% else %}
+      <form class="hp-form reveal d1" id="contactoForm" novalidate onsubmit="return false;">
+        <div class="hp-form__row">
+          <div class="hp-field">
+            <label for="cf-nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="cf-nombre" name="nombre" autocomplete="name" required placeholder="Tu nombre y apellido">
+          </div>
+          <div class="hp-field">
+            <label for="cf-email">Correo electrónico <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder="tucorreo@ejemplo.cl">
+          </div>
+        </div>
+        <div class="hp-field">
+          <label for="cf-motivo">Motivo de contacto <span class="req" aria-hidden="true">*</span></label>
+          <select id="cf-motivo" name="motivo" required>
+            <option value="" disabled selected>Selecciona un motivo</option>
+            <option value="Quiero ser partner o aliado">Quiero ser partner o aliado</option>
+            <option value="Tengo una consulta sobre Valor Pyme">Tengo una consulta sobre Valor Pyme</option>
+            <option value="Soy parte de la comunidad y necesito ayuda">Soy parte de la comunidad y necesito ayuda</option>
+            <option value="Quiero colaborar con Valor Pyme">Quiero colaborar con Valor Pyme</option>
+            <option value="Prensa o comunicaciones">Prensa o comunicaciones</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="hp-field">
+          <label for="cf-mensaje">Mensaje <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="cf-mensaje" name="mensaje" rows="6" required placeholder="Cuéntanos en qué te podemos ayudar"></textarea>
+        </div>
+        <div class="hp-check">
+          <input type="checkbox" id="cf-datos" name="datos" required>
+          <label for="cf-datos">{{ module.consent_text }} <span class="req" aria-hidden="true">*</span></label>
+        </div>
+        <div class="hp-form__actions">
+          <button type="submit" class="btn">{{ module.submit_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <p class="hp-form__note">Los campos marcados con <span class="req" aria-hidden="true">*</span> son obligatorios.</p>
+        </div>
+        <p class="hp-form__ok" id="formOk" role="status" hidden>{{ module.success_text }}</p>
+      </form>
+      <script>
+      (function () {
+        var select = document.getElementById('cf-motivo');
+        var form = document.getElementById('contactoForm');
+        var ok = document.getElementById('formOk');
+        document.querySelectorAll('.hp-motivo').forEach(function (card) {
+          card.addEventListener('click', function () {
+            var motivo = card.getAttribute('data-motivo');
+            if (select && motivo) {
+              for (var i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === motivo) { select.selectedIndex = i; break; }
+              }
+            }
+            var nombre = document.getElementById('cf-nombre');
+            if (nombre) setTimeout(function () { nombre.focus(); }, 400);
+          });
+        });
+        if (form) form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (form.checkValidity()) { if (ok) { ok.hidden = false; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); } form.reset(); }
+          else form.reportValidity();
+        });
+      })();
+      </script>
+    {% endif %}
+  </div>
+</section>

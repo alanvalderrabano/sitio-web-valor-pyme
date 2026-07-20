@@ -1,0 +1,11 @@
+{# MÓDULO · Suscripción Intro — "¿Qué es Valor Pyme?": eyebrow + título + texto,
+   centrado. #}
+<section class="hp-section">
+  <div class="container">
+    <div class="section-head center reveal" style="max-width:760px;margin-inline:auto">
+      {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+      {% if module.bodytext %}<div class="susc-intro__body">{{ module.bodytext }}</div>{% endif %}
+    </div>
+  </div>
+</section>

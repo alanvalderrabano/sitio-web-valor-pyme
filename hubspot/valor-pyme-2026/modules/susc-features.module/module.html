@@ -1,0 +1,27 @@
+{# MÓDULO · Suscripción Qué encontrarás — grilla de 4 tarjetas (ícono + título
+   + descripción) con eyebrow, título de sección y CTA. #}
+<section class="hp-section" id="beneficios">
+  <div class="container">
+    <div class="section-head center reveal" style="max-width:720px;margin-inline:auto">
+      {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+      {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+    </div>
+    <div class="grid-4">
+      {% for c in module.cards %}
+      <article class="benefit reveal{% if loop.index0 > 0 %} d{{ loop.index0 }}{% endif %}">
+        <span class="benefit__ico">
+          {% if c.icon == "learn" %}<svg viewBox="0 0 24 24" fill="none"><path d="M12 4L3 8l9 4 9-4-9-4zM7 11v4c0 1.1 2.2 2 5 2s5-.9 5-2v-4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          {% elif c.icon == "sales" %}<svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8M17 7h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% elif c.icon == "community" %}<svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% else %}<svg viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 1 5.4-5.4l-2.8 2.8-2-2 2.8-2.8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endif %}
+        </span>
+        {% if c.title %}<h3>{{ c.title }}</h3>{% endif %}
+        {% if c.desc %}<p>{{ c.desc }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% if module.cta_text %}<div class="center" style="margin-top:clamp(28px,4vw,44px)">
+      <a href="{{ module.cta_url.href }}" class="btn btn--onfill">{{ module.cta_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>{% endif %}
+  </div>
+</section>

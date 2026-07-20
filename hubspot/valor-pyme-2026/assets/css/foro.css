@@ -175,3 +175,78 @@
 .fr-more__head h2 { color: var(--c-morado-deep); }
 .fr-more__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 28px); }
 @media (max-width: 860px){ .fr-more__grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; } }
+
+/* ============================================================
+   Formulario de comentarios NATIVO de HubSpot (@hubspot/blog_comments)
+   Estilizado para igualar el diseño del foro (.fr-form). Scoped al
+   wrapper de comentarios del blog para no afectar otros formularios.
+   ============================================================ */
+.hs_cos_wrapper_type_blog_comments { max-width: 720px; }
+.hs_cos_wrapper_type_blog_comments form {
+  background: #fff; border: 1px solid var(--color-borde); box-shadow: var(--shadow-sm);
+  padding: clamp(24px, 3vw, 34px); margin-top: clamp(20px, 3vw, 30px);
+}
+/* Título del bloque de comentar (inyectado por HubSpot antes del form) */
+.hs_cos_wrapper_type_blog_comments #comment-form-title,
+.hs_cos_wrapper_type_blog_comments h3 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(20px, 2.3vw, 25px); color: var(--c-morado-deep);
+  line-height: 1.15; margin-bottom: 18px;
+}
+.hs_cos_wrapper_type_blog_comments .hs-form-field { margin-bottom: 16px; }
+.hs_cos_wrapper_type_blog_comments .hs-form-field > label {
+  display: block; font-weight: 700; font-size: 13.5px; color: var(--c-morado-deep); margin-bottom: 7px;
+}
+.hs_cos_wrapper_type_blog_comments .hs-form-required { color: var(--c-rosa); margin-left: 2px; }
+.hs_cos_wrapper_type_blog_comments .hs-field-desc { font-size: 13px; color: var(--color-gris); margin: 0 0 7px; }
+.hs_cos_wrapper_type_blog_comments .hs-input,
+.hs_cos_wrapper_type_blog_comments input[type="text"],
+.hs_cos_wrapper_type_blog_comments input[type="email"],
+.hs_cos_wrapper_type_blog_comments input[type="url"],
+.hs_cos_wrapper_type_blog_comments textarea {
+  -webkit-appearance: none; appearance: none;
+  border: 1px solid var(--color-borde); background: #fff; padding: 12px 14px;
+  font: inherit; font-size: 15px; color: var(--color-texto-body);
+  width: 100%; max-width: 100%; border-radius: 0; box-sizing: border-box;
+  transition: border-color .2s, box-shadow .2s;
+}
+.hs_cos_wrapper_type_blog_comments textarea,
+.hs_cos_wrapper_type_blog_comments textarea.hs-input {
+  resize: vertical; min-height: 130px; line-height: 1.55;
+}
+.hs_cos_wrapper_type_blog_comments .hs-input:focus,
+.hs_cos_wrapper_type_blog_comments textarea:focus {
+  outline: none; border-color: var(--c-morado); box-shadow: 0 0 0 3px var(--color-corp-40);
+}
+.hs_cos_wrapper_type_blog_comments .hs-input::placeholder { color: var(--color-gris-claro); }
+/* Errores de validación */
+.hs_cos_wrapper_type_blog_comments .hs-error-msgs { list-style: none; margin: 6px 0 0; padding: 0; }
+.hs_cos_wrapper_type_blog_comments .hs-error-msgs label,
+.hs_cos_wrapper_type_blog_comments .hs-error-msg { color: var(--c-rosa); font-size: 13px; font-weight: 600; }
+/* reCAPTCHA */
+.hs_cos_wrapper_type_blog_comments .hs-recaptcha,
+.hs_cos_wrapper_type_blog_comments .grecaptcha-badge { margin: 6px 0 18px; }
+/* Botón enviar (look del .btn principal) */
+.hs_cos_wrapper_type_blog_comments .hs-button,
+.hs_cos_wrapper_type_blog_comments input[type="submit"] {
+  -webkit-appearance: none; appearance: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 50px; padding: 0 28px; border: none; border-radius: var(--radius-pill);
+  font-family: var(--font-body); font-weight: 700; font-size: 16px; line-height: 1;
+  background: var(--color-corp); color: #fff;
+  transition: transform .25s var(--ease), background .25s, box-shadow .25s;
+}
+.hs_cos_wrapper_type_blog_comments .hs-button:hover,
+.hs_cos_wrapper_type_blog_comments input[type="submit"]:hover {
+  background: var(--color-morado); transform: translateY(-2px); box-shadow: var(--shadow-md);
+}
+.hs_cos_wrapper_type_blog_comments .hs-button:focus-visible,
+.hs_cos_wrapper_type_blog_comments input[type="submit"]:focus-visible {
+  outline: 3px solid var(--color-corp-40); outline-offset: 3px;
+}
+/* Mensaje de éxito / "en revisión" */
+.hs_cos_wrapper_type_blog_comments .submitted-message,
+.hs_cos_wrapper_type_blog_comments .hs-main-font-element {
+  padding: 14px 16px; background: rgba(0,189,112,.10); border-left: 3px solid var(--c-verde);
+  font-size: 14px; color: var(--color-texto-body); line-height: 1.5;
+}

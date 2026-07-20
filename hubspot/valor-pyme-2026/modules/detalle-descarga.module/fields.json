@@ -1,0 +1,13 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Descarga este recurso gratis" },
+  { "id": "bodytext", "name": "bodytext", "label": "Párrafo", "type": "text", "required": false, "default": "Déjanos tus datos y recibirás el material en tu correo. Es gratuito y sin compromiso." },
+  {
+    "id": "form", "name": "form", "label": "Formulario de HubSpot",
+    "help_text": "Elige un formulario de HubSpot para capturar los leads en el CRM. Si lo dejas vacío, se muestra el formulario básico de abajo (solo valida en el navegador).",
+    "type": "form", "required": false,
+    "default": { "form_id": "", "response_type": "inline", "message": "¡Listo! Te enviamos el recurso al correo indicado.", "form_type": "HUBSPOT" }
+  },
+  { "id": "consent_text", "name": "consent_text", "label": "Formulario básico · texto de consentimiento", "type": "text", "required": false, "default": "Acepto recibir el recurso y comunicaciones de Valor Pyme." },
+  { "id": "submit_text", "name": "submit_text", "label": "Formulario básico · texto del botón", "type": "text", "required": false, "default": "Descargar e-book" },
+  { "id": "success_text", "name": "success_text", "label": "Formulario básico · mensaje de éxito", "type": "text", "required": false, "default": "¡Listo! Te enviamos el recurso al correo indicado." }
+]

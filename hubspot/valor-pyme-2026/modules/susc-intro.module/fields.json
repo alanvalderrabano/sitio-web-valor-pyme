@@ -1,0 +1,5 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "¿Qué es Valor Pyme?" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Una red de soluciones para las pymes de Chile" },
+  { "id": "bodytext", "name": "bodytext", "label": "Texto", "type": "richtext", "required": false, "default": "<p>Sabemos que emprender implica tomar decisiones todos los días, adaptarse a los cambios y encontrar nuevas oportunidades para avanzar.</p><p>Por eso creamos Valor Pyme: una comunidad que conecta a las pymes con herramientas, formación, oportunidades comerciales y apoyo especializado para acompañarlas en cada etapa de su crecimiento.</p>" }
+]

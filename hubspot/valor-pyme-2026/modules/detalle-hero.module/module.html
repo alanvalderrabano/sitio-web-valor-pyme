@@ -1,0 +1,22 @@
+{# MÓDULO · Detalle recurso Hero — enlace volver + badges (tipo + ruta) +
+   título, descripción, CTA y media. Tipo y ruta son seleccionables; el color
+   e ícono de la ruta se derivan de la clave. #}
+{% set tipo_label = {"ebook":"E-book","infografia":"Infografía","video":"Cápsula"} %}
+{% set ruta_label = {"capital":"Capital","mercado":"Mercado","digitalizacion":"Digitalización","talento":"Talento y Gestión"} %}
+<section class="rd-hero">
+  <div class="container">
+    <div class="rd-hero__grid">
+      <div class="rd-hero__lead">
+        <a href="{{ module.back_url.href }}" class="rd-back"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ module.back_text }}</a>
+        <div class="rd-badges">
+          <span class="rd-badge rd-badge--type">{% if module.tipo == "infografia" %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>{% elif module.tipo == "video" %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg>{% else %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 015.5 4H11v15H5.5A1.5 1.5 0 014 17.5v-12z" stroke="currentColor" stroke-width="1.7"/><path d="M20 5.5A1.5 1.5 0 0018.5 4H13v15h5.5a1.5 1.5 0 001.5-1.5v-12z" stroke="currentColor" stroke-width="1.7"/></svg>{% endif %}{{ tipo_label[module.tipo] }}</span>
+          <span class="rd-badge rd-badge--ruta" style="color:var(--ruta-{{ module.ruta }}-c)"><img class="rd-ruta-ico" src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/ruta-' ~ module.ruta ~ '.png' }}" alt="" width="20" height="20">Ruta {{ ruta_label[module.ruta] }}</span>
+        </div>
+        {% if module.heading %}<h1>{{ module.heading }}</h1>{% endif %}
+        {% if module.desc %}<p class="rd-hero__desc">{{ module.desc }}</p>{% endif %}
+        {% if module.cta_text %}<div class="rd-hero__cta"><a href="{{ module.cta_anchor }}" class="btn">{{ module.cta_text }}<svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>{% endif %}
+      </div>
+      <div class="rd-media">{% if module.media.src %}<img src="{{ module.media.src }}" alt="{{ module.media.alt }}">{% endif %}</div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Las rutas que impulsan el crecimiento" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Cuatro rutas para avanzar según tus desafíos." },
+  {
+    "id": "routes", "name": "routes", "label": "Rutas", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "children": [
+      { "id": "icon_filename", "name": "icon_filename", "label": "Ícono (hubfs/icons/rutas/)", "type": "text", "required": false, "default": "ruta-capital.png" },
+      { "id": "rc_color", "name": "rc_color", "label": "Color de acento (--rc)", "type": "text", "required": false, "default": "#FFF21C" },
+      { "id": "title", "name": "title", "label": "Título", "type": "text", "required": false, "default": "" },
+      { "id": "desc", "name": "desc", "label": "Descripción", "type": "text", "required": false, "default": "" },
+      { "id": "link_color", "name": "link_color", "label": "Color del enlace", "type": "text", "required": false, "default": "#7A6A00" },
+      { "id": "url", "name": "url", "label": "Enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/rutas" } }
+    ],
+    "default": [
+      { "icon_filename": "ruta-capital.png", "rc_color": "#FFF21C", "title": "Capital", "desc": "Soluciones para fortalecer la salud financiera de tu empresa.", "link_color": "#7A6A00", "url": { "type": "EXTERNAL", "href": "/ruta-capital" } },
+      { "icon_filename": "ruta-mercado.png", "rc_color": "#330559", "title": "Mercado", "desc": "Herramientas y oportunidades para impulsar tus ventas.", "link_color": "#330559", "url": { "type": "EXTERNAL", "href": "/ruta-mercado" } },
+      { "icon_filename": "ruta-digitalizacion.png", "rc_color": "#FF2B5E", "title": "Digitalización", "desc": "Tecnología para optimizar procesos y aumentar productividad.", "link_color": "#A8003C", "url": { "type": "EXTERNAL", "href": "/ruta-digitalizacion" } },
+      { "icon_filename": "ruta-talento.png", "rc_color": "#00BD70", "title": "Talento y Gestión", "desc": "Recursos para desarrollar equipos y fortalecer la gestión empresarial.", "link_color": "#00733E", "url": { "type": "EXTERNAL", "href": "/ruta-talento" } }
+    ]
+  },
+  { "id": "cta_text", "name": "cta_text", "label": "Botón · texto", "type": "text", "required": false, "default": "Ver rutas" },
+  { "id": "cta_url", "name": "cta_url", "label": "Botón · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/rutas" } }
+]

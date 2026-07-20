@@ -1,0 +1,20 @@
+{# MÓDULO · Nosotros Hero — split: copy a la izquierda + animación de líneas de
+   marca a la derecha (APNG que arranca al cargar vía data-anim en main.js). #}
+<section class="hp-hero hp-hero--split">
+  <span class="hp-hero__watermark" aria-hidden="true"></span>
+  <div class="container">
+    <div class="hp-hero__split">
+      <div class="hp-hero__lead">
+        {% if module.eyebrow %}<span class="hp-eyebrow reveal">{{ module.eyebrow }}</span>{% endif %}
+        {% if module.heading %}<h1 class="hp-display reveal d1">{{ module.heading }}</h1>{% endif %}
+        <p class="hp-hero__sub reveal d2">{% if module.sub_strong %}<strong>{{ module.sub_strong }}</strong><br>{% endif %}{{ module.sub_text }}</p>
+        {% if module.cta_text %}<div class="hp-hero__cta reveal d3">
+          <a href="{{ module.cta_url.href }}" class="btn btn--onfill">{{ module.cta_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>{% endif %}
+      </div>
+      <div class="hp-hero__media reveal d2" aria-hidden="true">
+        <img class="hp-hero__anim" src="{{ module.anim_still.src }}"{% if module.anim_moving.src %} data-anim="{{ module.anim_moving.src }}"{% endif %} alt="" width="460" height="460">
+      </div>
+    </div>
+  </div>
+</section>

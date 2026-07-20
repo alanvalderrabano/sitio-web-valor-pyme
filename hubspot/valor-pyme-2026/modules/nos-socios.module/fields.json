@@ -1,0 +1,25 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Quiénes hacen posible Valor Pyme" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Un ecosistema construido en colaboración" },
+  { "id": "bodytext", "name": "bodytext", "label": "Párrafo", "type": "text", "required": false, "default": "Valor Pyme es posible gracias a la colaboración entre organizaciones que comparten una misma convicción: cuando las pymes crecen, crece todo el país. Socios fundadores, socios estratégicos y partners trabajan en conjunto para acercar más oportunidades, herramientas y soluciones a las empresas que forman parte de la comunidad. La colaboración es parte esencial de nuestro modelo porque creemos que el impacto se multiplica cuando distintos actores trabajan con un propósito común." },
+  {
+    "id": "logos", "name": "logos", "label": "Logos", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 8 },
+    "children": [
+      { "id": "filename", "name": "filename", "label": "Archivo (hubfs/logos/partners/)", "type": "text", "required": false, "default": "" },
+      { "id": "alt", "name": "alt", "label": "Texto alternativo", "type": "text", "required": false, "default": "" }
+    ],
+    "default": [
+      { "filename": "bci.png", "alt": "Bci" },
+      { "filename": "blueexpress.png", "alt": "Blue Express" },
+      { "filename": "defontana.png", "alt": "Defontana" },
+      { "filename": "FACEA19.png", "alt": "Facultad de Economía y Administración UC" },
+      { "filename": "otic.png", "alt": "OTIC CChC" },
+      { "filename": "microsoft.png", "alt": "Microsoft" },
+      { "filename": "multigremial.png", "alt": "Multigremial Nacional" },
+      { "filename": "walmart.png", "alt": "Walmart Marketplace" }
+    ]
+  },
+  { "id": "cta_text", "name": "cta_text", "label": "Botón · texto", "type": "text", "required": false, "default": "Ver alianzas" },
+  { "id": "cta_url", "name": "cta_url", "label": "Botón · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/#aliados" } }
+]

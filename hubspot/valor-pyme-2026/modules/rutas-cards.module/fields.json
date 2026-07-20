@@ -1,0 +1,152 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Cada ruta acerca tu negocio a tu meta de crecimiento"
+  },
+  {
+    "id": "lead",
+    "name": "lead",
+    "label": "Bajada",
+    "type": "text",
+    "required": false,
+    "default": "Elige la ruta que resuelve tu principal desafío de hoy. Combina con otras rutas y descubre los beneficios exclusivos para la comunidad Valor Pyme."
+  },
+  {
+    "id": "routes",
+    "name": "routes",
+    "label": "Rutas",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 4
+    },
+    "children": [
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título de la ruta",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "route_url",
+        "name": "route_url",
+        "label": "Enlace de la tarjeta",
+        "type": "url",
+        "required": false,
+        "default": {
+          "type": "EXTERNAL",
+          "href": "/rutas"
+        }
+      },
+      {
+        "id": "icon_filename",
+        "name": "icon_filename",
+        "label": "Ícono (archivo en hubfs/icons/rutas/)",
+        "type": "text",
+        "required": false,
+        "default": "ruta-capital.png"
+      },
+      {
+        "id": "accent_color",
+        "name": "accent_color",
+        "label": "Color de acento (borde superior)",
+        "type": "text",
+        "required": false,
+        "default": "#FFF21C"
+      },
+      {
+        "id": "tag_text",
+        "name": "tag_text",
+        "label": "Tag",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "tag_style",
+        "name": "tag_style",
+        "label": "Estilo del tag (color;background)",
+        "type": "text",
+        "required": false,
+        "default": "color:#7A6A00;background:#FFFBCC"
+      },
+      {
+        "id": "desc",
+        "name": "desc",
+        "label": "Descripción",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "cta_text",
+        "name": "cta_text",
+        "label": "Texto del enlace",
+        "type": "text",
+        "required": false,
+        "default": "Explorar ruta"
+      },
+      {
+        "id": "link_color",
+        "name": "link_color",
+        "label": "Color del enlace",
+        "type": "text",
+        "required": false,
+        "default": "#7A6A00"
+      }
+    ],
+    "default": [
+      {
+        "title": "Ruta Capital",
+        "route_url": { "type": "EXTERNAL", "href": "/ruta-capital" },
+        "icon_filename": "ruta-capital.png",
+        "accent_color": "#FFF21C",
+        "tag_text": "Fortalece la salud financiera",
+        "tag_style": "color:#7A6A00;background:#FFFBCC",
+        "desc": "Accede al capital que impulsa tu crecimiento: bancarización, scoring y orden de tu caja con Bci y Fintegram.",
+        "cta_text": "Explorar ruta",
+        "link_color": "#7A6A00"
+      },
+      {
+        "title": "Ruta Mercado",
+        "route_url": { "type": "EXTERNAL", "href": "/ruta-mercado" },
+        "icon_filename": "ruta-mercado.png",
+        "accent_color": "#330559",
+        "tag_text": "Conexión comercial y mercado",
+        "tag_style": "color:#330559;background:#E7DEF2",
+        "desc": "Conecta con nuevos clientes en marketplaces de alto tráfico y logística: Walmart, Blue Express, Salcobrand.",
+        "cta_text": "Explorar ruta",
+        "link_color": "#330559"
+      },
+      {
+        "title": "Ruta Digitalización",
+        "route_url": { "type": "EXTERNAL", "href": "/ruta-digitalizacion" },
+        "icon_filename": "ruta-digitalizacion.png",
+        "accent_color": "#FF2B5E",
+        "tag_text": "Transformación Tecnológica",
+        "tag_style": "color:#A8003C;background:#FFE3EE",
+        "desc": "Automatiza tus procesos y gestión de RR.HH., contabilidad, cobranza y más: Defontana, Buk, Rindegastos, OMIA.",
+        "cta_text": "Explorar ruta",
+        "link_color": "#A8003C"
+      },
+      {
+        "title": "Ruta Talento y Gestión",
+        "route_url": { "type": "EXTERNAL", "href": "/ruta-talento" },
+        "icon_filename": "ruta-talento.png",
+        "accent_color": "#00BD70",
+        "tag_text": "Capacitación y Procesos",
+        "tag_style": "color:#00733E;background:#D4FBE8",
+        "desc": "Forma a tu equipo y consolida tu liderazgo: Pyme UC, Microsoft Elevate, OTIC CChC, Mis Abogados.",
+        "cta_text": "Explorar ruta",
+        "link_color": "#00733E"
+      }
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+{# MÓDULO · Ruta Otras rutas — grilla de 3 tarjetas de rutas relacionadas
+   (repeater). Ícono, tag con estilo, título, descripción, color de enlace. #}
+<section class="section otras-rutas" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+      {% if module.lead %}<p class="lead">{{ module.lead }}</p>{% endif %}
+    </div>
+    <div class="grid-3">
+      {% for route in module.routes %}
+      <a class="route-card reveal{% if loop.index == 2 %} d1{% elif loop.index == 3 %} d2{% endif %}" href="{{ route.url.href }}">
+        <div class="route-card__top"><span class="route-card__dot has-ico"><img class="route-ico" src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/' ~ route.icon_filename }}" alt="" width="48" height="48"></span></div>
+        {% if route.tag_text %}<span class="tag" style="{{ route.tag_style }}">{{ route.tag_text }}</span>{% endif %}
+        {% if route.title %}<h3>{{ route.title }}</h3>{% endif %}
+        {% if route.desc %}<p>{{ route.desc }}</p>{% endif %}
+        <span class="link-more" style="color:{{ route.link_color }}">Explorar ruta <span class="arrow">→</span></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

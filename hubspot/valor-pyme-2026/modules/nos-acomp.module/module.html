@@ -1,0 +1,16 @@
+{# MÓDULO · Nosotros ¿Por qué existe? — dos columnas: título a la izquierda,
+   párrafos + enlace a la derecha. #}
+<section class="hp-acomp hp-section">
+  <div class="container">
+    <div class="hp-acomp__grid">
+      <div class="reveal">
+        {% if module.eyebrow %}<span class="hp-eyebrow">{{ module.eyebrow }}</span>{% endif %}
+        {% if module.heading %}<h2 class="hp-h2">{{ module.heading }}</h2>{% endif %}
+      </div>
+      <div class="reveal d1">
+        {{ module.bodytext }}
+        {% if module.link_text %}<a href="{{ module.link_url.href }}" class="link-more">{{ module.link_text }} <span class="arrow">→</span></a>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>

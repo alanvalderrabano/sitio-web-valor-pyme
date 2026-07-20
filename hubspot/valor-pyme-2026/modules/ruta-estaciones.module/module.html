@@ -1,0 +1,22 @@
+{# MÓDULO · Ruta Estaciones — grilla de tarjetas de partners (repeater).
+   Cada estación: logo (archivo en File Manager), tag, título, descripción,
+   beneficio opcional (caja con colores de la ruta) y enlace. #}
+<section class="section estaciones-band" id="estaciones">
+  <div class="container">
+    <div class="section-head reveal">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+    </div>
+    <div class="grid-stations{% if module.two_col %} grid-stations--2col{% endif %}">
+      {% for st in module.stations %}
+      <article class="station-card reveal{% if loop.index == 2 %} d1{% elif loop.index == 3 %} d2{% elif loop.index == 4 %} d3{% endif %}">
+        <div class="station-card__logo"><img src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/logos/partners/' ~ st.logo_filename }}" alt="{{ st.logo_alt or st.title }}"{% if st.logo_style %} style="{{ st.logo_style }}"{% endif %}></div>
+        {% if st.tag_text %}<span class="tag">{{ st.tag_text }}</span>{% endif %}
+        {% if st.title %}<h3>{{ st.title }}</h3>{% endif %}
+        {% if st.desc %}<p>{{ st.desc }}</p>{% endif %}
+        {% if st.benefit %}<div class="combo__benefit" style="background:var(--ruta-soft);color:var(--ruta-deep)">{{ st.benefit }}</div>{% endif %}
+        <a href="{{ st.cta_url.href }}" class="link-more">{{ st.cta_text }} <span class="arrow">→</span></a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

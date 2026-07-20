@@ -1,0 +1,109 @@
+<!--
+  templateType: page
+  label: Ruta Digitalización · Valor Pyme
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   RUTA DIGITALIZACIÓN · Valor Pyme
+   Hero split con línea animada (barrido foto → panel) + módulos
+   genéricos reutilizables. Color por data-ruta="digitalizacion".
+   Header/footer = partials globales existentes (no se re-suben).
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+</head>
+<body data-ruta="digitalizacion">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% module "hero" path="../modules/ruta-hero-split"
+        variant="digitalizacion"
+        aria_label="Ruta Digitalización"
+        heading="Menos<br>planillas.<br>Más control<br>para crecer."
+        subtext="Si buscas ahorrar tiempo y simplificar el trabajo diario, Ruta Digitalización te ayuda a ordenar procesos, automatizar gestiones y avanzar con herramientas simples."
+        cta1_text="Ver estaciones" cta1_url={"href": "#estaciones"}
+        cta2_text="Registrarme" cta2_url={"href": "#"}
+        line_viewbox="0 0 640 616"
+        line_path="M-4 375 C 200 373 440 379 644 380" %}
+
+    {% module "intro" path="../modules/ruta-intro"
+        media_image={"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-digitalizacion.jpg", "alt": "Empresario usando herramientas digitales para optimizar su operación diaria", "width": 600, "height": 510}
+        heading="Una ruta para dejar atrás las planillas complejas y trabajar con más control."
+        lead="Digitalizar no es sumar tecnología por sumar. Es liberar tiempo, reducir errores y tener más claridad para decidir. En la Ruta Digitalización encuentras las estaciones para que tu pyme ordene su gestión, automatice procesos y construya una base más eficiente para crecer." %}
+
+    {% module "estaciones" path="../modules/ruta-estaciones"
+        heading="Elige la estación que te ayudará a optimizar tu operación"
+        two_col=false
+        stations=[
+          {"logo_filename": "omia.png", "logo_alt": "OMIA", "tag_text": "Cuando necesitas ordenar la gestión diaria.", "desc": "Gestiona ventas, pagos, cobranzas y documentos tributarios desde una herramienta conectada al SII, con apoyo de IA para mirar mejor tus finanzas.", "benefit": "Beneficio: 60% de descuento para la comunidad Valor Pyme durante 2026.", "cta_text": "Ordenar mi gestión"},
+          {"logo_filename": "rindegastos.png", "logo_alt": "Rindegastos", "tag_text": "Cuando las rendiciones consumen demasiado tiempo.", "desc": "Digitaliza comprobantes, reportes y aprobaciones para que tu equipo rinda gastos desde el celular y deje atrás recibos perdidos.", "benefit": "Beneficio: 20% de descuento en la solución durante 2026.", "cta_text": "Digitalizar rendiciones"},
+          {"logo_filename": "buk.svg", "logo_alt": "Buk", "tag_text": "Cuando la gestión de personas necesita estructura.", "desc": "Centraliza remuneraciones, asistencia, administración y desarrollo de personas en una plataforma pensada para ordenar el trabajo del equipo.", "benefit": "Beneficio: Buk Starter sin costo para microempresas y 20% de descuento en las primeras 3 facturas de planes avanzados.", "cta_text": "Activar beneficio"},
+          {"logo_filename": "defontana.png", "logo_alt": "Defontana Digital", "tag_text": "Cuando necesitas digitalizar herramientas clave.", "title": "Defontana Digital", "desc": "Activa soluciones para facturación, certificado digital, POS, control de asistencia, CRM y ventas, según la necesidad actual de tu negocio.", "benefit": "Beneficio: Descuentos durante 2026: 15% en Factura Pro, 30% en certificado digital SII, 15% en POS Pro, 15% en control de asistencia y 15% en CRM Empresas.", "cta_text": "Explorar herramientas"},
+          {"logo_filename": "defontana.png", "logo_alt": "Contabilidad Defontana", "tag_text": "Cuando necesitas ordenar la contabilidad.", "title": "Contabilidad gratuita", "desc": "Accede a contabilidad Defontana sin costo para pymes Valor Pyme, con acompañamiento educativo tributario guiado por Cintax.", "benefit": "Beneficio: ERP gratuito para pymes con facturación de hasta $8.000.000 mensuales o hasta 20 DTE.", "cta_text": "Activar contabilidad gratuita"},
+          {"logo_filename": "kalamar.png", "logo_alt": "Kalamar", "tag_text": "Cuando necesitas activar marketing digital.", "desc": "Automatiza campañas con IA para crear, optimizar y analizar acciones digitales que ayuden a llegar mejor a tus clientes.", "benefit": "Beneficio: 50% de descuento para clientes Valor Pyme durante 2026.", "cta_text": "Impulsar marketing digital"}
+        ] %}
+
+    {% module "combo" path="../modules/ruta-combo"
+        eyebrow="Estación de combinación"
+        heading="Tu vitrina digital también puede vender."
+        text="Cuando una pyme decide vender online, la digitalización se conecta con el mercado. Kuad System ayuda a crear una base digital para presentar productos, recibir contactos y activar ventas por internet."
+        icon1_filename="ruta-digitalizacion.png"
+        icon2_filename="ruta-mercado.png"
+        card_title="Kuad System"
+        card_text="Una estación para pasar de “necesito presencia digital” a “tengo un canal donde puedo mostrar y vender”."
+        benefit="Beneficio: 70% de descuento por 730 días."
+        cta_text="Crear mi tienda online" cta_url={"href": "#"} %}
+
+    {% module "beneficios" path="../modules/ruta-beneficios"
+        heading="Beneficios de la ruta Digitalización"
+        benefits=[
+          {"icon": "flow", "title": "Más orden", "text": "Centraliza información que hoy está dispersa."},
+          {"icon": "chart", "title": "Más tiempo", "text": "Automatiza tareas que frenan la operación."},
+          {"icon": "check", "title": "Más claridad", "text": "Toma decisiones con datos y procesos visibles."}
+        ] %}
+
+    {% module "franja" path="../modules/ruta-franja"
+        bg_mode="cover"
+        bg_image={"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/img/franja-bn-digitalizacion.jpg", "alt": ""}
+        eyebrow="El viaje pyme"
+        heading="Digitalizar también es hacer más simple el camino para crecer." %}
+
+    {% module "contenidos" path="../modules/ruta-contenidos"
+        heading="Aprende a digitalizar con sentido"
+        lead="Contenidos sugeridos sobre automatización, herramientas en línea, IA aplicada, ciberseguridad y gestión de procesos."
+        posts=[
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-a.jpg", "alt": "Tecnología y capacitación aplicada para pymes", "width": 640, "height": 400}, "title": "Tecnología y Capacitación Aplicada", "desc": "Artículos prácticos para adoptar herramientas digitales en tu operación diaria."},
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-c.jpg", "alt": "Guías de software paso a paso para equipos de pyme", "width": 640, "height": 400}, "title": "Guías de software paso a paso", "desc": "Recursos explicados para entrenar al equipo y reducir errores manuales."},
+          {"image": {"src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/blog-b.jpg", "alt": "Talleres de automatización, ciberseguridad e inteligencia artificial", "width": 640, "height": 400}, "title": "Automatización, ciberseguridad e IA", "desc": "Talleres interactivos para fortalecer capacidades digitales del negocio."}
+        ] %}
+
+    {% module "diagnostico" path="../modules/rutas-diagnostico"
+        heading="Encuentra tu próxima estación digital."
+        bodytext="Responde el diagnóstico y descubre si hoy necesitas ordenar la gestión, automatizar gastos, mejorar recursos humanos, activar marketing digital o avanzar por otra ruta."
+        cta_text="Descubrir mi ruta"
+        tight_top=false %}
+
+    {% module "otras" path="../modules/ruta-otras"
+        heading="Descubre otras rutas de la red para seguir impulsando el crecimiento de tu pyme"
+        lead=""
+        routes=[
+          {"icon_filename": "ruta-capital.png", "tag_text": "Financiamiento y liquidez", "tag_style": "color:#7A6A00;background:#FFFBCC", "title": "Ruta Capital", "desc": "Para ordenar caja, bancarizar y entender tu perfil financiero.", "link_color": "#7A6A00", "url": {"href": "/ruta-capital"}},
+          {"icon_filename": "ruta-mercado.png", "tag_text": "Ventas y distribución", "tag_style": "color:#330559;background:#E7DEF2", "title": "Ruta Mercado", "desc": "Para vender online, mejorar despachos y abrir oportunidades comerciales.", "link_color": "#330559", "url": {"href": "/ruta-mercado"}},
+          {"icon_filename": "ruta-talento.png", "tag_text": "Dirección y capacidades", "tag_style": "color:#00733E;background:#D4FBE8", "title": "Ruta Talento y Gestión", "desc": "Para aprender, planificar y fortalecer la toma de decisiones.", "link_color": "#00733E", "url": {"href": "/ruta-talento"}}
+        ] %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

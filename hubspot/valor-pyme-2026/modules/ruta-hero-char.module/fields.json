@@ -1,0 +1,94 @@
+[
+  {
+    "id": "variant",
+    "name": "variant",
+    "label": "Variante de color (define el modificador de hero)",
+    "type": "choice",
+    "required": true,
+    "default": "capital",
+    "choices": [
+      ["capital", "Capital (amarillo)"],
+      ["mercado", "Mercado (morado)"]
+    ]
+  },
+  {
+    "id": "bg_image",
+    "name": "bg_image",
+    "label": "Imagen de fondo (mitad izquierda)",
+    "type": "image",
+    "required": false,
+    "default": {
+      "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/hero-bg-capital.jpg",
+      "alt": ""
+    }
+  },
+  {
+    "id": "character_image",
+    "name": "character_image",
+    "label": "Personaje recortado",
+    "type": "image",
+    "required": false,
+    "default": {
+      "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/hero-char-capital.webp",
+      "alt": "Carpintero chileno en su taller de carpintería",
+      "width": 556,
+      "height": 573
+    }
+  },
+  {
+    "id": "line_path",
+    "name": "line_path",
+    "label": "Trazo SVG de la línea (avanzado)",
+    "type": "text",
+    "required": false,
+    "default": "M0 300C210 300 320 112 388 112C456 112 566 300 776 300C900 300 1010 296 1200 296"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H1)",
+    "type": "text",
+    "required": false,
+    "default": "Ordena tu caja. Prepara tu ruta."
+  },
+  {
+    "id": "subtext",
+    "name": "subtext",
+    "label": "Bajada",
+    "type": "text",
+    "required": false,
+    "default": "En esta ruta encuentras estaciones para bancarizar tu pyme, entender cómo la mira el sistema financiero y cuidar el flujo cuando las cuentas se atrasan."
+  },
+  {
+    "id": "cta1_text",
+    "name": "cta1_text",
+    "label": "CTA principal · texto",
+    "type": "text",
+    "required": false,
+    "default": "Ver estaciones"
+  },
+  {
+    "id": "cta1_url",
+    "name": "cta1_url",
+    "label": "CTA principal · enlace",
+    "type": "url",
+    "required": false,
+    "default": { "type": "EXTERNAL", "href": "#estaciones" }
+  },
+  {
+    "id": "cta2_text",
+    "name": "cta2_text",
+    "label": "CTA secundario · texto",
+    "type": "text",
+    "required": false,
+    "default": "Registrarme"
+  },
+  {
+    "id": "cta2_url",
+    "name": "cta2_url",
+    "label": "CTA secundario · enlace",
+    "type": "url",
+    "required": false,
+    "default": { "type": "EXTERNAL", "href": "#" }
+  }
+]

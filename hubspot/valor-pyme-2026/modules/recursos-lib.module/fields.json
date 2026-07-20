@@ -1,0 +1,24 @@
+[
+  {
+    "id": "resources", "name": "resources", "label": "Recursos", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "children": [
+      { "id": "titulo", "name": "titulo", "label": "Título", "type": "text", "required": false, "default": "" },
+      { "id": "tipo", "name": "tipo", "label": "Tipo de recurso", "type": "choice", "required": false, "default": "ebook",
+        "choices": [["ebook", "E-book"], ["infografia", "Infografía"], ["video", "Cápsula / Video"]] },
+      { "id": "ruta", "name": "ruta", "label": "Ruta", "type": "choice", "required": false, "default": "capital",
+        "choices": [["capital", "Capital"], ["mercado", "Mercado"], ["digitalizacion", "Digitalización"], ["talento", "Talento y Gestión"]] },
+      { "id": "portada", "name": "portada", "label": "Portada", "type": "image", "required": false,
+        "default": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-capital.jpg", "alt": "" } },
+      { "id": "resumen", "name": "resumen", "label": "Resumen", "type": "text", "required": false, "default": "" },
+      { "id": "url", "name": "url", "label": "Enlace al recurso", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "#" } },
+      { "id": "cta_label", "name": "cta_label", "label": "Texto del enlace", "type": "text", "required": false, "default": "Ver recurso" }
+    ],
+    "default": [
+      { "titulo": "Guía de financiamiento para tu pyme", "tipo": "ebook", "ruta": "capital", "portada": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-capital.jpg", "alt": "" }, "resumen": "Conoce las alternativas de financiamiento disponibles y cómo elegir la más conveniente para el momento de tu negocio.", "url": { "type": "EXTERNAL", "href": "/guia-financiamiento-pyme" }, "cta_label": "Descargar e-book" },
+      { "titulo": "5 canales para vender más este año", "tipo": "infografia", "ruta": "mercado", "portada": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-mercado.jpg", "alt": "" }, "resumen": "Una infografía con los canales de venta con mayor potencial para pymes y cómo empezar en cada uno.", "url": { "type": "EXTERNAL", "href": "/5-canales-para-vender-mas" }, "cta_label": "Descargar infografía" },
+      { "titulo": "Automatiza tu pyme en 20 minutos", "tipo": "video", "ruta": "digitalizacion", "portada": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-digitalizacion.jpg", "alt": "" }, "resumen": "Cápsula en video con herramientas simples para automatizar tareas repetitivas y ganar tiempo cada semana.", "url": { "type": "EXTERNAL", "href": "/automatiza-tu-pyme-20-min" }, "cta_label": "Ver cápsula" },
+      { "titulo": "Cómo formar y retener a tu equipo", "tipo": "ebook", "ruta": "talento", "portada": { "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/split-talento.jpg", "alt": "" }, "resumen": "E-book con prácticas concretas para capacitar, motivar y retener talento en una pyme.", "url": { "type": "EXTERNAL", "href": "/forma-y-reten-a-tu-equipo" }, "cta_label": "Descargar e-book" }
+    ]
+  }
+]

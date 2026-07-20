@@ -1,0 +1,112 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Si hoy necesitas apoyo en otra área de tu negocio, explora las demás rutas de Valor Pyme"
+  },
+  {
+    "id": "lead",
+    "name": "lead",
+    "label": "Bajada",
+    "type": "text",
+    "required": false,
+    "default": "Si esta ruta ya cubre tu necesidad, sigue por otra estación de la Red:"
+  },
+  {
+    "id": "routes",
+    "name": "routes",
+    "label": "Rutas",
+    "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 3 },
+    "children": [
+      {
+        "id": "icon_filename",
+        "name": "icon_filename",
+        "label": "Ícono (archivo en hubfs/icons/rutas/)",
+        "type": "text",
+        "required": false,
+        "default": "ruta-digitalizacion.png"
+      },
+      {
+        "id": "tag_text",
+        "name": "tag_text",
+        "label": "Tag",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "tag_style",
+        "name": "tag_style",
+        "label": "Estilo del tag (color;background)",
+        "type": "text",
+        "required": false,
+        "default": "color:#A8003C;background:#FFE3EE"
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título de la ruta",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "desc",
+        "name": "desc",
+        "label": "Descripción",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "id": "link_color",
+        "name": "link_color",
+        "label": "Color del enlace",
+        "type": "text",
+        "required": false,
+        "default": "#A8003C"
+      },
+      {
+        "id": "url",
+        "name": "url",
+        "label": "Enlace",
+        "type": "url",
+        "required": false,
+        "default": { "type": "EXTERNAL", "href": "/rutas" }
+      }
+    ],
+    "default": [
+      {
+        "icon_filename": "ruta-digitalizacion.png",
+        "tag_text": "Procesos internos",
+        "tag_style": "color:#A8003C;background:#FFE3EE",
+        "title": "Ruta Digitalización",
+        "desc": "Para ordenar procesos, automatizar tareas y usar datos en el día a día.",
+        "link_color": "#A8003C",
+        "url": { "type": "EXTERNAL", "href": "/ruta-digitalizacion" }
+      },
+      {
+        "icon_filename": "ruta-mercado.png",
+        "tag_text": "Ventas y logística",
+        "tag_style": "color:#330559;background:#E7DEF2",
+        "title": "Ruta Mercado",
+        "desc": "Para abrir canales de venta, mejorar logística y conectar con oportunidades comerciales.",
+        "link_color": "#330559",
+        "url": { "type": "EXTERNAL", "href": "/ruta-mercado" }
+      },
+      {
+        "icon_filename": "ruta-talento.png",
+        "tag_text": "Equipo y capacidades",
+        "tag_style": "color:#00733E;background:#D4FBE8",
+        "title": "Ruta Talento y Gestión",
+        "desc": "Para aprender, ordenar la gestión y tomar mejores decisiones.",
+        "link_color": "#00733E",
+        "url": { "type": "EXTERNAL", "href": "/ruta-talento" }
+      }
+    ]
+  }
+]

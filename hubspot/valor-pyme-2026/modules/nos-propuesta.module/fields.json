@@ -1,0 +1,22 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Nuestra propuesta de valor" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Una red de soluciones para hacer crecer tu negocio." },
+  { "id": "bodytext", "name": "bodytext", "label": "Párrafo", "type": "text", "required": false, "default": "Conectamos herramientas, oportunidades, formación y una comunidad que acompaña a las pymes en cada etapa de su desarrollo. Porque cuando distintas organizaciones colaboran, las posibilidades de crecimiento se multiplican." },
+  {
+    "id": "pillars", "name": "pillars", "label": "Pilares", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "children": [
+      { "id": "icon", "name": "icon", "label": "Ícono", "type": "choice", "required": false, "default": "target",
+        "choices": [["target", "Diana"], ["community", "Comunidad"], ["alliance", "Alianza (corazón)"], ["growth", "Crecimiento"]] },
+      { "id": "title", "name": "title", "label": "Título", "type": "text", "required": false, "default": "" }
+    ],
+    "default": [
+      { "icon": "target", "title": "Soluciones para desafíos reales" },
+      { "icon": "community", "title": "Comunidad y aprendizaje" },
+      { "icon": "alliance", "title": "Alianzas estratégicas" },
+      { "icon": "growth", "title": "Acompañamiento para crecer" }
+    ]
+  },
+  { "id": "cta_text", "name": "cta_text", "label": "Botón · texto", "type": "text", "required": false, "default": "Explora las rutas" },
+  { "id": "cta_url", "name": "cta_url", "label": "Botón · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/rutas" } }
+]

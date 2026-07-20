@@ -1,0 +1,4 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H1)", "type": "text", "required": false, "default": "Recursos para cada etapa del viaje de tu pyme." },
+  { "id": "subtext", "name": "subtext", "label": "Bajada", "type": "text", "required": false, "default": "E-books, infografías y cápsulas gratuitas, organizadas por ruta, para ayudarte a tomar mejores decisiones en cada etapa de tu negocio. Descarga lo que necesites, cuando lo necesites." }
+]

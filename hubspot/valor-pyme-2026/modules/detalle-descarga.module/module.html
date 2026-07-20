@@ -1,0 +1,37 @@
+{# MÓDULO · Detalle recurso Descarga — tarjeta con formulario.
+   Si se elige un formulario de HubSpot (campo "form"), se renderiza ese y los
+   leads entran al CRM. Si no, cae al formulario básico (validación client-side
+   + mensaje de éxito). #}
+<section class="rd-download" id="descargar">
+  <div class="container">
+    <div class="rd-download__card">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+      {% if module.bodytext %}<p>{{ module.bodytext }}</p>{% endif %}
+
+      {% if module.form.form_id %}
+        {% form
+          form_to_use="{{ module.form.form_id }}"
+          response_response_type="{{ module.form.response_type }}"
+          response_message="{{ module.form.message }}"
+          response_redirect_id="{{ module.form.redirect_id }}"
+          response_redirect_url="{{ module.form.redirect_url }}"
+        %}
+      {% else %}
+        <form class="hp-form" id="rdForm" novalidate>
+          <div class="hp-form__row">
+            <div class="hp-field"><label for="rd-nombre">Nombre <span class="req">*</span></label><input id="rd-nombre" type="text" required placeholder="Tu nombre y apellido"></div>
+            <div class="hp-field"><label for="rd-email">Correo <span class="req">*</span></label><input id="rd-email" type="email" required placeholder="tucorreo@ejemplo.cl"></div>
+          </div>
+          <div class="hp-check"><input id="rd-ok" type="checkbox" required><label for="rd-ok">{{ module.consent_text }} <span class="req">*</span></label></div>
+          <div class="hp-form__actions"><button type="submit" class="btn">{{ module.submit_text }}<svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+          <p class="hp-form__ok" id="rdOk" role="status" hidden>{{ module.success_text }}</p>
+        </form>
+        <script>
+        (function(){var f=document.getElementById('rdForm');if(!f)return;
+        f.addEventListener('submit',function(e){e.preventDefault();
+        if(f.checkValidity()){var ok=document.getElementById('rdOk');if(ok){ok.hidden=false;ok.scrollIntoView({behavior:'smooth',block:'center'});}f.reset();}else{f.reportValidity();}});})();
+        </script>
+      {% endif %}
+    </div>
+  </div>
+</section>

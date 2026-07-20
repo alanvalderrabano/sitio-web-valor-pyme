@@ -1,0 +1,41 @@
+[
+  {
+    "id": "bg_image",
+    "name": "bg_image",
+    "label": "Imagen de fondo (blanco y negro)",
+    "type": "image",
+    "required": false,
+    "default": {
+      "src": "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/img/franja-bn-capital.jpg",
+      "alt": ""
+    }
+  },
+  {
+    "id": "bg_mode",
+    "name": "bg_mode",
+    "label": "Modo de fondo",
+    "type": "choice",
+    "required": false,
+    "default": "parallax",
+    "choices": [
+      ["parallax", "Parallax (se desplaza al hacer scroll)"],
+      ["cover", "Fijo cubriendo la franja"]
+    ]
+  },
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "required": false,
+    "default": "El viaje pyme"
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "Hacer camino al andar, con la caja en orden."
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H1)",
+    "type": "text",
+    "required": false,
+    "default": "Encuentra la ruta que tu pyme necesita para crecer"
+  },
+  {
+    "id": "subtext",
+    "name": "subtext",
+    "label": "Bajada",
+    "type": "text",
+    "required": false,
+    "default": "Conectamos tu negocio con soluciones de grandes empresas y organizaciones. Cuatro rutas, muchas combinaciones, una sola comunidad para tu crecimiento."
+  },
+  {
+    "id": "cta_primary_text",
+    "name": "cta_primary_text",
+    "label": "CTA primario · texto",
+    "type": "text",
+    "required": false,
+    "default": "Ver las rutas"
+  },
+  {
+    "id": "cta_primary_url",
+    "name": "cta_primary_url",
+    "label": "CTA primario · enlace",
+    "type": "url",
+    "required": false,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "#rutas"
+    }
+  },
+  {
+    "id": "cta_secondary_text",
+    "name": "cta_secondary_text",
+    "label": "CTA secundario · texto",
+    "type": "text",
+    "required": false,
+    "default": "Suscribirme"
+  },
+  {
+    "id": "cta_secondary_url",
+    "name": "cta_secondary_url",
+    "label": "CTA secundario · enlace",
+    "type": "url",
+    "required": false,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "/#suscripcion"
+    }
+  }
+]

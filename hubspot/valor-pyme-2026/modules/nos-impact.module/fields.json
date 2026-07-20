@@ -1,0 +1,24 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Impacto del ecosistema" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Una red construida para acompañar el crecimiento de las pymes." },
+  { "id": "lead", "name": "lead", "label": "Bajada", "type": "text", "required": false, "default": "Detrás de Valor Pyme existe una comunidad que conecta experiencia, colaboración y soluciones concretas para ayudar a las empresas a enfrentar sus desafíos y encontrar nuevas oportunidades de crecimiento." },
+  {
+    "id": "stats", "name": "stats", "label": "Métricas", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "children": [
+      { "id": "count", "name": "count", "label": "Valor a contar (solo número, ej. 300000)", "type": "text", "required": false, "default": "0" },
+      { "id": "suffix", "name": "suffix", "label": "Sufijo (opcional, ej. +)", "type": "text", "required": false, "default": "" },
+      { "id": "display", "name": "display", "label": "Valor visible (ej. +300.000)", "type": "text", "required": false, "default": "" },
+      { "id": "unit", "name": "unit", "label": "Unidad (ej. pymes)", "type": "text", "required": false, "default": "" },
+      { "id": "text", "name": "text", "label": "Descripción", "type": "text", "required": false, "default": "" }
+    ],
+    "default": [
+      { "count": "6", "suffix": "", "display": "6", "unit": "años", "text": "Impulsando iniciativas para las pymes" },
+      { "count": "300000", "suffix": "+", "display": "+300.000", "unit": "pymes", "text": "Forman parte de la comunidad" },
+      { "count": "20", "suffix": "+", "display": "+20", "unit": "partners", "text": "Integran el ecosistema" },
+      { "count": "30", "suffix": "+", "display": "+30", "unit": "soluciones", "text": "Disponibles para apoyar su crecimiento" }
+    ]
+  },
+  { "id": "cta_text", "name": "cta_text", "label": "Botón · texto", "type": "text", "required": false, "default": "Únete a la comunidad" },
+  { "id": "cta_url", "name": "cta_url", "label": "Botón · enlace", "type": "url", "required": false, "default": { "type": "EXTERNAL", "href": "/#suscripcion" } }
+]

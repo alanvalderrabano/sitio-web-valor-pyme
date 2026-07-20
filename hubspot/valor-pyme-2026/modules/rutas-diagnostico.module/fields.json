@@ -1,0 +1,45 @@
+[
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2)",
+    "type": "text",
+    "required": false,
+    "default": "¿No sabes por dónde empezar tu viaje?"
+  },
+  {
+    "id": "bodytext",
+    "name": "bodytext",
+    "label": "Bajada",
+    "type": "text",
+    "required": false,
+    "default": "Haz el diagnóstico integral de Valor Pyme, evalúa las dimensiones de tu negocio y obtén una ruta personalizada con las soluciones más afines a las necesidades de tu pyme."
+  },
+  {
+    "id": "cta_text",
+    "name": "cta_text",
+    "label": "Texto del botón",
+    "type": "text",
+    "required": false,
+    "default": "Descubrir mi ruta"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Enlace del botón",
+    "type": "url",
+    "required": false,
+    "default": {
+      "type": "EXTERNAL",
+      "href": "/#diagnostico"
+    }
+  },
+  {
+    "id": "tight_top",
+    "name": "tight_top",
+    "label": "Pegar al bloque anterior (sin espacio superior)",
+    "type": "boolean",
+    "required": false,
+    "default": true
+  }
+]

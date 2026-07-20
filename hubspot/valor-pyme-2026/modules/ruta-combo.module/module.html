@@ -1,0 +1,27 @@
+{# MÓDULO · Ruta Estación de combinación — bloque que conecta dos rutas
+   (p. ej. Mercado + Digitalización con Kuad System): texto a la izquierda +
+   tarjeta con los dos íconos, beneficio y CTA. #}
+<section class="section">
+  <div class="container">
+    <div class="combo reveal">
+      <div class="combo__inner">
+        <div>
+          {% if module.eyebrow %}<span class="eyebrow">{{ module.eyebrow }}</span>{% endif %}
+          {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+          {% if module.text %}<p>{{ module.text }}</p>{% endif %}
+        </div>
+        <div class="combo__card">
+          <div class="combo__routes">
+            <img class="route-ico route-ico--lg" src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/' ~ module.icon1_filename }}" alt="" width="34" height="34">
+            <span style="opacity:.6">+</span>
+            <img class="route-ico route-ico--lg" src="{{ 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/' ~ module.icon2_filename }}" alt="" width="34" height="34">
+          </div>
+          {% if module.card_title %}<h3>{{ module.card_title }}</h3>{% endif %}
+          {% if module.card_text %}<p>{{ module.card_text }}</p>{% endif %}
+          {% if module.benefit %}<div class="combo__benefit">{{ module.benefit }}</div>{% endif %}
+          {% if module.cta_text %}<p style="margin-top:18px"><a href="{{ module.cta_url.href }}" class="btn btn--onfill btn--sm">{{ module.cta_text }} <span class="arrow">→</span></a></p>{% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

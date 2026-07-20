@@ -1,0 +1,45 @@
+<!--
+  templateType: page
+  label: Contacto · Valor Pyme
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   CONTACTO · Valor Pyme
+   Hero + motivos + formulario (HubSpot form) + FAQ.
+   Header/footer = partials globales existentes (no se re-suben).
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+</head>
+<body class="hp" data-ruta="">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% module "hero"  path="../modules/contacto-hero" %}
+    {% module "ayuda" path="../modules/contacto-ayuda" %}
+    {% module "form"  path="../modules/contacto-form" %}
+    {% module "faq"   path="../modules/hp-faq"
+        eyebrow="Preguntas frecuentes"
+        heading="Preguntas frecuentes"
+        items=[
+          {"question": "¿Cuánto tiempo demora la respuesta?", "answer": "<p>Nuestro equipo revisa cada solicitud y procura responder en un plazo de 3 a 7 días hábiles.</p>"},
+          {"question": "¿Cómo recibiré la respuesta?", "answer": "<p>La respuesta será enviada al correo electrónico que registres en el formulario.</p>"},
+          {"question": "¿Qué sucede después de enviar mi consulta?", "answer": "<p>Tu solicitud será derivada al equipo correspondiente según el motivo de contacto seleccionado para que pueda ser gestionada de forma adecuada.</p>"},
+          {"question": "¿Puedo contactar a Valor Pyme para proponer una alianza o colaboración?", "answer": "<p>Sí. Si representas una empresa, organización, institución o medio de comunicación, selecciona la categoría correspondiente y nos pondremos en contacto contigo.</p>"}
+        ] %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

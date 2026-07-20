@@ -1,0 +1,82 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow (opcional)",
+    "type": "text",
+    "required": false,
+    "default": ""
+  },
+  {
+    "id": "heading",
+    "name": "heading",
+    "label": "Título (H2, izquierda)",
+    "type": "text",
+    "required": false,
+    "default": "Vender online también necesita una base digital."
+  },
+  {
+    "id": "text",
+    "name": "text",
+    "label": "Párrafo (izquierda)",
+    "type": "text",
+    "required": false,
+    "default": "También necesitas una vitrina digital clara, una tienda que funcione y canales de contacto ordenados. En esta estación, Ruta Mercado se conecta con Ruta Digitalización a través de Kuad System."
+  },
+  {
+    "id": "icon1_filename",
+    "name": "icon1_filename",
+    "label": "Ícono ruta 1 (archivo en hubfs/icons/rutas/)",
+    "type": "text",
+    "required": false,
+    "default": "ruta-mercado.png"
+  },
+  {
+    "id": "icon2_filename",
+    "name": "icon2_filename",
+    "label": "Ícono ruta 2 (archivo en hubfs/icons/rutas/)",
+    "type": "text",
+    "required": false,
+    "default": "ruta-digitalizacion.png"
+  },
+  {
+    "id": "card_title",
+    "name": "card_title",
+    "label": "Título de la tarjeta (H3)",
+    "type": "text",
+    "required": false,
+    "default": "Kuad System"
+  },
+  {
+    "id": "card_text",
+    "name": "card_text",
+    "label": "Descripción de la tarjeta",
+    "type": "text",
+    "required": false,
+    "default": "Una estación para pymes que necesitan pasar de “tengo producto” a “tengo dónde mostrarlo y venderlo”."
+  },
+  {
+    "id": "benefit",
+    "name": "benefit",
+    "label": "Beneficio",
+    "type": "text",
+    "required": false,
+    "default": "Beneficio: 70% de descuento por 730 días."
+  },
+  {
+    "id": "cta_text",
+    "name": "cta_text",
+    "label": "Texto del botón",
+    "type": "text",
+    "required": false,
+    "default": "Crear mi tienda online"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Enlace del botón",
+    "type": "url",
+    "required": false,
+    "default": { "type": "EXTERNAL", "href": "#" }
+  }
+]

@@ -785,30 +785,53 @@ body[data-ruta="mercado"] .hero--mercado-v2 .btn--ghost:hover {
   body[data-ruta="mercado"] .hero--mercado-v2 {
     display: block;
     min-height: 0;
-    padding-top: clamp(320px, 72vw, 440px);
+    padding-top: clamp(248px, 58vw, 360px);
   }
   body[data-ruta="capital"] .hero--capital-v2 .hero__bg,
   body[data-ruta="mercado"] .hero--mercado-v2 .hero__bg {
     inset: 0 0 auto 0;
     width: 100%;
-    height: clamp(320px, 72vw, 440px);
+    height: clamp(248px, 58vw, 360px);
   }
   body[data-ruta="capital"] .hero--capital-v2 .hero__bg::after,
   body[data-ruta="mercado"] .hero--mercado-v2 .hero__bg::after {
-    background: linear-gradient(180deg, transparent 55%, rgba(97,38,255,.96) 100%);
+    background: linear-gradient(180deg, transparent 42%, rgba(97,38,255,.55) 76%, rgba(97,38,255,.98) 100%);
   }
   body[data-ruta="capital"] .hero--capital-v2 .hero__lines,
   body[data-ruta="mercado"] .hero--mercado-v2 .hero__lines {
-    height: clamp(320px, 72vw, 440px);
+    height: clamp(248px, 58vw, 360px);
     bottom: auto;
+    overflow: hidden;
+  }
+  /* La línea usa viewBox 1200×560 con preserveAspectRatio="none": estirada al alto
+     de la foto se aplastaría casi al doble (2.1× en 320px). En vez de eso se le da
+     su proporción real y se centra, así se ve la curva COMPLETA igual que en desktop.
+     `aspect-ratio` necesita width:100% (con width:auto el <svg> no toma tamaño). */
+  /* El pico del trazo está en x≈422 de 1200 (35%) y el personaje va centrado, así que
+     con el SVG a ancho completo la loma caía muy a la izquierda. Ensanchándolo al 182%
+     y anclándolo a la izquierda, ese 35% cae sobre la cabeza. A cambio la bajada sale
+     de cuadro por la derecha: es un compromiso aceptado, no un descuido. */
+  body[data-ruta="capital"] .hero--capital-v2 .hero__lines svg,
+  body[data-ruta="mercado"] .hero--mercado-v2 .hero__lines svg {
+    inset: 58% auto auto 0;   /* la loma queda a la altura de la cabeza */
+    width: 182%;
+    height: auto;
+    aspect-ratio: 1200 / 560;
+    max-width: none;   /* sin esto, el reset `img, svg { max-width: 100% }` lo recorta */
+    transform: translateY(-50%);
+  }
+  /* Al escalar el SVG al 31% el trazo quedaría en ~2.8px; así conserva los 9px del diseño. */
+  body[data-ruta="capital"] .hero--capital-v2 .hero__lines path,
+  body[data-ruta="mercado"] .hero--mercado-v2 .hero__lines path {
+    vector-effect: non-scaling-stroke;
   }
   body[data-ruta="capital"] .hero--capital-v2 .hero__character,
   body[data-ruta="mercado"] .hero--mercado-v2 .hero__character {
     left: 50%;
     right: auto;
-    top: clamp(42px, 8vw, 68px);
+    top: clamp(28px, 6vw, 52px);
     bottom: auto;
-    height: clamp(280px, 62vw, 390px);
+    height: clamp(222px, 50vw, 320px);
     max-width: 78%;
     transform: translateX(-50%);
   }
@@ -836,6 +859,15 @@ body[data-ruta="mercado"] .hero--mercado-v2 .btn--ghost:hover {
     max-width: 10ch;
   }
 }
+/* Pasados los ~600px la foto topa su alto máximo (360px) y el personaje deja de crecer,
+   pero el SVG seguiría escalando con el ancho y el pico se correría a la derecha de la
+   cabeza (hasta 50px en 899px). Se compensa con un ancho algo menor en este tramo. */
+@media (min-width: 600px) and (max-width: 900px){
+  body[data-ruta="capital"] .hero--capital-v2 .hero__lines svg,
+  body[data-ruta="mercado"] .hero--mercado-v2 .hero__lines svg {
+    width: 170%;
+  }
+}
 @media (max-width: 560px){
   .hero-v2__copy h1 { font-size: clamp(32px, 10vw, 46px); }
   .hero-v2__cta { flex-direction: column; align-items: stretch; }
@@ -849,7 +881,10 @@ body[data-ruta="mercado"] .hero--mercado-v2 .btn--ghost:hover {
   }
   body[data-ruta="capital"] .hero--capital-v2 h1,
   body[data-ruta="mercado"] .hero--mercado-v2 h1 {
-    font-size: clamp(2.45rem, 11vw, 3.4rem);
+    font-size: clamp(2.3rem, 10vw, 3.4rem);
+    line-height: 1.06;   /* el .98 del desktop apiña las líneas a este tamaño */
+    max-width: 12ch;
+    margin-bottom: 18px;
   }
   body[data-ruta="capital"] .hero--capital-v2 .hero__cta .btn,
   body[data-ruta="mercado"] .hero--mercado-v2 .hero__cta .btn {

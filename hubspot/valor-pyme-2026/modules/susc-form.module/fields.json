@@ -1,0 +1,26 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Registro gratuito" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Suscríbete gratis y empieza a recibir apoyo para tu pyme." },
+  { "id": "bodytext", "name": "bodytext", "label": "Párrafo", "type": "text", "required": false, "default": "Déjanos tus datos para entregarte contenidos, beneficios, eventos y oportunidades de aliados del ecosistema Valor Pyme." },
+  {
+    "id": "bullets", "name": "bullets", "label": "Beneficios (lista)", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 3 },
+    "children": [
+      { "id": "text", "name": "text", "label": "Texto", "type": "text", "required": false, "default": "" }
+    ],
+    "default": [
+      { "text": "Recibe oportunidades según los desafíos de tu negocio." },
+      { "text": "Accede a contenidos, actividades y herramientas prácticas." },
+      { "text": "Conecta con soluciones, eventos y aliados especializados." }
+    ]
+  },
+  {
+    "id": "form", "name": "form", "label": "Formulario de HubSpot",
+    "help_text": "Elige un formulario de HubSpot para capturar los registros en el CRM. Si lo dejas vacío, se muestra el formulario básico (solo valida en el navegador).",
+    "type": "form", "required": false,
+    "default": { "form_id": "", "response_type": "inline", "message": "¡Listo! Tu suscripción quedó registrada.", "form_type": "HUBSPOT" }
+  },
+  { "id": "submit_text", "name": "submit_text", "label": "Formulario básico · botón", "type": "text", "required": false, "default": "Suscribirme gratis" },
+  { "id": "consent_text", "name": "consent_text", "label": "Formulario básico · consentimiento", "type": "text", "required": false, "default": "Acepto recibir comunicaciones de Valor Pyme y el tratamiento de mis datos según la política de privacidad." },
+  { "id": "success_text", "name": "success_text", "label": "Formulario básico · mensaje de éxito", "type": "text", "required": false, "default": "¡Listo! Recibimos tu registro. Pronto te llegará información de la comunidad." }
+]

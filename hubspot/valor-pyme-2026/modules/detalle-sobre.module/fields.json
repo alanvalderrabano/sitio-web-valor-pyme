@@ -1,0 +1,20 @@
+[
+  { "id": "eyebrow", "name": "eyebrow", "label": "Eyebrow", "type": "text", "required": false, "default": "Sobre este recurso" },
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "¿Qué encontrarás en este material?" },
+  {
+    "id": "facts", "name": "facts", "label": "Aspectos", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "children": [
+      { "id": "icon", "name": "icon", "label": "Ícono", "type": "choice", "required": false, "default": "list",
+        "choices": [["list", "Lista"], ["star", "Estrella"], ["cap", "Birrete"], ["users", "Personas"]] },
+      { "id": "title", "name": "title", "label": "Título", "type": "text", "required": false, "default": "" },
+      { "id": "text", "name": "text", "label": "Descripción", "type": "text", "required": false, "default": "" }
+    ],
+    "default": [
+      { "icon": "list", "title": "Qué contiene", "text": "Un recorrido por créditos, líneas de capital de trabajo, factoring y fondos estatales, con ejemplos y una checklist para postular." },
+      { "icon": "star", "title": "Para qué sirve", "text": "Para ordenar tus finanzas y acceder a financiamiento en mejores condiciones, evitando errores comunes al pedir capital." },
+      { "icon": "cap", "title": "Qué aprenderás", "text": "A comparar alternativas, preparar tu carpeta financiera y proyectar el impacto del financiamiento en tu flujo de caja." },
+      { "icon": "users", "title": "Para quién es", "text": "Pymes que buscan crecer, invertir o estabilizar su operación y quieren tomar mejores decisiones de financiamiento." }
+    ]
+  }
+]

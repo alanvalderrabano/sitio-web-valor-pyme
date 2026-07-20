@@ -1,0 +1,24 @@
+{# MÓDULO · Ruta Hero split — hero de Digitalización/Talento: foto a la
+   izquierda (capa base + capa "solo línea" que se revela con barrido) y panel
+   de copy a la derecha con la línea SVG que se dibuja y empalma con la foto.
+   La animación la disparan las clases + data-ruta del <body>. #}
+<section class="hero-v2{% if module.variant == 'talento' %} hero-v2--talento{% endif %}" aria-label="{{ module.aria_label }}">
+  <div class="hero-v2__photo">
+    {% if module.photo_noline.src %}<img src="{{ module.photo_noline.src }}"{% if module.photo_noline.width %} width="{{ module.photo_noline.width }}"{% endif %}{% if module.photo_noline.height %} height="{{ module.photo_noline.height }}"{% endif %} alt="{{ module.photo_noline.alt }}">{% endif %}
+    {% if module.photo_line.src %}<img src="{{ module.photo_line.src }}"{% if module.photo_line.width %} width="{{ module.photo_line.width }}"{% endif %}{% if module.photo_line.height %} height="{{ module.photo_line.height }}"{% endif %} alt="" aria-hidden="true" class="hero-v2__photo-line">{% endif %}
+  </div>
+
+  <div class="hero-v2__panel">
+    <div class="hero-v2__copy">
+      {% if module.heading %}<h1 class="reveal">{{ module.heading|safe }}</h1>{% endif %}
+      {% if module.subtext %}<p class="hero-v2__sub reveal d1">{{ module.subtext }}</p>{% endif %}
+      <div class="hero-v2__cta reveal d2">
+        {% if module.cta1_text %}<a href="{{ module.cta1_url.href }}" class="btn btn--onfill">{{ module.cta1_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>{% endif %}
+        {% if module.cta2_text %}<a href="{{ module.cta2_url.href }}" class="btn btn--ghost">{{ module.cta2_text }} <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>{% endif %}
+      </div>
+    </div>
+    <svg class="hero-v2__line{% if module.variant == 'talento' %} hero-v2__line--talento{% endif %}" viewBox="{{ module.line_viewbox }}" preserveAspectRatio="none" aria-hidden="true">
+      <path d="{{ module.line_path }}" pathLength="100"/>
+    </svg>
+  </div>
+</section>
