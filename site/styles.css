@@ -1070,7 +1070,21 @@ body[data-ruta="mercado"] .hero--mercado-v2 .btn--ghost:hover {
 .bw-band__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,8,22,.56), rgba(14,8,22,.78)); }
 .bw-band__line { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 100%; z-index: 1; opacity: .85; pointer-events: none; }
 /* La línea de la franja se dibuja al entrar en pantalla. */
-.bw-band__line .route-line { stroke-dasharray: 1000 1000; stroke-dashoffset: 1000; }
+.bw-band__line .route-line { stroke-width: 9; stroke-dasharray: 1000 1000; stroke-dashoffset: 1000; }
+/* En móvil el slice del SVG recortaba la curva al 33% central y dejaba una diagonal
+   cruzando el titular. Se le da su proporción real (1200/300) para que la loma entre
+   completa, anclada abajo para no pisar el texto, y el trazo baja a 5px porque a esa
+   escala los 9px quedan casi tan gruesos como la propia loma. */
+@media (max-width: 900px){
+  .bw-band__line {
+    top: auto;
+    bottom: 16px;
+    height: auto;
+    aspect-ratio: 1200 / 300;
+    max-width: none;
+  }
+  .bw-band__line .route-line { stroke-width: 5; }
+}
 .bw-band.is-visible .bw-band__line .route-line { animation: draw 1.7s var(--ease) forwards .15s; }
 .bw-band .container { position: relative; z-index: 2; }
 .bw-band .eyebrow { color: #fff; justify-content: center; }
