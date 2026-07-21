@@ -105,6 +105,11 @@
   overflow: hidden; text-decoration: none; color: inherit;
   transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s;
 }
+/* Sin esto los filtros no ocultan nada: recursos.js marca las tarjetas con la
+   propiedad `hidden`, pero el `display: flex` de arriba le gana al
+   `display: none` que el navegador aplica a [hidden] por defecto. El contador
+   bajaba y las tarjetas seguían todas en pantalla. */
+.rc-card[hidden] { display: none; }
 .rc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
 .rc-card__cover { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--color-soft-2); }
 .rc-card__cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease); }
