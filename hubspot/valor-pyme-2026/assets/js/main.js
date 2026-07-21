@@ -32,7 +32,7 @@
   }
 
   /* ============================================================
-     Buscador IA (lupa en el nav → popup) · endpoint /api/ask
+     Buscador IA (lupa en el nav → popup) · endpoint /_hcms/api/vp-ask
      Se inyecta en todas las páginas desde el JS compartido.
      ============================================================ */
   (function () {
@@ -164,30 +164,23 @@
 
       history.push({ role: 'user', content: q });
 
-      fetch('/api/ask', {
+      /* Endpoint de HubSpot Serverless: mismo dominio, así que no hay CORS.
+         Antes apuntaba a /api/ask (Cloudflare Pages), que en producción daba 403
+         porque HubSpot no ejecuta esas funciones. La respuesta llega completa en
+         JSON —HubSpot no admite streaming—, por eso ya no se lee por chunks:
+         los puntitos de "escribiendo" cubren la espera (1.8–3.3 s medidos). */
+      fetch('/_hcms/api/vp-ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: history.slice(-8) })
       }).then(function (res) {
-        if (!res.ok || !res.body) throw new Error('bad response ' + res.status);
-        var reader = res.body.getReader();
-        var decoder = new TextDecoder();
-        var acc = '';
-        aEl.textContent = '';
-        function pump() {
-          return reader.read().then(function (r) {
-            if (r.done) {
-              history.push({ role: 'assistant', content: acc });
-              busy = false;
-              return;
-            }
-            acc += decoder.decode(r.value, { stream: true });
-            aEl.textContent = acc;
-            answerEl.scrollTop = answerEl.scrollHeight;
-            return pump();
-          });
-        }
-        return pump();
+        return res.json().then(function (data) {
+          if (!res.ok || !data || !data.text) throw new Error('bad response ' + res.status);
+          aEl.textContent = data.text;
+          answerEl.scrollTop = answerEl.scrollHeight;
+          history.push({ role: 'assistant', content: data.text });
+          busy = false;
+        });
       }).catch(function () {
         busy = false;
         if (aEl) {

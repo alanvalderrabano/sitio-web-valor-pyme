@@ -1,0 +1,11 @@
+{
+  "runtime": "nodejs18.x",
+  "version": "1.0",
+  "secrets": ["OPENAI_API_KEY"],
+  "endpoints": {
+    "vp-ask": {
+      "method": "POST",
+      "file": "ask.js"
+    }
+  }
+}
