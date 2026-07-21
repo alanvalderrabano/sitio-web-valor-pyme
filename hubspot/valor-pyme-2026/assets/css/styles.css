@@ -604,11 +604,29 @@ body.menu-open { overflow: hidden; }
 
 @media (max-width: 860px) {
   .hp-allies__layout { grid-template-columns: 1fr; gap: 24px; }
-  .ally-card { flex: 0 0 82%; }
+
+  /* Flechas abajo en vez de a los costados. A los lados le robaban ~100px al
+     viewport y la tarjeta siguiente asomaba cortada por detrás del botón. Como
+     no hay swipe, las flechas son la única navegación: centradas bajo la
+     tarjeta quedan a mano del pulgar y con área táctil de 48px.
+     Las filas van explícitas porque el orden del DOM es prev · viewport · next,
+     y con colocación automática el "next" se iría a una tercera fila. */
+  .hp-allies__carousel { grid-template-columns: 1fr 1fr; column-gap: 12px; row-gap: 16px; }
+  .hp-allies__viewport { grid-column: 1 / -1; grid-row: 1; }
+  .hp-allies__carousel [data-ally-prev] { grid-column: 1; grid-row: 2; justify-self: end; }
+  .hp-allies__carousel [data-ally-next] { grid-column: 2; grid-row: 2; justify-self: start; }
+  .hp-allies__nav { width: 48px; height: 48px; }
+
+  /* El min-height cede al contenido y el contenido se centra: todas las
+     tarjetas se estiran a la más alta, así que con el texto pegado arriba
+     quedaba un hueco muerto abajo. En tablet se mantienen dos a la vista: una
+     sola a ancho completo queda de 3:1, una franja casi vacía. */
+  .ally-card { flex: 0 0 calc(50% - 10px); min-height: 0; justify-content: center; }
 }
-@media (max-width: 480px) {
-  .ally-card { flex: 0 0 86%; }
-  .hp-allies__nav { width: 40px; height: 40px; }
+
+/* Teléfono: una tarjeta entera, sin recorte */
+@media (max-width: 600px) {
+  .ally-card { flex: 0 0 100%; }
 }
 
 /* Franja ciclista (CTA aliados): foto de pared con líneas de marca + ciclista */
