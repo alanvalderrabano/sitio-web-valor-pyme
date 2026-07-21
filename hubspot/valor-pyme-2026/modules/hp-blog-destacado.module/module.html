@@ -1,5 +1,20 @@
-{# MÓDULO · Home Blog destacado — grilla de artículos con imagen, fecha, título y CTA al blog #}
+{# ============================================================
+   MÓDULO · Home Blog destacado — grilla de artículos con imagen, fecha,
+   título y CTA al blog.
+   Contenido DINÁMICO: trae los últimos posts del blog. Si se elige una
+   etiqueta (tag) en la config del módulo, trae solo los posts de esa etiqueta.
+   Reutilizable: cambia la etiqueta desde HubSpot para mostrar otra categoría.
+   ============================================================ #}
 {% set fallback_images = ["blog-a.jpg", "blog-b.jpg", "blog-c.jpg"] %}
+{% set blog_id  = module.blog or 'default' %}
+{% set num      = module.post_count or 3 %}
+{% if module.post_tag %}
+  {# Solo posts con la etiqueta elegida, más recientes primero #}
+  {% set posts = blog_recent_tag_posts(blog_id, module.post_tag, num) %}
+{% else %}
+  {# Por defecto: últimos posts del blog, más recientes primero #}
+  {% set posts = blog_recent_posts(blog_id, num) %}
+{% endif %}
 <section class="hp-blog hp-section" id="blog">
   <div class="container">
     <div class="hp-blog__intro reveal">
@@ -8,17 +23,17 @@
       {% if module.bodytext %}<p>{{ module.bodytext }}</p>{% endif %}
     </div>
     <ul class="hp-blog__grid reveal">
-      {% for post in module.posts %}
+      {% for post in posts %}
       {% set fallback = fallback_images[loop.index0 % 3] %}
       <li class="hp-blog__card">
         <div class="hp-blog__media">
-          <img src="{{ post.image.src or 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/' ~ fallback }}" alt="{{ post.image.alt }}" loading="lazy">
+          <img src="{{ post.featured_image or 'https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/photos/brand/' ~ fallback }}" alt="{{ post.featured_image_alt_text or post.name }}" loading="lazy">
           <span class="hp-blog__bar"></span>
         </div>
         <div class="hp-blog__body">
-          {% if post.date %}<time class="hp-blog__date">{{ post.date }}</time>{% endif %}
-          {% if post.title %}<h3>{{ post.title }}</h3>{% endif %}
-          <a href="{{ post.link_url.href }}" class="link-more">Leer más <span class="arrow">→</span></a>
+          {% if post.publish_date_localized %}<time class="hp-blog__date" datetime="{{ post.publish_date|datetimeformat('%Y-%m-%d') }}">{{ post.publish_date_localized }}</time>{% endif %}
+          {% if post.name %}<h3>{{ post.name }}</h3>{% endif %}
+          <a href="{{ post.absolute_url }}" class="link-more">Leer más <span class="arrow">→</span></a>
         </div>
       </li>
       {% endfor %}

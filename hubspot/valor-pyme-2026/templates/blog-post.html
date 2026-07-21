@@ -1,0 +1,171 @@
+<!--
+  templateType: blog
+  label: Blog · Artículo (post)
+  isAvailableForNewContent: true
+-->
+{# ============================================================
+   BLOG · Plantilla de POST del blog editorial "Blog Valor Pyme".
+   Mapeo de campos nativos del blog al diseño del artículo:
+     · content.name             → Título (H1)
+     · content.post_list_summary → Bajada/dek
+     · content.featured_image   → Imagen destacada
+     · content.post_body        → Cuerpo del artículo (rich text del editor)
+     · content.topic_list       → Chip/categoría + tags
+     · content.blog_post_author → Autor (bloque "Escrito por")
+   Barra de progreso, compartir y scroll-spy: assets/js/blog.js.
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/blog.css') }}">
+</head>
+<body class="hp" data-ruta="">
+  {% global_partial path="../partials/header.html" %}
+
+  {% set img_base = "https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/" %}
+  {% set topic = content.topic_list|first %}
+  {% set slug = topic.slug|default('finanzas') %}
+
+  <!-- Barra de progreso de lectura -->
+  <div class="bp-progress" data-bp-progress role="progressbar" aria-label="Progreso de lectura"></div>
+
+  <main data-bp-article>
+
+    <!-- ============ ENCABEZADO ============ -->
+    <div class="container">
+      <nav class="bp-crumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a><span>/</span><a href="{{ group.absolute_url }}">Blog</a>{% if topic %}<span>/</span>{{ topic.name }}{% endif %}
+      </nav>
+      <header class="bp-header">
+        {% if topic %}<span class="bl-chip bl-chip--{{ slug }}">{{ topic.name }}</span>{% endif %}
+        <h1>{{ content.name }}</h1>
+        {% if content.post_list_summary %}<p class="bp-dek">{{ content.post_list_summary|striptags }}</p>{% endif %}
+        <div class="bp-byline">
+          <div class="bl-meta">
+            <span class="bl-meta__author"><img class="bl-meta__avatar" src="{{ img_base }}logos/isotipo-dark.svg" alt="">{{ content.blog_post_author.display_name|default('Equipo Valor Pyme') }}</span>
+            <span class="bl-meta__sep"></span>
+            <span class="bl-meta__item"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>{{ content.publish_date_localized }}</span>
+            <span class="bl-meta__sep"></span>
+            <span class="bl-meta__item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>{% set w = content.post_body|striptags|wordcount %}{{ [(w/200)|round(0,'ceil')|int, 1]|max }} min de lectura</span>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <!-- ============ IMAGEN DESTACADA ============ -->
+    {% if content.featured_image %}
+    <div class="container">
+      <div class="bp-hero-img reveal">
+        <figure>
+          <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text|default(content.name) }}">
+          {% if content.featured_image_alt_text %}<figcaption>{{ content.featured_image_alt_text }}</figcaption>{% endif %}
+        </figure>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- ============ CUERPO + SIDEBAR ============ -->
+    <div class="container">
+      <div class="bp-layout">
+
+        <!-- Cuerpo (rich text del editor) -->
+        <article class="bp-body">
+          {{ content.post_body }}
+
+          <!-- Compartir -->
+          <div class="bp-sharebar">
+            <span>Compartir</span>
+            <button class="bp-share-btn" data-share="linkedin" aria-label="Compartir en LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 22 10.6 22 14v7h-4v-6.2c0-1.5-.03-3.4-2.07-3.4-2.07 0-2.39 1.6-2.39 3.3V21H9V9Z"/></svg></button>
+            <button class="bp-share-btn" data-share="x" aria-label="Compartir en X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.83L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z"/></svg></button>
+            <button class="bp-share-btn" data-share="whatsapp" aria-label="Compartir en WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3 .7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.1-.2-.2-.5-.3Z"/></svg></button>
+            <button class="bp-share-btn is-copy" data-share="copy" aria-label="Copiar enlace"><svg viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+
+          <!-- Tags (topics del post) -->
+          {% if content.topic_list %}
+          <div class="bp-tags">
+            <span class="bp-tags__label">Temas</span>
+            {% for t in content.topic_list %}<a class="bp-tag" href="{{ group.absolute_url }}/tag/{{ t.slug }}">{{ t.name }}</a>{% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- Autor -->
+          <div class="bp-author">
+            <img class="bp-author__avatar" src="{{ content.blog_post_author.avatar or (img_base ~ 'logos/isotipo-dark.svg') }}" alt="{{ content.blog_post_author.display_name|default('Valor Pyme') }}">
+            <div>
+              <span class="bp-author__k">Escrito por</span>
+              <p class="bp-author__name">{{ content.blog_post_author.display_name|default('Equipo Valor Pyme') }}</p>
+              <p>{{ content.blog_post_author.bio|default('Una red de soluciones que acompaña a las pymes de Chile en cada etapa de su crecimiento, conectando finanzas, mercado, digitalización y talento en un solo lugar.') }}</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="bp-aside">
+          <div class="bl-cta">
+            <img class="bl-cta__lines" src="{{ img_base }}lines/patron-lineas-color.svg" alt="" aria-hidden="true">
+            <h3>Ordena las finanzas de tu pyme</h3>
+            <p>La Ruta Capital reúne aliados y herramientas para tu flujo de caja y financiamiento.</p>
+            <a href="/ruta-capital" class="btn btn--onfill">Ver Ruta Capital <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ============ ARTÍCULOS RELACIONADOS ============ -->
+    {% set related = blog_recent_posts("default", 4) %}
+    {% if related %}
+    <section class="section bp-related">
+      <div class="container">
+        <div class="bp-related__head">
+          <span class="hp-eyebrow">Sigue leyendo</span>
+          <h2 class="hp-h2">Artículos relacionados</h2>
+        </div>
+        <div class="bp-related__grid">
+          {% set shown = 0 %}
+          {% for post in related %}
+            {% if post.id != content.id and shown < 3 %}
+              {% set shown = shown + 1 %}
+              {% set rtopic = post.topic_list|first %}
+              {% set rslug = rtopic.slug|default('finanzas') %}
+              <article class="bl-card reveal">
+                <a class="bl-card__media" href="{{ post.absolute_url }}" aria-hidden="true" tabindex="-1">
+                  {% if rtopic %}<span class="bl-chip bl-chip--{{ rslug }}">{{ rtopic.name }}</span>{% endif %}
+                  <img src="{{ post.featured_image or (img_base ~ 'photos/brand/blog-b.jpg') }}" alt="" loading="lazy">
+                </a>
+                <div class="bl-card__body">
+                  <h3><a href="{{ post.absolute_url }}">{{ post.name }}</a></h3>
+                  <p class="bl-card__excerpt">{{ post.post_list_summary|striptags|truncate(120) }}</p>
+                  <div class="bl-meta"><span class="bl-meta__item">{% set rw = post.post_body|striptags|wordcount %}{{ [(rw/200)|round(0,'ceil')|int, 1]|max }} min de lectura</span></div>
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ============ CTA FINAL ============ -->
+    <section class="hp-diag">
+      <div class="container reveal">
+        <span class="hp-eyebrow">Sé parte de la comunidad</span>
+        <h2 class="hp-h2">Recibe contenido para hacer crecer tu pyme.</h2>
+        <p>Guías, herramientas y novedades directo a tu correo. Únete gratis a la comunidad de Valor Pyme.</p>
+        <a href="/#suscripcion" class="btn btn--onfill">Suscríbete gratis <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  <script src="{{ get_asset_url('../assets/js/blog.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

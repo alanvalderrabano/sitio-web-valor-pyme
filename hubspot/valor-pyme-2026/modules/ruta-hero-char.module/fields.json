@@ -7,8 +7,14 @@
     "required": true,
     "default": "capital",
     "choices": [
-      ["capital", "Capital (amarillo)"],
-      ["mercado", "Mercado (morado)"]
+      [
+        "capital",
+        "Capital (amarillo)"
+      ],
+      [
+        "mercado",
+        "Mercado (morado)"
+      ]
     ]
   },
   {
@@ -41,7 +47,7 @@
     "label": "Trazo SVG de la línea (avanzado)",
     "type": "text",
     "required": false,
-    "default": "M0 300C210 300 320 112 388 112C456 112 566 300 776 300C900 300 1010 296 1200 296"
+    "default": "M0 300C130 300 178 112 388 112C598 112 690 300 850 300C960 300 1060 296 1200 296"
   },
   {
     "id": "heading",
@@ -73,7 +79,10 @@
     "label": "CTA principal · enlace",
     "type": "url",
     "required": false,
-    "default": { "type": "EXTERNAL", "href": "#estaciones" }
+    "default": {
+      "type": "EXTERNAL",
+      "href": "#estaciones"
+    }
   },
   {
     "id": "cta2_text",
@@ -89,6 +98,9 @@
     "label": "CTA secundario · enlace",
     "type": "url",
     "required": false,
-    "default": { "type": "EXTERNAL", "href": "#" }
+    "default": {
+      "type": "EXTERNAL",
+      "href": "#"
+    }
   }
 ]

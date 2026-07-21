@@ -195,3 +195,87 @@
   .rc-fgroup { flex-direction: column; align-items: stretch; gap: 6px; }
   .rc-fgroup__label { min-width: 0; margin: 0; }
 }
+
+/* ============================================================
+   Formulario nativo de HubSpot dentro del bloque de descarga.
+   Iguala el diseño del theme (inputs, labels, selects, checkbox, botón).
+   Alcance acotado a .rd-download para no afectar otros forms.
+   ============================================================ */
+.rd-download .hs-form { max-width: none; }
+.rd-download .hs-form fieldset { max-width: none; margin-bottom: 0; }
+
+/* Columnas de HubSpot -> grid */
+.rd-download .hs-form .form-columns-2,
+.rd-download .hs-form .form-columns-1 { display: grid; gap: 0 18px; max-width: none; }
+.rd-download .hs-form .form-columns-2 { grid-template-columns: 1fr 1fr; }
+.rd-download .hs-form .form-columns-2 > div,
+.rd-download .hs-form .form-columns-1 > div { width: 100% !important; float: none; padding: 0; }
+.rd-download .hs-form .hs-form-field { margin-bottom: 18px; }
+
+/* Labels + requerido + ayuda */
+.rd-download .hs-form label { display: block; font-weight: 700; font-size: 14px; color: var(--color-texto-dark); margin-bottom: 8px; }
+.rd-download .hs-form .hs-form-required { color: var(--c-rosa); margin-left: 2px; }
+.rd-download .hs-form .hs-field-desc { font-weight: 400; font-size: 13px; color: var(--color-gris); margin: 0 0 8px; }
+
+/* Inputs / select / textarea */
+.rd-download .hs-form .hs-input {
+  width: 100%; box-sizing: border-box;
+  font-family: var(--font-body); font-size: 15px; color: var(--color-texto-dark);
+  padding: 13px 15px; border: 1px solid var(--color-borde); border-radius: 0; background: #fff;
+  transition: border-color .2s, box-shadow .2s;
+}
+.rd-download .hs-form textarea.hs-input { resize: vertical; min-height: 130px; }
+.rd-download .hs-form .hs-input:focus { outline: none; border-color: var(--color-corp); box-shadow: 0 0 0 3px var(--color-corp-40); }
+.rd-download .hs-form .hs-input::placeholder { color: var(--color-gris-claro); }
+.rd-download .hs-form .hs-input[type="checkbox"],
+.rd-download .hs-form .hs-input[type="radio"] { width: auto; }
+
+/* Select con flecha morada */
+.rd-download .hs-form select.hs-input {
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%236126FF' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 15px center; padding-right: 40px;
+}
+.rd-download .hs-form select.hs-input.is-placeholder { color: var(--color-gris-claro); }
+
+/* Checkbox de consentimiento / legal */
+.rd-download .hs-form .inputs-list { list-style: none; margin: 0; padding: 0; }
+.rd-download .hs-form .legal-consent-container { margin-bottom: 4px; }
+.rd-download .hs-form .hs-form-booleancheckbox-display,
+.rd-download .hs-form .hs-form-checkbox-display {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-weight: 400; font-size: 13.5px; color: var(--color-gris); line-height: 1.5; margin: 0;
+}
+.rd-download .hs-form .hs-form-booleancheckbox-display input,
+.rd-download .hs-form .hs-form-checkbox-display input {
+  flex: 0 0 auto; width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--color-corp);
+}
+.rd-download .hs-form .hs-form-booleancheckbox-display > span { margin: 0; }
+
+/* Errores de validación */
+.rd-download .hs-form .hs-error-msgs { list-style: none; margin: 6px 0 0; padding: 0; }
+.rd-download .hs-form .hs-error-msg,
+.rd-download .hs-form label.hs-error-msg { color: var(--c-rosa); font-size: 13px; font-weight: 600; }
+.rd-download .hs-form .hs-input.invalid.error { border-color: var(--c-rosa); }
+
+/* Botón enviar -> estilo .btn del theme */
+.rd-download .hs-form .hs_submit { margin-top: 8px; }
+.rd-download .hs-form .hs-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;
+  padding: 14px 26px; height: 50px; border: none; border-radius: var(--radius-pill);
+  font-family: var(--font-body); font-weight: 700; font-size: 16px; line-height: 1;
+  background: var(--color-corp); color: #fff; transition: transform .25s var(--ease), background .25s, box-shadow .25s;
+}
+.rd-download .hs-form .hs-button:hover { background: var(--color-morado); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.rd-download .hs-form .hs-button:focus-visible { outline: 3px solid var(--color-corp-40); outline-offset: 3px; }
+
+/* Mensaje de éxito tras enviar */
+.rd-download .submitted-message,
+.rd-download .hs-form .hs-main-font-element {
+  padding: 16px 18px; background: #D4FBE8; border: 1px solid #00BD70; color: #00733E; font-weight: 700; font-size: 14.5px;
+}
+
+@media (max-width: 600px) {
+  .rd-download .hs-form .form-columns-2 { grid-template-columns: 1fr; }
+  .rd-download .hs-form .hs-button { width: 100%; }
+}

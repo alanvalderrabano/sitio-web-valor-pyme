@@ -605,7 +605,7 @@ body[data-ruta="digitalizacion"] .hero-v2 .hero-v2__line path {
 }
 .hero-v2--talento .hero-v2__line--talento path {
   stroke: #54b579;
-  stroke-width: 13;
+  stroke-width: 7;
   stroke-linecap: round;
   stroke-linejoin: round;
   /* Se dibuja desde el empalme con la foto hacia la derecha al cargar el hero.
@@ -1867,4 +1867,35 @@ body.vp-ask-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .vp-ask, .vp-ask__dialog { transition: none; }
   .vp-ask__typing i { animation: none; }
+}
+
+
+/* === Animación hero WIP (solo local, para iterar) === */
+/* Suscripción · hero con isotipo + píldoras de ruta */
+.susc-hero__graphic { position: relative; width: min(100%, 440px); margin-inline: auto; aspect-ratio: 1 / 1; }
+.susc-hero__iso { width: 100%; height: 100%; object-fit: contain; }
+.susc-hero__pill {
+  position: absolute; white-space: nowrap; font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(11px, 1vw, 13px); padding: 7px 14px; border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm); z-index: 2;
+}
+.susc-hero__pill--1 { top: 6%;  right: -4%; }
+.susc-hero__pill--2 { bottom: 2%; right: 2%; }
+.susc-hero__pill--3 { top: 20%; left: -8%; }
+.susc-hero__pill--4 { bottom: 10%; left: -6%; }
+@media (max-width: 560px) {
+  .susc-hero__graphic { width: min(100%, 300px); }
+  .susc-hero__pill { font-size: 10px; padding: 5px 10px; }
+  .susc-hero__pill--1 { right: 0; } .susc-hero__pill--3 { left: 0; } .susc-hero__pill--4 { left: 0; }
+}
+
+/* Home hero: animación continua con los vectores del Figma. La onda (Group 60(1))
+   se dibuja de izq. a der. (clip hpWave); luego un barrido la convierte en el
+   estado final (Group 90: líneas -> degradado -> isotipo line-art) via clips. */
+.hp-anim .hp-s { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-anim .hp-s2 { display: none; }
+  .hp-anim .hp-s3 { display: none; }
+}
 }
