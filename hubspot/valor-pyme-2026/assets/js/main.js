@@ -176,7 +176,8 @@
       }).then(function (res) {
         return res.json().then(function (data) {
           if (!res.ok || !data || !data.text) throw new Error('bad response ' + res.status);
-          aEl.textContent = data.text;
+          aEl.textContent = '';
+          aEl.appendChild(vpLinkify(data.text));
           answerEl.scrollTop = answerEl.scrollHeight;
           history.push({ role: 'assistant', content: data.text });
           busy = false;
@@ -185,7 +186,7 @@
         busy = false;
         if (aEl) {
           aEl.innerHTML = 'Ups, no pudimos responder en este momento. Escríbenos en ' +
-            '<a href="/contacto">la página de contacto</a> y te ayudamos.';
+            '<a href="/ponte-en-contacto">la página de contacto</a> y te ayudamos.';
         }
       });
     }
@@ -194,6 +195,62 @@
       return s.replace(/[&<>"']/g, function (c) {
         return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
       });
+    }
+
+    /* Enlazado de la respuesta de la IA.
+       La IA responde SIEMPRE en texto plano; los enlaces los pone el front desde
+       este diccionario fijo de URLs reales. Nunca se deja que la IA escriba una
+       URL: los slugs de este sitio no son adivinables (contacto = /ponte-en-contacto,
+       alianzas = /alianzas-estrategicas-valor-pyme…) y los inventaría mal.
+       Orden: del patrón más específico al más general; cada destino se enlaza una
+       sola vez (la primera aparición). */
+    var VP_ENLACES = [
+      { re: /ruta\s+(?:de\s+)?capital/i,               url: '/ruta-capital' },
+      { re: /ruta\s+(?:de\s+)?mercado/i,               url: '/ruta-mercado' },
+      { re: /ruta\s+(?:de\s+)?digitalizaci[oó]n/i,     url: '/ruta-digitalizacion' },
+      { re: /ruta\s+(?:de\s+)?talento(?:\s+y\s+gesti[oó]n)?/i, url: '/ruta-talento' },
+      { re: /las\s+(?:4|cuatro)\s+rutas/i,             url: '/rutas' },
+      { re: /rutas\s+pyme/i,                           url: '/rutas' },
+      { re: /diagn[oó]stico/i,                         url: '/diagnostico-de-madurez-empresarial' },
+      { re: /suscr[ií]b\w*\s+gratis/i,                 url: '/suscripcion' },
+      { re: /crea(?:r)?\s+(?:tu\s+|una\s+|su\s+)?cuenta/i, url: '/suscripcion' },
+      { re: /p[aá]gina\s+de\s+contacto/i,              url: '/ponte-en-contacto' },
+      { re: /cont[aá]ctanos/i,                         url: '/ponte-en-contacto' },
+      { re: /(?:centro|secci[oó]n|biblioteca)\s+de\s+recursos/i, url: '/recursos' },
+      { re: /\bfor[oó]\b/i,                            url: '/foro-comunidad-pyme' },
+      { re: /\bblog\b/i,                               url: '/blog' }
+    ];
+
+    /* Devuelve un fragmento con el texto y sus enlaces como nodos reales.
+       El texto de la IA va SOLO en nodos de texto / textContent y el href sale
+       únicamente del diccionario de arriba: aunque la respuesta trajera <script>
+       o comillas, no se ejecuta ni se interpreta como HTML. */
+    function vpLinkify(text) {
+      var frag = document.createDocumentFragment();
+      var hits = [];
+      VP_ENLACES.forEach(function (e) {
+        var re = new RegExp(e.re.source, 'gi');
+        var m;
+        while ((m = re.exec(text))) {
+          if (m[0]) hits.push({ ini: m.index, fin: m.index + m[0].length, txt: m[0], url: e.url });
+          if (re.lastIndex === m.index) re.lastIndex++;
+        }
+      });
+      hits.sort(function (a, b) { return a.ini - b.ini || (b.fin - b.ini) - (a.fin - a.ini); });
+      var pos = 0, usados = {};
+      hits.forEach(function (h) {
+        if (h.ini < pos || usados[h.url]) return; // solapa con otro enlace, o ese destino ya se usó
+        usados[h.url] = true;
+        if (h.ini > pos) frag.appendChild(document.createTextNode(text.slice(pos, h.ini)));
+        var a = document.createElement('a');
+        a.href = h.url;
+        a.className = 'vp-ask__link';
+        a.textContent = h.txt;
+        frag.appendChild(a);
+        pos = h.fin;
+      });
+      if (pos < text.length) frag.appendChild(document.createTextNode(text.slice(pos)));
+      return frag;
     }
   })();
 

@@ -41,7 +41,7 @@ CÓMO EMPEZAR (3 pasos)
 1) Crea tu cuenta (suscríbete gratis). 2) Completa tu perfil. 3) Explora y conecta con rutas, aliados y contenidos.
 
 CONTACTO
-Para consultas, alianzas, prensa o ayuda de la comunidad hay una página de contacto (/contacto) con un formulario por motivo.
+Para consultas, alianzas, prensa o ayuda de la comunidad hay una página de contacto con un formulario por motivo.
 
 REGLAS
 - Respuestas breves: 2 a 4 frases. Ve al grano y, cuando aplique, invita a la acción (suscribirse gratis, hacer el diagnóstico, ver una ruta o escribir a contacto).

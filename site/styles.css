@@ -1869,6 +1869,9 @@ body.vp-ask-open { overflow: hidden; }
   white-space: pre-wrap;
 }
 .vp-ask__a a { color: var(--color-corp); text-decoration: underline; }
+/* Enlaces que el front inyecta en la respuesta de la IA (ver vpLinkify en main.js) */
+.vp-ask__link { font-weight: 600; text-underline-offset: 2px; text-decoration-thickness: 1.5px; }
+.vp-ask__link:hover { color: var(--c-morado-deep); }
 .vp-ask__typing { display: inline-flex; gap: 5px; padding: 4px 0; }
 .vp-ask__typing i {
   width: 8px; height: 8px; border-radius: 50%; background: var(--c-morado);
