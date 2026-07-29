@@ -1,0 +1,16 @@
+{
+  "name": "ted-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Réplica local del Test de Digitalización (TED) de valorpyme.cl, con mocks de las serverless functions de HubSpot.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "node server/mock-api.mjs",
+    "start": "node server/mock-api.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "reset": "rm -f server/data/contacts.json && echo 'CRM local vaciado'"
+  }
+}
