@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test de Digitalización — Valor Pyme</title>
+  <meta name="description" content="Réplica local del Test de Digitalización (TED) de valorpyme.cl, con el look and feel del theme Valor Pyme 2026.">
+
+  <link rel="icon" href="/assets/img/valor-pyme-logo-color.svg" type="image/svg+xml">
+
+  <!-- Orden de carga: primero el theme (tokens, reset, .btn), después lo del módulo.
+       Es el mismo orden que tendrá dentro del theme en HubSpot. `styles.css` ya importa
+       Rubik, el fallback oficial de FG Futurist — por eso aquí no se pide ninguna fuente. -->
+  <link rel="stylesheet" href="/theme/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/ted.css">
+</head>
+<body>
+
+  <!-- Header y footer se leen de los partials REALES del theme al servir la página
+       (server/mock-api.mjs → injectPartials). No hay copia que mantener. -->
+  <!-- #include partial="header" -->
+
+  <main>
+    <div class="ted" x-data="ted">
+
+        <!-- ══ Franja de progreso del programa (todo menos la portada) ══ -->
+        <div class="ted-progress" x-show="page !== 'home'" x-cloak>
+            <div class="ted-wrap ted-progress__inner">
+                <h2 x-show="page !== 'results'" class="ted-progress__title">
+                    ¡Estás comenzando el Programa Pyme Digital!
+                </h2>
+
+                <h2 x-show="page === 'results'" class="ted-progress__title" x-cloak>
+                    Haz finalizado la primera etapa del Programa Pyme Digital
+                </h2>
+
+                <p class="ted-progress__lead">
+                    Actualmente te encuentras en la etapa de:
+                </p>
+
+                <div class="ted-steps">
+                    <div class="ted-steps__item" :class="{ 'is-current': page !== 'results' }">
+                        Diagnóstico
+                    </div>
+                    <div class="ted-steps__item" :class="{ 'is-current': page === 'results' }">
+                        Asesoría
+                    </div>
+                    <div class="ted-steps__item">
+                        Adopción
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ Portada ══ -->
+        <section class="ted-wrap ted-section" x-show="page === 'home'" x-transition x-cloak>
+            <div class="ted-split">
+                <div class="ted-card">
+                    <div class="ted-marks">
+                        <svg class="ted-mark ted-mark--tradicional" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect width="24" height="24" />
+                        </svg>
+                        <svg class="ted-mark ted-mark--intermedio" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="12" />
+                        </svg>
+                        <svg class="ted-mark ted-mark--principiante" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 0L24 24H0z" />
+                        </svg>
+                        <svg class="ted-mark ted-mark--wide ted-mark--avanzado" viewBox="0 0 48 24" aria-hidden="true">
+                            <rect width="48" height="24" />
+                        </svg>
+                    </div>
+
+                    <h1 class="ted-home__title">
+                        Programa <br>
+                        PyME Digital
+                    </h1>
+
+                    <p class="ted-home__lead">
+                        Descubre tu nivel de digitalización y avanza hacia la transformación de tu negocio en 3 simples pasos
+                    </p>
+
+                    <ul class="ted-steplist">
+                        <li class="ted-steplist__item">
+                            <div class="ted-steplist__label">
+                                <svg class="ted-mark ted-mark--sm ted-mark--tradicional" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect width="24" height="24" />
+                                </svg>
+                                <span>Diagnóstico</span>
+                            </div>
+                            <p>
+                                Evalúa el nivel de madurez digital de tu empresa y descubre oportunidades de mejora.
+                            </p>
+                        </li>
+                        <li class="ted-steplist__item">
+                            <div class="ted-steplist__label">
+                                <svg class="ted-mark ted-mark--sm ted-mark--intermedio" viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="12" />
+                                </svg>
+                                <span>Capacitación</span>
+                            </div>
+                            <p>
+                                Asiste a talleres temáticos 100% online y gratuitos, con expertos de Pyme UC Y aprende sobre herramientas digitales con nuestros partners.
+                            </p>
+                        </li>
+                        <li class="ted-steplist__item">
+                            <div class="ted-steplist__label">
+                                <svg class="ted-mark ted-mark--sm ted-mark--principiante" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 0L24 24H0z" />
+                                </svg>
+                                <span>Adopción</span>
+                            </div>
+                            <p>
+                                Implementa las herramientas y estrategias digitales más adecuadas para impulsar tu crecimiento.
+                            </p>
+                        </li>
+                    </ul>
+
+                    <div class="ted-home__foot">
+                        <p class="ted-home__meta">
+                            Duración del diagnóstico: <span>4 min</span>
+                        </p>
+                        <button @click="page = 'contact'" class="btn">
+                            Quiero Comenzar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="ted-media">
+                    <img class="ted-media__img" src="/assets/img/ted-bg.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Datos de contacto ══ -->
+        <section class="ted-wrap ted-section has-form" x-show="page === 'contact'" x-transition x-cloak>
+            <div class="ted-split">
+                <div class="ted-card">
+                    <form class="ted-form" @submit.prevent="submitUserData">
+                        <div class="ted-field">
+                            <label for="name">Nombre Completo</label>
+                            <input x-model="name" type="text" id="name" placeholder="Escribe tu nombre completo" required>
+                        </div>
+                        <div class="ted-field">
+                            <label for="email">Correo Electrónico</label>
+                            <input x-model="email" type="email" id="email" placeholder="Escribe tu correo electrónico" required>
+                        </div>
+                        <div class="ted-field">
+                            <label for="company">Nombre de tu Empresa</label>
+                            <input x-model="company" type="text" id="company" placeholder="Escribe el nombre de tu empresa" required>
+                        </div>
+                        <div class="ted-field">
+                            <label for="rut">RUT de tu Empresa</label>
+                            <input x-model="rut" type="text" id="rut" placeholder="Ejemplo: 87654321-0" required>
+                        </div>
+
+                        <div class="ted-actions">
+                            <div class="ted-errors">
+                                <template x-for="error in errors">
+                                    <p x-text="error" class="ted-error"></p>
+                                </template>
+                            </div>
+                            <button type="submit" class="btn">Continuar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="ted-aside">
+                    <div class="ted-media">
+                        <img class="ted-media__img" src="/assets/img/ted-programa-pyme-digital.jpg" alt="Ted Programa Pyme Digital">
+                    </div>
+                    <div class="ted-aside__foot">
+                        <button @click="showStartOverModal = true" class="btn btn--ghost btn--sm">
+                            Regresar al inicio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Cuestionario ══ -->
+        <section class="ted-wrap ted-section has-form" x-show="page === 'survey'" x-transition x-cloak>
+            <div class="ted-split">
+                <div class="ted-card ted-card--question">
+                    <template x-for="(question, index) in questions">
+                        <div class="ted-question" x-show="index === currentQuestionIndex" x-id="['question-id']">
+                            <h3 x-text="question.title" class="ted-question__title"></h3>
+                            <h2 x-text="question.question" class="ted-question__text"></h2>
+
+                            <div class="ted-options">
+                                <template x-for="option in question.options">
+                                    <div class="question-options ted-option" x-id="['question-option']">
+                                        <div class="ted-option__control">
+                                            <template x-if="question.type === 'radio'">
+                                                <input type="radio" :name="$id('question-id')" @change="storeAnswer" :id="$id('question-option')" :value="option.value" x-model="question.answer">
+                                            </template>
+
+                                            <template x-if="question.type === 'checkbox'">
+                                                <!-- DIVERGENCIA vs. el original: allí este input traía además
+                                                     x-model="question.answers", que registraba cada marca DOS veces
+                                                     (Alpine el string + storeAnswer el objeto) y ensuciaba el payload
+                                                     del CRM. Aquí storeAnswer es la única fuente y :checked solo
+                                                     refleja el estado al volver atrás. Ver docs/ANALISIS.md § 4. -->
+                                                <input type="checkbox" :name="$id('question-id')" @change="storeAnswer" :id="$id('question-option')" :checked="question.answers.some(a => a.value === option.value)" :value="option.value">
+                                            </template>
+                                        </div>
+                                        <label :for="$id('question-option')" x-text="option.label ? option.label : option.value"></label>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <div class="ted-errors ted-errors--center">
+                                <template x-for="error in errors">
+                                    <p x-text="error" class="ted-error ted-error--lg"></p>
+                                </template>
+                            </div>
+
+                            <div class="ted-nav">
+                                <button :class="{ 'is-hidden': currentQuestionIndex === 0 }" @click="previousQuestion" class="btn btn--ghost btn-prev">
+                                    Anterior
+                                </button>
+                                <button @click="nextQuestion" class="btn btn-next">
+                                    Siguiente
+                                </button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="ted-aside">
+                    <div class="ted-card ted-card--meter">
+                        <div class="ted-meter__head">
+                            <h4>Progreso</h4>
+                            <div class="ted-meter__pct"><span x-text="percentage"></span>%</div>
+                        </div>
+                        <div class="ted-meter__track">
+                            <div class="ted-meter__fill" x-bind:style="'width: ' + percentage + '%'"></div>
+                        </div>
+                    </div>
+
+                    <div class="ted-media">
+                        <img class="ted-media__img" src="/assets/img/ted-programa-pyme-digital.jpg" alt="Ted Programa Pyme Digital">
+                    </div>
+
+                    <div class="ted-aside__foot">
+                        <button @click="showStartOverModal = true" class="btn btn--ghost btn--sm ted-btn--block">
+                            Volver al inicio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Resultados · cabecera (etapa + velocímetro) ══ -->
+        <section class="ted-wrap ted-section" x-show="page === 'results'" x-transition x-cloak>
+            <div class="ted-split">
+                <div class="ted-card">
+                    <template x-if="stage === 'tradicional'">
+                        <div class="ted-verdict">
+                            <div class="ted-verdict__head">
+                                <svg class="ted-mark ted-mark--lg ted-mark--tradicional" viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="12" />
+                                </svg>
+                                <h4 class="ted-verdict__name">Tradicional</h4>
+                            </div>
+                            <p>
+                                <strong>Has completado la primera fase del Termómetro de Evolución Digital, y los resultados sitúan a tu empresa en el nivel <i>Tradicional</i>.</strong> Esto indica que actualmente tu empresa se está manejando de una manera más bien tradicional, sin aprovechar al máximo las tecnologías disponibles que podrían ayudarte a mejorar la gestión del negocio, aumentar la eficiencia y potenciar las ventas.
+                            </p>
+                            <p>
+                                Este análisis inicial es solo el comienzo. <strong>Próximamente, recibirás un correo con un detallado análisis del nivel de Adopción Digital de tu empresa y un Plan de Recomendaciones personalizado. Este plan marcará el inicio de la segunda fase de nuestro proceso: la asesoría individualizada,</strong> donde te guiaremos paso a paso para transformar tu empresa hacia un modelo más digitalizado y eficiente.
+                            </p>
+                        </div>
+                    </template>
+
+                    <template x-if="stage === 'principiante'">
+                        <div class="ted-verdict">
+                            <div class="ted-verdict__head">
+                                <svg class="ted-mark ted-mark--lg ted-mark--principiante" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect width="24" height="24" />
+                                </svg>
+                                <h4 class="ted-verdict__name">Principante</h4>
+                            </div>
+                            <p>
+                                <strong>Has completado la primera fase del Termómetro de Evolución Digital, y los resultados sitúan a tu empresa en el nivel de <i>Principiante</i>.</strong> Esto indica que, aunque ya has implementado algunas tecnologías y contemplado iniciativas relacionadas, todavía puedes avanzar mucho más y explotar al máximo las herramientas digitales disponibles para optimizar la gestión de tu negocio, incrementar la eficiencia y potenciar tus ventas.
+                            </p>
+                            <p>
+                                Este análisis inicial es solo el comienzo. <strong>Próximamente, te enviaremos un correo con un detallado nivel de Adopción Digital y un Plan de Recomendaciones personalizado. Este plan marcará el inicio de la segunda fase de nuestro proceso: la asesoría personalizada</strong>, donde te guiaremos paso a paso para potenciar tu empresa en el mundo digital.
+                            </p>
+                        </div>
+                    </template>
+
+                    <template x-if="stage === 'intermedio'">
+                        <div class="ted-verdict">
+                            <div class="ted-verdict__head">
+                                <svg class="ted-mark ted-mark--lg ted-mark--intermedio" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 0L24 24H0z" />
+                                </svg>
+                                <h4 class="ted-verdict__name">Intermedio</h4>
+                            </div>
+                            <p>
+                                <strong>¡Has completado con éxito la primera fase del Termómetro de Evolución Digital!</strong>&nbsp;Los resultados revelan que tu empresa se encuentra actualmente en el nivel&nbsp;Intermedio. Esto significa que ya has dado pasos importantes en tu proceso de digitalización, pero aún hay margen para seguir mejorando y aprovechar al máximo las tecnologías disponibles para optimizar la gestión de tu negocio, aumentar la eficiencia y potenciar tus ventas.
+                            </p>
+                            <p>
+                                Ahora, es momento de avanzar hacia la siguiente etapa. <strong>Próximamente, recibirás un correo con un detallado análisis del nivel de Adopción Digital de tu empresa y un Plan de Recomendaciones personalizado. Este plan marca el inicio de la segunda fase de nuestro proceso: la asesoría individualizada</strong>, donde te guiaremos en el siguiente paso hacia el crecimiento y la excelencia digital de tu PyME.
+                            </p>
+                        </div>
+                    </template>
+
+                    <template x-if="stage === 'avanzado'">
+                        <div class="ted-verdict">
+                            <div class="ted-verdict__head">
+                                <svg class="ted-mark ted-mark--lg ted-mark--wide ted-mark--avanzado" viewBox="0 0 48 24" aria-hidden="true">
+                                    <rect width="48" height="24" />
+                                </svg>
+                                <h4 class="ted-verdict__name">Avanzado</h4>
+                            </div>
+                            <p>
+                                <strong>¡Excelente trabajo en completar la primera fase del Termómetro de Evolución Digital!</strong> Los resultados indican que tu empresa se encuentra actualmente en el nivel Avanzado. Esto significa que has implementado tecnologías que han mejorado significativamente la gestión del negocio, aumentando la eficiencia y mejorando la experiencia de los clientes. Además, la transformación digital se ha convertido en un proceso continuo en tu empresa. ¡Felicidades por este logro!
+                            </p>
+                            <p>
+                                Ahora, es momento de avanzar hacia la siguiente etapa. <strong>Próximamente, recibirás un correo con un detallado análisis del nivel de Adopción Digital de tu empresa y un Plan de Recomendaciones personalizado. Este plan marca el inicio de la segunda fase de nuestro proceso: la asesoría individualizada</strong>, donde te guiaremos en el siguiente paso hacia el crecimiento y la excelencia digital de tu PyME.
+                            </p>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="ted-card ted-card--gauge">
+                    <div class="ted-gauge__head">
+                        <svg class="ted-mark ted-mark--lg ted-mark--principiante" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 0L24 24H0z" />
+                        </svg>
+                        <div>
+                            <span class="ted-gauge__eyebrow">Estás en</span>
+                            <h4 class="ted-gauge__title">Mi Resultado</h4>
+                        </div>
+                    </div>
+                    <div class="ted-gauge__body">
+                        <div id="results-gauge" class="gauge-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Resultados · dimensiones + formulario de descarga ══ -->
+        <section class="ted-wrap ted-section" x-show="page === 'results'" x-transition x-cloak>
+            <div class="ted-split">
+                <div class="ted-card">
+                    <h3 class="ted-dims__title">Dimensiones Evaluadas</h3>
+
+                    <div class="ted-dims">
+                        <div class="ted-dim">
+                            <h4 class="ted-dim__name">Visión Estratégica de la Transformación Digital</h4>
+                            <div class="ted-dim__pill" :data-stage="dimensions[1].stage">
+                                <div class="ted-dim__cell">
+                                    <p class="ted-dim__stage" x-text="dimensions[1].stage"></p>
+                                    <span class="ted-dim__caption">Posición actual</span>
+                                </div>
+                                <div class="ted-dim__cell" x-show="dimensions[1].stage !== 'avanzado'">
+                                    <div class="ted-dim__score"><span x-text="dimensions[1].gap"></span></div>
+                                    <span class="ted-dim__caption">Score</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ted-dim">
+                            <h4 class="ted-dim__name">Marketing, ventas y experiencia de cliente</h4>
+                            <div class="ted-dim__pill" :data-stage="dimensions[2].stage">
+                                <div class="ted-dim__cell">
+                                    <p class="ted-dim__stage" x-text="dimensions[2].stage"></p>
+                                    <span class="ted-dim__caption">Posición actual</span>
+                                </div>
+                                <div class="ted-dim__cell" x-show="dimensions[2].stage !== 'avanzado'">
+                                    <div class="ted-dim__score"><span x-text="dimensions[2].gap"></span></div>
+                                    <span class="ted-dim__caption">Score</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ted-dim">
+                            <h4 class="ted-dim__name">Personas</h4>
+                            <div class="ted-dim__pill" :data-stage="dimensions[3].stage">
+                                <div class="ted-dim__cell">
+                                    <p class="ted-dim__stage" x-text="dimensions[3].stage"></p>
+                                    <span class="ted-dim__caption">Posición actual</span>
+                                </div>
+                                <div class="ted-dim__cell" x-show="dimensions[3].stage !== 'avanzado'">
+                                    <div class="ted-dim__score"><span x-text="dimensions[3].gap"></span></div>
+                                    <span class="ted-dim__caption">Score</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ted-dim">
+                            <h4 class="ted-dim__name">Procesos</h4>
+                            <div class="ted-dim__pill" :data-stage="dimensions[4].stage">
+                                <div class="ted-dim__cell">
+                                    <p class="ted-dim__stage" x-text="dimensions[4].stage"></p>
+                                    <span class="ted-dim__caption">Posición actual</span>
+                                </div>
+                                <div class="ted-dim__cell" x-show="dimensions[4].stage !== 'avanzado'">
+                                    <div class="ted-dim__score"><span x-text="dimensions[4].gap"></span></div>
+                                    <span class="ted-dim__caption">Score</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ted-dim">
+                            <h4 class="ted-dim__name">Uso de tecnologías, equipamiento y herramientas</h4>
+                            <div class="ted-dim__pill" :data-stage="dimensions[5].stage">
+                                <div class="ted-dim__cell">
+                                    <p class="ted-dim__stage" x-text="dimensions[5].stage"></p>
+                                    <span class="ted-dim__caption">Posición actual</span>
+                                </div>
+                                <div class="ted-dim__cell" x-show="dimensions[5].stage !== 'avanzado'">
+                                    <div class="ted-dim__score"><span x-text="dimensions[5].gap"></span></div>
+                                    <span class="ted-dim__caption">Score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ted-card" x-show="hasForm" x-cloak>
+                    <div id="dynamic-form-container"></div>
+                </div>
+            </div>
+
+            <div class="ted-section__foot">
+                <button @click="showStartOverModal = true" class="btn btn--ghost btn--sm">
+                    Volver al inicio
+                </button>
+            </div>
+        </section>
+
+        <!-- ══ Modal de reinicio ══ -->
+        <div class="ted-modal" x-show="showStartOverModal" @click.away="showStartOverModal = false" x-cloak>
+            <div class="ted-modal__box">
+                <h2 class="ted-modal__title">¿Estás seguro de querer comenzar de nuevo?</h2>
+                <p class="ted-modal__text">Perderás todo el progreso realizado hasta el momento</p>
+                <div class="ted-modal__actions">
+                    <button @click="showStartOverModal = false" class="btn btn--ghost">
+                        Cancelar
+                    </button>
+                    <button @click="startOver" class="btn ted-btn--danger btn-restart">
+                        Comenzar de nuevo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script type="application/json" id="form-ids">
+            {
+                "BAJO0-BAJO0": "f0f33ebb-bc0e-4b52-b962-5743d9df6314",
+                "BAJO0-ALTO": "f0f33ebb-bc0e-4b52-b962-5743d9df6314",
+                "BAJO0-BAJO1": "7feed2f0-17e5-44d8-b5a9-3e3222dd6d39",
+                "BAJO0-MEDIO": "7feed2f0-17e5-44d8-b5a9-3e3222dd6d39",
+                "BAJO1-BAJO0": "46c3bd47-5bf2-4024-911c-0f930773cd66",
+                "BAJO1-MEDIO": "5f1087ba-1204-422f-8336-3bc0693143e9",
+                "BAJO1-BAJO1": "5f1087ba-1204-422f-8336-3bc0693143e9",
+                "BAJO1-ALTO": "2c887494-10c1-4802-9436-4595a8e8be52",
+                "MEDIO-BAJO0": "579e11f9-dd9d-4c14-9444-fd4fc94fc483",
+                "MEDIO-BAJO1": "d0516f67-7859-4cd2-8dfd-1ef9e6622c20",
+                "MEDIO-MEDIO": "d0516f67-7859-4cd2-8dfd-1ef9e6622c20"
+            }
+        </script>
+    </div>
+  </main>
+
+  <!-- #include partial="footer" -->
+
+  <!-- JS del theme: menú móvil, dropdowns, sombra del header al hacer scroll y año del footer.
+       Trae además lógica de la home (carruseles, buscador IA) que aquí no aplica; está toda
+       guardada tras querySelector, así que en esta página no hace nada. -->
+  <script src="/theme/js/main.js" defer></script>
+
+  <!-- Dependencias de terceros, versionadas en vendor/ para poder trabajar sin internet. -->
+  <script src="/vendor/gauge.min.js"></script>
+
+  <!-- El componente se registra ANTES de arrancar Alpine (evento alpine:init). -->
+  <script type="module">
+    import { registerTed } from '/src/components/ted.js';
+    document.addEventListener('alpine:init', () => registerTed(window.Alpine));
+  </script>
+  <script defer src="/vendor/alpine-persist.min.js"></script>
+  <script defer src="/vendor/alpine.min.js"></script>
+</body>
+</html>

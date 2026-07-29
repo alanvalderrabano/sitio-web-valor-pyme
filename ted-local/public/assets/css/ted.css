@@ -1,0 +1,270 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   TED — Test de Digitalización
+   Estilos del módulo, sobre los tokens del theme "Valor Pyme 2026".
+
+   Se carga DESPUÉS de /theme/css/styles.css, del que hereda:
+     · tokens (--color-*, --font-*, --text-*, --radius-*, --shadow-*, --maxw, --pad-x)
+     · reset y estilos base de body / h1-h4 / a / button
+     · componentes .btn, .btn--ghost, .btn--sm
+
+   Todo lo de aquí va namespaced `.ted-*`, siguiendo el precedente `hp-*` del home.
+   Los colores de etapa NO se declaran aquí: los inyecta ted.js desde src/config/stages.js,
+   que es su fuente única.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Alpine dibuja el DOM antes de evaluar x-show; x-cloak evita el parpadeo. */
+[x-cloak] { display: none !important; }
+
+/* ── Ajustes al cascarón del theme ───────────────────────────────────────── */
+
+/* El header y el footer vienen de los partials del theme; solo se marca que esto es
+   una copia local para no confundirla con producción. */
+.site-header__top-inner::before {
+  content: "copia local";
+  margin-right: auto; align-self: center;
+  font-family: var(--font-body); font-weight: 700; font-size: 11px;
+  letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5);
+}
+
+/* ── Primitivas de layout ────────────────────────────────────────────────── */
+
+.ted { background: var(--color-soft-2); padding-bottom: 48px; }
+
+.ted-wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x); }
+
+.ted-section { padding-block: 40px; }
+.ted-section__foot { display: flex; justify-content: flex-end; margin-top: 24px; }
+
+/* Dos columnas iguales, apiladas en móvil. Es la estructura del original. */
+.ted-split { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
+@media (min-width: 900px) {
+  .ted-split { grid-template-columns: 1fr 1fr; gap: 48px; }
+}
+
+.ted-card {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.ted-aside { display: flex; flex-direction: column; gap: 16px; }
+.ted-aside__foot { display: flex; justify-content: flex-end; }
+
+.ted-media { overflow: hidden; border-radius: var(--radius-md); background: #fff; }
+.ted-media__img { display: block; width: 100%; height: clamp(180px, 34vw, 392px); object-fit: cover; }
+
+.ted-actions { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.ted-btn--block { width: 100%; justify-content: center; }
+
+/* El botón destructivo del modal: rosa de marca en vez del morado corporativo. */
+.ted-btn--danger { background: var(--color-rosa); }
+.ted-btn--danger:hover { background: #C4003F; }
+
+/* ── Marcas geométricas (los 4 símbolos de etapa) ────────────────────────── */
+/* El `fill` sale de --ted-<etapa>, inyectado por ted.js desde stages.js. */
+
+.ted-marks { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+
+.ted-mark { width: 24px; height: 24px; flex: 0 0 auto; }
+.ted-mark--sm { width: 16px; height: 16px; }
+.ted-mark--lg { width: 40px; height: 40px; }
+.ted-mark--wide { width: 48px; }
+.ted-mark--lg.ted-mark--wide { width: 56px; }
+
+.ted-mark--tradicional  { fill: var(--ted-tradicional); }
+.ted-mark--principiante { fill: var(--ted-principiante); }
+.ted-mark--intermedio   { fill: var(--ted-intermedio); }
+.ted-mark--avanzado     { fill: var(--ted-avanzado); }
+
+/* ── Franja de progreso del programa ─────────────────────────────────────── */
+
+.ted-progress { background: var(--color-lavanda); }
+.ted-progress__inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; padding-block: 40px; }
+.ted-progress__title { font-size: var(--text-h2); color: var(--color-texto-dark); max-width: 22ch; }
+.ted-progress__lead { font-size: var(--text-lead); color: var(--color-gris); }
+
+.ted-steps {
+  display: grid; grid-template-columns: 1fr; gap: 8px;
+  width: 100%; max-width: 560px; margin-top: 10px;
+}
+@media (min-width: 720px) {
+  .ted-steps { grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--color-corp); }
+  .ted-steps__item + .ted-steps__item { border-left: 2px solid var(--color-corp); }
+}
+.ted-steps__item {
+  padding: 12px 20px; background: #fff; color: var(--color-texto-dark);
+  font-family: var(--font-display); font-weight: 700; font-size: 18px;
+  border: 2px solid var(--color-corp);
+  transition: background .25s var(--ease), color .25s var(--ease);
+}
+@media (min-width: 720px) { .ted-steps__item { border: 0; } }
+.ted-steps__item.is-current { background: var(--color-corp); color: #fff; }
+
+/* ── Portada ─────────────────────────────────────────────────────────────── */
+
+.ted-home__title { font-size: var(--text-h1); color: var(--color-texto-dark); margin-bottom: 16px; }
+.ted-home__lead { font-size: var(--text-lead); color: var(--color-gris); margin-bottom: 24px; }
+
+.ted-steplist { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+.ted-steplist__item { display: flex; flex-direction: column; gap: 6px; }
+@media (min-width: 720px) {
+  .ted-steplist__item { flex-direction: row; align-items: baseline; gap: 20px; }
+  .ted-steplist__label { flex: 0 0 150px; }
+}
+.ted-steplist__label { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--color-texto-dark); }
+.ted-steplist__item p { flex: 1; color: var(--color-gris); font-size: var(--text-sm); line-height: 1.6; }
+
+.ted-home__foot { display: flex; flex-direction: column-reverse; align-items: center; gap: 14px; }
+@media (min-width: 720px) {
+  .ted-home__foot { flex-direction: row; justify-content: flex-end; gap: 24px; }
+}
+.ted-home__meta { font-size: var(--text-sm); color: var(--color-gris); }
+.ted-home__meta span { font-weight: 700; color: var(--color-texto-dark); }
+
+/* ── Formulario de contacto (mismo patrón que .hp-field del theme) ───────── */
+
+.ted-form { display: flex; flex-direction: column; gap: 18px; }
+.ted-field { display: flex; flex-direction: column; gap: 8px; }
+.ted-field label { font-weight: 700; font-size: var(--text-sm); color: var(--color-texto-dark); }
+.ted-field input {
+  font-family: var(--font-body); font-size: 15px; color: var(--color-texto-dark);
+  padding: 13px 15px; border: 1px solid var(--color-borde); border-radius: var(--radius-sm);
+  background: #fff; width: 100%; transition: border-color .2s, box-shadow .2s;
+}
+.ted-field input:focus {
+  outline: none; border-color: var(--color-corp);
+  box-shadow: 0 0 0 3px var(--color-corp-40);
+}
+.ted-field input::placeholder { color: var(--color-gris-claro); }
+
+.ted-errors { display: flex; flex-direction: column; gap: 4px; }
+.ted-errors--center { align-items: center; justify-content: center; text-align: center; min-height: 28px; margin-block: 4px; }
+.ted-error { color: var(--color-rosa); font-weight: 700; font-size: var(--text-sm); }
+.ted-error--lg { font-size: var(--text-lead); }
+
+/* ── Cuestionario ────────────────────────────────────────────────────────── */
+
+.ted-card--question { min-height: 420px; display: flex; flex-direction: column; }
+.ted-question { display: flex; flex-direction: column; gap: 16px; flex: 1; }
+.ted-question__title { font-size: var(--text-h3); color: var(--color-corp); }
+.ted-question__text { font-size: var(--text-h3); color: var(--color-texto-dark); }
+
+.ted-options { display: flex; flex-direction: column; gap: 4px; }
+.ted-option { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; transition: background .2s; }
+.ted-option:hover { background: var(--color-soft); }
+.ted-option__control { display: flex; align-items: center; height: 24px; }
+.ted-option input { width: 18px; height: 18px; accent-color: var(--color-corp); cursor: pointer; }
+.ted-option label { cursor: pointer; line-height: 1.5; color: var(--color-texto-body); }
+
+/* `grow` empuja la navegación al fondo de la tarjeta, como en el original. */
+.ted-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: auto; padding-top: 12px; }
+/* El "Anterior" de la primera pregunta se oculta sin perder su espacio. */
+.ted-nav .is-hidden { visibility: hidden; }
+
+/* Barra de progreso del cuestionario */
+.ted-card--meter { padding: 20px clamp(20px, 2.4vw, 28px); }
+.ted-meter__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.ted-meter__head h4 { font-size: var(--text-h3); color: var(--color-texto-dark); }
+.ted-meter__pct { font-family: var(--font-display); font-weight: 800; font-size: 26px; color: var(--color-corp); }
+.ted-meter__track { height: 10px; background: var(--color-borde); overflow: hidden; }
+.ted-meter__fill { height: 100%; background: var(--color-corp); transition: width .5s var(--ease); }
+
+/* ── Resultados · veredicto ──────────────────────────────────────────────── */
+
+.ted-verdict { display: flex; flex-direction: column; gap: 16px; }
+.ted-verdict__head { display: flex; align-items: center; gap: 16px; }
+.ted-verdict__name { font-size: var(--text-h2); color: var(--color-texto-dark); }
+.ted-verdict p { color: var(--color-gris); line-height: 1.65; }
+.ted-verdict strong { color: var(--color-texto-dark); }
+
+/* ── Resultados · velocímetro ────────────────────────────────────────────── */
+
+.ted-card--gauge { display: flex; flex-direction: column; gap: 28px; }
+.ted-gauge__head { display: flex; align-items: center; gap: 20px; }
+.ted-gauge__eyebrow { display: block; font-size: var(--text-lead); color: var(--color-gris); }
+.ted-gauge__title { font-size: var(--text-h2); color: var(--color-texto-dark); }
+.ted-gauge__body { display: flex; align-items: center; justify-content: center; flex: 1; padding-block: 8px; }
+
+.gauge-container { width: 100%; max-width: 320px; }
+.gauge-container svg { width: 100%; height: auto; display: block; }
+.gauge-container .dial { stroke: var(--color-borde); stroke-width: 12; fill: none; }
+.gauge-container .value { stroke-width: 12; fill: none; transition: stroke .3s ease; }
+
+/* gauge.min.js escribe font-family/size/weight INLINE en el <text>, y los estilos inline
+   ganan por especificidad. !important acotado a esas tres propiedades es la única forma
+   de imponer la tipografía de marca sin parchear el vendor. */
+.gauge-container .value-text {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  font-size: 22px !important;
+  fill: var(--color-texto-dark);
+}
+
+/* ── Resultados · dimensiones ────────────────────────────────────────────── */
+
+.ted-dims__title { font-size: var(--text-h3); color: var(--color-texto-dark); margin-bottom: 24px; }
+.ted-dims { display: flex; flex-direction: column; gap: 24px; }
+.ted-dim { display: flex; flex-direction: column; gap: 10px; }
+.ted-dim__name { font-size: 17px; font-weight: 700; color: var(--color-texto-dark); text-align: center; }
+
+/* La píldora toma el color de la etapa alcanzada vía data-stage. */
+.ted-dim__pill {
+  display: flex; align-items: center; justify-content: center; gap: 32px;
+  margin-inline: auto; padding: 12px 32px;
+  border: 2px solid var(--color-borde); background: #fff;
+  border-left: 6px solid var(--dim-color, var(--color-borde));
+}
+.ted-dim__pill[data-stage="tradicional"]  { --dim-color: var(--ted-tradicional); }
+.ted-dim__pill[data-stage="principiante"] { --dim-color: var(--ted-principiante); }
+.ted-dim__pill[data-stage="intermedio"]   { --dim-color: var(--ted-intermedio); }
+.ted-dim__pill[data-stage="avanzado"]     { --dim-color: var(--ted-avanzado); }
+
+.ted-dim__cell { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+/* El nombre de la etapa va en el morado de texto, NO en el color de la etapa: rosa, naranja y
+   verde de marca dan 3.65:1, 2.44:1 y 2.47:1 sobre blanco, por debajo del 4.5:1 que pide AA.
+   El color de la etapa se comunica por el borde izquierdo y el punto, que no son texto. */
+.ted-dim__stage { font-weight: 700; text-transform: capitalize; color: var(--color-texto-dark); }
+.ted-dim__stage::before {
+  content: ""; display: inline-block; vertical-align: middle;
+  width: 10px; height: 10px; margin-right: 8px; margin-top: -2px;
+  background: var(--dim-color, var(--color-borde));
+}
+.ted-dim__score { font-family: var(--font-display); font-weight: 800; font-size: 24px; color: var(--color-texto-dark); }
+/* --color-gris-claro daría 2.55:1 sobre blanco; --color-gris da 7:1. */
+.ted-dim__caption { font-size: var(--text-caption); color: var(--color-gris); }
+
+/* ── Modal de reinicio ───────────────────────────────────────────────────── */
+
+.ted-modal {
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  background: rgba(47, 41, 39, .55);
+}
+.ted-modal__box {
+  background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-lg);
+  padding: clamp(28px, 4vw, 40px); max-width: 520px; text-align: center;
+}
+.ted-modal__title { font-size: var(--text-h3); color: var(--color-texto-dark); margin-bottom: 12px; }
+.ted-modal__text { color: var(--color-gris); margin-bottom: 24px; }
+.ted-modal__actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+/* ── Formulario de descarga (mock local del form de HubSpot) ─────────────── */
+
+.ted-mockform { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.ted-mockform__hint { font-size: var(--text-caption); color: var(--color-gris); }
+.ted-mockform label { display: flex; flex-direction: column; gap: 6px; font-size: var(--text-sm); font-weight: 700; color: var(--color-texto-dark); }
+.ted-mockform label:has(input[type='checkbox']) { flex-direction: row; align-items: center; gap: 10px; font-weight: 400; }
+.ted-mockform input[type='email'] {
+  font-family: var(--font-body); font-size: 15px;
+  padding: 13px 15px; border: 1px solid var(--color-borde); border-radius: var(--radius-sm);
+}
+.ted-mockform input[type='checkbox'] { accent-color: var(--color-corp); width: 17px; height: 17px; }
+.ted-mockform button {
+  align-self: flex-start; padding: 13px 24px; border: 0; border-radius: var(--radius-sm);
+  background: var(--color-corp); color: #fff; font-weight: 700; font-size: 16px;
+  transition: background .2s;
+}
+.ted-mockform button:hover { background: var(--color-morado); }

@@ -1,0 +1,5 @@
+# "CRM" local: se regenera solo al usar el test
+server/data/contacts.json
+
+node_modules/
+.DS_Store
