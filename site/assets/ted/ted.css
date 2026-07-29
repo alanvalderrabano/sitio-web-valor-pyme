@@ -32,13 +32,18 @@
 
 .ted-wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x); }
 
-.ted-section { padding-block: 40px; }
+/* Ritmo vertical: `--ted-gap` es la separación entre bloques de una misma pantalla. */
+.ted-section { padding-block: 32px; }
+/* Resultados son DOS <section> consecutivas del mismo bloque; sin esto sumaban 64px de aire. */
+.ted-section + .ted-section { padding-top: 0; }
 .ted-section__foot { display: flex; justify-content: flex-end; margin-top: 24px; }
 
-/* Dos columnas iguales, apiladas en móvil. Es la estructura del original. */
-.ted-split { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
+/* Dos columnas iguales, apiladas en móvil. Es la estructura del original.
+   `stretch` (y no `start`) es lo que evita que la columna corta deje un hueco muerto
+   debajo: con `start`, la foto del home medía 392px contra una tarjeta de 670px. */
+.ted-split { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: stretch; }
 @media (min-width: 900px) {
-  .ted-split { grid-template-columns: 1fr 1fr; gap: 48px; }
+  .ted-split { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
 
 .ted-card {
@@ -47,13 +52,20 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   padding: clamp(24px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
 }
 
 .ted-aside { display: flex; flex-direction: column; gap: 16px; }
-.ted-aside__foot { display: flex; justify-content: flex-end; }
+.ted-aside__foot { display: flex; justify-content: flex-end; margin-top: auto; }
 
-.ted-media { overflow: hidden; border-radius: var(--radius-md); background: #fff; }
-.ted-media__img { display: block; width: 100%; height: clamp(180px, 34vw, 392px); object-fit: cover; }
+/* La foto ocupa la altura que le deje la columna, con un mínimo para que en móvil
+   no se aplaste. Sin esto quedaba una franja gris bajo la imagen. */
+.ted-media { overflow: hidden; border-radius: var(--radius-md); background: #fff; flex: 1; min-height: 220px; }
+.ted-media__img { display: block; width: 100%; height: 100%; min-height: 220px; object-fit: cover; }
+/* La foto de contacto trae el texto "Programa Pyme Digital" quemado a la izquierda;
+   sin esto el recorte se lo come. */
+.ted-media--texto .ted-media__img { object-position: left center; }
 
 .ted-actions { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
 .ted-btn--block { width: 100%; justify-content: center; }
@@ -204,13 +216,17 @@
 
 /* ── Resultados · velocímetro ────────────────────────────────────────────── */
 
-.ted-card--gauge { display: flex; flex-direction: column; gap: 28px; }
+.ted-card--gauge { gap: 24px; }
 .ted-gauge__head { display: flex; align-items: center; gap: 20px; }
 .ted-gauge__eyebrow { display: block; font-size: var(--text-lead); color: var(--color-gris); }
 .ted-gauge__title { font-size: var(--text-h2); color: var(--color-texto-dark); }
-.ted-gauge__body { display: flex; align-items: center; justify-content: center; flex: 1; padding-block: 8px; }
+/* `flex:1` + centrado: el velocímetro se queda en el medio de lo que sobre en la columna,
+   en vez de pegarse arriba y dejar una franja blanca abajo. */
+.ted-gauge__body { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 220px; }
 
-.gauge-container { width: 100%; max-width: 320px; }
+/* El velocímetro es el dato principal de la pantalla; a 320px se veía pequeño
+   dentro de una tarjeta que iguala altura con el veredicto. */
+.gauge-container { width: 100%; max-width: 400px; }
 .gauge-container svg { width: 100%; height: auto; display: block; }
 .gauge-container .dial { stroke: var(--color-borde); stroke-width: 12; fill: none; }
 .gauge-container .value { stroke-width: 12; fill: none; transition: stroke .3s ease; }
@@ -227,17 +243,40 @@
 
 /* ── Resultados · dimensiones ────────────────────────────────────────────── */
 
-.ted-dims__title { font-size: var(--text-h3); color: var(--color-texto-dark); margin-bottom: 24px; }
-.ted-dims { display: flex; flex-direction: column; gap: 24px; }
-.ted-dim { display: flex; flex-direction: column; gap: 10px; }
-.ted-dim__name { font-size: 17px; font-weight: 700; color: var(--color-texto-dark); text-align: center; }
+.ted-dims__title { font-size: var(--text-h3); color: var(--color-texto-dark); margin-bottom: 20px; }
+.ted-dims { display: flex; flex-direction: column; }
+
+/* Antes cada dimensión era un título centrado sobre una píldora estrecha centrada: cinco
+   bloques flotando en una tarjeta ancha, con el nombre y el dato en ejes distintos. Ahora
+   es una FILA por dimensión —nombre a la izquierda, estado a la derecha— separadas por una
+   línea. Se leen como lista y se pueden comparar de un vistazo. */
+.ted-dim {
+  display: flex; flex-direction: column; gap: 10px;
+  padding-block: 16px;
+}
+.ted-dim + .ted-dim { border-top: 1px solid var(--color-borde); }
+.ted-dim:first-child { padding-top: 0; }
+.ted-dim:last-child { padding-bottom: 0; }
+
+@media (min-width: 560px) {
+  .ted-dim { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; }
+}
+/* Apilado (móvil) la píldora ocupa el ancho, si no queda un bloque suelto a la izquierda. */
+@media (max-width: 559px) {
+  .ted-dim__pill { width: 100%; justify-content: space-between; }
+}
+
+.ted-dim__name {
+  font-size: 16px; font-weight: 700; line-height: 1.35;
+  color: var(--color-texto-dark); text-align: left; flex: 1;
+}
 
 /* La píldora toma el color de la etapa alcanzada vía data-stage. */
 .ted-dim__pill {
-  display: flex; align-items: center; justify-content: center; gap: 32px;
-  margin-inline: auto; padding: 12px 32px;
-  border: 2px solid var(--color-borde); background: #fff;
-  border-left: 6px solid var(--dim-color, var(--color-borde));
+  display: flex; align-items: center; gap: 24px;
+  flex: 0 0 auto; padding: 10px 18px;
+  border: 1px solid var(--color-borde); background: var(--color-soft-2);
+  border-left: 5px solid var(--dim-color, var(--color-borde));
 }
 .ted-dim__pill[data-stage="tradicional"]  { --dim-color: var(--ted-tradicional); }
 .ted-dim__pill[data-stage="principiante"] { --dim-color: var(--ted-principiante); }
@@ -299,3 +338,8 @@ html[data-ted-static] .site-header__top-inner::before {
   content: "vista previa · las respuestas no se guardan";
   text-transform: none; letter-spacing: .04em;
 }
+
+/* El formulario de descarga es el CTA de la pantalla, y su contenido es corto. Si se estira
+   para igualar la lista de dimensiones queda flotando en 400px de blanco: se ajusta a su
+   contenido y se queda arriba, a la altura del primer dato. */
+.ted-card--form { align-self: start; }
