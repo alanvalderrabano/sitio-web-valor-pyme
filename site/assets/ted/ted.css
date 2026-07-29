@@ -179,10 +179,14 @@
 .ted-question__title:empty { display: none; }
 
 /* `question` es la pregunta concreta y el foco de la pantalla. Mantiene la display
-   pero con interlineado legible: el 1.04 que hereda de h1-h4 es para titulares cortos. */
+   pero con interlineado legible: el 1.04 que hereda de h1-h4 es para titulares cortos.
+
+   18px fijo, no `--text-h3` (clamp 20-26px): estas preguntas son frases de hasta 150
+   caracteres, no titulares. A 26px la de la pregunta 11 ocupaba 6 líneas y empujaba las
+   respuestas fuera de pantalla. A 18px la jerarquía se sostiene por peso y color. */
 .ted-question__text {
-  font-size: var(--text-h3);
-  line-height: 1.22;
+  font-size: 18px;
+  line-height: 1.35;
   color: var(--color-texto-dark);
 }
 
@@ -191,7 +195,9 @@
 .ted-option:hover { background: var(--color-soft); }
 .ted-option__control { display: flex; align-items: center; height: 24px; }
 .ted-option input { width: 18px; height: 18px; accent-color: var(--color-corp); cursor: pointer; }
-.ted-option label { cursor: pointer; line-height: 1.5; color: var(--color-texto-body); }
+/* 16px explícito (antes solo heredaba del cuerpo) para que la relación 18/16 con la
+   pregunta quede fijada aquí y no dependa de --text-body. */
+.ted-option label { font-size: 16px; cursor: pointer; line-height: 1.5; color: var(--color-texto-body); }
 
 /* `grow` empuja la navegación al fondo de la tarjeta, como en el original. */
 .ted-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: auto; padding-top: 12px; }
