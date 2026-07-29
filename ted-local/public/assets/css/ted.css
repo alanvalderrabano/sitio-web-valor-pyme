@@ -147,9 +147,32 @@
 /* ── Cuestionario ────────────────────────────────────────────────────────── */
 
 .ted-card--question { min-height: 420px; display: flex; flex-direction: column; }
-.ted-question { display: flex; flex-direction: column; gap: 16px; flex: 1; }
-.ted-question__title { font-size: var(--text-h3); color: var(--color-corp); }
-.ted-question__text { font-size: var(--text-h3); color: var(--color-texto-dark); }
+.ted-question { display: flex; flex-direction: column; gap: 18px; flex: 1; }
+
+/* `title` es el ENUNCIADO COMPARTIDO del bloque: hasta 244 caracteres, repetido en
+   hasta 6 preguntas seguidas. Va como contexto, no como titular — en tipografía de
+   cuerpo, tamaño chico e interlineado de lectura. Antes se pintaba igual que la
+   pregunta (display, 26px, line-height 1.04) y se comía la pantalla en 9 líneas. */
+.ted-question__title {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--color-gris);
+  background: var(--color-soft);
+  border-left: 4px solid var(--color-corp);
+  padding: 14px 18px;
+}
+/* 17 de las 31 preguntas no traen enunciado: sin esto queda un hueco fantasma. */
+.ted-question__title:empty { display: none; }
+
+/* `question` es la pregunta concreta y el foco de la pantalla. Mantiene la display
+   pero con interlineado legible: el 1.04 que hereda de h1-h4 es para titulares cortos. */
+.ted-question__text {
+  font-size: var(--text-h3);
+  line-height: 1.22;
+  color: var(--color-texto-dark);
+}
 
 .ted-options { display: flex; flex-direction: column; gap: 4px; }
 .ted-option { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; transition: background .2s; }
