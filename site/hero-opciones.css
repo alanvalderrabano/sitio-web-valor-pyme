@@ -1,0 +1,222 @@
+/* Página de comparación de heroes — SOLO PARA REVISIÓN INTERNA.
+   Seis patrones apilados, pensados para reutilizar en distintas páginas.
+
+   Reglas del brandbook que se respetan en las seis (brand-kit.md §5.2, §5.4, §6.3):
+     · Las 4 líneas actúan como sistema; no se usa una línea suelta.
+     · La estación aparece SOLO en un cruce de líneas, nunca flotando.
+     · Sobre foto: unas líneas por detrás y otras por delante, sin tapar caras.
+     · Terminaciones RECTAS (sin stroke-linecap) — §5.2.3.
+     · Las líneas pueden cortar el borde del contenedor — §5.4.4.
+     · Esquinas rectas (radius 0), según la decisión registrada del proyecto.
+     · Ningún recurso gráfico inventado: solo el sistema de líneas, los patrones
+       oficiales del Figma y las fotos de marca. Una versión anterior de la F
+       usaba barras de color; no están en el brandbook y se retiraron.
+
+   El texto de las seis es el del original, literal, para que la comparación sea
+   entre composiciones y no entre copys. */
+
+/* ── Etiqueta de cada opción (solo de revisión, no va a producción) ──────── */
+.op-tag {
+  background: var(--color-gris-oscuro); color: #fff;
+  padding-block: 14px;
+}
+.op-tag__inner { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; }
+.op-tag b {
+  font-family: var(--font-display); font-size: 17px; letter-spacing: .02em;
+}
+.op-tag span { font-size: var(--text-sm); color: rgba(255,255,255,.72); }
+
+/* ── Piezas comunes a las tres opciones ─────────────────────────────────── */
+.op-hero { position: relative; overflow: hidden; }
+.op-hero__grid {
+  position: relative; z-index: 4;
+  max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x);
+  display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center;
+}
+.op-hero h2 { line-height: 1.06; margin-bottom: 18px; }
+.op-hero__sub { font-size: var(--text-lead); line-height: 1.55; }
+.op-hero__sub + .op-hero__sub { margin-top: 12px; }
+.op-hero__cta { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Sistema de líneas: terminaciones rectas, sin linecap.
+   OJO: el brandbook se contradice a sí mismo. §5.2.3 pide terminaciones RECTAS
+   y §5.3 recomienda `stroke-linecap: round`. El resto del sitio sigue §5.3;
+   aquí se sigue §5.2.3, que es lo que hace el SVG entregado por diseño.
+   Pendiente de resolver con diseño — afecta a cualquier hero que se elija. */
+.op-lineas { position: absolute; left: 0; right: 0; pointer-events: none; }
+.op-lineas svg { display: block; width: 100%; height: auto; overflow: visible; }
+.op-lineas path { fill: none; stroke-width: 13; stroke-miterlimit: 10; }
+/* La estación: círculo sólido del color de la ruta, solo en el cruce. */
+.op-estacion { fill: var(--color-corp); stroke: #fff; stroke-width: 5; }
+
+.op-lineas .draw { --len: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .op-lineas .draw { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+}
+
+/* ══ OPCIÓN A — Sistema completo: foto entre las líneas ══════════════════════
+   La composición canónica del brandbook (§6.3): líneas detrás, foto, líneas
+   delante, texto. Usa los assets que diseño ya separó en capas
+   (hero-digi-photo-noline.jpg + hero-digi-line-only.png). Ninguna página del
+   sitio implementa esta receta todavía. */
+.op-a { background: var(--color-corp); color: #fff; }
+.op-a .op-hero__grid { padding-block: clamp(48px, 6vw, 88px); }
+@media (min-width: 940px) {
+  /* Foto a la IZQUIERDA: así las líneas entran desde el borde libre del viewport
+     y no tienen que atravesar la columna de texto. */
+  .op-a .op-hero__grid { grid-template-columns: .95fr 1.05fr; gap: clamp(32px, 5vw, 64px); }
+}
+.op-a h2 { font-size: clamp(2rem, 3.6vw, 3rem); color: #fff; max-width: 20ch; }
+.op-a .op-hero__sub { color: rgba(255,255,255,.88); max-width: 46ch; }
+.op-a .op-hero__sub strong { color: #fff; }
+
+/* Las líneas entran cortando el borde izquierdo (§5.4.4) y terminan DETRÁS de la
+   foto. No llegan a la columna de texto por dos razones: el blanco sobre el
+   amarillo #FEF31B da 1,16:1 y sobre el verde 2,49:1 —ilegible—, y los extremos
+   sueltos junto a un párrafo se leen como un subrayado accidental. */
+.op-a__lineas-back {
+  left: -10%; right: 56%; top: 50%; transform: translateY(-50%); z-index: 1;
+  /* Se recorta a su caja: sin esto los trazos siguen dibujándose más allá del
+     contenedor (el SVG base lleva overflow visible) y asoman junto al párrafo.
+     El sangrado por la izquierda se conserva: la caja arranca en -10% y lo que
+     sobra lo corta el `overflow: hidden` de la sección. */
+  overflow: hidden;
+}
+.op-a__lineas-back svg { overflow: hidden; }
+@media (max-width: 939px) {
+  /* Apilado, la foto va ARRIBA: la banda se alinea con ella y no baja al texto. */
+  .op-a__lineas-back { left: -8%; right: -8%; top: 26%; bottom: auto; transform: translateY(-50%); }
+}
+
+.op-a__visual { position: relative; z-index: 2; aspect-ratio: 636 / 616; }
+.op-a__foto { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: cover; }
+/* La ruta rosa por delante de la foto: diseño la entregó recortada con el hueco
+   donde la persona la tapa, así nunca cruza la cara (§5.4.3). */
+.op-a__lineas-front { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; object-fit: contain; }
+
+/* ══ OPCIÓN B — Claro: lavanda con la foto a sangre ══════════════════════════
+   Es el único hero claro del sitio; todos los demás son morado o verde
+   saturado. La línea de marca viene quemada en la foto, así que no se añade
+   ninguna por CSS. */
+.op-b { background: var(--color-lavanda); }
+.op-b .op-hero__grid { gap: 32px; }
+@media (min-width: 940px) {
+  .op-b .op-hero__grid {
+    grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px);
+    padding-right: 0;   /* la foto sangra por el borde */
+  }
+}
+.op-b__copy { padding-block: clamp(40px, 6vw, 84px); }
+.op-b h2 { font-size: clamp(2rem, 3.6vw, 3rem); color: var(--color-texto-dark); max-width: 20ch; }
+.op-b .op-hero__sub { color: var(--color-gris); }
+.op-b .op-hero__sub strong { color: var(--color-texto-dark); }
+.op-b__media { align-self: stretch; min-height: 260px; }
+.op-b__media img { display: block; width: 100%; height: 100%; object-fit: cover; min-height: 260px; }
+@media (min-width: 940px) {
+  .op-b__media { margin-right: calc(-1 * var(--pad-x)); }
+  .op-b__media img { min-height: clamp(380px, 40vw, 520px); }
+}
+
+/* ══ OPCIÓN C — Tipográfica sobre morado profundo ════════════════════════════
+   Sin foto: manda la tipografía display. El fondo es --color-morado (#330559),
+   el morado profundo; los demás heroes usan el corporativo #6126FF, así que el
+   color por sí solo la separa. Las 4 líneas entran cortando el borde inferior
+   (§5.4.4) con la estación en su cruce. */
+.op-c { background: var(--color-morado); color: #fff; }
+.op-c .op-hero__grid {
+  grid-template-columns: 1fr; justify-items: start;
+  padding-block: clamp(56px, 7vw, 104px) clamp(150px, 19vw, 260px);
+  text-align: left;
+}
+.op-c h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem); color: #fff;
+  max-width: 24ch; letter-spacing: -.02em;
+}
+.op-c .op-hero__sub { color: rgba(255,255,255,.86); max-width: 54ch; }
+.op-c .op-hero__sub strong { color: #fff; }
+/* Las líneas ocupan la franja inferior y se salen por los costados. */
+.op-c__lineas { bottom: 0; z-index: 1; }
+.op-c__lineas svg { width: 118%; margin-left: -9%; }
+
+/* ══ OPCIÓN D — Compacto, para páginas interiores ════════════════════════════
+   Los siete heroes del sitio miden 500-700px de alto. No existe uno corto, y
+   hace falta: en un artículo de blog o el detalle de un recurso el hero solo
+   tiene que ubicar al usuario, no vender. Aquí ~260px, sin foto ni CTA.
+   Reutilizable en: blog-post, detalle de recurso, legales, resultados. */
+.op-d { background: var(--color-soft); }
+.op-d .op-hero__grid { padding-block: clamp(36px, 4vw, 56px) clamp(44px, 5vw, 64px); }
+.op-d__eyebrow {
+  display: block; margin-bottom: 12px;
+  font-family: var(--font-body); font-weight: 700; font-size: var(--text-caption);
+  letter-spacing: .16em; text-transform: uppercase; color: var(--color-corp);
+}
+.op-d h2 { font-size: clamp(1.7rem, 2.8vw, 2.4rem); color: var(--color-texto-dark); max-width: 26ch; }
+.op-d .op-hero__sub { color: var(--color-gris); max-width: 60ch; }
+
+/* ══ OPCIÓN E — Ficha de datos montada sobre el borde ════════════════════════
+   La tarjeta blanca cabalga el borde inferior del hero. Dos efectos: ancla la
+   evidencia al titular por proximidad, y crea continuidad hacia el bloque
+   siguiente en vez de un corte seco.
+   Las cifras salen de /nosotros — no son inventadas.
+   Reutilizable en: nosotros, programa, rutas, cualquier página con números. */
+/* `overflow: visible` a propósito: .op-hero recorta por defecto (lo necesitan A y
+   C para el sangrado de líneas) y eso cortaba la tarjeta en seco. E no tiene
+   líneas que sangrar, así que puede dejar salir la ficha. */
+.op-e { background: var(--color-corp); color: #fff; padding-bottom: 40px; overflow: visible; }
+.op-e .op-hero__grid { padding-block: clamp(48px, 6vw, 84px) clamp(56px, 6vw, 92px); }
+.op-e h2 { font-size: clamp(2rem, 3.6vw, 3rem); color: #fff; max-width: 22ch; }
+.op-e .op-hero__sub { color: rgba(255,255,255,.88); max-width: 52ch; }
+
+.op-e__ficha {
+  position: relative; z-index: 5;
+  max-width: var(--maxw); margin-inline: auto;
+  padding-inline: var(--pad-x);
+  margin-bottom: -88px;   /* monta la tarjeta sobre el borde del hero */
+}
+.op-e__datos {
+  margin: 0; background: #fff; border: 1px solid var(--color-borde);
+  box-shadow: var(--shadow-md);
+  display: grid; grid-template-columns: 1fr; gap: 0;
+}
+@media (min-width: 720px) { .op-e__datos { grid-template-columns: repeat(3, 1fr); } }
+.op-e__datos > div { padding: 24px clamp(20px, 2.4vw, 32px); }
+@media (min-width: 720px) {
+  .op-e__datos > div + div { border-left: 1px solid var(--color-borde); }
+}
+@media (max-width: 719px) {
+  .op-e__datos > div + div { border-top: 1px solid var(--color-borde); }
+}
+.op-e__datos dt {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1;
+  color: var(--color-corp);
+}
+.op-e__datos dd { margin: 6px 0 0; font-size: var(--text-sm); color: var(--color-gris); line-height: 1.45; }
+
+/* ══ OPCIÓN F — Patrón oficial del sistema ══════════════════════════════════
+   Sustituye a una versión anterior que usaba barras de color: eso NO está en el
+   brandbook. El sistema gráfico se construye desde la unidad mínima —un cuarto
+   de círculo espejado y escalado (§5.2.1-2)— y los patrones del Figma ya lo
+   resuelven. Aquí se usa `patron-lineas-2.svg`, cuyo colorway morado sobre
+   morado profundo no lo ocupa ninguna página (Recursos y Foro usan el verde).
+   El patrón va confinado a una banda: el texto se apoya en color plano, nunca
+   sobre el dibujo.
+   Reutilizable en: hubs, aterrizajes de campaña, portadas sin foto. */
+.op-f { background: var(--color-morado); color: #fff; }
+.op-f .op-hero__grid { padding-block: clamp(48px, 6vw, 88px); }
+.op-f h2 { font-size: clamp(2rem, 3.8vw, 3.2rem); color: #fff; max-width: 20ch; }
+.op-f .op-hero__sub { color: rgba(255,255,255,.88); max-width: 46ch; }
+.op-f .op-hero__sub strong { color: #fff; }
+
+.op-f__patron {
+  position: absolute; inset: 0 0 0 auto; z-index: 1; width: 38%;
+  background: url("assets/lines/patron-lineas-2.svg") right center / cover no-repeat;
+}
+@media (min-width: 900px) {
+  .op-f .op-hero__grid { padding-right: calc(var(--pad-x) + 38%); }
+}
+@media (max-width: 899px) {
+  /* Apilado el patrón pasa a una banda superior, para no quedar detrás del texto. */
+  .op-f__patron { inset: 0 0 auto 0; width: 100%; height: 120px; background-position: center; }
+  .op-f .op-hero__grid { padding-top: calc(clamp(36px, 5vw, 64px) + 120px); }
+}

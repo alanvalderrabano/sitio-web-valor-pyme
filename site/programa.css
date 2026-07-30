@@ -1,28 +1,47 @@
-/* Programa Pyme Digital — solo lo que no cubren los componentes de styles.css.
-   Namespaced `ppd-*`. Todo lo demás (hero-v2, steps, benefit, grid-*, section-head,
-   eyebrow, btn, container) se reutiliza tal cual.
-
-   El TEXTO de la página es el del original (valorpyme.cl/programa-pyme-digital),
-   literal. Aquí solo hay presentación. */
-
 /* ── Hero ────────────────────────────────────────────────────────────────────
-   Usa `hp-hero hp-hero--banner` del sitio (H1 izquierda, copy derecha, alineados
-   abajo) con el video de líneas del home. Aquí solo los ajustes propios. */
+   Hero CLARO y propio. Ver el comentario del HTML: los demás heroes del sitio
+   son oscuros y sus recursos gráficos ya están repartidos, así que reutilizar
+   cualquiera hacía que la página se leyera como el home. */
 
-/* El original tiene DOS párrafos de bajada; el .hp-hero__sub del home trae
-   margin-bottom 32px pensado para uno solo. */
-.ppd-hero__copy .hp-hero__sub { margin-bottom: 0; }
-.ppd-hero__copy .hp-hero__sub + .hp-hero__sub { margin-top: 14px; }
-.ppd-hero__copy .hp-hero__cta { margin-top: 28px; }
-
-/* El H1 del original es largo (9 palabras). A la escala del banner (hasta 64px)
-   ocupaba 4 líneas y empujaba el hero a 700px. Se baja un paso de la escala
-   display: sigue dominando la composición, pero entra en menos líneas. */
-.hp-hero--banner .ppd-hero__title .hp-display {
-  font-size: clamp(1.9rem, 3.3vw, 2.75rem);
-  line-height: 1.06;
-  max-width: 20ch;
+.ppd-hero { background: var(--color-lavanda); overflow: hidden; }
+.ppd-hero__wrap {
+  max-width: var(--maxw); margin-inline: auto;
+  display: grid; grid-template-columns: 1fr; gap: 32px;
+  padding-inline: var(--pad-x);
 }
+@media (min-width: 900px) {
+  .ppd-hero__wrap {
+    grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px);
+    align-items: center; padding-right: 0;   /* la foto sangra por el borde */
+  }
+}
+
+.ppd-hero__copy { padding-block: clamp(40px, 6vw, 84px); }
+.ppd-hero__copy h1 {
+  font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.06;
+  color: var(--color-texto-dark); margin-bottom: 20px; max-width: 20ch;
+}
+.ppd-hero__sub { font-size: var(--text-lead); color: var(--color-gris); line-height: 1.55; }
+.ppd-hero__sub strong { color: var(--color-texto-dark); }
+.ppd-hero__sub + .ppd-hero__sub { margin-top: 14px; }
+.ppd-hero__cta { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* La foto sangra por el borde derecho: es lo que distingue esta composición de
+   la de ruta-digitalización, que la mete en un panel. */
+.ppd-hero__media { position: relative; align-self: stretch; min-height: 260px; }
+.ppd-hero__media img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  min-height: 260px;
+}
+@media (min-width: 900px) {
+  .ppd-hero__media { margin-right: calc(-1 * var(--pad-x)); }
+  .ppd-hero__media img { min-height: clamp(380px, 40vw, 520px); }
+}
+
+/* Un solo trazo, no la banda del home. Usa el mismo mecanismo `.draw` del sitio. */
+/* La foto YA trae el trazo de marca quemado en el archivo — por eso no se le
+   añade ninguna línea por CSS: quedaban dos. Es el mismo asset que usa el hero
+   de ruta-digitalización. */
 
 /* ── Bloque "¡Realiza el test ahora!" ────────────────────────────────────────
    En el original es un bloque de cierre con su propio CTA y la lista de lo que
@@ -102,44 +121,3 @@
   .ppd-quote__mark { font-size: 56px; }
 }
 
-/* El hero se dimensiona por su contenido: la banda de líneas arriba y el texto
-   debajo. `flex-end` deja el copy pegado al fondo, como en el Figma. */
-.hp-hero--banner.ppd-hero { display: flex; align-items: flex-end; min-height: 0; }
-.hp-hero--banner.ppd-hero > .container { width: 100%; }
-
-/* Banda de líneas: ocupa el ancho completo arriba, detrás del contenido.
-   `.hp-hero--banner .container` ya trae z-index 2, así que el texto queda encima.
-   El alto sale del aspecto del SVG (1440x363), así que las curvas siempre caen
-   en la franja superior y nunca sobre el texto. */
-/* 26px de aire arriba: el pico de la sigmoide amarilla está a 6px del borde del
-   viewBox y pegado al tope se veía cortado. */
-.ppd-hero__lines { position: absolute; inset: 26px 0 auto; z-index: 0; pointer-events: none; }
-.ppd-hero__lines svg { display: block; width: 100%; height: auto; }
-
-/* `pathLength="1"` en cada trazo normaliza su largo, así un solo --len sirve para
-   los cuatro. El resto —dasharray, keyframes `draw`, retardos .d2/.d3— es de
-   styles.css, disparado por el IntersectionObserver de script.js. */
-.ppd-hero__lines .draw { --len: 1; }
-
-/* Sin esto los extremos del trazo aparecen cortados en seco al dibujarse. */
-.ppd-hero__lines path { stroke-linecap: round; }
-
-@media (prefers-reduced-motion: reduce) {
-  .ppd-hero__lines .draw { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
-}
-
-/* Reserva el alto de la banda (363/1440 = 25.2% del ancho) + el desplazamiento
-   superior, para que el texto arranque por debajo de las curvas. El padding
-   inferior baja respecto al del banner: con la banda arriba, 64px dejaban el
-   hero en 657px, más alto en proporción que el Figma. */
-.hp-hero--banner.ppd-hero .hp-hero__grid {
-  padding-top: calc(25.2vw + 38px);
-  padding-bottom: clamp(24px, 2.6vw, 40px);
-}
-@media (min-width: 1440px) {
-  .hp-hero--banner.ppd-hero .hp-hero__grid { padding-top: 401px; }
-}
-
-@media (max-width: 820px) {
-  .hp-hero--banner { min-height: clamp(400px, 92vw, 520px); }
-}
