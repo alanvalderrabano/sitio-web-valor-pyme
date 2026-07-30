@@ -75,48 +75,31 @@
 <main>
 
 <!-- ══════════ HERO ══════════
-     Layout `hp-hero--banner` del sitio (2 columnas alineadas abajo: H1 a la
-     izquierda, copy y CTA a la derecha) + las líneas vectoriales aprobadas.
+     Hero propio, no una variante de los que ya existen. Motivo: el layout
+     `hp-hero--banner` ya lo usa contacto y las líneas sigmoides son del home,
+     así que la página se leía como una repetición del home.
 
-     Se usa el SVG y no el video del home (`assets/motion/hero-bg.*`): son 743 B
-     contra 500 KB, escala sin perder nitidez, y sobre todo permite colocar la
-     banda donde toca. Con el video —16:9 y `object-fit: cover`— las curvas caían
-     a media altura y cruzaban el texto: el verde da 2,49:1 con blanco y el
-     amarillo 1,16:1, por debajo del mínimo AA incluso para texto grande.
-     Tampoco hace falta el script que congelaba el video en el fotograma correcto. -->
-<section class="hp-hero hp-hero--banner ppd-hero" aria-label="Programa Pyme Digital">
-  <!-- SVG inline (y no <img>) para poder animar los trazos: el CSS de la página
-       no llega dentro de una imagen. Se reutiliza el mecanismo del sitio —clase
-       `.draw` + `--len`, que dispara el IntersectionObserver de script.js al
-       poner `.is-visible`— con los retardos .d2/.d3 ya definidos, así las tres
-       líneas entran escalonadas. `pathLength="1"` normaliza el largo de cada
-       trazo para que dasharray: 1 valga para todos.
-       El archivo assets/lines/lineas-.svg queda como fuente del dibujo. -->
-  <div class="ppd-hero__lines reveal" aria-hidden="true">
-    <svg viewBox="0 0 1440 363" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-      <path class="draw" pathLength="1" d="M-416.02 164.47H325.64C389.63 164.47 389.63 234.349 453.61 234.349C517.6 234.349 517.6 164.47 581.58 164.47H1640" stroke="#FF2C5F" stroke-width="13" stroke-miterlimit="10"/>
-      <path class="draw d2" pathLength="1" d="M-378 192.503H177.75C348.06 192.503 348.06 6.5 518.37 6.5C688.68 6.5 688.68 192.503 858.99 192.503H1637.5" stroke="#FEF31B" stroke-width="13" stroke-miterlimit="10"/>
-      <path class="draw d3" pathLength="1" d="M-60.3799 208.229H76.4302C211.5 208.229 211.5 355.738 346.56 355.738" stroke="#00BC70" stroke-width="13" stroke-miterlimit="10"/>
-      <path class="draw d3" pathLength="1" d="M346.56 355.738C547.34 355.738 547.34 136.466 748.11 136.466H1639" stroke="#00BC70" stroke-width="13" stroke-miterlimit="10"/>
-    </svg>
-  </div>
-  <div class="container">
-    <div class="hp-hero__grid">
-      <div class="ppd-hero__title">
-        <h1 class="hp-display reveal">Programa Pyme Digital: Digitaliza tu pyme y crece sin límites</h1>
+     Todos los heroes del sitio son oscuros y saturados (morado o verde) y los
+     recursos gráficos están repartidos: sigmoides = home y rutas, aros verdes =
+     contacto/recursos/foro, foto+panel = ruta digitalización y talento, curvas
+     blancas = nosotros. El hueco libre era un hero CLARO: fondo lavanda, texto
+     en morado de marca (16:1 de contraste) y la foto sangrando por el borde. -->
+<section class="ppd-hero" aria-label="Programa Pyme Digital">
+  <div class="ppd-hero__wrap">
+    <div class="ppd-hero__copy">
+      <h1 class="reveal">Programa Pyme Digital: Digitaliza tu pyme y crece sin límites</h1>
+      <p class="ppd-hero__sub reveal d1"><strong>El programa está diseñado para ayudarte a crecer y digitalizar tu negocio mediante herramientas, talleres y asesorías personalizadas con expertos de Pyme UC.</strong></p>
+      <p class="ppd-hero__sub reveal d1">Mejora la gestión de ventas, automatiza procesos y amplía tu alcance en el mercado digital.</p>
+      <div class="ppd-hero__cta reveal d2">
+        <a href="/descarga-test-de-digitalizacion" class="btn">¡Inicia el test ahora! <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="ppd-hero__copy">
-        <p class="hp-hero__sub reveal d1"><strong>El programa está diseñado para ayudarte a crecer y digitalizar tu negocio mediante herramientas, talleres y asesorías personalizadas con expertos de Pyme UC.</strong></p>
-        <p class="hp-hero__sub reveal d1">Mejora la gestión de ventas, automatiza procesos y amplía tu alcance en el mercado digital.</p>
-        <div class="hp-hero__cta reveal d2">
-          <a href="/descarga-test-de-digitalizacion" class="btn btn--onfill">¡Inicia el test ahora! <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
+    </div>
+    <div class="ppd-hero__media reveal d1">
+      <img src="assets/photos/brand/hero-cafe-digitalizacion.jpg" width="636" height="616"
+           alt="Emprendedora revisando la gestión de su negocio en una tablet" loading="eager">
     </div>
   </div>
 </section>
-
-
 
 <!-- ══════════ 3 SIMPLES PASOS ══════════ -->
 <section class="section" id="pasos">
