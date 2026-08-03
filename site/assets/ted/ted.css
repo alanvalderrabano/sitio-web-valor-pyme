@@ -59,13 +59,38 @@
 .ted-aside { display: flex; flex-direction: column; gap: 16px; }
 .ted-aside__foot { display: flex; justify-content: flex-end; margin-top: auto; }
 
-/* La foto ocupa la altura que le deje la columna, con un mínimo para que en móvil
-   no se aplaste. Sin esto quedaba una franja gris bajo la imagen. */
+/* Foto decorativa (portada). Puede estirarse a la altura de la columna: es una imagen sin
+   texto, así que el recorte de `cover` no se lleva nada por delante. */
 .ted-media { overflow: hidden; border-radius: var(--radius-md); background: #fff; flex: 1; min-height: 220px; }
 .ted-media__img { display: block; width: 100%; height: 100%; min-height: 220px; object-fit: cover; }
-/* La foto de contacto trae el texto "Programa Pyme Digital" quemado a la izquierda;
-   sin esto el recorte se lo come. */
-.ted-media--texto .ted-media__img { object-position: left center; }
+
+/* Foto con "Programa Pyme Digital" quemado (contacto y cuestionario): esta NO se estira.
+   La altura sale del ancho, así `cover` no recorta y el texto se lee entero. En el rubro,
+   con 15 opciones, la columna llegaba a 1063px y se comía media palabra.
+
+   `align-self: start` y `width: 100%` no son adorno: sin ellos el grid le impone la altura
+   de la fila y `aspect-ratio` calcula el ANCHO a partir de esa altura — 745px de fila daban
+   989px de ancho en una columna de 520, desbordando la página. */
+.ted-media--texto {
+  flex: 0 0 auto; align-self: start;
+  width: 100%; min-height: 0;
+  aspect-ratio: 1000 / 667;
+}
+.ted-media--texto .ted-media__img { min-height: 0; }
+
+/* En columnas muy largas la foto se queda a la vista mientras se responde, en vez de
+   perderse arriba.
+
+   El header del sitio es sticky y mide 120px: la franja superior (44px, `min-height` de
+   .site-header__top-inner) más la nav (--header-h, 76px). El theme solo expone la segunda,
+   así que la primera va explícita aquí. Sin sumarla, la tarjeta de progreso se metía debajo. */
+@media (min-width: 900px) {
+  .ted-aside {
+    position: sticky;
+    top: calc(var(--header-h, 76px) + 44px + 16px);
+    align-self: start;
+  }
+}
 
 .ted-actions { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
 .ted-btn--block { width: 100%; justify-content: center; }

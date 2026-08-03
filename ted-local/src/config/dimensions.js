@@ -49,7 +49,7 @@ export const dimensions = {
   },
   "5": {
     "name": "Tecnologías, Equipamiento y Herramientas",
-    "weight": 15,
+    "weight": 25,
     "score": 0,
     "progress": 0,
     "stage": "",

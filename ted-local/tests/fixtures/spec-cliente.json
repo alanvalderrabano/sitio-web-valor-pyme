@@ -1,0 +1,204 @@
+{
+  "fuente": "TED 2023.2.xlsx · hoja \"TED VERSIÓN 2024\" · entregado por el cliente 2026-07-30",
+  "propiedadPorPregunta": {
+    "question-1": "ted232___cual_es_el_principal_cargo_o_responsabilidad_que_desempenas_en_tu_empresa_",
+    "question-2": "ted232___cual_es_tu___de_participacion_en_la_empresa_",
+    "question-3": "ted232__indica_cuantas_personas_trabajan_en_tu_empresa__incluyendo_los_socios_",
+    "question-4": "ted232__indica_el_rubro_en_el_cual_se_encuentra_tu_empresa",
+    "question-5": "ted232___en_que_rango_de_edad_te_encuentras_",
+    "question-6": "ted232__nivel_maximo_de_educacion_alcanzado",
+    "question-7": "ted232__los_principales_clientes_a_los_que_diriges_tus_productos_o_servicios_son",
+    "question-8": "ted_h_cual_de_las_siguientes_opciones_refleja_mejor_tu_opinion_y_la_situacion_sobre_la_digitalizaci",
+    "question-9": "ted_h_considerando_los_ultimos_tres_anos__tu_empresa_ha_implementado_tecnologias_que_han_permitido",
+    "question-10a": "ted_3_question_9_a",
+    "question-10b": "ted_3_question_9_b",
+    "question-11": "ted_3_question_10",
+    "question-12a": "ted_h_a__microsoft_office_365__excel__word__power_point_o_similar____de_acuerdo_a_la_escala_a_conti",
+    "question-12b": "ted_h_b__herramientas_de_administracion_de_procesos_y_recursos__erp__con_sus_distintos_modulos___de",
+    "question-12c": "ted_h_c__herramientas_para_gestion_y_relacion_con_los_clientes__crm____de_acuerdo_a_la_escala_a_con",
+    "question-12e": "ted_h_d__otras_herramientas_o_softwares_especializados_de_trabajo_disenados_para_mi_empresa_____de_",
+    "question-12f": "ted_h_e__servidores_y_almacenamiento_en_la_nube__azure__g_suite__amazon_web_services__entre_otros__",
+    "question-12g": "ted_h_f__robotica__inteligencia_artificial_que_permita_automatizar_ciertas_tareas_o_procesos___de_a",
+    "question-12h": "ted_h_g__uso_del_internet_de_las_cosas_a_traves_de_dispositivos_que_permitan_obtener_informacion_de",
+    "question-13": "ted232__actualmente___que_medidas_se_toman_para_la_seguridad_informatica_de_tu_negocio__selecciona_",
+    "question-14": "ted232_22__que_canales_digitales_utilizan_para_difundir_y_dar_a_conocer_los_productos__servicios_de",
+    "question-15": "ted232_22__que_canales_digitales_utilizan_para_vender_los_productos_o_servicios_de_la_empresa_",
+    "question-16": "ted232__el_conjunto_de_canales_o_medios_digitales_de_difusion_y_venta_que_utilizamos_permite_a_los_",
+    "question-17": "ted_h__que_porcentaje_aproximado_de_las_ventas__facturacion__se_realiza_a_traves_de_canales_digital",
+    "question-18": "ted232___que_medios_de_pago_ofrecen_para_vender_los_productos_servicios_",
+    "question-19a": "ted_h_a__abastecimiento__adquisiciones__relacion_con_proveedores__pagos____de_acuerdo_a_la_siguient",
+    "question-19b": "ted_h_b__operaciones_o_produccion_de_bienes_servicios_y_control_de_su_calidad___de_acuerdo_a_la_sig",
+    "question-19c": "ted_h_c__logisticos__recepcion__almacenamiento__seguimiento_de_pedidos__transporte__manejo_de_inven",
+    "question-19d": "ted_h_d__contables_y_administrativos__registros_y_manejo_de_informacion__reportes__estados_financie",
+    "question-19e": "ted_h_e__gestion_de_personas__ejemplo__remuneraciones__evaluacion_de_desempeno__capacitacion__etc__",
+    "question-20": "ted_h_cual_de_las_siguientes_opciones_refleja_mejor_la_realidad_de_su_empresa_en_cuanto_a_las_compe"
+  },
+  "propiedadesDeResultado": [
+    "inicio_del_test__ted_",
+    "ted_3_dimension_1",
+    "ted_3_dimension_1_brecha",
+    "ted_3_dimension_1_posicion_actual",
+    "ted_3_dimension_2",
+    "ted_3_dimension_2_brecha",
+    "ted_3_dimension_2_posicion_actual",
+    "ted_3_dimension_3",
+    "ted_3_dimension_3_brecha",
+    "ted_3_dimension_3_posicion_actual",
+    "ted_3_dimension_4",
+    "ted_3_dimension_4_brecha",
+    "ted_3_dimension_4_posicion_actual",
+    "ted_3_dimension_5",
+    "ted_3_dimension_5_brecha",
+    "ted_3_dimension_5_posicion_actual",
+    "ted_3_flujo_correos",
+    "ted_3_marketing",
+    "ted_3_nivel_digitalizacion",
+    "ted_3_porcentaje_digitalizacion",
+    "ted_3_procesos",
+    "ted_3_rut"
+  ],
+  "pesoPregunta": {
+    "question-8": 8,
+    "question-9": 12,
+    "question-10a": 2.5,
+    "question-10b": 2.5,
+    "question-11": 5,
+    "question-12a": 0.625,
+    "question-12b": 1.25,
+    "question-12c": 1.875,
+    "question-12e": 1.25,
+    "question-12f": 2.5,
+    "question-12g": 2.5,
+    "question-12h": 2.5,
+    "question-13": 7.5,
+    "question-14": 3,
+    "question-15": 5,
+    "question-16": 5,
+    "question-17": 4,
+    "question-18": 3,
+    "question-19a": 5,
+    "question-19b": 5,
+    "question-19c": 5,
+    "question-19d": 5,
+    "question-19e": 5,
+    "question-20": 5
+  },
+  "pesoDimension": {
+    "1": 20,
+    "2": 20,
+    "3": 10,
+    "4": 25,
+    "5": 25
+  },
+  "topesDeEtapa": {
+    "1": [
+      4,
+      10.7,
+      13.1,
+      20
+    ],
+    "2": [
+      3,
+      6.8,
+      13.4,
+      20
+    ],
+    "3": [
+      1,
+      3.5,
+      6,
+      10
+    ],
+    "4": [
+      3.75,
+      11.25,
+      20,
+      25
+    ],
+    "5": [
+      2,
+      9,
+      17,
+      25
+    ],
+    "total": [
+      13.75,
+      41.25,
+      69.5,
+      100
+    ]
+  },
+  "tallerPorCombinacion": {
+    "BAJO0-BAJO0": [
+      "Modelo de Negocios"
+    ],
+    "BAJO0-BAJO1": [
+      "Modelo de Negocios",
+      "Digitalización de Procesos"
+    ],
+    "BAJO0-MEDIO": [
+      "Modelo de Negocios",
+      "Digitalización de Procesos"
+    ],
+    "BAJO0-ALTO": [
+      "Modelo de Negocios"
+    ],
+    "BAJO1-BAJO0": [
+      "Modelo de Negocios"
+    ],
+    "BAJO1-BAJO1": [
+      "Digitalización de Procesos",
+      "Marketing Digital e eCommerce"
+    ],
+    "BAJO1-MEDIO": [
+      "Digitalización de Procesos",
+      "Marketing Digital e eCommerce"
+    ],
+    "BAJO1-ALTO": [
+      "Digitalización de Procesos",
+      "Marketing Digital e eCommerce"
+    ],
+    "MEDIO-BAJO0": [
+      "Marketing Digital e eCommerce",
+      "Modelo de Negocios"
+    ],
+    "MEDIO-BAJO1": [
+      "Marketing Digital e eCommerce",
+      "Digitalización de Procesos"
+    ],
+    "MEDIO-MEDIO": [
+      "Marketing Digital e eCommerce",
+      "Digitalización de Procesos"
+    ],
+    "MEDIO-ALTO": [
+      "Marketing Digital e eCommerce"
+    ],
+    "ALTO-BAJO0": [],
+    "ALTO-BAJO1": [],
+    "ALTO-MEDIO": [],
+    "ALTO-ALTO": []
+  },
+  "_nota_tallerPorCombinacion": "Hoja 'Programa PD 2024' de Combinaciones_ Programa Pyme Digital [TED].xlsx. Lista vacía = el negocio marca N/A: a ese perfil no le corresponde taller.",
+  "_verificadoEnPortal": {
+    "fecha": "2026-08-01",
+    "metodo": "GET /crm/v3/properties/contacts del portal 7800319 (solo esquema)",
+    "correccionesAlExcel": [
+      "ted_3_dimension_N -> ted_3_dimension_N_posicion_score: las cortas son de 2023, de otro grupo, y la 4 no existe.",
+      "ted232__considerando_los_ultimos_tres_anos... -> ted_h_...: la del Excel es una lista cuyas opciones llevan prefijo \"a. \", \"b. \"..., y el test envia el texto sin prefijo. La ted_h_ es texto libre y si los acepta."
+    ]
+  },
+  "formularioPorCombinacion": {
+    "BAJO0-BAJO0": "f0f33ebb-bc0e-4b52-b962-5743d9df6314",
+    "BAJO0-ALTO": "f0f33ebb-bc0e-4b52-b962-5743d9df6314",
+    "BAJO0-BAJO1": "7feed2f0-17e5-44d8-b5a9-3e3222dd6d39",
+    "BAJO0-MEDIO": "7feed2f0-17e5-44d8-b5a9-3e3222dd6d39",
+    "BAJO1-BAJO0": "46c3bd47-5bf2-4024-911c-0f930773cd66",
+    "BAJO1-BAJO1": "5f1087ba-1204-422f-8336-3bc0693143e9",
+    "BAJO1-MEDIO": "5f1087ba-1204-422f-8336-3bc0693143e9",
+    "BAJO1-ALTO": "2c887494-10c1-4802-9436-4595a8e8be52",
+    "MEDIO-BAJO0": "579e11f9-dd9d-4c14-9444-fd4fc94fc483",
+    "MEDIO-BAJO1": "d0516f67-7859-4cd2-8dfd-1ef9e6622c20",
+    "MEDIO-MEDIO": "d0516f67-7859-4cd2-8dfd-1ef9e6622c20"
+  },
+  "_nota_formularioPorCombinacion": "Tabla entregada por el cliente el 1-ago-2026. Es la lista COMPLETA: cualquier combinacion ausente no debe recibir formulario."
+}

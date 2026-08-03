@@ -464,7 +464,7 @@ export const questions = [
       },
       {
         "value": "Utilizamos todas o la mayor parte de las capacidades de esta(s) herramienta(s)",
-        "score": 10
+        "score": 100
       }
     ],
     "answer": "",
@@ -503,7 +503,7 @@ export const questions = [
     "id": "question-12e",
     "property": "ted_h_d__otras_herramientas_o_softwares_especializados_de_trabajo_disenados_para_mi_empresa_____de_",
     "type": "radio",
-    "weight": 2.5,
+    "weight": 1.25,
     "dimension": 5,
     "title": "12. De acuerdo a la escala a continuación, ¿Cuál es el nivel de utilización en tu empresa de las siguientes tecnologías/herramientas digitales para la gestión? (Para cada alternativa marca la opción que mejor refleje la situación en tu empresa)",
     "question": "e. Otras herramientas o softwares especializados de trabajo diseñados para mi empresa",
