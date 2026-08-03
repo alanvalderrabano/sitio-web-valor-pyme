@@ -1,0 +1,253 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Cupo registrado · Taller PPD — propuesta visual v2
+
+   Namespace `typ-`. Página nueva; la publicada en HubSpot no se toca.
+   El contenido es LITERAL al original: aquí solo cambia la piel.
+
+   Qué se corrige de la página actual, y por qué:
+
+   · Paleta. La original usa verde #28892b, azul #2772cc y un botón ROJO para la
+     acción principal. Ninguno es del brandbook, y el rojo es color de peligro
+     puesto en el único CTA de la página. Aquí: verde de marca para el mensaje de
+     confirmación y morado corporativo para la acción.
+
+   · Miniaturas. En el original miden ~50px y se repiten idénticas dentro de cada
+     grupo temático, así que no aportan nada. Aquí pasan a ser portada de la
+     tarjeta, a tamaño útil.
+
+   · Tarjetas. En el original tienen alturas dispares y el botón cuelga suelto
+     debajo, fuera del marco. Aquí la tarjeta entera es el enlace.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.typ { --typ-pad: clamp(32px, 6vw, 88px); }
+
+/* ── Confirmación ──────────────────────────────────────────────────────────
+   Mosaico del brandbook como fondo, con el texto en un panel blanco.
+
+   El patrón va TONO SOBRE TONO —morado profundo sobre corporativo— y a baja
+   opacidad. En negro daba 3.23:1 contra el fondo y competía con el panel y con
+   la foto; a este nivel se lee como textura y deja mandar al contenido.
+
+   El texto nunca se apoya en el patrón: sobre él, ninguna combinación de marca
+   pasa de 4.5:1 para cuerpo de texto. Por eso el panel. */
+.typ-hero {
+  position: relative; overflow: hidden;
+  background-color: var(--color-rosa);
+  padding-block: clamp(40px, 6vw, 80px);
+}
+.typ-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  /* Patrón MÁS CLARO que el fondo, que es como lo usa la marca: la lámina del
+     brandbook lo hace (naranja sobre rosa, +0.142 de luminancia) y la landing v2
+     también (menta sobre morado, +0.735). Al ponerlo más oscuro —como estaba—
+     se leía como sombra hundida y ensuciaba el color.
+     La sutileza se consigue con la OPACIDAD, no oscureciendo el tono. */
+  background: url("assets/lines/patron-mosaico-rosa-claro.svg") repeat;
+  background-size: 400px 400px;
+  opacity: .45;
+  /* Empieza a apagarse a la altura de "Prepárate para una experiencia…", que cae
+     al 50.9% del módulo (medido de 1280 a 1920px), y termina al 88%.
+     El degradado arranca un poco antes del 50% a propósito: si empieza justo ahí,
+     en esa línea todavía está al 100% y el efecto no se percibe hasta mucho más
+     abajo. Arrancando en 44% llega a esa altura ya visiblemente más suave. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 44%, transparent 88%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 44%, transparent 88%);
+}
+
+.typ-hero__wrap {
+  position: relative; z-index: 1;
+  max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x);
+  display: grid; grid-template-columns: 1fr; gap: clamp(24px, 3vw, 40px);
+  align-items: stretch;
+}
+@media (min-width: 900px) {
+  .typ-hero__wrap { grid-template-columns: 1fr 1fr; padding-right: 0; }
+}
+
+/* Panel blanco: la superficie limpia que el patrón no puede dar. */
+.typ-hero__panel {
+  background: #fff; padding: clamp(30px, 3.6vw, 52px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+/* La marca de confirmación es el momento de la página, así que se construye
+   delante del usuario en vez de aparecer ya hecha:
+     1. el círculo entra con un rebote corto
+     2. el trazo se dibuja
+     3. una onda sale una sola vez y se apaga
+   Nada de bucles: es un acuse de recibo, no un indicador de carga. */
+.typ-check {
+  position: relative;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--color-verde); color: #fff;
+  display: grid; place-items: center; margin-bottom: 22px;
+  transform: scale(.4); opacity: 0;
+}
+.typ-check svg { width: 28px; height: 28px; }
+.typ-check path { stroke-dasharray: 30; stroke-dashoffset: 30; }
+
+/* La onda: un anillo que crece y se desvanece, por detrás del círculo. */
+.typ-check::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid var(--color-verde); opacity: 0;
+}
+
+.typ-hero__panel.is-visible .typ-check {
+  animation: typ-pop .5s cubic-bezier(.34,1.56,.64,1) .15s forwards;
+}
+.typ-hero__panel.is-visible .typ-check path {
+  animation: typ-trazo .4s cubic-bezier(.65,0,.35,1) .45s forwards;
+}
+.typ-hero__panel.is-visible .typ-check::after {
+  animation: typ-onda .9s cubic-bezier(.22,.61,.36,1) .5s forwards;
+}
+
+@keyframes typ-pop   { to { transform: scale(1); opacity: 1; } }
+@keyframes typ-trazo { to { stroke-dashoffset: 0; } }
+@keyframes typ-onda  { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(2.1); opacity: 0; } }
+
+/* Las cápsulas entran escalonadas en vez de las once de golpe. */
+.typ-grid > li { opacity: 0; transform: translateY(18px); }
+.typ-grid.is-visible > li { animation: typ-sube .5s cubic-bezier(.22,.61,.36,1) forwards; }
+.typ-grid.is-visible > li:nth-child(1)  { animation-delay: .00s; }
+.typ-grid.is-visible > li:nth-child(2)  { animation-delay: .05s; }
+.typ-grid.is-visible > li:nth-child(3)  { animation-delay: .10s; }
+.typ-grid.is-visible > li:nth-child(4)  { animation-delay: .15s; }
+.typ-grid.is-visible > li:nth-child(5)  { animation-delay: .20s; }
+.typ-grid.is-visible > li:nth-child(6)  { animation-delay: .25s; }
+.typ-grid.is-visible > li:nth-child(7)  { animation-delay: .30s; }
+.typ-grid.is-visible > li:nth-child(8)  { animation-delay: .35s; }
+.typ-grid.is-visible > li:nth-child(9)  { animation-delay: .40s; }
+.typ-grid.is-visible > li:nth-child(10) { animation-delay: .45s; }
+.typ-grid.is-visible > li:nth-child(11) { animation-delay: .50s; }
+@keyframes typ-sube { to { opacity: 1; transform: none; } }
+
+/* Quien pide menos movimiento lo ve todo ya montado. */
+@media (prefers-reduced-motion: reduce) {
+  .typ-check { transform: none; opacity: 1; }
+  .typ-check path { stroke-dashoffset: 0; }
+  .typ-grid > li { opacity: 1; transform: none; }
+  .typ-hero__panel.is-visible .typ-check,
+  .typ-hero__panel.is-visible .typ-check path,
+  .typ-hero__panel.is-visible .typ-check::after,
+  .typ-grid.is-visible > li { animation: none; }
+}
+
+.typ-hero h1 {
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.08;
+  color: var(--color-texto-dark); margin-bottom: 18px; max-width: 14em;
+}
+.typ-hero__intro {
+  font-size: var(--text-lead); line-height: 1.6; color: var(--color-gris);
+  max-width: 46ch;
+}
+
+.typ-hero__foto { overflow: hidden; align-self: stretch; min-height: 300px; }
+.typ-hero__foto img { display: block; width: 100%; height: 100%; object-fit: cover; min-height: 300px; }
+@media (min-width: 900px) {
+  .typ-hero__foto { margin-right: calc(-1 * max(0px, (100vw - var(--maxw)) / 2)); }
+  .typ-hero__foto img { min-height: clamp(420px, 42vw, 540px); }
+}
+
+/* ── VARIANTE ROSA · solo para comparar ────────────────────────────────────
+   Duplicado del hero en rosa (Pantone 1925 C = #FF2B5E, nuestro --color-rosa).
+   El patrón usa el rosa profundo del token de ruta: 2.11:1 contra el fondo,
+   equivalente al 2.47:1 del morado sobre corporativo, así que la sutileza es la
+   misma. El panel sigue blanco, de modo que ningún texto cambia de contraste.
+
+   ⚠ ESTO NO VA A PRODUCCIÓN. Es un bloque de comparación; hay que borrarlo
+   junto con su marcado en cuanto se elija una de las dos. */
+
+/* ── Agendar ───────────────────────────────────────────────────────────────
+   El original deja este bloque suelto bajo el párrafo, con un botón rojo.
+   Aquí es una tarjeta con su propio peso: es la única acción de la página. */
+/* Barra horizontal: es la ÚNICA acción de la página y en la versión anterior el
+   botón se apilaba bajo el texto en 533px, quedando como una nota al pie. */
+.typ-agendar {
+  margin-top: 32px; padding: 20px 22px;
+  background: #fff; border-left: 6px solid var(--color-corp);
+  display: grid; grid-template-columns: 1fr; gap: 16px; align-items: center;
+}
+@media (min-width: 560px) { .typ-agendar { grid-template-columns: 1fr auto; } }
+.typ-agendar p {
+  margin: 0; font-family: var(--font-display); font-weight: 700;
+  font-size: 16px; line-height: 1.35; color: var(--color-texto-dark);
+}
+.typ-agendar .btn { white-space: nowrap; }
+
+/* ── Cápsulas ──────────────────────────────────────────────────────────────
+   Once tarjetas de altura uniforme. En el original van en filas de tres con
+   alturas desiguales y el botón fuera del marco. */
+.typ-caps { background: var(--color-soft); padding-block: var(--typ-pad); }
+.typ-caps__wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x); }
+
+.typ-caps__head { text-align: center; max-width: 40rem; margin: 0 auto 44px; }
+.typ-caps__head h2 {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem); color: var(--color-texto-dark); margin-bottom: 12px;
+}
+.typ-caps__head p { font-size: var(--text-lead); color: var(--color-gris); }
+.typ-caps__head strong { color: var(--color-texto-dark); }
+
+.typ-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr; gap: 22px;
+}
+@media (min-width: 640px) { .typ-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .typ-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Toda la tarjeta es el enlace: más superficie de clic y una sola acción por
+   tarjeta. En el original el botón era un objetivo de 120x34 bajo el marco. */
+/* Filo superior de color por grupo temático. Las miniaturas se repiten 3, 3 y 5
+   veces —son los tres bloques de contenido— y verlas idénticas parecía un error.
+   El filo organiza sin añadir ni una palabra al contenido. */
+.typ-card { border-top: 4px solid var(--color-corp); }
+.typ-card--ecom { border-top-color: var(--color-verde); }
+.typ-card--apanio { border-top-color: var(--color-rosa); }
+
+.typ-card {
+  display: flex; flex-direction: column; height: 100%;
+  background: #fff; border: 1px solid var(--color-borde);
+  text-decoration: none; color: inherit;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.typ-card:hover {
+  transform: translateY(-4px); border-color: var(--color-corp);
+  box-shadow: 0 14px 34px rgba(51, 5, 89, .13);
+}
+.typ-card:focus-visible { outline: 3px solid var(--color-corp); outline-offset: 3px; }
+
+.typ-card__foto { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--color-soft); }
+.typ-card__foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Marca de reproducción: deja claro que la tarjeta abre un vídeo. */
+.typ-card__play {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: rgba(51, 5, 89, .28); transition: background .18s ease;
+}
+.typ-card:hover .typ-card__play { background: rgba(51, 5, 89, .45); }
+.typ-card__play span {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,.94); color: var(--color-corp);
+  display: grid; place-items: center;
+}
+.typ-card__play svg { width: 20px; height: 20px; margin-left: 3px; }
+
+.typ-card__cuerpo { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; gap: 10px; }
+.typ-card__cuerpo h3 {
+  font-size: 1.05rem; line-height: 1.25; color: var(--color-texto-dark); margin: 0;
+}
+.typ-card__cuerpo p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--color-gris); }
+
+/* El texto del enlace se conserva —es contenido— pero pasa a pie de tarjeta,
+   dentro del marco, en vez de ser un botón suelto debajo. */
+.typ-card__ver {
+  margin-top: auto; padding-top: 6px;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  color: var(--color-corp); display: inline-flex; align-items: center; gap: 7px;
+}
+.typ-card:hover .typ-card__ver .arrow { transform: translateX(3px); }
+.typ-card__ver .arrow { transition: transform .18s ease; }
+
+@media (max-width: 720px) {
+  .typ-agendar { flex-direction: column; align-items: flex-start; }
+}
