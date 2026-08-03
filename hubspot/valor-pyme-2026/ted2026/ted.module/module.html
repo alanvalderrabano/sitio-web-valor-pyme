@@ -1,80 +1,17 @@
-<!doctype html>
-<html lang="es-CL" data-ted-static="1">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Test de Digitalización — Valor Pyme</title>
-  <meta name="description" content="Réplica local del Test de Digitalización (TED) de valorpyme.cl, con el look and feel del theme Valor Pyme 2026.">
+{# ═══════════════════════════════════════════════════════════════════════════
+   MÓDULO · Test de Digitalización (TED)
 
-  <link rel="icon" href="assets/ted/img/valor-pyme-logo-color.svg" type="image/svg+xml">
+   Copia del test para el theme "Valor Pyme 2026". NO es el que está publicado en
+   /descarga-test-de-digitalizacion: aquel vive en el theme antiguo, en el módulo
+   `valor-pyme-ted`, y no se toca desde aquí.
 
-  <!-- Orden de carga: primero el theme (tokens, reset, .btn), después lo del módulo.
-       Es el mismo orden que tendrá dentro del theme en HubSpot. `styles.css` ya importa
-       Rubik, el fallback oficial de FG Futurist — por eso aquí no se pide ninguna fuente. -->
-  <link rel="stylesheet" href="styles.css?v=103">
-  <link rel="stylesheet" href="assets/ted/ted.css?v=msdq4tau">
-</head>
-<body>
+   GENERADO por ted-local/build-hubspot.mjs — no editar a mano.
+   El markup sale de ted-local/public/index.html y la lógica de ted-local/src/.
 
-  <!-- Header y footer se leen de los partials REALES del theme al servir la página
-       (server/mock-api.mjs → injectPartials). No hay copia que mantener. -->
-  <header class="site-header">
-  <div class="site-header__top">
-    <div class="container site-header__top-inner">
-      <a href="#suscripcion" class="btn btn--sm nav__cta desktop">Suscríbete</a>
-      <a href="#diagnostico" class="btn btn--sm nav__cta desktop">Encuentra tu ruta</a>
-    </div>
-  </div>
-  <div class="container nav">
-    <a class="nav__logo" href="/" aria-label="Valor Pyme — inicio"><img src="assets/logos/logo-horizontal-dark.svg" alt="Valor Pyme"></a>
-    <nav class="nav__menu" aria-label="Principal">
-      <div class="nav__item">
-        <a class="nav__item-link" href="/rutas" aria-haspopup="true">Rutas Pyme
-          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </a>
-        <div class="dropdown" role="menu">
-          <a class="drop-route" href="/ruta-capital" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-capital.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Capital</span><span class="drop-route__d">Acceso financiero y bancarización</span></span></a>
-          <a class="drop-route" href="/ruta-mercado" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-mercado.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Mercado</span><span class="drop-route__d">Nuevos clientes y logística</span></span></a>
-          <a class="drop-route" href="/ruta-digitalizacion" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-digitalizacion.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Digitalización</span><span class="drop-route__d">Automatiza y profesionaliza</span></span></a>
-          <a class="drop-route" href="/ruta-talento" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span></a>
-        </div>
-      </div>
-      <a href="#aliados">Alianzas</a>
-      <a href="/nosotros">Nosotros</a>
-      <div class="nav__item">
-        <button type="button" class="nav__item-link" aria-haspopup="true">Recursos
-          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-        <div class="dropdown dropdown--community" role="menu">
-          <a class="drop-route drop-route--simple" href="/blog" role="menuitem"><span><span class="drop-route__t">Blog</span><span class="drop-route__d">Artículos y novedades</span></span></a>
-          <a class="drop-route drop-route--simple" href="/foro" role="menuitem"><span><span class="drop-route__t">Foro</span><span class="drop-route__d">Conversaciones de la comunidad</span></span></a>
-          <a class="drop-route drop-route--simple" href="/recursos" role="menuitem"><span><span class="drop-route__t">Recursos</span><span class="drop-route__d">Guías y herramientas</span></span></a>
-        </div>
-      </div>
-      <a href="/contacto">Contacto</a>
-    </nav>
-    <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="/rutas">Rutas Pyme</a>
-  <a href="/ruta-capital" class="mobile-menu__sub">Ruta Capital</a>
-  <a href="/ruta-mercado" class="mobile-menu__sub">Ruta Mercado</a>
-  <a href="/ruta-digitalizacion" class="mobile-menu__sub">Ruta Digitalización</a>
-  <a href="/ruta-talento" class="mobile-menu__sub">Ruta Talento y Gestión</a>
-  <a href="#aliados">Alianzas</a>
-  <a href="/nosotros">Nosotros</a>
-  <span class="mobile-menu__label">Recursos</span>
-  <a href="/blog" class="mobile-menu__sub">Blog</a>
-  <a href="/foro" class="mobile-menu__sub">Foro</a>
-  <a href="/recursos" class="mobile-menu__sub">Recursos</a>
-  <a href="/contacto">Contacto</a>
-</div>
-
-  <main>
-    <div class="ted" x-data="ted">
+   Habla con las mismas serverless functions y escribe las mismas propiedades de
+   contacto que producción: la copia aísla el CÓDIGO, no los DATOS del CRM.
+   ═══════════════════════════════════════════════════════════════════════════ #}
+<div class="ted" x-data="ted">
 
         <!-- ══ Franja de progreso del programa (todo menos la portada) ══ -->
         <div class="ted-progress" x-show="page !== 'home'" x-cloak>
@@ -124,14 +61,9 @@
                         </svg>
                     </div>
 
-                    <h1 class="ted-home__title">
-                        Programa <br>
-                        PyME Digital
-                    </h1>
+                    <h1 class="ted-home__title">{{ module.titulo }}</h1>
 
-                    <p class="ted-home__lead">
-                        Descubre tu nivel de digitalización y avanza hacia la transformación de tu negocio en 3 simples pasos
-                    </p>
+                    <p class="ted-home__lead">{{ module.bajada }}</p>
 
                     <ul class="ted-steplist">
                         <li class="ted-steplist__item">
@@ -171,16 +103,14 @@
 
                     <div class="ted-home__foot">
                         <p class="ted-home__meta">
-                            Duración del diagnóstico: <span>4 min</span>
+                            Duración del diagnóstico: <span>{{ module.duracion }}</span>
                         </p>
-                        <button @click="page = 'contact'" class="btn">
-                            Quiero Comenzar
-                        </button>
+                        <button @click="page = 'contact'" class="btn">{{ module.cta }}</button>
                     </div>
                 </div>
 
                 <div class="ted-media">
-                    <img class="ted-media__img" src="assets/ted/img/ted-bg.jpg" alt="">
+                    <img class="ted-media__img" src="{{ get_asset_url('../img/ted-bg.jpg') }}" alt="">
                 </div>
             </div>
         </section>
@@ -220,7 +150,7 @@
 
                 <div class="ted-aside">
                     <div class="ted-media ted-media--texto">
-                        <img class="ted-media__img" src="assets/ted/img/ted-programa-pyme-digital.jpg" alt="Ted Programa Pyme Digital">
+                        <img class="ted-media__img" src="{{ get_asset_url('../img/ted-programa-pyme-digital.jpg') }}" alt="Ted Programa Pyme Digital">
                     </div>
                     <div class="ted-aside__foot">
                         <button @click="showStartOverModal = true" class="btn btn--ghost btn--sm">
@@ -292,7 +222,7 @@
                     </div>
 
                     <div class="ted-media ted-media--texto">
-                        <img class="ted-media__img" src="assets/ted/img/ted-programa-pyme-digital.jpg" alt="Ted Programa Pyme Digital">
+                        <img class="ted-media__img" src="{{ get_asset_url('../img/ted-programa-pyme-digital.jpg') }}" alt="Ted Programa Pyme Digital">
                     </div>
 
                     <div class="ted-aside__foot">
@@ -505,43 +435,31 @@
              a propósito: es el hueco que build-hubspot.mjs rellena con los campos del módulo,
              para que en HubSpot se puedan cambiar desde el editor de páginas. -->
         <script type="application/json" id="form-ids">
-            {}
+        {
+            "BAJO0-BAJO0": "{{ module.BAJO0_BAJO0.form_id }}",
+            "BAJO0-ALTO": "{{ module.BAJO0_ALTO.form_id }}",
+            "BAJO0-BAJO1": "{{ module.BAJO0_BAJO1.form_id }}",
+            "BAJO0-MEDIO": "{{ module.BAJO0_MEDIO.form_id }}",
+            "BAJO1-BAJO0": "{{ module.BAJO1_BAJO0.form_id }}",
+            "BAJO1-MEDIO": "{{ module.BAJO1_MEDIO.form_id }}",
+            "BAJO1-BAJO1": "{{ module.BAJO1_BAJO1.form_id }}",
+            "BAJO1-ALTO": "{{ module.BAJO1_ALTO.form_id }}",
+            "MEDIO-BAJO0": "{{ module.MEDIO_BAJO0.form_id }}",
+            "MEDIO-BAJO1": "{{ module.MEDIO_BAJO1.form_id }}",
+            "MEDIO-MEDIO": "{{ module.MEDIO_MEDIO.form_id }}",
+            "MEDIO-ALTO": "{{ module.MEDIO_ALTO.form_id }}"
+        }
         </script>
     </div>
-  </main>
 
-  <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div><img src="assets/logos/logo-horizontal-white.svg" alt="Valor Pyme"><p style="color:rgba(255,255,255,.7);font-size:14px;max-width:34ch">Una red de soluciones para el viaje de las pymes de Chile. Cada ruta, una estación más cerca de tu crecimiento.</p>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/valorpyme.cl" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8.4h2.83l.42-3.28H13.5V7.72c0-.95.26-1.6 1.63-1.6h1.74V3.19c-.3-.04-1.33-.13-2.53-.13-2.5 0-4.22 1.53-4.22 4.34v2.42H7.28v3.28h2.84v8.4h3.38z"/></svg></a>
-          <a href="https://www.instagram.com/valorpyme.cl" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-          <a href="https://www.linkedin.com/company/valor-pyme/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
-        </div>
-      </div>
-      <div><h4>Rutas</h4><a href="/rutas">Ver todas las rutas</a><a href="/ruta-capital">Ruta Capital</a><a href="/ruta-mercado">Ruta Mercado</a><a href="/ruta-digitalizacion">Ruta Digitalización</a><a href="/ruta-talento">Ruta Talento y Gestión</a></div>
-      <div><h4>Programa</h4><a href="/nosotros">Nosotros</a><a href="#aliados">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a></div>
-      <div><h4>Súmate</h4><a href="#suscripcion">Registrarme</a><a href="#diagnostico">Diagnóstico</a><a href="/contacto">Contacto</a></div>
-    </div>
-    <div class="footer-bottom"><span>© <span data-year>2026</span> Valor Pyme · Chile</span><span>Términos · Privacidad</span></div>
-  </div>
-</footer>
+{# Formularios de HubSpot. Sin esto `window.hbspt` no existe y renderForm() se cae al
+   formulario mock del entorno local: el usuario vería un formulario falso que no inscribe
+   a nadie. La plantilla de producción lo carga igual, desde el mismo CDN. #}
+<script defer src="https://js.hsforms.net/forms/v2.js"></script>
 
-  <!-- JS del theme: menú móvil, dropdowns, sombra del header al hacer scroll y año del footer.
-       Trae además lógica de la home (carruseles, buscador IA) que aquí no aplica; está toda
-       guardada tras querySelector, así que en esta página no hace nada. -->
-  <script src="script.js?v=18" defer></script>
-
-  <!-- Dependencias de terceros, versionadas en vendor/ para poder trabajar sin internet. -->
-  <script src="assets/ted/vendor/gauge.min.js"></script>
-
-  <!-- El componente se registra ANTES de arrancar Alpine (evento alpine:init). -->
-  <script type="module">
-    import { registerTed } from './assets/ted/src/components/ted.js';
-    document.addEventListener('alpine:init', () => registerTed(window.Alpine));
-  </script>
-  <script defer src="assets/ted/vendor/alpine-persist.min.js"></script>
-  <script defer src="assets/ted/vendor/alpine.min.js"></script>
-</body>
-</html>
+{# Terceros primero, después la entrada del test. Los tres scripts diferidos se ejecutan en el
+   orden del documento, así que main.js registra el componente antes de que arranque Alpine.
+   Mismo orden que en local.
+   A diferencia de producción, Alpine y su plugin van servidos desde el theme y no desde
+   jsdelivr: una dependencia menos fuera de nuestro control y sin fijar versión. #}
+<script defer src="{{ get_asset_url('../js/main.js') }}"></script>

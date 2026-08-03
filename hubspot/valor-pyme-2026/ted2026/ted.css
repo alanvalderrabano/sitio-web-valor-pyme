@@ -17,14 +17,6 @@
 
 /* ── Ajustes al cascarón del theme ───────────────────────────────────────── */
 
-/* El header y el footer vienen de los partials del theme; solo se marca que esto es
-   una copia local para no confundirla con producción. */
-.site-header__top-inner::before {
-  content: "copia local";
-  margin-right: auto; align-self: center;
-  font-family: var(--font-body); font-weight: 700; font-size: 11px;
-  letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5);
-}
 
 /* ── Primitivas de layout ────────────────────────────────────────────────── */
 
@@ -362,13 +354,6 @@
 }
 .ted-mockform button:hover { background: var(--color-morado); }
 
-/* ── Vista previa estática (Cloudflare Pages) ────────────────────────────── */
-/* La build marca el <html> con data-ted-static. Se avisa en la barra superior
-   para que nadie confunda esta página con el test real, que sí guarda leads. */
-html[data-ted-static] .site-header__top-inner::before {
-  content: "vista previa · las respuestas no se guardan";
-  text-transform: none; letter-spacing: .04em;
-}
 
 /* El formulario de descarga es el CTA de la pantalla, y su contenido es corto. Si se estira
    para igualar la lista de dimensiones queda flotando en 400px de blanco: se ajusta a su

@@ -6,3 +6,6 @@ node_modules/
 
 # Servidor local de desarrollo (rutas limpias)
 site/serve.py
+
+# Descarga de producción desde HubSpot: contiene credenciales en claro. NO commitear.
+hubspot/_produccion/

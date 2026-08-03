@@ -1,0 +1,402 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Programa Pyme Digital · versión 2 (dirección visual del rediseño de Figma)
+
+   Namespace `ppd2-`. NO toca nada de programa.css ni de styles.css: la página
+   original sigue viva y sin cambios en /programa-pyme-digital.
+
+   El contenido es LITERAL al de la página actual. Aquí solo cambia la piel.
+
+   Tres divergencias deliberadas respecto al Figma, todas por contraste medido:
+     · acento del H1: menta en vez de verde   (verde sobre morado da 2.64, menta 5.36)
+     · texto del botón: morado profundo        (blanco sobre verde da 2.47, morado 6.51)
+     · texto de Testimonios: morado profundo   (blanco sobre verde da 2.47)
+   El botón sigue siendo verde y la sección sigue siendo verde: cambia la tinta,
+   no la dirección visual.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ppd2 {
+  --ppd2-pad: clamp(28px, 6vw, 88px);   /* aire vertical de cada banda */
+}
+
+/* Bandas a sangre. Es lo que da el ritmo de scroll del rediseño: cinco bloques
+   de color plano en vez del gris-sobre-blanco de la versión actual. */
+.ppd2-band { padding-block: var(--ppd2-pad); }
+.ppd2-band--corp    { background: var(--color-corp);  color: #fff; }
+.ppd2-band { position: relative; overflow: hidden; }
+.ppd2-band--menta   { background: var(--color-menta); color: var(--color-texto-dark); }
+.ppd2-band--verde   { background: var(--color-verde); color: var(--color-texto-dark); }
+.ppd2-band--blanco  { background: #fff; }
+
+.ppd2-wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x); }
+
+/* ── Hero ──────────────────────────────────────────────────────────────────
+   Reconstruido capa por capa desde el SVG que entregó diseño (Hero.svg, 1440x718).
+   El orden es el del archivo, y no es caprichoso: la mujer va ENCIMA de las
+   curvas y del velo morado, por eso se la ve entera mientras el fondo se funde.
+
+     1  color morado de base
+     2  escena de fondo (ppd-hero-escena.jpg)
+     3  velo morado que la degrada hacia la derecha
+     4  las dos curvas de marca
+     5  la figura recortada (ppd-hero-figura.webp)
+     6  el contenido
+
+   Los valores del degradado y los trazados de las curvas son los del SVG, no
+   aproximaciones: se extrajeron del archivo.
+
+   DIVERGENCIA de color, medida: el verde del Figma (#0BBB70) como acento del H1
+   sobre el morado da 2.64 de contraste y el mínimo para texto grande es 3. Se usa
+   #2FE08F (3.77), que a simple vista es el mismo verde. En el botón se conserva el
+   verde vivo y la tinta pasa a morado profundo (6.51): el blanco daba 2.47. */
+.ppd2-hero {
+  position: relative; padding-block: 0; overflow: hidden;
+  background: var(--color-corp);
+  isolation: isolate;
+}
+/* El SVG de diseño mide 1440x718 (proporción 2.006). Si el hero es más alto,
+   `slice` amplía las curvas y engordan. Con la altura atada a esa proporción,
+   curvas y figura caen donde el diseño las puso. */
+@media (min-width: 900px) {
+  .ppd2-hero { min-height: min(718px, 49.9vw); }
+}
+.ppd2-hero > * { position: relative; }
+
+/* 2 · escena de fondo. Rectángulo literal del SVG: x=-52, ancho=1599 sobre 1440. */
+.ppd2-hero__escena,
+.ppd2-hero__figura {
+  position: absolute; top: 0; left: -3.61%; width: 111.04%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.ppd2-hero__escena { z-index: 0; }
+/* 3 · velo morado. Los topes son los del SVG (paint0: 45%→73% del lienzo). */
+.ppd2-hero__velo {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(90deg,
+      var(--color-corp) 0%,
+      rgba(97,38,255,.93) 45%,
+      rgba(97,38,255,.73) 53%,
+      rgba(97,38,255,.45) 66%,
+      rgba(97,38,255,0) 78%);
+}
+/* 4 · curvas de marca, trazados literales del SVG */
+.ppd2-hero__lineas { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; }
+/* 5 · la figura, por encima de las curvas */
+/* La figura es el MISMO lienzo de 1942x872 que la escena, solo que con todo lo
+   demás transparente. Por eso comparte caja con ella y encaja por construcción:
+   recortarla y recolocarla a mano la desalineaba y salía la mujer duplicada. */
+.ppd2-hero__figura { z-index: 3; pointer-events: none; }
+
+/* Las dos capas ancladas al borde derecho del hero.
+   El lienzo trae un 14.1% de transparencia a la derecha de la chica, así que con
+   `right: 0` ella queda dentro sola, sin cuentas ni desplazamientos.
+   Al escalar por ALTO (`height:100%; width:auto`) mantiene su proporción a
+   cualquier ancho y no se recorta.
+
+   Se mueven LAS DOS a la vez: la escena de fondo ya trae a la chica, y la capa
+   recortada solo existe para que las curvas pasen por detrás de ella. Mover una
+   sola las desalinea y se ve duplicada. */
+@media (min-width: 900px) {
+  .ppd2-hero__escena,
+  .ppd2-hero__figura {
+    left: auto; right: 0;
+    width: auto; height: 100%;
+  }
+}
+
+.ppd2-hero__wrap {
+  z-index: 4;
+  max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x);
+  display: grid; grid-template-columns: 1fr;
+}
+@media (min-width: 900px) { .ppd2-hero__wrap { grid-template-columns: minmax(0, 56%); } }
+
+.ppd2-hero__copy { padding-block: clamp(48px, 8vw, 104px); }
+.ppd2-hero__copy h1 {
+  font-size: clamp(2.1rem, 4.6vw, 3.7rem); line-height: 1.03;
+  color: #fff; margin-bottom: 24px;
+  /* En `em` y no en `ch`: así el ancho acompaña al cuerpo de la fuente y el título
+     rompe en las mismas cuatro líneas que el diseño a cualquier tamaño. */
+  max-width: 9.8em;
+}
+.ppd2-hero__copy h1 em { font-style: normal; color: #2FE08F; }
+
+.ppd2-hero__sub { font-size: var(--text-lead); line-height: 1.55; color: rgba(255,255,255,.9); max-width: 46ch; }
+.ppd2-hero__sub strong { color: #fff; }
+.ppd2-hero__sub + .ppd2-hero__sub { margin-top: 16px; }
+.ppd2-hero__cta { margin-top: 34px; }
+
+/* Píldoras. En el Figma están puestas a mano sobre el lienzo de 1440; aquí van en
+   porcentajes sobre la caja del hero y por debajo de 900px pasan a fluir bajo el
+   texto, donde no le tapan la cara a nadie. */
+.ppd2-pills { list-style: none; margin: 0; padding: 0; }
+.ppd2-pill {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: #4A17D6; color: #fff;
+  padding: 8px 12px; font-size: 13px; line-height: 1.2;
+  box-shadow: 0 6px 20px rgba(20,0,60,.28);
+}
+.ppd2-pill svg { width: 24px; height: 24px; flex: 0 0 auto; padding: 4px; background: #fff; color: var(--color-corp); }
+
+@media (max-width: 899px) {
+  /* Las píldoras van fuera del `wrap`, así que en móvil necesitan su propio
+     margen: si no, se pegan al borde de la pantalla. */
+  .ppd2-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding: 0 var(--pad-x) clamp(28px, 7vw, 48px);
+    position: relative; z-index: 4;
+  }
+  .ppd2-hero__figura { display: none; }
+  .ppd2-hero__velo { background: linear-gradient(180deg, var(--color-corp) 62%, rgba(97,38,255,.82) 100%); }
+}
+/* Las píldoras se anclan al CONTENEDOR del sitio, no al hero. Ancladas al hero,
+   a 1920px la de "Amplía tu alcance" se iba al borde de la pantalla y se
+   despegaba de la foto; dentro del contenedor se queda donde el diseño la puso. */
+@media (min-width: 900px) {
+  .ppd2-pills {
+    position: absolute; top: 0; bottom: 0; z-index: 5; pointer-events: none;
+    left: 50%; transform: translateX(-50%);
+    width: min(100%, var(--maxw));
+    padding-inline: var(--pad-x);
+  }
+  .ppd2-pill { position: absolute; white-space: nowrap; }
+  .ppd2-pill--1 { top: 47%; left: 52%; }
+  .ppd2-pill--2 { top: 56%; right: var(--pad-x); flex-direction: row-reverse; }
+  .ppd2-pill--3 { top: 65%; left: 47%; }
+}
+
+/* ── Botón verde ───────────────────────────────────────────────────────────
+   Tinta morada, no blanca. Ver la nota de contraste de arriba. */
+.ppd2-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--color-verde); color: var(--color-texto-dark);
+  font-family: var(--font-display); font-weight: 700; font-size: 16px;
+  padding: 15px 26px; border: 0; text-decoration: none;
+  transition: background .18s ease, transform .18s ease;
+}
+.ppd2-btn:hover { background: #00A862; transform: translateY(-2px); }
+.ppd2-btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.ppd2-btn .arrow { flex: 0 0 auto; }
+
+/* ── Encabezados de banda ──────────────────────────────────────────────── */
+/* Ancho en rem y no en `ch`: la display tiene el "0" muy estrecho, así que 30ch
+   se quedaba en 267px y el H2 largo caía en nueve líneas. */
+.ppd2-head { max-width: 34rem; }
+.ppd2-head--center { margin-inline: auto; text-align: center; max-width: 46rem; }
+.ppd2-head h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem); line-height: 1.12;
+  color: inherit; margin: 0;
+}
+.ppd2-band--corp .ppd2-head h2 { color: #fff; }
+.ppd2-head p { margin-top: 14px; font-size: var(--text-lead); line-height: 1.55; }
+.ppd2-band--corp .ppd2-head p { color: rgba(255,255,255,.86); }
+
+/* ── 3 pasos ───────────────────────────────────────────────────────────────
+   Del Figma se toman los numerales grandes. Las curvas conectoras del diseño
+   nacían en el borde del lienzo (x=0 de 2198px) y no hay forma de que caigan
+   bien a otros anchos: aquí van como SVG con su propia caja, y por debajo de
+   900px desaparecen en vez de deformarse. */
+/* Sin grid: el SVG va fuera del flujo (absolute), así que una rejilla de dos
+   columnas dejaba la lista sola en la primera y la estrujaba. Un sangrado
+   izquierdo hace el mismo trabajo y no depende de cuántos hijos haya. */
+.ppd2-pasos { position: relative; margin-top: 44px; }
+
+
+/* Las líneas entran desde el borde IZQUIERDO DE LA PANTALLA, no desde el contenedor.
+   `calc(50% - 50vw)` lleva el borde del SVG hasta x=0 del viewport: el 50% se
+   resuelve contra este bloque, así que la cuenta sale sola a cualquier ancho.
+   Se extiende hasta 240px dentro de la primera columna, donde van los círculos. */
+.ppd2-pasos__lineas { display: none; }
+@media (min-width: 900px) {
+  .ppd2-pasos__lineas {
+    display: block; position: absolute; z-index: 0;
+    top: 0; height: 100%;
+    left: calc(50% - 50vw);
+    width: calc(50vw - 50% + 240px);
+    pointer-events: none;
+  }
+  /* Los pasos por encima, para que ninguna línea les pase por delante. */
+  .ppd2-steps { position: relative; z-index: 1; }
+}
+
+/* El SVG se estira en los dos ejes (`preserveAspectRatio="none"`) para que los
+   círculos caigan siempre en el centro de su paso — medido: 7.3% / 49.1% / 83.6%
+   del alto de la lista, y esos valores no se mueven entre 940 y 1920px.
+   El brandbook permite escalar el sistema de líneas (§5), así que la sigmoide
+   sigue siendo válida al ensancharse. `non-scaling-stroke` evita el efecto feo de
+   ese estirado: el grosor se mantiene constante en píxeles de pantalla. */
+.ppd2-pasos__lineas path,
+.ppd2-pasos__lineas circle { vector-effect: non-scaling-stroke; }
+
+/* Las estaciones: círculos de verdad, fuera del SVG estirado. Se colocan en el
+   MISMO borde donde terminan los trazos, con la misma cuenta, así coinciden a
+   cualquier ancho sin depender de la escala del SVG. */
+.ppd2-estacion { display: none; }
+@media (min-width: 900px) {
+  .ppd2-estacion {
+    display: block; position: absolute; z-index: 2;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #fff; border: 6px solid currentColor;
+    /* El SVG ya está desplazado a la izquierda, así que su borde derecho cae
+       justo a 240px del origen de este bloque. No hace falta repetir la cuenta. */
+    left: 240px;
+    transform: translate(-50%, -50%);
+  }
+  /* Mismos porcentajes que el centro de 01, 02 y 03 (medido de 940 a 1920px). */
+  .ppd2-estacion--1 { top: 7.3%;  color: #00BD70; }
+  .ppd2-estacion--2 { top: 49.1%; color: #6126FF; }
+  .ppd2-estacion--3 { top: 83.6%; color: #87FFD6; }
+}
+
+/* Animación por BARRIDO de izquierda a derecha, no con `stroke-dasharray`.
+   Con guiones no funcionaba: `non-scaling-stroke` los mide en píxeles de pantalla
+   mientras `pathLength` los normaliza en unidades del viewBox, y a 1920px el trazo
+   moría en x=399 —el ancho del viewBox— en vez de llegar al círculo.
+   El recorte es inmune a la escala: siempre descubre el 100% del ancho real. */
+.ppd2-pasos__lineas { clip-path: inset(0 100% 0 0); }
+.ppd2-estacion { opacity: 0; }
+
+.ppd2-pasos__lineas.is-visible { animation: ppd2-trazo 1.1s cubic-bezier(.22,.61,.36,1) forwards; }
+
+/* La animación se dispara desde el SVG hermano, no con `reveal` propio: la clase
+   `reveal` del sitio pone `transform: none` al hacerse visible y anulaba el
+   `translate(-50%,-50%)` que centra la estación — se descolocaba 11px. */
+.ppd2-pasos__lineas.is-visible ~ .ppd2-estacion { animation: ppd2-estacion .35s ease forwards; }
+.ppd2-pasos__lineas.is-visible ~ .ppd2-estacion--1 { animation-delay: .72s; }
+.ppd2-pasos__lineas.is-visible ~ .ppd2-estacion--2 { animation-delay: .90s; }
+.ppd2-pasos__lineas.is-visible ~ .ppd2-estacion--3 { animation-delay: 1.08s; }
+
+@keyframes ppd2-trazo { to { clip-path: inset(0 0 0 0); } }
+@keyframes ppd2-estacion { to { opacity: 1; } }
+
+/* Quien pide menos movimiento ve las líneas ya dibujadas, sin animación. */
+@media (prefers-reduced-motion: reduce) {
+  .ppd2-pasos__lineas { clip-path: none; }
+  .ppd2-estacion { opacity: 1; }
+  .ppd2-pasos__lineas.is-visible,
+  .ppd2-pasos__lineas.is-visible ~ .ppd2-estacion { animation: none; }
+}
+
+.ppd2-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(22px, 3vw, 38px); }
+/* Va DESPUÉS del reset de arriba a propósito: si se declara antes, el `padding: 0`
+   lo pisa y los numerales se montan sobre las líneas. */
+@media (min-width: 900px) { .ppd2-steps { padding-left: 300px; } }
+.ppd2-step { display: grid; grid-template-columns: auto 1fr; gap: clamp(16px, 2.4vw, 30px); align-items: start; }
+.ppd2-step__num {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: .9;
+  color: var(--color-texto-dark); font-variant-numeric: tabular-nums;
+}
+.ppd2-step h3 { font-size: clamp(1.15rem, 1.8vw, 1.5rem); color: var(--color-texto-dark); margin-bottom: 8px; }
+.ppd2-step p { color: var(--color-gris); line-height: 1.6; max-width: 52ch; }
+
+/* ── Beneficios ────────────────────────────────────────────────────────────
+   El Figma los pone en tres columnas: título muy a la izquierda (al 32% del
+   lienzo), foto en medio y tarjetas a la derecha. En móvil eso deja el título
+   huérfano arriba del todo. Aquí: título + foto forman un bloque y las
+   tarjetas van al lado; al apilarse, el título sigue pegado a su foto. */
+.ppd2-benef { display: grid; grid-template-columns: 1fr; gap: clamp(28px, 4vw, 52px); align-items: center; }
+@media (min-width: 900px) { .ppd2-benef { grid-template-columns: 1fr 1.15fr; } }
+
+.ppd2-benef__aside h2 { margin-bottom: 24px; }
+.ppd2-benef__foto { overflow: hidden; aspect-ratio: 4 / 3; }
+.ppd2-benef__foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.ppd2-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.ppd2-card { background: #fff; padding: 20px 22px; }
+.ppd2-card h3 { font-size: 1.05rem; color: var(--color-texto-dark); margin-bottom: 6px; }
+.ppd2-card p { color: var(--color-gris); font-size: 15px; line-height: 1.55; margin: 0; }
+
+/* ── Realiza el test ───────────────────────────────────────────────────────
+   El Figma muestra el test dentro de un mockup de navegador con los semáforos
+   de macOS. Es un recurso de presentación: aquí va una captura real del test,
+   sin cromo falso. Y las tarjetas no se montan encima de la imagen — en el
+   diseño están posicionadas a mano sobre un lienzo fijo. */
+/* Mosaico de circunferencias del brandbook detrás de la captura, como en el
+   diseño. Es un patrón repetible de 579x578 (assets/lines/patron-mosaico.svg).
+   Ocupa solo la mitad derecha: sobre la columna de texto restaría legibilidad. */
+.ppd2-test-fondo {
+  position: absolute; top: 0; bottom: 0; right: 0;
+  width: 72%; z-index: 0; pointer-events: none;
+  background: url("assets/lines/patron-mosaico.svg") repeat;
+  /* 380px de baldosa dejan cada circunferencia en ~190px, que es la escala del
+     diseño (medido sobre la referencia: ~195px equivalentes a 1440). */
+  background-size: 380px 380px;
+
+  /* A plena intensidad el patrón da 5.36:1 contra el morado — más del doble que
+     el botón (2.64:1). En una sección cuyo trabajo es que se pulse ese botón, el
+     decorado no puede ser lo más brillante de la pantalla. Al 55% baja a ~2.0:1
+     y pasa a leerse como textura sin dejar de estar. */
+  opacity: .55;
+
+  /* Y se desvanece hacia el texto en vez de cortarse en seco: el corte recto
+     marcaba una frontera vertical que no se corresponde con ningún contenido. */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+}
+@media (max-width: 899px) { .ppd2-test-fondo { display: none; } }
+
+/* Esta sección NO es una segunda portada. Repite la misma acción que el hero y
+   lleva al mismo enlace, así que se le baja el rango a propósito: titular al 55%
+   del H1 (estaba al 71%), párrafo un punto por debajo del de arriba y botón que
+   no supera al principal — llegó a ser un 54% más ancho, invirtiendo la jerarquía.
+   Mismo contenido y mismo color; lo que cambia es el peso. */
+.ppd2-test { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+#realiza-el-test .ppd2-head h2 { font-size: clamp(1.45rem, 2.2vw, 2rem); }
+#realiza-el-test .ppd2-head p { font-size: 17px; max-width: 42ch; }
+#realiza-el-test .ppd2-btn { font-size: 15px; padding: 13px 22px; }
+#realiza-el-test { padding-block: clamp(24px, 4.5vw, 64px); }
+@media (min-width: 900px) { .ppd2-test { grid-template-columns: 1fr 1.2fr; } }
+
+.ppd2-test__shot { overflow: hidden; box-shadow: 0 18px 50px rgba(0,0,0,.28); }
+.ppd2-test__shot img { display: block; width: 100%; height: auto; }
+
+.ppd2-recibe__label {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+  color: #fff; margin: 34px 0 14px;
+}
+.ppd2-recibe { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.ppd2-recibe li {
+  background: #fff; color: var(--color-texto-dark);
+  padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  line-height: 1.25; text-align: center;
+}
+.ppd2-recibe__ico {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--color-menta); color: var(--color-texto-dark);
+  display: grid; place-items: center; flex: 0 0 auto;
+}
+.ppd2-recibe__ico svg { width: 20px; height: 20px; }
+
+/* ── Testimonios ───────────────────────────────────────────────────────────
+   Banda verde con la tarjeta blanca del Figma. El título va en morado profundo
+   y no en blanco: sobre el verde, el blanco da 2.47. */
+.ppd2-testi__card {
+  background: #fff; margin-top: 38px; padding: clamp(24px, 3.5vw, 44px);
+  display: grid; grid-template-columns: 1fr; gap: clamp(24px, 3vw, 44px); align-items: center;
+}
+@media (min-width: 900px) { .ppd2-testi__card { grid-template-columns: 1fr 1.1fr; } }
+
+.ppd2-testi__video { aspect-ratio: 956 / 532; background: var(--color-morado); overflow: hidden; }
+.ppd2-testi__video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.ppd2-quote { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin: 0; }
+.ppd2-quote__mark {
+  font-family: var(--font-display); font-weight: 800; font-size: 64px; line-height: .6;
+  color: var(--color-corp); user-select: none;
+}
+.ppd2-quote blockquote {
+  margin: 0; font-size: clamp(16px, 1.4vw, 18px); line-height: 1.6;
+  color: var(--color-texto-body);
+}
+.ppd2-quote figcaption { font-size: var(--text-sm); color: var(--color-gris); }
+.ppd2-quote figcaption strong { display: block; color: var(--color-texto-dark); font-size: 16px; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .ppd2-recibe { grid-template-columns: 1fr; }
+  .ppd2-recibe li { flex-direction: row; text-align: left; gap: 14px; }
+  .ppd2-step { grid-template-columns: 1fr; gap: 6px; }
+  .ppd2-quote__mark { font-size: 48px; }
+}

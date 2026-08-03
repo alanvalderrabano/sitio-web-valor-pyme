@@ -1,0 +1,43 @@
+<!--
+  templateType: page
+  label: Test de Digitalización (TED)
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   TED · theme Valor Pyme 2026
+   Todo lo propio del test vive en esta carpeta. De fuera
+   solo se PIDEN PRESTADOS el look & feel y el cascarón del sitio:
+   styles.css, main.js y los partials de header/footer. Nada de
+   esto se modifica desde aquí, así que el TED no puede romper
+   ninguna otra página del theme.
+
+   La página publicada hoy en /descarga-test-de-digitalizacion usa
+   el theme antiguo y NO se ve afectada por este archivo.
+   GENERADO por ted-local/build-hubspot.mjs — no editar a mano.
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  {# Prestado del theme: tokens, reset, tipografía y .btn del sitio 2026. #}
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+  {# Propio del TED, dentro de su carpeta. Va después para poder afinar sobre el theme. #}
+  <link rel="stylesheet" href="{{ get_asset_url('./ted.css') }}">
+</head>
+<body class="hp" data-ruta="">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% module "ted" path="./ted.module" %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  {# Prestado: menú móvil, sombra del header al hacer scroll y año del footer. #}
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "label": "Test de Digitalización (TED)",
+  "content_types": [
+    "LANDING_PAGE",
+    "SITE_PAGE"
+  ],
+  "is_available_for_new_content": true,
+  "global": false,
+  "host_template_types": [
+    "ANY"
+  ],
+  "categories": [
+    "text"
+  ],
+  "smart_type": "NOT_SMART"
+}

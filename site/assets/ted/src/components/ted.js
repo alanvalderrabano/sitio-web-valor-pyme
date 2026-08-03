@@ -5,7 +5,7 @@
 import { questions as questionsConfig } from '../config/questions.js';
 import { stages } from '../config/stages.js';
 import { dimensions as dimensionsConfig } from '../config/dimensions.js';
-import { postSurveyFormIds, fallbackFormId } from '../config/forms.js';
+import { postSurveyFormIds } from '../config/forms.js';
 import { config } from '../config/api.config.js';
 import { isValidRUT, parseFullName } from '../lib/rut.js';
 import { storeTedData, getContactTedProperties } from '../lib/api.js';
@@ -51,6 +51,8 @@ export function registerTed(Alpine) {
     surveyCompleted: persist(false),
     mailingStageRange: '',
     hasForm: false,
+    // Sin persistir a propósito: en HubSpot los pisa el módulo en cada carga (loadFormIds).
+    formIds: { ...postSurveyFormIds },
 
     // --- configuración (copia mutable: las respuestas se guardan dentro de cada pregunta) ---
     questions: persist(structuredClone(questionsConfig)),
@@ -244,10 +246,22 @@ export function registerTed(Alpine) {
         '-' +
         translateDimensionStage(this.dimensions[4].stage);
 
-      // DIVERGENCIA vs. el original: allí faltan 6 combinaciones en el mapa y esos usuarios
-      // se quedaban sin formulario y sin informe. Ver docs/ANALISIS.md § 4.4.
-      const formId = postSurveyFormIds[this.mailingStageRange] ?? fallbackFormId;
-      if (formId) this.renderForm(formId);
+      // Sin formulario para la combinación no se dibuja nada: las cuatro ALTO-* están
+      // marcadas "N/A" por el negocio y no deben recibir taller. La única que falta de
+      // verdad es MEDIO-ALTO. Ver el comentario de config/forms.js.
+      //
+      // El `else` no es decorativo: showResults() puede ejecutarse dos veces sobre la misma
+      // página (al recargar con el test ya completado, o si el usuario retrocede, cambia
+      // respuestas y vuelve a terminar). Sin limpiar, el formulario de la combinación
+      // anterior seguía en pantalla y el usuario se inscribía al taller equivocado.
+      const formId = this.formIds[this.mailingStageRange];
+      if (formId) {
+        this.renderForm(formId);
+      } else {
+        const contenedor = document.querySelector('#dynamic-form-container');
+        if (contenedor) contenedor.innerHTML = '';
+        this.hasForm = false;
+      }
 
       this.$nextTick(() => this.renderGauge());
     },
@@ -311,6 +325,7 @@ export function registerTed(Alpine) {
 
     async init() {
       this.publishStageColors();
+      this.loadFormIds();
 
       const contactId = new URLSearchParams(window.location.search).get('c');
 
@@ -321,6 +336,27 @@ export function registerTed(Alpine) {
       }
 
       if (this.page === 'results') this.showResults();
+    },
+
+    /**
+     * En HubSpot los IDs de formulario son campos del módulo: el equipo los cambia desde el
+     * editor de páginas sin tocar código. El módulo los imprime en `<script id="form-ids">` y
+     * aquí pisan a los de config/forms.js, que son el valor por defecto y lo que se usa en local.
+     *
+     * Se ignoran las claves vacías: un campo sin formulario asignado renderiza "" y mapearlo
+     * dejaría a esa combinación creyendo que tiene formulario cuando no lo tiene.
+     */
+    loadFormIds() {
+      const nodo = document.getElementById('form-ids');
+      if (!nodo) return;
+
+      try {
+        for (const [combinacion, id] of Object.entries(JSON.parse(nodo.textContent))) {
+          if (id) this.formIds[combinacion] = id;
+        }
+      } catch (error) {
+        console.error('[ted] #form-ids no es JSON válido, se usan los IDs por defecto:', error);
+      }
     },
 
     /**
@@ -357,8 +393,10 @@ export function registerTed(Alpine) {
           return question;
         });
 
+        // La propiedad se toma de la config, no del nombre a mano: escribir en una y leer de
+        // otra dejaba los resultados en blanco al volver con ?c=. Ver dimensions.js.
         for (let i = 1; i <= 5; i++) {
-          const dimensionScore = data[`ted_3_dimension_${i}_posicion_score`];
+          const dimensionScore = data[this.dimensions[i].scoreProperty];
           this.dimensions[i].score = dimensionScore;
           this.dimensions[i].stage = getStage(this.stages, dimensionScore, i, { clamp: true });
           this.dimensions[i].gap = getGap(dimensionScore, this.dimensions[i].weight);
