@@ -21,7 +21,10 @@
 
   /* Secundarios */
   --color-naranja:     #FF8500;
-  --color-menta:       #87FFD6;
+  /* Valor del brandbook (Pantone 331 C = R166 G255 B217). Antes era #87FFD6, que
+     es el que usan los SVG entregados por diseño; decisión del 3-ago-2026: manda
+     el brandbook. Contraste algo mejor: el H1 pasa de 13.24 a 13.72. */
+  --color-menta:       #A6FFD9;
   --color-rosa-claro:  #FFB8DE;
   --color-negro:       #2F2927;
   --color-gris-oscuro: #2F2927;

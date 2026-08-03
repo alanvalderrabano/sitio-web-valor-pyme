@@ -245,7 +245,7 @@
   /* Mismos porcentajes que el centro de 01, 02 y 03 (medido de 940 a 1920px). */
   .ppd2-estacion--1 { top: 7.3%;  color: #00BD70; }
   .ppd2-estacion--2 { top: 49.1%; color: #6126FF; }
-  .ppd2-estacion--3 { top: 83.6%; color: #87FFD6; }
+  .ppd2-estacion--3 { top: 83.6%; color: #A6FFD9; }
 }
 
 /* Animación por BARRIDO de izquierda a derecha, no con `stroke-dasharray`.
