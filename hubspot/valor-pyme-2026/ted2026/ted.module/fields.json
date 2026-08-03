@@ -1,0 +1,177 @@
+[
+  {
+    "id": "titulo",
+    "name": "titulo",
+    "label": "Título (H1)",
+    "type": "text",
+    "required": false,
+    "default": "Programa PyME Digital"
+  },
+  {
+    "id": "bajada",
+    "name": "bajada",
+    "label": "Bajada",
+    "type": "text",
+    "required": false,
+    "default": "Descubre tu nivel de digitalización y avanza hacia la transformación de tu negocio en 3 simples pasos"
+  },
+  {
+    "id": "duracion",
+    "name": "duracion",
+    "label": "Duración que se anuncia",
+    "type": "text",
+    "required": false,
+    "default": "4 min"
+  },
+  {
+    "id": "cta",
+    "name": "cta",
+    "label": "Texto del botón de inicio",
+    "type": "text",
+    "required": false,
+    "default": "Quiero Comenzar"
+  },
+  {
+    "id": "BAJO0_BAJO0",
+    "name": "BAJO0_BAJO0",
+    "label": "Formulario · BAJO0 → BAJO0",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "f0f33ebb-bc0e-4b52-b962-5743d9df6314",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "BAJO0_ALTO",
+    "name": "BAJO0_ALTO",
+    "label": "Formulario · BAJO0 → ALTO",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "f0f33ebb-bc0e-4b52-b962-5743d9df6314",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "BAJO0_BAJO1",
+    "name": "BAJO0_BAJO1",
+    "label": "Formulario · BAJO0 → BAJO1",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "7feed2f0-17e5-44d8-b5a9-3e3222dd6d39",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "BAJO0_MEDIO",
+    "name": "BAJO0_MEDIO",
+    "label": "Formulario · BAJO0 → MEDIO",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "7feed2f0-17e5-44d8-b5a9-3e3222dd6d39",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "BAJO1_BAJO0",
+    "name": "BAJO1_BAJO0",
+    "label": "Formulario · BAJO1 → BAJO0",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "46c3bd47-5bf2-4024-911c-0f930773cd66",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "BAJO1_MEDIO",
+    "name": "BAJO1_MEDIO",
+    "label": "Formulario · BAJO1 → MEDIO",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "5f1087ba-1204-422f-8336-3bc0693143e9",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "BAJO1_BAJO1",
+    "name": "BAJO1_BAJO1",
+    "label": "Formulario · BAJO1 → BAJO1",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "5f1087ba-1204-422f-8336-3bc0693143e9",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "BAJO1_ALTO",
+    "name": "BAJO1_ALTO",
+    "label": "Formulario · BAJO1 → ALTO",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "2c887494-10c1-4802-9436-4595a8e8be52",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "MEDIO_BAJO0",
+    "name": "MEDIO_BAJO0",
+    "label": "Formulario · MEDIO → BAJO0",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "579e11f9-dd9d-4c14-9444-fd4fc94fc483",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "MEDIO_BAJO1",
+    "name": "MEDIO_BAJO1",
+    "label": "Formulario · MEDIO → BAJO1",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "d0516f67-7859-4cd2-8dfd-1ef9e6622c20",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "MEDIO_MEDIO",
+    "name": "MEDIO_MEDIO",
+    "label": "Formulario · MEDIO → MEDIO",
+    "type": "form",
+    "required": false,
+    "default": {
+      "form_id": "d0516f67-7859-4cd2-8dfd-1ef9e6622c20",
+      "response_type": "inline",
+      "message": ""
+    }
+  },
+  {
+    "id": "MEDIO_ALTO",
+    "name": "MEDIO_ALTO",
+    "label": "Formulario · MEDIO → ALTO",
+    "type": "form",
+    "required": false,
+    "default": {
+      "response_type": "inline",
+      "message": ""
+    }
+  }
+]
