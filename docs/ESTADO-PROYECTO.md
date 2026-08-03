@@ -1,6 +1,6 @@
 # Estado del proyecto · Valor Pyme
 
-**2026-07-30** · worktree `naypyidaw`, rama `ted` · repo `alanvalderrabano/sitio-web-valor-pyme`
+**2026-08-03** · worktree `naypyidaw`, rama `ted` · repo `alanvalderrabano/sitio-web-valor-pyme`
 Este documento es el contexto de trabajo. Reemplaza al historial de conversación.
 
 ## Objetivo
@@ -112,6 +112,48 @@ Es un diagnóstico distinto, con otro modelo de datos. **Resuelto: no se toca y 
 (12b puntaje 10→100, 12e peso 2.5→1.25, dim5 peso 15→25). Todo lo demás es idéntico:
 31 preguntas, propiedades, opciones, puntajes, pesos y los 6 juegos de rangos.
 
+## Landing Programa Pyme Digital · v2
+
+`site/programa-pyme-digital-v2.html` + `programa-v2.css` (namespace `ppd2-`).
+**Publicada** en `/programa-pyme-digital-v2`. La original sigue intacta y sin tocar.
+
+Dirección visual del rediseño de Figma, con el **contenido literal** del original: 2005 vs 2096
+caracteres, las diferencias son los ceros de `01/02/03` y el texto de las tres píldoras del hero.
+
+**El hero se reconstruyó capa por capa desde `Hero.svg`** (1440x718, lo entregó diseño): escena,
+velo morado, curvas de marca y figura recortada. El orden importa — la figura va DESPUÉS de las
+curvas, por eso pasan por detrás de ella. Las dos capas de imagen son el mismo lienzo de 1942x872,
+así que comparten caja y encajan por construcción: recortar la figura y recolocarla la desalinea
+y sale la mujer duplicada.
+
+⚠️ **Tres divergencias de color, todas por contraste medido:**
+
+| | Figma | v2 | |
+|---|---|---|---|
+| Acento del H1 | `#0BBB70` | `#2FE08F` | 2.64:1 sobre morado, mínimo 3 |
+| Tinta del botón | blanco | morado profundo | 2.47:1 sobre el verde |
+| Título Testimonios | blanco | morado profundo | 2.47:1 |
+
+Resultado: **0 fallos WCAG AA**, igual que la página actual.
+
+**Correcciones de jerarquía sobre el diseño:** las cinco bandas del Figma miden casi lo mismo
+(ritmo de cartel). Aquí el hero es el más alto y la banda de conversión el más bajo, con el titular
+al 54% del H1 — repite la misma acción y lleva al mismo enlace, no puede leerse como segunda
+portada. El mosaico del brandbook va al 55% y se desvanece: a plena intensidad daba 5.36:1 contra
+el morado, más del doble que el propio botón.
+
+**Recursos de impresión adaptados:** las curvas conectoras nacían en x=0 de un lienzo de 2198px →
+responsivas y animadas con barrido `clip-path`; el mockup de navegador con semáforos de macOS →
+captura real del test.
+
+**Gotchas anotados** (ya resueltos, pero vuelven a morder):
+- `preserveAspectRatio="none"` convierte los círculos en elipses: las estaciones van FUERA del SVG.
+- `stroke-dasharray` + `pathLength` + `non-scaling-stroke` no casan — los guiones se miden en px de
+  pantalla y el trazo moría en el ancho del viewBox. Por eso la animación es un `clip-path`.
+- La clase `reveal` del sitio pone `transform: none` al hacerse visible y **anula cualquier
+  `translate` propio**. Si un elemento necesita centrarse con transform, no puede llevar `reveal`.
+- `max-width` en `ch` con la display: el `0` es muy estrecho y 30ch se quedaba en 267px. Usar `rem`.
+
 ## Sistema de diseño
 
 Tokens en `site/styles.css` `:root`.
@@ -160,7 +202,13 @@ idénticos (`.bl-hero`/`.fr-hero`/`.rc-hero`) · 9 tarjetas, 6 grids, 5 chips du
 de color (`--color-*` y `--c-*`) · 4 páginas huérfanas · 7 enlaces `/blog/<slug>` rotos (no existe
 `site/blog/`) · 81 `href="#"` muertos · anclas de footer inconsistentes.
 
-**Sin commitear:** `docs/ESTADO-PROYECTO.md` (este archivo).
+**En `main`:** PRs #19–#21 — landing v2 publicada, correcciones del TED verificadas contra el
+portal, y el TED como carpeta `ted2026/` del theme 2026 (subida al Design Manager).
+
+🔴 **Token de Private App en claro** en las 5 serverless functions del portal
+(`Valor Pyme v2/serverless-functions.functions/`). Verificado que **NUNCA entró en git** —
+`hubspot/_produccion/` se añadió al `.gitignore` ANTES de descargar. Pero sigue expuesto en el
+portal. Rotarlo y pasarlo a `secrets`, como ya hace el `serverless.json` del buscador IA.
 
 ## Riesgos
 
