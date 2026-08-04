@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sistema de diseño · Valor Pyme</title>
+<meta name="description" content="Tokens, componentes e inventario del sistema de diseño de Valor Pyme, leídos del CSS de producción.">
+<meta property="og:title" content="Sistema de diseño · Valor Pyme">
+<meta property="og:description" content="Tokens, componentes e inventario del sistema de diseño de Valor Pyme, leídos del CSS de producción.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.valorpyme.cl/cupo-registrado-taller-ppd">
+<meta property="og:image" content="assets/photos/brand/hero-cafe-digitalizacion.jpg">
+<link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css?v=103">
+<link rel="stylesheet" href="design-system.css?v=1">
+</head>
+<body data-ruta="">
+
+<header class="site-header">
+  <div class="site-header__top">
+    <div class="container site-header__top-inner">
+      <a href="#suscripcion" class="btn btn--sm nav__cta desktop">Suscríbete</a>
+      <a href="#diagnostico" class="btn btn--sm nav__cta desktop">Encuentra tu ruta</a>
+    </div>
+  </div>
+  <div class="container nav">
+    <a class="nav__logo" href="/" aria-label="Valor Pyme — inicio"><img src="assets/logos/logo-horizontal-dark.svg" alt="Valor Pyme"></a>
+    <nav class="nav__menu" aria-label="Principal">
+      <div class="nav__item">
+        <a class="nav__item-link" href="/rutas" aria-haspopup="true">Rutas Pyme
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown" role="menu">
+          <a class="drop-route" href="/ruta-capital" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-capital.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Capital</span><span class="drop-route__d">Acceso financiero y bancarización</span></span></a>
+          <a class="drop-route" href="/ruta-mercado" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-mercado.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Mercado</span><span class="drop-route__d">Nuevos clientes y logística</span></span></a>
+          <a class="drop-route" href="/ruta-digitalizacion" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-digitalizacion.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Digitalización</span><span class="drop-route__d">Automatiza y profesionaliza</span></span></a>
+          <a class="drop-route" href="/ruta-talento" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span></a>
+        </div>
+      </div>
+      <a href="#aliados">Alianzas</a>
+      <a href="/nosotros">Nosotros</a>
+      <div class="nav__item">
+        <button type="button" class="nav__item-link" aria-haspopup="true">Recursos
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown dropdown--community" role="menu">
+          <a class="drop-route drop-route--simple" href="/blog" role="menuitem"><span><span class="drop-route__t">Blog</span><span class="drop-route__d">Artículos y novedades</span></span></a>
+          <a class="drop-route drop-route--simple" href="/foro" role="menuitem"><span><span class="drop-route__t">Foro</span><span class="drop-route__d">Conversaciones de la comunidad</span></span></a>
+          <a class="drop-route drop-route--simple" href="/recursos" role="menuitem"><span><span class="drop-route__t">Recursos</span><span class="drop-route__d">Guías y herramientas</span></span></a>
+        </div>
+      </div>
+      <a href="/contacto">Contacto</a>
+    </nav>
+    <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main class="ds">
+
+<section class="ds-hero">
+  <div class="ds-wrap">
+    <h1>Sistema de diseño</h1>
+    <p>Esta página no declara ningún valor: los <strong>lee del CSS de producción</strong> al cargar. Si alguien cambia un token en <code>styles.css</code>, aquí se ve al recargar; si lo rompe, se ve roto. Los contrastes se calculan en vivo, no están escritos a mano.</p>
+  </div>
+</section>
+
+<!-- ══════════ TOKENS DE COLOR ══════════ -->
+<section class="ds-sec">
+  <div class="ds-wrap">
+    <h2>Color</h2>
+    <p>Leídos de <code>:root</code> en <code>styles.css</code>. Bajo cada muestra, el contraste real contra blanco y contra negro: sirve para saber sobre qué fondo se puede usar como texto.</p>
+    <div class="ds-swatches" id="ds-colores"><p class="ds-cargando">Leyendo styles.css…</p></div>
+  </div>
+</section>
+
+<!-- ══════════ CONTRASTE ══════════ -->
+<section class="ds-sec">
+  <div class="ds-wrap">
+    <h2>Contraste</h2>
+    <p>Todas las combinaciones de color de marca como texto sobre fondo, calculadas al vuelo. El mínimo WCAG AA es 4,5:1 para cuerpo de texto y 3:1 para texto grande.</p>
+    <div class="ds-nota ds-nota--alerta" id="ds-aviso-contraste"></div>
+    <table class="ds-tabla"><thead><tr><th>Texto</th><th>Sobre</th><th>Cuerpo</th><th>Grande</th><th>Ratio</th></tr></thead>
+      <tbody id="ds-contraste"><tr><td colspan="5" class="ds-cargando">Calculando…</td></tr></tbody></table>
+  </div>
+</section>
+
+<!-- ══════════ TIPOGRAFÍA ══════════ -->
+<section class="ds-sec">
+  <div class="ds-wrap">
+    <h2>Tipografía</h2>
+    <p>La escala real, renderizada con los tokens. <strong>FG Futurist no tiene licencia</strong>, así que en pantalla se ve Rubik, que es el sustituto oficial.</p>
+    <div class="ds-tipo" id="ds-tipo"><p class="ds-cargando">Leyendo la escala…</p></div>
+  </div>
+</section>
+
+<!-- ══════════ BOTONES ══════════ -->
+<section class="ds-sec">
+  <div class="ds-wrap">
+    <h2>Botones</h2>
+    <p>El componente <code>.btn</code> con sus variantes reales. Pasa el cursor y tabula para ver los estados: el foco visible es requisito de accesibilidad, no un extra.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+      <a href="#" class="btn">Botón principal</a>
+      <a href="#" class="btn btn--ghost">Secundario</a>
+      <a href="#" class="btn btn--sm">Pequeño</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SISTEMA DE LÍNEAS ══════════ -->
+<section class="ds-sec">
+  <div class="ds-wrap">
+    <h2>Sistema gráfico</h2>
+    <p>Los patrones oficiales de <code>assets/lines/</code>. La unidad mínima es un cuarto de círculo espejado y escalado (brand-kit §5.2): <strong>sigmoides, nunca arcos</strong>, y siempre actuando como sistema, nunca una línea suelta.</p>
+    <div class="ds-swatches" id="ds-lineas"><p class="ds-cargando">Buscando patrones…</p></div>
+  </div>
+</section>
+
+<!-- ══════════ INVENTARIO ══════════ -->
+<section class="ds-sec">
+  <div class="ds-wrap">
+    <h2>Inventario</h2>
+    <p>Recuento en vivo de las 9 hojas de estilo del sitio. Esta sección no es un catálogo: es el <strong>diagnóstico</strong>. Cuanto más alto el número de familias duplicadas, más lejos está esto de ser un sistema.</p>
+    <div class="ds-cifras" id="ds-cifras"><p class="ds-cargando">Analizando…</p></div>
+    <div id="ds-duplicados"></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  const $ = s => document.querySelector(s);
+  const HOJAS = ['styles.css','blog.css','capsulas.css','foro.css','hero-opciones.css','programa.css','programa-v2.css','recursos.css','typ-v2.css'];
+
+  /* ── contraste ───────────────────────────────────────────────────────── */
+  const lum = hex => {
+    const c = [1,3,5].map(i => parseInt(hex.substr(i,2),16)/255)
+      .map(v => v <= .03928 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4));
+    return .2126*c[0] + .7152*c[1] + .0722*c[2];
+  };
+  const ratio = (a,b) => { const [x,y] = [lum(a),lum(b)].sort((p,q)=>q-p); return (x+.05)/(y+.05); };
+  const esHex = v => /^#[0-9a-f]{6}$/i.test(v);
+
+  /* ── 1 · tokens de color, leídos del CSS real ────────────────────────── */
+  fetch('styles.css').then(r => r.text()).then(css => {
+    const root = css.slice(css.indexOf(':root'), css.indexOf('}', css.indexOf(':root')));
+    const vars = [...root.matchAll(/--([\w-]+)\s*:\s*([^;]+);/g)]
+      .map(m => ({ nombre: m[1], valor: m[2].trim() }));
+
+    const colores = vars.filter(v => esHex(v.valor));
+    $('#ds-colores').innerHTML = colores.map(v => {
+      const rw = ratio(v.valor, '#FFFFFF'), rb = ratio(v.valor, '#000000');
+      return `<div class="ds-sw">
+        <div class="ds-sw__muestra" style="background:${v.valor}"></div>
+        <div class="ds-sw__info">
+          <div class="ds-sw__nombre">--${v.nombre}</div>
+          <div class="ds-sw__hex">${v.valor.toUpperCase()}</div>
+          <div class="ds-sw__ratio"><span>vs blanco ${rw.toFixed(2)}</span><span>vs negro ${rb.toFixed(2)}</span></div>
+        </div></div>`;
+    }).join('');
+
+    /* ── 2 · matriz de contraste ───────────────────────────────────────── */
+    const paleta = colores.filter(v => !/-40$|corp-40/.test(v.nombre));
+    const fondos = paleta.filter(v => /corp|morado|verde|rosa|amarillo|naranja|menta|lavanda|soft|blanco|rosa-claro/.test(v.nombre));
+    const textos = paleta.filter(v => /texto|blanco|morado|gris|negro/.test(v.nombre));
+    const filas = [];
+    for (const t of textos) for (const f of fondos) {
+      if (t.valor.toLowerCase() === f.valor.toLowerCase()) continue;
+      const r = ratio(t.valor, f.valor);
+      filas.push({ t, f, r });
+    }
+    filas.sort((a,b) => b.r - a.r);
+    const usables = filas.filter(x => x.r >= 4.5).length;
+    $('#ds-aviso-contraste').innerHTML =
+      `De <strong>${filas.length}</strong> combinaciones posibles, solo <strong>${usables}</strong> sirven para cuerpo de texto. ` +
+      `Las que no llegan a 3:1 no valen ni para titulares — sirven como fondo o como elemento gráfico, no como tinta.`;
+    $('#ds-contraste').innerHTML = filas.map(({t,f,r}) => `<tr>
+      <td><span class="ds-chip" style="background:${t.valor}"></span>--${t.nombre}</td>
+      <td><span class="ds-chip" style="background:${f.valor}"></span>--${f.nombre}</td>
+      <td class="${r>=4.5?'ds-ok':'ds-fail'}">${r>=4.5?'AA':'no'}</td>
+      <td class="${r>=3?'ds-ok':'ds-fail'}">${r>=3?'AA':'no'}</td>
+      <td>${r.toFixed(2)}</td></tr>`).join('');
+
+    /* ── 3 · escala tipográfica ────────────────────────────────────────── */
+    const tipos = vars.filter(v => v.nombre.startsWith('text-'));
+    $('#ds-tipo').innerHTML = tipos.map(v => {
+      const px = getComputedStyle(document.documentElement).getPropertyValue('--' + v.nombre).trim();
+      const display = /display|h1|h2|h3/.test(v.nombre);
+      return `<div>
+        <span class="ds-tipo__tag">--${v.nombre}<br>${v.valor}</span>
+        <span style="font-size:var(--${v.nombre});font-family:var(--font-${display?'display':'body'});font-weight:${display?700:400};color:var(--color-texto-dark);line-height:1.15">
+          Emprender es siempre un viaje</span></div>`;
+    }).join('');
+  });
+
+  /* ── 4 · patrones del sistema gráfico ────────────────────────────────── */
+  const patrones = ['patron-lineas-1.svg','patron-lineas-2.svg','patron-lineas-3.svg','patron-lineas-color.svg','patron-composicion-1.svg','patron-composicion-2.svg','patron-mosaico.svg'];
+  Promise.all(patrones.map(p =>
+    fetch('assets/lines/' + p, {method:'HEAD'}).then(r => r.ok ? p : null).catch(() => null)
+  )).then(ok => {
+    const hay = ok.filter(Boolean);
+    $('#ds-lineas').innerHTML = hay.map(p => `<div class="ds-sw">
+      <div class="ds-sw__muestra" style="background:var(--color-lavanda);display:grid;place-items:center;padding:10px">
+        <img src="assets/lines/${p}" alt="" width="120" height="76" style="width:auto;height:auto;max-width:100%;max-height:76px;object-fit:contain"></div>
+      <div class="ds-sw__info"><div class="ds-sw__nombre" style="font-size:12px">${p}</div></div></div>`).join('')
+      || '<p class="ds-cargando">No se encontró ningún patrón.</p>';
+  });
+
+  /* ── 5 · inventario: el diagnóstico ──────────────────────────────────── */
+  Promise.all(HOJAS.map(h => fetch(h).then(r => r.ok ? r.text() : '').catch(() => '')))
+    .then(textos => {
+      const todo = textos.join('\n');
+      const clases = new Set([...todo.matchAll(/^\.([a-zA-Z0-9_-]+)/gm)].map(m => m[1]));
+      const prefijos = {};
+      clases.forEach(c => { const m = c.match(/^([a-z]+\d?)-/); if (m) prefijos[m[1]] = (prefijos[m[1]]||0)+1; });
+      const nPref = Object.keys(prefijos).length;
+
+      const familias = ['card','hero','grid','step','btn','head','media','wrap'].map(k => ({
+        k, hits: [...clases].filter(c => c.toLowerCase().includes(k) && !c.includes('__') && !c.includes('--')).sort()
+      })).filter(f => f.hits.length > 1).sort((a,b) => b.hits.length - a.hits.length);
+
+      const dup = familias.reduce((n,f) => n + f.hits.length, 0);
+
+      $('#ds-cifras').innerHTML = `
+        <div class="ds-cifra"><strong>${clases.size}</strong><span>clases CSS distintas</span></div>
+        <div class="ds-cifra"><strong>${HOJAS.length}</strong><span>hojas de estilo</span></div>
+        <div class="ds-cifra ds-cifra--alerta"><strong>${nPref}</strong><span>prefijos conviviendo</span></div>
+        <div class="ds-cifra ds-cifra--alerta"><strong>${dup}</strong><span>clases en familias duplicadas</span></div>`;
+
+      $('#ds-duplicados').innerHTML =
+        `<div class="ds-nota"><strong>Cómo leer esto.</strong> Cada línea es un concepto que se ha implementado varias veces con nombres distintos. No son variantes de un componente: son componentes independientes que hacen lo mismo. Consolidarlos es el trabajo pendiente.</div>
+         <ul class="ds-lista">` + familias.map(f =>
+          `<li><strong>${f.k}</strong> — ${f.hits.length} implementaciones: ${f.hits.map(h=>'<code>.'+h+'</code>').join(' ')}</li>`
+        ).join('') + '</ul>';
+    });
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><img src="assets/logos/logo-horizontal-white.svg" alt="Valor Pyme"><p style="color:rgba(255,255,255,.7);font-size:14px;max-width:34ch">Una red de soluciones para el viaje de las pymes de Chile. Cada ruta, una estación más cerca de tu crecimiento.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/valorpyme.cl" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8.4h2.83l.42-3.28H13.5V7.72c0-.95.26-1.6 1.63-1.6h1.74V3.19c-.3-.04-1.33-.13-2.53-.13-2.5 0-4.22 1.53-4.22 4.34v2.42H7.28v3.28h2.84v8.4h3.38z"/></svg></a>
+          <a href="https://www.instagram.com/valorpyme.cl" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/valor-pyme/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Rutas</h4><a href="/rutas">Ver todas las rutas</a><a href="/ruta-capital">Ruta Capital</a><a href="/ruta-mercado">Ruta Mercado</a><a href="/ruta-digitalizacion">Ruta Digitalización</a><a href="/ruta-talento">Ruta Talento y Gestión</a></div>
+      <div><h4>Programa</h4><a href="/nosotros">Nosotros</a><a href="#aliados">Aliados</a><a href="#">Comunidad</a><a href="#">Recursos</a></div>
+      <div><h4>Súmate</h4><a href="#suscripcion">Registrarme</a><a href="#diagnostico">Diagnóstico</a><a href="/contacto">Contacto</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year>2026</span> Valor Pyme · Chile</span><span>Términos · Privacidad</span></div>
+  </div>
+</footer>
+
+<script src="script.js?v=18" defer></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Página de sistema · /design-system
+
+   NO define tokens ni componentes: los LEE del CSS de producción en tiempo de
+   carga. Por eso no se desactualiza — si alguien cambia un token en styles.css,
+   aquí se ve al recargar, y si lo rompe, se ve roto.
+
+   Namespace `ds-`. Solo estilos de la propia página de sistema.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ds { --ds-gap: clamp(16px, 2vw, 24px); }
+
+.ds-wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad-x); }
+
+.ds-hero { background: var(--color-morado); color: #fff; padding-block: clamp(40px, 6vw, 72px); }
+.ds-hero h1 { color: #fff; font-size: clamp(1.9rem, 3.6vw, 2.8rem); margin-bottom: 14px; }
+.ds-hero p { color: rgba(255,255,255,.82); font-size: var(--text-lead); max-width: 62ch; }
+.ds-hero code { background: rgba(255,255,255,.14); padding: 2px 7px; font-size: .9em; }
+
+.ds-sec { padding-block: clamp(36px, 5vw, 64px); border-top: 1px solid var(--color-borde); }
+.ds-sec:first-of-type { border-top: 0; }
+.ds-sec h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); color: var(--color-texto-dark); margin-bottom: 8px; }
+.ds-sec > .ds-wrap > p { color: var(--color-gris); max-width: 70ch; margin-bottom: 28px; }
+
+/* ── Colores ─────────────────────────────────────────────────────────────── */
+.ds-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--ds-gap); }
+.ds-sw { border: 1px solid var(--color-borde); }
+/* `min-width` para que una imagen aún sin cargar tenga caja: sin ella, dentro de
+   un grid centrado se calcula a 0x0 y `loading="lazy"` no dispara nunca — la
+   imagen no carga porque no tiene tamaño, y no tiene tamaño porque no carga. */
+.ds-sw__muestra { height: 96px; }
+.ds-sw__muestra img { min-width: 40px; }
+.ds-sw__info { padding: 12px 14px; font-size: 13px; line-height: 1.5; }
+.ds-sw__nombre { font-family: var(--font-display); font-weight: 700; color: var(--color-texto-dark); word-break: break-all; }
+.ds-sw__hex { color: var(--color-gris); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.ds-sw__ratio { margin-top: 6px; display: flex; gap: 8px; font-size: 11px; color: var(--color-gris); }
+
+/* ── Matriz de contraste ─────────────────────────────────────────────────── */
+.ds-tabla { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ds-tabla th, .ds-tabla td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--color-borde); }
+.ds-tabla th { font-family: var(--font-display); font-weight: 700; color: var(--color-texto-dark); }
+.ds-tabla td:last-child { font-family: ui-monospace, Menlo, monospace; }
+.ds-ok   { color: #00733E; font-weight: 700; }
+.ds-fail { color: #A8003C; font-weight: 700; }
+.ds-chip { display: inline-block; width: 15px; height: 15px; vertical-align: -3px; margin-right: 7px; border: 1px solid rgba(0,0,0,.12); }
+
+/* ── Tipografía ──────────────────────────────────────────────────────────── */
+.ds-tipo > div { padding: 14px 0; border-bottom: 1px solid var(--color-borde); display: flex; gap: 20px; align-items: baseline; flex-wrap: wrap; }
+.ds-tipo__tag { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--color-gris); min-width: 150px; }
+
+/* ── Inventario ──────────────────────────────────────────────────────────── */
+.ds-cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--ds-gap); margin-bottom: 28px; }
+.ds-cifra { border: 1px solid var(--color-borde); padding: 18px 20px; }
+.ds-cifra strong { display: block; font-family: var(--font-display); font-size: 2rem; line-height: 1; color: var(--color-corp); }
+.ds-cifra span { font-size: 13px; color: var(--color-gris); }
+.ds-cifra--alerta strong { color: var(--color-rosa); }
+
+.ds-lista { font-size: 13px; line-height: 1.9; }
+.ds-lista code { background: var(--color-soft); padding: 2px 6px; font-size: 12px; }
+.ds-lista li { margin-bottom: 6px; }
+
+/* ── Aviso ───────────────────────────────────────────────────────────────── */
+.ds-nota {
+  background: var(--color-soft); border-left: 5px solid var(--color-corp);
+  padding: 16px 20px; font-size: 14px; line-height: 1.6; color: var(--color-texto-body);
+  margin-bottom: 28px;
+}
+.ds-nota--alerta { border-left-color: var(--color-rosa); }
+.ds-nota strong { color: var(--color-texto-dark); }
+
+.ds-cargando { color: var(--color-gris-claro); font-size: 14px; }
