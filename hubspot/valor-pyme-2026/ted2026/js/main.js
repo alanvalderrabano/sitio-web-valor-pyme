@@ -1216,6 +1216,180 @@
     // al terminar el test, que hoy es nada.
   };
 
+  // src/config/perfil.js
+  var camposPerfil = [
+    { property: "firstname", ancho: "medio", label: "Nombre", type: "text", placeholder: "Escribe tu nombre" },
+    { property: "lastname", ancho: "medio", label: "Apellidos", type: "text", placeholder: "Escribe tus apellidos" },
+    { property: "email", ancho: "completo", label: "Correo electr\xF3nico", type: "email", placeholder: "Escribe tu correo electr\xF3nico" },
+    {
+      property: "etapa_de_la_pyme",
+      ancho: "completo",
+      label: "\xBFEn qu\xE9 etapa se encuentra tu negocio?",
+      type: "select",
+      options: [
+        "Inicio: estamos partiendo y validando nuestro modelo de negocios.",
+        "Mantenci\xF3n: ya validamos nuestro modelo de negocios, pero a\xFAn no logramos las ventas esperadas.",
+        "Crecimiento: validamos el modelo de negocios y estamos creciendo.",
+        "Madurez: tenemos un modelo de negocios establecido, con ingresos estables."
+      ]
+    },
+    {
+      property: "bo_cual_de_estas_situaciones_representa_mejor_tu_principal_desafio_actual",
+      ancho: "completo",
+      label: "\xBFCu\xE1l de estas situaciones representa mejor tu principal desaf\xEDo actual?",
+      type: "select",
+      options: [
+        "Mantener el flujo de dinero y acceder a financiamiento",
+        "Vender m\xE1s o llegar a nuevos clientes",
+        "Hacer m\xE1s f\xE1cil la administraci\xF3n de mi negocio",
+        "Desarrollar habilidades o fortalecer mi equipo"
+      ]
+    },
+    {
+      property: "nivel_de_ventas",
+      ancho: "medio",
+      label: "\xBFCu\xE1l es el tramo de ventas de tu empresa?",
+      type: "select",
+      options: [
+        "Sin ventas",
+        "0,01 ~ 200 UF",
+        "200 ~ 600 UF",
+        "600 ~ 2.400 UF",
+        "2.400 ~ 5.000 UF",
+        "5.000 ~ 10.000 UF",
+        "10.000 ~ 25.000 UF",
+        "25.000 ~ 50.000 UF",
+        "50.000 ~ 100.000 UF",
+        "100.000 ~ 200.000 UF",
+        "200.000 ~ 600.000 UF",
+        "600.000 ~ 1.000.000 UF",
+        "sobre 1.000.000 UF"
+      ]
+    },
+    {
+      property: "cual_es_el_rubro_de_tu_pyme__",
+      ancho: "medio",
+      label: "\xBFCu\xE1l es el rubro de tu pyme?",
+      type: "select",
+      options: [
+        "Agro, Ganader\xEDa y Pesca",
+        "Agua, Residuos y Reciclaje",
+        "Arte, Entretenci\xF3n y Deporte",
+        "Actividades de servicio",
+        "Comercio y Retail",
+        "Construcci\xF3n",
+        "Educaci\xF3n y Capacitaci\xF3n",
+        "Energ\xEDa y Combustibles",
+        "Finanzas y Seguros",
+        "Gastronom\xEDa y Hoteler\xEDa",
+        "Inmobiliario",
+        "Manufactura y Elaboraci\xF3n de Productos",
+        "Miner\xEDa",
+        "Organismos Internacionales",
+        "Salud y Bienestar",
+        "Sector P\xFAblico",
+        "Servicios Administrativos",
+        "Servicios Dom\xE9sticos",
+        "Servicios Personales y Otros",
+        "Servicios Profesionales y Consultor\xEDa",
+        "Tecnolog\xEDa y Comunicaciones",
+        "Transporte y Log\xEDstica"
+      ]
+    },
+    // El desplegable que decide cuál de los dos RUT se pide.
+    {
+      property: "tienes_rut_empresa_",
+      ancho: "medio",
+      label: "\xBFTienes RUT empresa?",
+      type: "select",
+      options: [
+        "Si",
+        "No"
+      ]
+    },
+    // Estos dos son excluyentes: `mostrarSi` lo evalúa el componente.
+    {
+      property: "rut_empresa",
+      ancho: "medio",
+      label: "RUT empresa",
+      type: "text",
+      placeholder: "Ejemplo: 87654321-0",
+      mostrarSi: { campo: "tienes_rut_empresa_", valor: "Si" }
+    },
+    {
+      property: "rut_persona",
+      ancho: "medio",
+      label: "RUT persona",
+      type: "text",
+      placeholder: "Ejemplo: 12345678-5",
+      mostrarSi: { campo: "tienes_rut_empresa_", valor: "No" }
+    },
+    {
+      property: "region",
+      ancho: "medio",
+      label: "\xBFEn qu\xE9 regi\xF3n resides?",
+      type: "select",
+      options: [
+        "Regi\xF3n de Arica y Parinacota",
+        "Regi\xF3n de Tarapac\xE1",
+        "Regi\xF3n de Antofagasta",
+        "Regi\xF3n de Atacama",
+        "Regi\xF3n de Coquimbo",
+        "Regi\xF3n de Valpara\xEDso",
+        "Regi\xF3n Metropolitana de Santiago",
+        "Regi\xF3n del Libertador General Bernardo O\u2019Higgins",
+        "Regi\xF3n del Maule",
+        "Regi\xF3n del \xD1uble",
+        "Regi\xF3n del Biob\xEDo",
+        "Regi\xF3n de La Araucan\xEDa",
+        "Regi\xF3n de Los R\xEDos",
+        "Regi\xF3n de Los Lagos",
+        "Regi\xF3n de Ays\xE9n del General Carlos Ib\xE1\xF1ez del Campo",
+        "Regi\xF3n de Magallanes y la Ant\xE1rtica Chilena",
+        "Fuera de Chile",
+        "No Identificada"
+      ]
+    },
+    // En el portal es un campo numérico, no una lista.
+    { property: "bo_edad", ancho: "medio", label: "\xBFCu\xE1l es tu edad?", type: "number", placeholder: "Ejemplo: 42", min: 15, max: 110 },
+    {
+      property: "nivel_de_educacion",
+      ancho: "completo",
+      label: "\xBFCu\xE1l es tu nivel de educaci\xF3n?",
+      type: "select",
+      options: [
+        "Sin estudios",
+        "B\xE1sica",
+        "Media",
+        "Educaci\xF3n t\xE9cnica incompleta",
+        "Educaci\xF3n t\xE9cnica completa",
+        "Universitaria incompleta",
+        "Universitaria completa",
+        "Postgrado (Magister o Doctorado)",
+        "Superior"
+      ]
+    },
+    {
+      property: "bo_con_que_frecuencia_te_gustaria_recibir_contenidos_de_valor_pyme",
+      ancho: "completo",
+      label: "\xBFCon qu\xE9 frecuencia te gustar\xEDa recibir contenidos de Valor Pyme?",
+      type: "select",
+      options: [
+        "1 vez por semana",
+        "Cada 15 d\xEDas",
+        "1 vez al mes",
+        "Solo cuando haya algo realmente importante",
+        "Prefiero poder elegir los temas y la frecuencia"
+      ]
+    }
+  ];
+  function estadoPerfilInicial() {
+    const estado = {};
+    for (const c of camposPerfil) estado[c.property] = "";
+    estado.tienes_rut_empresa_ = "Si";
+    return estado;
+  }
+
   // src/config/api.config.js
   var config = {
     /**
@@ -1261,16 +1435,6 @@
     const modulo = 11 - sum % 11;
     const expected = modulo === 11 ? "0" : modulo === 10 ? "K" : String(modulo);
     return checkDigit === expected;
-  }
-  function parseFullName(fullName) {
-    const names = String(fullName != null ? fullName : "").trim().split(/\s+/);
-    if (names.length > 2) {
-      return { firstname: names.slice(0, -2).join(" "), lastname: names.slice(-2).join(" ") };
-    }
-    if (names.length === 2) {
-      return { firstname: names[0], lastname: names[1] };
-    }
-    return { firstname: fullName, lastname: "" };
   }
 
   // src/lib/api.js
@@ -1403,6 +1567,10 @@
       // bloquea el doble click en "Siguiente"
       errors: [],
       // --- datos del contacto ---
+      // Campos de perfilamiento. SOLO INFORMATIVOS: viajan a HubSpot y no entran en
+      // ningún cálculo. Ver config/perfil.js.
+      perfil: persist(estadoPerfilInicial()),
+      camposPerfil,
       name: persist(""),
       email: persist(""),
       rut: persist(""),
@@ -1425,6 +1593,16 @@
       // ---------------------------------------------------------------- getters
       get percentage() {
         return Math.round((this.currentQuestionIndex + 1) / this.questions.length * 100) || 0;
+      },
+      /** Los campos de perfil que toca mostrar: resuelve el RUT condicional. */
+      get camposVisibles() {
+        return this.camposPerfil.filter(
+          (c) => !c.mostrarSi || this.perfil[c.mostrarSi.campo] === c.mostrarSi.valor
+        );
+      },
+      /** El RUT que el usuario está rellenando, sea de empresa o de persona. */
+      get rutActivo() {
+        return this.perfil.tienes_rut_empresa_ === "No" ? this.perfil.rut_persona : this.perfil.rut_empresa;
       },
       get currentQuestion() {
         return this.questions[this.currentQuestionIndex];
@@ -1482,25 +1660,61 @@
       },
       /** Paso 1: valida el RUT, crea el contacto y entra al cuestionario. */
       async submitUserData() {
-        this.rut = this.rut.replace(/\./g, "");
-        if (!isValidRUT(this.rut)) {
+        const rutLimpio = String(this.rutActivo || "").replace(/\./g, "");
+        const clave = this.perfil.tienes_rut_empresa_ === "No" ? "rut_persona" : "rut_empresa";
+        this.perfil[clave] = rutLimpio;
+        this.rut = rutLimpio;
+        if (!isValidRUT(rutLimpio)) {
           this.errors = ["El RUT ingresado no es v\xE1lido"];
           return;
         }
         this.cleanErrors();
-        Object.assign(this, parseFullName(this.name));
+        this.firstname = this.perfil.firstname.trim();
+        this.lastname = this.perfil.lastname.trim();
+        this.name = `${this.firstname} ${this.lastname}`.trim();
+        this.email = this.perfil.email;
         this.page = "survey";
+        const perfilConValor = Object.fromEntries(
+          Object.entries(this.perfil).filter(([, v]) => v !== "" && v != null)
+        );
         await storeTedData({
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.email,
           ted_3_rut: this.rut,
           company: this.company,
-          inicio_del_test__ted_: true
+          inicio_del_test__ted_: true,
+          ...perfilConValor
+        });
+      },
+      /**
+       * Lleva el foco al enunciado de la pregunta visible.
+       *
+       * Antes, al pulsar Siguiente no cambiaba nada perceptible: el scroll se
+       * quedaba donde estaba y el foco volvía a <body>. En una pregunta larga
+       * podías estar mirando media pantalla sin notar que ya habías avanzado, y
+       * quien navega con teclado perdía la posición 31 veces seguidas.
+       *
+       * Enfocar el enunciado resuelve las tres cosas a la vez: reposiciona el
+       * scroll, devuelve el punto de partida al teclado y hace que un lector de
+       * pantalla anuncie la pregunta nueva.
+       */
+      enfocarPregunta() {
+        this.$nextTick(() => {
+          requestAnimationFrame(() => {
+            const actual = this.$el.querySelectorAll(".ted-question")[this.currentQuestionIndex];
+            const enunciado = actual == null ? void 0 : actual.querySelector(".ted-question__text");
+            if (!enunciado || actual.offsetParent === null) return;
+            enunciado.focus({ preventScroll: true });
+            enunciado.scrollIntoView({ block: "center", behavior: "smooth" });
+          });
         });
       },
       previousQuestion() {
-        if (this.currentQuestionIndex !== 0) this.currentQuestionIndex--;
+        if (this.currentQuestionIndex !== 0) {
+          this.currentQuestionIndex--;
+          this.enfocarPregunta();
+        }
       },
       async nextQuestion() {
         if (this.isAdvancing) return;
@@ -1513,24 +1727,52 @@
         this.isAdvancing = true;
         this.cleanErrors();
         try {
-          await this.sendQuestionData(question);
+          await this.sendQuestionData();
           if (this.currentQuestionIndex === this.questions.length - 1) {
             this.showResults();
           } else {
             this.currentQuestionIndex++;
+            this.enfocarPregunta();
           }
         } finally {
           this.isAdvancing = false;
         }
       },
-      /** Cada respuesta se manda por separado; el checkbox va como "; a; b; c". */
-      sendQuestionData(question) {
-        const answer = question.type === "radio" ? question.answers[0].value : "; " + question.answers.map((a) => a.value).join("; ");
-        return storeTedData({ email: this.email, [question.property]: answer });
+      /** Formatea una respuesta como la espera el CRM: el checkbox va "; a; b; c". */
+      formatoRespuesta(question) {
+        return question.type === "radio" ? question.answers[0].value : "; " + question.answers.map((a) => a.value).join("; ");
+      },
+      /**
+       * TODO lo que el usuario lleva contestado, listo para enviar: los campos de
+       * perfil con valor y las preguntas ya respondidas.
+       *
+       * Es la pieza del envío ACUMULATIVO. Antes cada "Siguiente" mandaba solo su
+       * propia respuesta, así que un POST fallido la perdía para siempre: el test
+       * seguía avanzando, el usuario llegaba a resultados sin ver ningún aviso y el
+       * CRM quedaba con huecos que nadie detectaba. Comprobado cortando la red.
+       *
+       * Mandando el acumulado, el siguiente envío que sí llegue repara los
+       * anteriores. No hace falta lógica de reintentos ni avisar de nada.
+       */
+      get datosAcumulados() {
+        const datos = { email: this.email };
+        for (const [prop, valor] of Object.entries(this.perfil)) {
+          if (valor !== "" && valor != null) datos[prop] = valor;
+        }
+        for (const q of this.questions) {
+          const contestada = q.type === "radio" && q.answer || q.type === "checkbox" && q.answers.length > 0;
+          if (contestada) datos[q.property] = this.formatoRespuesta(q);
+        }
+        return datos;
+      },
+      sendQuestionData() {
+        return storeTedData(this.datosAcumulados);
       },
       sendDimensionsData() {
         return storeTedData({
-          email: this.email,
+          // Va también el acumulado: si falla el POST de la última pregunta, no hay
+          // ningún envío posterior que lo repare salvo este.
+          ...this.datosAcumulados,
           ted_3_porcentaje_digitalizacion: `${this.score}%`,
           ted_3_marketing: translateDimensionStage(this.dimensions[2].stage),
           ted_3_procesos: translateDimensionStage(this.dimensions[4].stage),
@@ -1550,6 +1792,7 @@
         this.firstname = "";
         this.lastname = "";
         this.company = "";
+        this.perfil = estadoPerfilInicial();
         this.currentQuestionIndex = 0;
         this.score = 0;
         this.stage = "";

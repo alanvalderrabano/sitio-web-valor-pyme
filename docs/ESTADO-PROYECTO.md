@@ -1,6 +1,6 @@
 # Estado del proyecto · Valor Pyme
 
-**2026-08-03** · worktree `naypyidaw`, rama `ted` · repo `alanvalderrabano/sitio-web-valor-pyme`
+**2026-08-04** · worktree `naypyidaw`, rama `ted` · repo `alanvalderrabano/sitio-web-valor-pyme`
 Este documento es el contexto de trabajo. Reemplaza al historial de conversación.
 
 ## Objetivo
@@ -153,6 +153,52 @@ captura real del test.
 - La clase `reveal` del sitio pone `transform: none` al hacerse visible y **anula cualquier
   `translate` propio**. Si un elemento necesita centrarse con transform, no puede llevar `reveal`.
 - `max-width` en `ch` con la display: el `0` es muy estrecho y 30ch se quedaba en 267px. Usar `rem`.
+
+## Perfilamiento y UX del TED (4-ago-2026)
+
+⚠️ **SUBIDO A HUBSPOT PERO SIN COMMITEAR EN GIT.** El portal tiene código que el repo no.
+Si alguien clona el repo y regenera, pisa lo que hay en `Valor Pyme 2026/ted2026/`.
+
+**14 campos de perfilamiento** en el formulario inicial. Configuración en `src/config/perfil.js`,
+con los valores de opción **literales del portal** — una propiedad de tipo lista rechaza cualquier
+valor fuera de su catálogo y una sola inválida tumba el POST entero. Verificados contra
+`GET /crm/v3/properties/contacts`: las 14 existen, y **`etapa_de_la_pyme` SÍ existe** (la auditoría
+de julio sospechaba que era `etapa_de_tu_pyme`; era falsa alarma). `bo_edad` es numérico, no lista.
+
+Son solo informativos: no entran en puntaje, dimensiones, etapas ni en la elección del formulario
+final. La paridad con producción sigue en **3 diferencias**, las tres aprobadas.
+
+Decisiones tomadas al montarlo: el RUT no se pregunta dos veces (el campo que ya existía pasa a ser
+el par condicional empresa/persona y sigue escribiendo `ted_3_rut`); "Nombre Completo" se parte en
+dos; los campos nuevos son **opcionales**; se conserva "Nombre de tu Empresa", que no estaba en la
+lista pero ya se pedía.
+
+**Formulario en dos columnas.** El ancho lo decide `perfil.js` (`ancho: 'medio' | 'completo'`), no
+el CSS. De 2322px a 1971px de página.
+
+**Cuatro mejoras de UX**, ninguna toca el cálculo:
+
+| | |
+|---|---|
+| Envío acumulativo | cada POST manda todo lo contestado. Probado tirando 32 de 33 POSTs: 31/31 respuestas llegan |
+| Foco al enunciado | de 0/31 a 31/31 al avanzar. Reposiciona scroll, teclado y lectores |
+| "1 de 31" | antes solo el porcentaje |
+| Skip link | de 21 pulsaciones de Tab a la primera opción, a 2 |
+
+### Trampas que costaron encontrar, y volverán
+
+🔴 **HubSpot ELIMINA `<template>` dentro de `<select>`.** Generar opciones con `<template x-for>`
+ahí dentro funciona en local y deja los 8 desplegables VACÍOS en el portal, con
+`op is not defined`. Hay que crearlas con JS en `x-init`. **Verificar siempre en el portal, no solo
+en local.**
+
+⚠️ `$nextTick` no basta tras un `await`: en `nextQuestion` el tick se resuelve antes de que Alpine
+aplique el `x-show`, y enfocar un elemento en `display:none` falla en silencio. Necesita
+`requestAnimationFrame` encima. La pista fue que al retroceder (síncrono) sí funcionaba.
+
+⚠️ `loading="lazy"` sobre una imagen sin `width`/`height` dentro de un grid centrado se calcula a
+0x0, y una imagen de 0x0 nunca cruza el umbral de carga diferida. No carga porque no tiene tamaño
+y no tiene tamaño porque no carga.
 
 ## Sistema de diseño
 

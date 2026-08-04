@@ -154,7 +154,17 @@
 
 /* ── Formulario de contacto (mismo patrón que .hp-field del theme) ───────── */
 
-.ted-form { display: flex; flex-direction: column; gap: 18px; }
+/* Rejilla de dos columnas: los campos de etiqueta u opciones largas ocupan la fila
+   entera y los cortos se emparejan. Con 15 campos apilados el formulario medía
+   2322px de alto, que es mucho antes de un test de 31 preguntas.
+   Es solo maquetación: ni el orden de envío ni las propiedades cambian. */
+.ted-form { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 560px) {
+  .ted-form { grid-template-columns: 1fr 1fr; column-gap: 16px; }
+  .ted-field { grid-column: 1 / -1; }
+  .ted-field--medio { grid-column: span 1; }
+  .ted-actions { grid-column: 1 / -1; }
+}
 .ted-field { display: flex; flex-direction: column; gap: 8px; }
 .ted-field label { font-weight: 700; font-size: var(--text-sm); color: var(--color-texto-dark); }
 .ted-field input {
@@ -162,6 +172,16 @@
   padding: 13px 15px; border: 1px solid var(--color-borde); border-radius: var(--radius-sm);
   background: #fff; width: 100%; transition: border-color .2s, box-shadow .2s;
 }
+/* El <select> hereda la misma caja que el <input>: los campos de perfilamiento
+   son en su mayoría desplegables y sin esto se veían como controles del sistema,
+   con otra altura y otra tipografía. */
+.ted-field select {
+  font-family: var(--font-body); font-size: 15px; color: var(--color-texto-dark);
+  padding: 13px 15px; border: 1px solid var(--color-borde); border-radius: var(--radius-sm);
+  background: #fff; width: 100%; transition: border-color .2s, box-shadow .2s;
+}
+.ted-field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--color-gris) 50%), linear-gradient(135deg, var(--color-gris) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 40px; cursor: pointer; }
+
 .ted-field input:focus {
   outline: none; border-color: var(--color-corp);
   box-shadow: 0 0 0 3px var(--color-corp-40);
@@ -359,3 +379,24 @@
    para igualar la lista de dimensiones queda flotando en 400px de blanco: se ajusta a su
    contenido y se queda arriba, a la altura del primer dato. */
 .ted-card--form { align-self: start; }
+
+/* ── Saltar al contenido ─────────────────────────────────────────────────────
+   Fuera de pantalla hasta que recibe el foco. No se usa `display:none` ni
+   `visibility:hidden`: eso lo sacaría del orden de tabulación y dejaría de
+   existir para quien lo necesita. */
+.ted-skip {
+  position: absolute; left: 8px; top: -60px; z-index: 999;
+  background: var(--color-corp); color: #fff;
+  padding: 12px 20px; text-decoration: none;
+  font-family: var(--font-display); font-weight: 700; font-size: 15px;
+  transition: top .15s ease;
+}
+.ted-skip:focus { top: 8px; outline: 3px solid #fff; outline-offset: 2px; }
+
+/* El enunciado se enfoca por código al cambiar de pregunta; sin esto el navegador
+   le pinta su anillo por defecto y parece un error. */
+.ted-question__text:focus { outline: none; }
+.ted-question__text:focus-visible { outline: 3px solid var(--color-corp); outline-offset: 4px; }
+
+/* "12 de 31" en vez de solo el porcentaje. */
+.ted-meter__de { font-weight: 400; color: var(--color-gris); margin-inline: 2px; }

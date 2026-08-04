@@ -93,7 +93,7 @@ const RUTAS_SUBIBLES = ['ted2026'];
 const { postSurveyFormIds } = await import('./src/config/forms.js');
 
 const fuente = await fs.readFile(path.join(ROOT, 'public', 'index.html'), 'utf8');
-let cuerpo = extraerBloque(fuente, '<div class="ted" x-data="ted">', 'div');
+let cuerpo = extraerBloque(fuente, '<div class="ted" id="ted-contenido"', 'div');
 
 // El <script id="form-ids"> del original se alimenta de CAMPOS del módulo: el equipo cambia un
 // formulario desde el editor de páginas, sin tocar código. Se conserva esa capacidad. Aquí se
@@ -235,6 +235,12 @@ const template = `<!--
   <link rel="stylesheet" href="{{ get_asset_url('./ted.css') }}">
 </head>
 <body class="hp" data-ruta="">
+  {# Primer elemento enfocable: sin él hacen falta 21 pulsaciones de Tab para
+     llegar a la primera opción, y eso en cada una de las 31 preguntas. Va antes
+     del header porque un enlace de salto solo sirve si es lo primero que recibe
+     el foco. Lo suyo sería tenerlo en el propio partial, para todo el theme. #}
+  <a class="ted-skip" href="#ted-contenido">Saltar al contenido</a>
+
   {% global_partial path="../partials/header.html" %}
 
   <main>
