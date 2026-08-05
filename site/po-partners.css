@@ -1,0 +1,289 @@
+/* =====================================================================
+   VALOR PYME — Landing "Partners · OTIC CChC"  (namespace: po-)
+   Reinterpretación de /partners-otic con el look & feel 2026.
+
+   Reutiliza del sistema global (styles.css):
+     · cascarón (.site-header, .mobile-menu, .site-footer)
+     · botones (.btn, .btn--onfill, .btn--ghost, .btn--sm)
+     · .eyebrow, .lead, .section, .container, .split, .grid-3
+     · cards .benefit, acordeón .faq, campos .hp-field / .hp-check
+
+   Aquí solo vive lo propio de esta página: hero form-first, co-branding,
+   card de formulario, stepper de 3 pasos y las bandas de color.
+   El contenido es LITERAL al de la landing actual.
+   ===================================================================== */
+
+.po { --po-pad: clamp(28px, 6vw, 96px); }
+
+/* ═══════════ 1 · HERO form-first ═══════════
+   Banda corporativa (#6126FF): el morado es el conector transversal del
+   brandbook (§1.1) y la ruta no se fija a un solo color porque el diagnóstico
+   alimenta las cuatro.
+
+   Color PLANO, no degradado: el degradado anterior terminaba en morado
+   profundo por la esquina inferior derecha, justo donde cae la tarjeta blanca,
+   y lo único que aportaba era ensuciar el corporativo. */
+.po-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--color-corp);
+  color: #fff;
+  padding-block: clamp(32px, 6vw, 72px);
+}
+
+/* Trama del sistema gráfico.
+   `patron-mosaico.svg` es la unidad de cuarto de círculo del brandbook (§5.2)
+   tejida en retícula, en menta sobre corporativo: el patrón va SIEMPRE más
+   claro que el fondo —así lo usa la lámina del brandbook y así está en la
+   landing v2—, porque puesto más oscuro se lee como sombra hundida.
+
+   Al 17% queda en textura y no compite con la tarjeta blanca, que es lo que
+   tiene que mandar en un hero cuyo protagonista es un formulario. Medido con
+   el texto oculto, el blanco conserva 5.41:1 sobre la zona más densa: por
+   encima del 4.5:1 de AA sin necesidad de velos.
+
+   La máscara la apaga en diagonal: densa en la esquina inferior izquierda,
+   nada donde caen el titular y la tarjeta.
+
+   Sustituye a las dos sigmoides que había aquí dibujadas a mano. Eran trazos
+   inventados, con `stroke-linecap="round"` cuando el brandbook pide
+   terminaciones rectas (§5.2.3), y además quedaban tapadas por la tarjeta:
+   solo asomaban fragmentos por el borde derecho. */
+.po-hero__trama {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: url("assets/lines/patron-mosaico.svg") repeat;
+  background-size: 300px 300px;
+  opacity: .17;
+  -webkit-mask-image: radial-gradient(120% 110% at 8% 100%, #000 0%, #000 26%, transparent 72%);
+          mask-image: radial-gradient(120% 110% at 8% 100%, #000 0%, #000 26%, transparent 72%);
+}
+/* En móvil la tarjeta pasa a ancho completo y el hero se va a ~1800px de alto:
+   con la máscara anclada abajo, la parte densa cae más allá del pliegue y el
+   titular se queda sobre color plano. Aquí se ancla arriba, que es donde mira
+   el ojo. (Las sigmoides anteriores directamente se ocultaban en móvil.) */
+@media (max-width: 939px) {
+  .po-hero__trama {
+    background-size: 220px 220px;
+    -webkit-mask-image: radial-gradient(150% 46% at 4% 0%, #000 0%, #000 24%, transparent 74%);
+            mask-image: radial-gradient(150% 46% at 4% 0%, #000 0%, #000 24%, transparent 74%);
+  }
+}
+.po-hero__grid {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+}
+@media (min-width: 940px) {
+  .po-hero__grid { grid-template-columns: 1.05fr .95fr; }
+}
+
+.po-hero__copy { max-width: 640px; }
+.po-hero h1 {
+  color: #fff;
+  font-size: clamp(2rem, 3.9vw, 3.1rem);
+  line-height: 1.05;
+  max-width: 18ch;
+  margin-bottom: 18px;
+}
+.po-hero__lead {
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: rgba(255,255,255,.88);
+  max-width: 52ch;
+}
+.po-hero__cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* ── Lockup de co-branding VP × OTIC ── */
+.po-cobrand {
+  display: inline-flex; align-items: center; gap: 18px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.22);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  padding: 12px 18px; margin-bottom: 26px;
+}
+.po-cobrand__vp { height: 30px; width: auto; }
+.po-cobrand__x { width: 1px; height: 30px; background: rgba(255,255,255,.38); }
+.po-cobrand__partner {
+  display: grid; place-items: center;
+  width: 44px; height: 44px; background: #fff; border-radius: 50%;
+  overflow: hidden; flex: 0 0 auto;
+}
+.po-cobrand__partner img { width: 40px; height: 40px; object-fit: contain; }
+
+/* ── Card del formulario ── */
+.po-formcard {
+  background: #fff; color: var(--color-texto-body);
+  padding: clamp(24px, 3vw, 40px);
+  box-shadow: var(--shadow-lg);
+  align-self: stretch;
+}
+.po-formcard__title {
+  font-family: var(--font-display); font-weight: 700;
+  color: var(--color-texto-dark);
+  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+  line-height: 1.15; margin-bottom: 22px;
+}
+/* ── Formulario de HubSpot embebido (#po-hsform) ──
+   HubSpot inyecta su propio markup (.hs-form, .hs-input, .hs-button…). Lo
+   acotamos a .po-hsform y lo vestimos con los tokens del sistema, igual que el
+   form nativo del sitio (labels bold, borde recto, focus ring morado, botón CTA). */
+.po-hsform { min-height: 60px; }
+.po-hsform .hs-form-field { margin-bottom: 16px; }
+.po-hsform .hs-form-field > label {
+  display: block; margin-bottom: 8px;
+  font-family: var(--font-body); font-weight: 700; font-size: 14px;
+  color: var(--color-texto-dark);
+}
+.po-hsform .hs-form-required { color: var(--color-rosa); margin-left: 2px; }
+.po-hsform .hs-field-desc { font-size: 13px; color: var(--color-gris); margin: 2px 0 8px; }
+.po-hsform input.hs-input,
+.po-hsform select.hs-input,
+.po-hsform textarea.hs-input {
+  width: 100%; box-sizing: border-box;
+  font-family: var(--font-body); font-size: 15px; color: var(--color-texto-dark);
+  padding: 13px 15px; border: 1px solid var(--color-borde); border-radius: 0; background: #fff;
+  transition: border-color .2s, box-shadow .2s;
+}
+.po-hsform textarea.hs-input { resize: vertical; min-height: 120px; }
+.po-hsform input.hs-input:focus,
+.po-hsform select.hs-input:focus,
+.po-hsform textarea.hs-input:focus {
+  outline: none; border-color: var(--color-corp); box-shadow: 0 0 0 3px var(--color-corp-40);
+}
+.po-hsform input::placeholder, .po-hsform textarea::placeholder { color: var(--color-gris-claro); }
+/* Checkboxes / radios: no estirar a 100% */
+.po-hsform .inputs-list { list-style: none; margin: 0; padding: 0; }
+.po-hsform .hs-form-booleancheckbox-display,
+.po-hsform .hs-form-checkbox-display,
+.po-hsform .hs-form-radio-display {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13.5px; color: var(--color-gris); line-height: 1.5; font-weight: 400;
+}
+.po-hsform input[type="checkbox"], .po-hsform input[type="radio"] {
+  width: 18px; height: 18px; margin-top: 2px; flex: 0 0 auto; accent-color: var(--color-corp);
+}
+/* Botón de envío */
+.po-hsform .hs-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%; margin-top: 6px; padding: 14px 26px; height: 50px;
+  border: none; border-radius: 0; cursor: pointer;
+  font-family: var(--font-body); font-weight: 700; font-size: 16px; line-height: 1;
+  background: var(--color-corp); color: #fff;
+  transition: background .25s, transform .25s, box-shadow .25s;
+}
+.po-hsform .hs-button:hover { background: var(--color-morado); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.po-hsform .hs-button:focus-visible { outline: 3px solid var(--color-corp-40); outline-offset: 3px; }
+/* Errores de validación */
+.po-hsform .hs-error-msg, .po-hsform .hs-error-msgs label { color: var(--color-rosa); font-size: 13px; }
+.po-hsform .hs-error-msgs { list-style: none; margin: 6px 0 0; padding: 0; }
+/* Mensaje de éxito tras el envío */
+.po-hsform .submitted-message {
+  padding: 16px 18px; background: #D4FBE8; border: 1px solid var(--color-verde);
+  color: #00733E; font-weight: 700; font-size: 14.5px;
+}
+
+/* ═══════════ EL DIAGNÓSTICO (split, banda lavanda) ═══════════ */
+.po-diag { background: var(--color-lavanda); }
+.po-diag .split__copy h2 { margin: 14px 0 16px; max-width: 16ch; }
+.po-diag__cta { margin-top: 26px; }
+/* Ilustración con fondo transparente: se muestra libre (contain), sin caja ni
+   borde; la sombra sigue la forma del PNG con drop-shadow. */
+.po-diag__media {
+  aspect-ratio: auto; overflow: visible;
+  display: grid; place-items: center;
+}
+.po-diag__media img {
+  width: 100%; height: auto; max-width: 568px; object-fit: contain;
+  filter: drop-shadow(0 20px 44px rgba(51,5,89,.18));
+}
+
+/* ═══════════ 3 · CÓMO FUNCIONA · 3 pasos (banda menta) ═══════════
+   Stepper con línea de metro conectora entre estaciones (brandbook §5). */
+.po-steps-sec { background: var(--color-menta); color: var(--color-texto-dark); }
+.po-steps-head { max-width: 46rem; margin-bottom: clamp(36px, 5vw, 56px); }
+.po-steps-head h2 {
+  color: var(--color-morado);
+  font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.14;
+}
+
+.po-steps {
+  /* El diámetro y el hueco salen a variable porque la línea que une las
+     estaciones se calcula a partir de los dos. */
+  --po-dot: 56px;
+  --po-gap: clamp(20px, 3vw, 40px);
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--po-gap);
+  position: relative;
+}
+/* Línea de metro que une las tres estaciones (solo desktop).
+   Va de CENTRO DE PUNTO a CENTRO DE PUNTO, no de centro de columna a centro
+   de columna: los puntos están alineados a la izquierda de su columna, así que
+   con `left: 100%/6` la línea arrancaba 154px por delante del punto 1 —el
+   primero se quedaba suelto— y sobraba otros 128px por detrás del 3.
+
+   El extremo derecho se mide desde el borde del grid: es el ancho de una
+   columna, (100% − 2 huecos) / 3, menos el radio del punto. */
+.po-steps::before {
+  content: ""; position: absolute; z-index: 0;
+  height: 6px;
+  top: calc(var(--po-dot) / 2 - 3px);
+  left: calc(var(--po-dot) / 2);
+  right: calc((100% - 2 * var(--po-gap)) / 3 - var(--po-dot) / 2);
+  background: var(--color-corp);
+}
+.po-step {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+}
+.po-step__dot {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--color-corp); color: #fff;
+  display: grid; place-items: center; flex: 0 0 auto;
+  box-shadow: 0 0 0 6px var(--color-menta);   /* estación: anillo con el fondo */
+}
+.po-step__num { font-family: var(--font-display); font-weight: 800; font-size: 24px; line-height: 1; }
+.po-step h3 { font-size: var(--text-h3); color: var(--color-morado); max-width: 16ch; }
+.po-step p { color: #2A2431; font-size: 15px; line-height: 1.55; max-width: 40ch; }
+
+/* ═══════════ 4 · LA ALIANZA OTIC (banda blanca) ═══════════ */
+.po-otic { background: #fff; }
+.po-otic__intro {
+  display: grid; grid-template-columns: 1fr; gap: clamp(24px, 4vw, 52px);
+  align-items: center; margin-bottom: clamp(28px, 4vw, 44px);
+}
+@media (min-width: 860px) { .po-otic__intro { grid-template-columns: minmax(200px, 300px) 1fr; } }
+.po-otic__logo {
+  display: grid; place-items: center;
+  border: 1px solid var(--color-borde); padding: 28px;
+}
+.po-otic__logo img { width: 100%; max-width: 240px; height: auto; object-fit: contain; }
+.po-otic__intro h2 { margin: 12px 0 14px; }
+.po-otic__sub {
+  font-size: var(--text-h3); color: var(--color-morado);
+  margin-bottom: clamp(24px, 3vw, 36px); max-width: 24ch;
+}
+/* Ícono circular de las cards de pilar en morado corporativo */
+.po-pillars .benefit__ico { background: var(--color-corp); color: #fff; }
+.po-pillars .benefit h3 { font-size: var(--text-h3); color: var(--color-morado); }
+
+/* ═══════════ 5 · FAQ (banda lavanda) ═══════════ */
+.po-faq { background: var(--color-lavanda); }
+.po-faq__intro { text-align: center; margin-bottom: clamp(28px, 4vw, 44px); }
+.po-faq__intro h2 { color: var(--color-morado); }
+
+/* ═══════════ Responsive ═══════════ */
+@media (max-width: 939px) {
+  .po-steps { grid-template-columns: 1fr; gap: 26px; }
+  .po-steps::before { display: none; }
+  .po-step { flex-direction: row; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .po-step__dot { box-shadow: none; }
+  .po-step h3, .po-step p { flex-basis: 100%; }
+}
+@media (max-width: 560px) {
+  .po-cobrand { gap: 12px; padding: 10px 14px; }
+  .po-cobrand__vp { height: 24px; }
+  .po-hero__cta .btn { width: 100%; justify-content: center; }
+}

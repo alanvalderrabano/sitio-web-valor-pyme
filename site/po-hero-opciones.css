@@ -1,0 +1,157 @@
+/* =====================================================================
+   Fondos del hero de /partners-otic — SOLO REVISIÓN INTERNA
+
+   Namespace `hf-` (hero-fondo). No toca po-partners.css ni la página real:
+   aquí solo se sustituye la CAPA DE FONDO de `.po-hero`. La estructura, el
+   contenido, la tarjeta y el CTA son idénticos en las cuatro.
+
+   Reglas del brandbook que se respetan en todas (brand-kit §5.2, §5.4, §6.3):
+     · Nunca una línea suelta: siempre dos o más actuando como sistema.
+     · Terminaciones RECTAS. Los archivos de marca ya vienen así; el hero
+       actual las dibuja a mano con `stroke-linecap="round"`, que es §5.2.3
+       al revés.
+     · Las líneas pueden cortar el borde del contenedor (§5.4.4) — de hecho
+       es su uso natural: line-7 mide 2447px de ancho, está hecha para sangrar.
+     · El patrón va SIEMPRE más claro que el fondo. Por eso el mosaico menta
+       (#A6FFD9) sobre corporativo y no `patron-lineas-2`, cuyo colorway es
+       morado profundo sobre corporativo, es decir más oscuro.
+     · Estación solo en un cruce real. Ninguna de estas cuatro la inventa.
+
+   Ningún recurso dibujado a mano: solo archivos de assets/lines/.
+
+   NO SE USAN, y conviene dejar escrito por qué:
+     · line-6.svg y line-8.svg son el mapa de las cuatro Rutas Pyme, con los
+       nombres de las estaciones rasterizados dentro ("Talento"…) y, en el 8,
+       el logotipo "valor" y los tirantes de las llamadas. Son ilustraciones
+       con contenido propio, no fondos. En esta página pondrían la palabra
+       "Talento" flotando sobre una landing de OTIC.
+     · line-5.svg trae un rectángulo blanco pegado al borde izquierdo, que es
+       un resto de la mesa de trabajo de Figma.
+   ===================================================================== */
+
+/* ── Etiqueta de cada opción (no va a producción) ───────────────────────── */
+.hf-tag { background: var(--color-gris-oscuro); color: #fff; padding-block: 14px; }
+.hf-tag__inner { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; }
+.hf-tag b { font-family: var(--font-display); font-size: 17px; letter-spacing: .02em; }
+.hf-tag span { font-size: var(--text-sm); color: rgba(255,255,255,.72); }
+.hf-tag code { background: rgba(255,255,255,.14); padding: 1px 6px; font-size: 12px; }
+
+/* ── Capa de fondo común ────────────────────────────────────────────────
+   Un contenedor a sangre por debajo de todo. Las capas van como <img> y no
+   como `background-image` para poder anclarlas a un borde y dejarlas salir
+   del hero sin recortar la proporción. */
+.hf-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+/* `height:auto` es obligatorio: los atributos width/height del <img> actúan
+   como sugerencia de estilo, así que sin esto el alto se quedaría clavado en
+   los píxeles del archivo y el trazo saldría aplastado. */
+.hf-bg img { position: absolute; display: block; height: auto; }
+
+/* El texto y la tarjeta siempre por encima. */
+.hf-hero .po-hero__grid { position: relative; z-index: 1; }
+
+/* Anula el degradado de la página real: las cuatro parten de color plano para
+   que lo que se compare sea el recurso gráfico, no el degradado. */
+.hf-hero { background: var(--color-corp); }
+
+/* ═══ F1 · Trazos de marca a sangre ═══════════════════════════════════════
+   Tres sigmoides reales entrando y saliendo por los bordes. La verde (line-7,
+   2447×279) hace de base y cruza el hero entero por debajo del CTA; la rosa
+   claro y la amarilla entran por arriba a distinta altura y salen por la
+   derecha, por detrás de la tarjeta.
+
+   El lienzo libre de este hero no es el rectángulo entero: la tarjeta ocupa
+   de 54% a 88% de ancho y el texto va de 25% a 72% de alto en la mitad
+   izquierda. Quedan dos franjas, arriba y abajo a la izquierda, y ahí es donde
+   tienen que caer las curvas. La primera versión las puso centradas y la
+   tarjeta se comió las tres.
+
+   Ninguna cruza el titular, así que el blanco conserva sus 6.50:1 contra el
+   corporativo sin velos ni opacidades correctoras.
+
+   Las tres están dimensionadas para que sus DOS extremos queden fuera de la
+   vista: el izquierdo sale del hero y el derecho se mete detrás de la tarjeta,
+   que empieza al 54%. Los archivos terminan en corte recto —así los entregó
+   diseño, §5.2.3— y un corte recto en mitad del lienzo se lee como un trazo
+   roto, no como una línea que sigue. */
+.hf-f1 .hf-l-verde  { left: -34%; bottom: -3%; width: 152%; }
+.hf-f1 .hf-l-rosa   { left: -26%; bottom: 14%; width: 86%;  }
+.hf-f1 .hf-l-amar   { left: -10%; top: -8%;    width: 70%;  }
+
+/* ═══ F2 · Mosaico menta, tono sobre tono ════════════════════════════════
+   `patron-mosaico.svg` es la unidad de cuarto de círculo del §5.2 tejida en
+   retícula. Va en menta sobre corporativo —más claro que el fondo— y muy
+   bajo de opacidad: a este nivel se lee como textura de papel y no compite
+   con la tarjeta blanca, que es lo que tiene que mandar en un hero con
+   formulario.
+
+   La máscara lo apaga en diagonal hacia el centro: denso en la esquina
+   inferior izquierda, nada donde caen el titular y la tarjeta. */
+.hf-f2 .hf-mosaico {
+  position: absolute; inset: 0;
+  background: url("assets/lines/patron-mosaico.svg") repeat;
+  background-size: 300px 300px;
+  opacity: .17;
+  -webkit-mask-image: radial-gradient(120% 110% at 8% 100%, #000 0%, #000 26%, transparent 72%);
+          mask-image: radial-gradient(120% 110% at 8% 100%, #000 0%, #000 26%, transparent 72%);
+}
+
+/* ═══ F3 · La composición de las cuatro rutas ════════════════════════════
+   `line-4.svg` es la única pieza multicolor del sistema sin texto rasterizado
+   dentro: cuatro trazos —amarillo, corporativo, rosa y menta— que se cruzan.
+   Puestos sobre morado profundo (#330559), que ningún hero del sitio usa hoy,
+   los cuatro colores suben de contraste y la pieza se lee como lo que es: las
+   cuatro rutas convergiendo.
+
+   Va anclada abajo a la izquierda y sangra por dos bordes (§5.4.4). A la
+   escala que pedía el gesto —88% de ancho— el trazo amarillo entraba en la
+   bajada, y blanco sobre #FEF31D da 1.1:1: ilegible.
+
+   La solución no fue encogerla —a 52% los cuatro trazos morían en un corte
+   recto en mitad del hero— sino bajarla: mantiene el tamaño, entra por debajo
+   del CTA (que termina al 71% de alto) y sus extremos rectos desaparecen, el
+   izquierdo fuera del hero y el derecho detrás de la tarjeta. */
+.hf-f3 { background: var(--color-morado); }
+.hf-f3 .hf-l-comp { left: -20%; bottom: -46%; width: 78%; }
+
+/* ═══ F4 · Mosaico + trazo ═══════════════════════════════════════════════
+   Las dos anteriores sumadas y bajadas de intensidad: el mosaico da el grano
+   y la sigmoide verde da la dirección. Es la más discreta de las cuatro y la
+   que menos pelea con un formulario de catorce campos. */
+.hf-f4 .hf-mosaico {
+  position: absolute; inset: 0;
+  background: url("assets/lines/patron-mosaico.svg") repeat;
+  background-size: 300px 300px;
+  opacity: .11;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 18%, #000 100%);
+          mask-image: linear-gradient(to bottom, transparent 18%, #000 100%);
+}
+.hf-f4 .hf-l-verde { left: -34%; bottom: -3%; width: 152%; }
+.hf-f4 .hf-l-rosa  { left: -22%; bottom: 15%; width: 74%; opacity: .85; }
+
+/* ── Móvil ──────────────────────────────────────────────────────────────
+   Debajo de 940px la tarjeta pasa a ocupar el ancho completo y el hero se
+   alarga muchísimo. Los trazos anclados al borde inferior quedarían a un
+   scroll de distancia del titular, así que se recolocan arriba. */
+@media (max-width: 939px) {
+  .hf-f1 .hf-l-verde,
+  .hf-f4 .hf-l-verde { bottom: auto; top: 26%; width: 190%; left: -45%; }
+  .hf-f1 .hf-l-amar  { display: none; }
+  .hf-f3 .hf-l-comp  { bottom: auto; top: 30%; width: 150%; left: -50%; }
+}
+
+/* ── Réplica estática de la tarjeta ─────────────────────────────────────
+   La página real inyecta aquí el formulario de HubSpot. Cuatro embeds del
+   mismo formulario en una página se pisan entre ellos, así que esto es una
+   maqueta con las mismas medidas y el mismo título: para comparar fondos hace
+   falta que el bloque blanco ocupe exactamente el mismo sitio, no que el
+   formulario funcione. */
+.hf-maqueta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+.hf-maqueta > * { grid-column: span 1; }
+.hf-maqueta__campo span {
+  display: block; font-size: 13px; color: var(--color-texto-body); margin-bottom: 5px;
+}
+.hf-maqueta__campo i {
+  display: block; height: 42px; background: #F5F7FA; border: 1px solid #E3E7EE;
+}
+.hf-maqueta__legal { grid-column: 1 / -1; font-size: 12px; color: var(--color-gris); margin-top: 6px; }
+.hf-maqueta__btn { grid-column: 1 / -1; margin-top: 10px; }
