@@ -48,6 +48,44 @@
 .ds-tipo > div { padding: 14px 0; border-bottom: 1px solid var(--color-borde); display: flex; gap: 20px; align-items: baseline; flex-wrap: wrap; }
 .ds-tipo__tag { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--color-gris); min-width: 150px; }
 
+/* ── Sistema gráfico ─────────────────────────────────────────────────────── */
+.ds-sub { font-family: var(--font-display); font-size: 1.05rem; color: var(--color-texto-dark); margin: 34px 0 4px; }
+.ds-sec .ds-sub:first-of-type { margin-top: 0; }
+.ds-sub__p { color: var(--color-gris); font-size: 14px; max-width: 70ch; margin-bottom: 18px; }
+
+/* Selector de fondo. Sin `appearance`: son botones, se ven como botones. */
+.ds-fondos { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; font-size: 13px; color: var(--color-gris); }
+.ds-fondos button {
+  font: inherit; cursor: pointer; padding: 5px 12px;
+  background: #fff; color: var(--color-texto-body);
+  border: 1px solid var(--color-borde);
+}
+.ds-fondos button:hover { border-color: var(--color-corp); }
+.ds-fondos button[aria-pressed="true"] { background: var(--color-corp); border-color: var(--color-corp); color: #fff; }
+
+/* Estas piezas se usan a su proporción, no recortadas: las anchas ocupan la
+   fila entera para no verlas aplastadas a 30px de alto dentro de una tarjeta. */
+.ds-swatches--trazos { --ds-fondo: var(--color-morado); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+/* Los `span` solo cuando hay más de una columna: en una rejilla de una sola,
+   `span 2` inventaría una columna implícita y desbordaría la página. */
+@media (min-width: 720px) {
+  .ds-sw--fila  { grid-column: 1 / -1; }
+  .ds-sw--doble { grid-column: span 2; }
+}
+
+.ds-trazo__lienzo {
+  background: var(--ds-fondo);
+  padding: 14px; min-height: 96px;
+  display: grid; place-items: center;
+}
+/* `width:100%` + `height:auto` con los atributos width/height del viewBox: así la
+   caja existe antes de que la imagen cargue y `loading="lazy"` sí dispara. */
+.ds-trazo__lienzo img { width: 100%; height: auto; max-height: 190px; object-fit: contain; }
+
+.ds-trazo__colores { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
+.ds-trazo__color { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--color-gris); }
+.ds-trazo__color em { font-style: normal; font-family: var(--font-body); font-size: 11px; margin-left: 4px; }
+
 /* ── Inventario ──────────────────────────────────────────────────────────── */
 .ds-cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--ds-gap); margin-bottom: 28px; }
 .ds-cifra { border: 1px solid var(--color-borde); padding: 18px 20px; }

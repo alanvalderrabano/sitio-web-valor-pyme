@@ -6,6 +6,7 @@ import { questions as questionsConfig } from '../config/questions.js';
 import { stages } from '../config/stages.js';
 import { dimensions as dimensionsConfig } from '../config/dimensions.js';
 import { postSurveyFormIds } from '../config/forms.js';
+import { camposPerfil, estadoPerfilInicial } from '../config/perfil.js';
 import { config } from '../config/api.config.js';
 import { isValidRUT, parseFullName } from '../lib/rut.js';
 import { storeTedData, getContactTedProperties } from '../lib/api.js';
@@ -37,6 +38,11 @@ export function registerTed(Alpine) {
     errors: [],
 
     // --- datos del contacto ---
+    // Campos de perfilamiento. SOLO INFORMATIVOS: viajan a HubSpot y no entran en
+    // ningún cálculo. Ver config/perfil.js.
+    perfil: persist(estadoPerfilInicial()),
+    camposPerfil,
+
     name: persist(''),
     email: persist(''),
     rut: persist(''),
@@ -63,6 +69,20 @@ export function registerTed(Alpine) {
 
     get percentage() {
       return Math.round(((this.currentQuestionIndex + 1) / this.questions.length) * 100) || 0;
+    },
+
+    /** Los campos de perfil que toca mostrar: resuelve el RUT condicional. */
+    get camposVisibles() {
+      return this.camposPerfil.filter(
+        (c) => !c.mostrarSi || this.perfil[c.mostrarSi.campo] === c.mostrarSi.valor,
+      );
+    },
+
+    /** El RUT que el usuario está rellenando, sea de empresa o de persona. */
+    get rutActivo() {
+      return this.perfil.tienes_rut_empresa_ === 'No'
+        ? this.perfil.rut_persona
+        : this.perfil.rut_empresa;
     },
 
     get currentQuestion() {
@@ -132,16 +152,33 @@ export function registerTed(Alpine) {
 
     /** Paso 1: valida el RUT, crea el contacto y entra al cuestionario. */
     async submitUserData() {
-      this.rut = this.rut.replace(/\./g, '');
+      // El RUT sale ahora del par condicional empresa/persona. Se sigue validando
+      // igual y se sigue guardando en `ted_3_rut`, que es lo que lee la
+      // rehidratación por ?c=. Nada de esto entra en ningún cálculo.
+      const rutLimpio = String(this.rutActivo || '').replace(/\./g, '');
+      const clave = this.perfil.tienes_rut_empresa_ === 'No' ? 'rut_persona' : 'rut_empresa';
+      this.perfil[clave] = rutLimpio;
+      this.rut = rutLimpio;
 
-      if (!isValidRUT(this.rut)) {
+      if (!isValidRUT(rutLimpio)) {
         this.errors = ['El RUT ingresado no es válido'];
         return;
       }
 
       this.cleanErrors();
-      Object.assign(this, parseFullName(this.name));
+      // `name` se mantiene por compatibilidad: lo usa la rehidratación y la
+      // pantalla de resultados. Ahora se compone de los dos campos separados.
+      this.firstname = this.perfil.firstname.trim();
+      this.lastname = this.perfil.lastname.trim();
+      this.name = `${this.firstname} ${this.lastname}`.trim();
+      this.email = this.perfil.email;
       this.page = 'survey';
+
+      // Solo se envían los campos con valor: una propiedad de tipo lista rechaza
+      // la cadena vacía y con ella se cae el POST entero.
+      const perfilConValor = Object.fromEntries(
+        Object.entries(this.perfil).filter(([, v]) => v !== '' && v != null),
+      );
 
       await storeTedData({
         firstname: this.firstname,
@@ -150,11 +187,44 @@ export function registerTed(Alpine) {
         ted_3_rut: this.rut,
         company: this.company,
         inicio_del_test__ted_: true,
+        ...perfilConValor,
+      });
+    },
+
+    /**
+     * Lleva el foco al enunciado de la pregunta visible.
+     *
+     * Antes, al pulsar Siguiente no cambiaba nada perceptible: el scroll se
+     * quedaba donde estaba y el foco volvía a <body>. En una pregunta larga
+     * podías estar mirando media pantalla sin notar que ya habías avanzado, y
+     * quien navega con teclado perdía la posición 31 veces seguidas.
+     *
+     * Enfocar el enunciado resuelve las tres cosas a la vez: reposiciona el
+     * scroll, devuelve el punto de partida al teclado y hace que un lector de
+     * pantalla anuncie la pregunta nueva.
+     */
+    enfocarPregunta() {
+      // `$nextTick` + `requestAnimationFrame`, no solo lo primero: `nextQuestion`
+      // es asíncrona y tras su `await` el nextTick se resuelve ANTES de que Alpine
+      // haya aplicado el `x-show` de la pregunta nueva. Enfocar un elemento cuyo
+      // padre sigue en `display:none` no hace nada y no avisa — al retroceder
+      // funcionaba (es síncrono) y al avanzar no, que fue la pista.
+      this.$nextTick(() => {
+        requestAnimationFrame(() => {
+          const actual = this.$el.querySelectorAll('.ted-question')[this.currentQuestionIndex];
+          const enunciado = actual?.querySelector('.ted-question__text');
+          if (!enunciado || actual.offsetParent === null) return;
+          enunciado.focus({ preventScroll: true });
+          enunciado.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        });
       });
     },
 
     previousQuestion() {
-      if (this.currentQuestionIndex !== 0) this.currentQuestionIndex--;
+      if (this.currentQuestionIndex !== 0) {
+        this.currentQuestionIndex--;
+        this.enfocarPregunta();
+      }
     },
 
     async nextQuestion() {
@@ -174,30 +244,63 @@ export function registerTed(Alpine) {
       this.cleanErrors();
 
       try {
-        await this.sendQuestionData(question);
+        await this.sendQuestionData();
         if (this.currentQuestionIndex === this.questions.length - 1) {
           this.showResults();
         } else {
           this.currentQuestionIndex++;
+          this.enfocarPregunta();
         }
       } finally {
         this.isAdvancing = false;
       }
     },
 
-    /** Cada respuesta se manda por separado; el checkbox va como "; a; b; c". */
-    sendQuestionData(question) {
-      const answer =
-        question.type === 'radio'
-          ? question.answers[0].value
-          : '; ' + question.answers.map((a) => a.value).join('; ');
+    /** Formatea una respuesta como la espera el CRM: el checkbox va "; a; b; c". */
+    formatoRespuesta(question) {
+      return question.type === 'radio'
+        ? question.answers[0].value
+        : '; ' + question.answers.map((a) => a.value).join('; ');
+    },
 
-      return storeTedData({ email: this.email, [question.property]: answer });
+    /**
+     * TODO lo que el usuario lleva contestado, listo para enviar: los campos de
+     * perfil con valor y las preguntas ya respondidas.
+     *
+     * Es la pieza del envío ACUMULATIVO. Antes cada "Siguiente" mandaba solo su
+     * propia respuesta, así que un POST fallido la perdía para siempre: el test
+     * seguía avanzando, el usuario llegaba a resultados sin ver ningún aviso y el
+     * CRM quedaba con huecos que nadie detectaba. Comprobado cortando la red.
+     *
+     * Mandando el acumulado, el siguiente envío que sí llegue repara los
+     * anteriores. No hace falta lógica de reintentos ni avisar de nada.
+     */
+    get datosAcumulados() {
+      const datos = { email: this.email };
+
+      for (const [prop, valor] of Object.entries(this.perfil)) {
+        if (valor !== '' && valor != null) datos[prop] = valor;
+      }
+
+      for (const q of this.questions) {
+        const contestada =
+          (q.type === 'radio' && q.answer) ||
+          (q.type === 'checkbox' && q.answers.length > 0);
+        if (contestada) datos[q.property] = this.formatoRespuesta(q);
+      }
+
+      return datos;
+    },
+
+    sendQuestionData() {
+      return storeTedData(this.datosAcumulados);
     },
 
     sendDimensionsData() {
       return storeTedData({
-        email: this.email,
+        // Va también el acumulado: si falla el POST de la última pregunta, no hay
+        // ningún envío posterior que lo repare salvo este.
+        ...this.datosAcumulados,
         ted_3_porcentaje_digitalizacion: `${this.score}%`,
         ted_3_marketing: translateDimensionStage(this.dimensions[2].stage),
         ted_3_procesos: translateDimensionStage(this.dimensions[4].stage),
@@ -218,6 +321,7 @@ export function registerTed(Alpine) {
       this.firstname = '';
       this.lastname = '';
       this.company = '';
+      this.perfil = estadoPerfilInicial();
       this.currentQuestionIndex = 0;
       this.score = 0;
       this.stage = '';

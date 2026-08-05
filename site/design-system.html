@@ -113,7 +113,22 @@
   <div class="ds-wrap">
     <h2>Sistema gráfico</h2>
     <p>Los patrones oficiales de <code>assets/lines/</code>. La unidad mínima es un cuarto de círculo espejado y escalado (brand-kit §5.2): <strong>sigmoides, nunca arcos</strong>, y siempre actuando como sistema, nunca una línea suelta.</p>
+
+    <h3 class="ds-sub">Patrones</h3>
+    <p class="ds-sub__p">Tramas que se repiten. Van siempre <strong>más claras que el fondo</strong>: puestas más oscuras se leen como sombra hundida.</p>
     <div class="ds-swatches" id="ds-lineas"><p class="ds-cargando">Buscando patrones…</p></div>
+
+    <h3 class="ds-sub">Trazos y composiciones</h3>
+    <p class="ds-sub__p">Piezas sueltas, no tramas: se usan una vez, a su proporción. Los colores de cada archivo se comparan en vivo contra los tokens de <code>styles.css</code> — vienen de exportaciones de Figma y no todos coinciden.</p>
+    <div class="ds-nota" id="ds-aviso-trazos" hidden></div>
+    <div class="ds-fondos" role="group" aria-label="Fondo de las muestras">
+      <span>Ver sobre:</span>
+      <button type="button" data-fondo="#FFFFFF">blanco</button>
+      <button type="button" data-fondo="var(--color-lavanda)">lavanda</button>
+      <button type="button" data-fondo="var(--color-morado)" aria-pressed="true">morado</button>
+      <button type="button" data-fondo="var(--color-corp)">corporativo</button>
+    </div>
+    <div class="ds-swatches ds-swatches--trazos" id="ds-trazos"><p class="ds-cargando">Leyendo los trazos…</p></div>
   </div>
 </section>
 
@@ -143,12 +158,15 @@
   const ratio = (a,b) => { const [x,y] = [lum(a),lum(b)].sort((p,q)=>q-p); return (x+.05)/(y+.05); };
   const esHex = v => /^#[0-9a-f]{6}$/i.test(v);
 
-  /* ── 1 · tokens de color, leídos del CSS real ────────────────────────── */
-  fetch('styles.css').then(r => r.text()).then(css => {
+  /* ── 1 · tokens de color, leídos del CSS real ──────────────────────────
+     Una sola lectura de styles.css: la comparten esta sección y la de trazos. */
+  const tokens = fetch('styles.css').then(r => r.text()).then(css => {
     const root = css.slice(css.indexOf(':root'), css.indexOf('}', css.indexOf(':root')));
-    const vars = [...root.matchAll(/--([\w-]+)\s*:\s*([^;]+);/g)]
+    return [...root.matchAll(/--([\w-]+)\s*:\s*([^;]+);/g)]
       .map(m => ({ nombre: m[1], valor: m[2].trim() }));
+  });
 
+  tokens.then(vars => {
     const colores = vars.filter(v => esHex(v.valor));
     $('#ds-colores').innerHTML = colores.map(v => {
       const rw = ratio(v.valor, '#FFFFFF'), rb = ratio(v.valor, '#000000');
@@ -206,6 +224,101 @@
         <img src="assets/lines/${p}" alt="" width="120" height="76" style="width:auto;height:auto;max-width:100%;max-height:76px;object-fit:contain"></div>
       <div class="ds-sw__info"><div class="ds-sw__nombre" style="font-size:12px">${p}</div></div></div>`).join('')
       || '<p class="ds-cargando">No se encontró ningún patrón.</p>';
+  });
+
+  /* ── 4b · trazos sueltos: line-1…line-8 ──────────────────────────────────
+     No se listan a mano las medidas ni los colores: se leen del propio SVG.
+     Así, si alguien reexporta un archivo desde Figma con otro color, aquí sale
+     marcado solo. Es el mismo principio que el resto de la página. */
+  const TRAZOS = Array.from({length: 8}, (_, i) => `line-${i + 1}.svg`);
+
+  const dist = (a, b) => {                       // distancia RGB, para el token más cercano
+    const p = h => [1,3,5].map(i => parseInt(h.substr(i,2),16));
+    const [x, y] = [p(a), p(b)];
+    return Math.hypot(x[0]-y[0], x[1]-y[1], x[2]-y[2]);
+  };
+
+  Promise.all([
+    tokens,
+    Promise.all(TRAZOS.map(f =>
+      fetch('assets/lines/' + f)
+        .then(r => r.ok ? r.text() : null)
+        .then(svg => {
+          if (!svg) return null;
+          const vb = svg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
+          const w = vb ? +vb[1] : 0, h = vb ? +vb[2] : 0;
+          /* Solo colores de trazo y relleno: los `stop-color` de degradados y las
+             fotos incrustadas en base64 no son decisiones de paleta. */
+          const hex = [...new Set(
+            [...svg.matchAll(/(?:fill|stroke)="(#[0-9a-fA-F]{6})"/g)].map(m => m[1].toUpperCase())
+          )];
+          return { archivo: f, w, h, hex };
+        })
+        .catch(() => null)
+    ))
+  ]).then(([vars, brutos]) => {
+    const trazos = brutos.filter(Boolean);
+    if (!trazos.length) {
+      $('#ds-trazos').innerHTML = '<p class="ds-cargando">No se encontró ningún trazo.</p>';
+      return;
+    }
+
+    /* Se compara contra los colores de MARCA, no contra los grises de interfaz:
+       un verde de Figma nunca debe emparejarse con --color-borde por cercanía. */
+    const marca = vars.filter(v => esHex(v.valor) &&
+      /corp|morado|verde|rosa|amarillo|naranja|menta|lavanda|negro|blanco/.test(v.nombre) &&
+      !/^c-|texto|ruta/.test(v.nombre));
+
+    const cerca = hex => marca
+      .map(t => ({ t, d: dist(hex, t.valor) }))
+      .sort((a, b) => a.d - b.d)[0];
+
+    let desviados = 0;
+    const html = trazos.map(t => {
+      const chips = t.hex.map(h => {
+        const { t: tok, d } = cerca(h);
+        const exacto = d === 0;
+        if (!exacto) desviados++;
+        return `<span class="ds-trazo__color">
+          <span class="ds-chip" style="background:${h}"></span>${h}
+          <em class="${exacto ? 'ds-ok' : 'ds-fail'}">${exacto ? '=' : '≈'} --${tok.nombre}</em></span>`;
+      }).join('');
+      /* El ancho de la celda lo decide la proporción del archivo: una línea de
+         2447×279 dentro de una tarjeta de 320px se queda en 36px de alto y no se
+         ve nada. Las apaisadas ocupan más columnas. */
+      const ratio = t.h ? t.w / t.h : 1;
+      const ancho = ratio >= 4 ? ' ds-sw--fila' : ratio >= 2 ? ' ds-sw--doble' : '';
+      return `<div class="ds-sw${ancho}">
+        <div class="ds-trazo__lienzo">
+          <img src="assets/lines/${t.archivo}" alt="" loading="lazy" width="${t.w}" height="${t.h}"></div>
+        <div class="ds-sw__info">
+          <div class="ds-sw__nombre" style="font-size:12px">${t.archivo}</div>
+          <div class="ds-sw__hex">${t.w} × ${t.h}</div>
+          <div class="ds-trazo__colores">${chips}</div>
+        </div></div>`;
+    }).join('');
+
+    $('#ds-trazos').innerHTML = html;
+
+    const total = trazos.reduce((n, t) => n + t.hex.length, 0);
+    const aviso = $('#ds-aviso-trazos');
+    aviso.hidden = false;
+    aviso.classList.toggle('ds-nota--alerta', desviados > 0);
+    aviso.innerHTML = desviados
+      ? `De <strong>${total}</strong> colores usados en estos ${trazos.length} archivos, <strong>${desviados}</strong> no son el token de marca sino un valor aproximado. ` +
+        `Se ven iguales en pantalla, pero significan que el asset no sigue al token: si mañana cambia la paleta, estos archivos se quedan atrás — como ya pasó con la menta.`
+      : `Los <strong>${total}</strong> colores de estos ${trazos.length} archivos coinciden exactamente con los tokens.`;
+  });
+
+  /* Fondo de las muestras: estas piezas llevan amarillo y morado profundo, así
+     que ninguna base sirve para juzgarlas todas. Se cambia y se mira. */
+  const fondos = document.querySelector('.ds-fondos');
+  if (fondos) fondos.addEventListener('click', e => {
+    const b = e.target.closest('button[data-fondo]');
+    if (!b) return;
+    fondos.querySelectorAll('button').forEach(x => x.removeAttribute('aria-pressed'));
+    b.setAttribute('aria-pressed', 'true');
+    $('#ds-trazos').style.setProperty('--ds-fondo', b.dataset.fondo);
   });
 
   /* ── 5 · inventario: el diagnóstico ──────────────────────────────────── */
