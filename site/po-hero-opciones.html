@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Fondos del hero · Partners OTIC — revisión interna</title>
+<link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css?v=103">
+<link rel="stylesheet" href="po-partners.css?v=1">
+<link rel="stylesheet" href="po-hero-opciones.css?v=1">
+</head>
+<body data-ruta="">
+
+<header class="site-header">
+  <div class="site-header__top">
+    <div class="container site-header__top-inner">
+      <a href="#" class="btn btn--sm nav__cta desktop">Suscríbete</a>
+      <a href="#" class="btn btn--sm nav__cta desktop">Encuentra tu ruta</a>
+    </div>
+  </div>
+  <div class="container nav">
+    <a class="nav__logo" href="/" aria-label="Valor Pyme — inicio"><img src="assets/logos/logo-horizontal-dark.svg" alt="Valor Pyme"></a>
+    <nav class="nav__menu" aria-label="Principal">
+      <a href="/rutas">Rutas Pyme</a>
+      <a href="/nosotros">Nosotros</a>
+      <a href="/recursos">Recursos</a>
+      <a href="/contacto">Contacto</a>
+    </nav>
+    <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="po" id="opciones"></main>
+
+<!-- Las cuatro variantes se generan del MISMO molde: así lo único que puede
+     diferir entre ellas es la capa de fondo, no un descuido al copiar. -->
+<template id="molde">
+  <section class="po-hero hf-hero" aria-label="Diagnóstico digital gratuito con OTIC CChC y Valor Pyme">
+    <div class="hf-bg" aria-hidden="true"></div>
+    <div class="container po-hero__grid">
+      <div class="po-hero__copy">
+        <div class="po-cobrand" aria-label="Alianza Valor Pyme y OTIC CChC">
+          <img src="assets/logos/logo-horizontal-white.svg" alt="Valor Pyme" class="po-cobrand__vp">
+          <span class="po-cobrand__x" aria-hidden="true"></span>
+          <span class="po-cobrand__partner"><img src="assets/logos/partners/otic.png" alt="OTIC CChC" width="160" height="160"></span>
+        </div>
+        <h1>Descubre las áreas donde tu Pyme puede seguir creciendo</h1>
+        <p class="po-hero__lead">Realiza un diagnóstico digital gratuito junto a OTIC CChC y Valor Pyme para identificar oportunidades de mejora, acceder a orientación especializada y conocer opciones de capacitación para tu negocio.</p>
+        <div class="po-hero__cta">
+          <a href="/descarga-test-de-digitalizacion" class="btn btn--onfill">Quiero realizar mi diagnóstico
+            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="po-formcard">
+        <h2 class="po-formcard__title">Suscríbete a Valor Pyme y accede a asesoramiento digital personalizado</h2>
+        <div class="hf-maqueta">
+          <label class="hf-maqueta__campo"><span>Nombre*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>Apellido*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>Correo electrónico*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿En qué etapa se encuentra tu negocio?*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿Cuál de estas situaciones representa mejor tu principal desafío actual?*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿Cuál es el tramo de ventas de tu empresa?*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿Tienes RUT empresa?*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿Cuál es el rubro de tu pyme?*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿En qué región resides?*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿Cuál es tu edad?*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿Cuál es tu nivel de educación?*</span><i></i></label>
+          <label class="hf-maqueta__campo"><span>¿Con qué frecuencia te gustaría recibir contenidos?*</span><i></i></label>
+          <p class="hf-maqueta__legal">Al registrarse en esta plataforma, autorizas el tratamiento de datos ingresados bajo la normativa vigente.*</p>
+          <div class="hf-maqueta__btn"><span class="btn">Enviar</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</template>
+
+<script>
+(function () {
+  const L = 'assets/lines/';
+  const OPCIONES = [
+    {
+      clase: 'hf-f1',
+      titulo: 'F1 — Trazos de marca a sangre',
+      nota: 'Tres sigmoides reales de <code>assets/lines/</code> cruzando los bordes. Ninguna toca la banda del titular, así que el blanco mantiene sus 6.50:1 sin velos.',
+      capas: [
+        { src: 'line-7.svg', clase: 'hf-l-verde', w: 2447, h: 279 },
+        { src: 'line-2.svg', clase: 'hf-l-rosa',  w: 898,  h: 141 },
+        { src: 'line-3.svg', clase: 'hf-l-amar',  w: 449,  h: 141 },
+      ],
+    },
+    {
+      clase: 'hf-f2',
+      titulo: 'F2 — Mosaico menta, tono sobre tono',
+      nota: '<code>patron-mosaico.svg</code> al 17%, más claro que el fondo, apagándose en diagonal desde la esquina inferior izquierda. Sin ninguna línea: solo grano.',
+      trama: true,
+    },
+    {
+      clase: 'hf-f3',
+      titulo: 'F3 — La composición de las cuatro rutas',
+      nota: '<code>line-4.svg</code> a gran escala sobre morado profundo <code>#330559</code>, sangrando por dos bordes. Es la única pieza multicolor del sistema sin texto rasterizado dentro.',
+      capas: [{ src: 'line-4.svg', clase: 'hf-l-comp', w: 572, h: 408 }],
+    },
+    {
+      clase: 'hf-f4',
+      titulo: 'F4 — Mosaico + trazo',
+      nota: 'Las dos anteriores bajadas de intensidad: el mosaico da el grano y la sigmoide verde la dirección. La más discreta detrás de un formulario de catorce campos.',
+      trama: true,
+      capas: [
+        { src: 'line-7.svg', clase: 'hf-l-verde', w: 2447, h: 279 },
+        { src: 'line-2.svg', clase: 'hf-l-rosa',  w: 898,  h: 141 },
+      ],
+    },
+  ];
+
+  const molde = document.querySelector('#molde');
+  const destino = document.querySelector('#opciones');
+
+  for (const op of OPCIONES) {
+    const tag = document.createElement('div');
+    tag.className = 'hf-tag';
+    tag.innerHTML = `<div class="container hf-tag__inner"><b>${op.titulo}</b><span>${op.nota}</span></div>`;
+    destino.appendChild(tag);
+
+    const hero = molde.content.cloneNode(true).querySelector('.po-hero');
+    hero.classList.add(op.clase);
+    const bg = hero.querySelector('.hf-bg');
+
+    /* La trama va primero: siempre por debajo de los trazos. */
+    if (op.trama) {
+      const t = document.createElement('div');
+      t.className = 'hf-mosaico';
+      bg.appendChild(t);
+    }
+    /* width/height explícitos: dentro de un contenedor con `position:absolute`
+       una imagen sin medidas no reserva caja y el navegador no sabe su
+       proporción hasta que descarga el archivo. */
+    for (const c of op.capas || []) {
+      const img = document.createElement('img');
+      img.src = L + c.src;
+      img.className = c.clase;
+      img.width = c.w; img.height = c.h;
+      img.alt = '';
+      bg.appendChild(img);
+    }
+    destino.appendChild(hero);
+  }
+})();
+</script>
+</body>
+</html>
