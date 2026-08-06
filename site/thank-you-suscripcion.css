@@ -1,0 +1,292 @@
+/* =====================================================================
+   Valor Pyme — Thank You Page suscripción
+   Namespace `ty-`. Componentes modulares para migración posterior a HubSpot.
+
+   Solo composición. Los tokens, la retícula (.container), el ritmo de sección
+   (.section), el encabezado (.section-head), las rejillas (.grid-3), el botón
+   (.btn) y el sistema de líneas (.route-line) vienen de styles.css: aquí no se
+   redefine nada que el sistema ya resuelva.
+   ===================================================================== */
+
+.ty-page {
+  background:
+    linear-gradient(180deg, var(--color-soft) 0%, var(--color-blanco) 38%, var(--color-soft) 100%);
+}
+
+/* ── Header reducido ──────────────────────────────────────────────────────
+   Es una página de conversión: solo el logo, sin menú, sin barra superior y
+   sin buscador que compitan con el CTA. El logo enlaza al home y es la única
+   salida; la navegación completa queda en el footer.
+
+   Se conserva .site-header —sticky, blur y borde vienen del sistema—, pero el
+   interior NO usa .nav a propósito: script.js inyecta el buscador IA en todo
+   `.site-header .nav` y aquí sobra. Con otra clase, ese bloque hace return.  */
+.ty-nav { display: flex; align-items: center; height: var(--header-h); }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────
+   El padding inferior es corto a propósito: la sección siguiente ya aporta el
+   suyo, y el cambio de fondo a blanco marca el corte. Con los dos completos se
+   sumaban 236px de vacío entre el panel y el primer título. */
+.ty-hero { padding-block: clamp(30px, 5vw, 72px) clamp(20px, 2.6vw, 36px); }
+
+.ty-hero__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .82fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(28px, 5vw, 64px);
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  box-shadow: var(--shadow-lg);
+}
+
+.ty-hero__copy { max-width: 700px; min-width: 0; }
+
+/* El color de los títulos ya lo da el sistema (--color-texto-dark = morado). */
+.ty-hero h1 { font-size: var(--text-h1); max-width: 16ch; margin-bottom: 18px; }
+.ty-hero h2 { font-size: var(--text-h3); max-width: 26ch; margin-bottom: 22px; }
+
+.ty-copy { display: grid; gap: 14px; margin-bottom: 28px; }
+.ty-btn { min-width: 220px; }
+
+/* ── Mapa de rutas ────────────────────────────────────────────────────────
+   La misma pieza que el hero de /rutas (.hero--rutas-hub): fondo corporativo
+   PLANO, trazos de `.route-line` y estaciones blancas. Sin degradado, sin
+   cuadrícula y sin marco interior: el sistema gráfico de la marca son sigmoides
+   sobre color plano (brand-kit §5.2), no un plano técnico.
+
+   Sobre el corporativo, el trazo de Mercado (#330559) queda en 2.47:1. Es el
+   mismo valor que ya usa /rutas y el gráfico es decorativo —va aria-hidden y su
+   contenido está escrito al lado—, pero si se quisiera superar 3:1 habría que
+   invertirlo a blanco, como hace el CTA de Mercado sobre fondo oscuro
+   (styles.css: body[data-ruta="mercado"] .hero .btn--ruta).                   */
+.ty-hero__visual { display: grid; place-items: center; min-width: 0; }
+
+.ty-brand-route {
+  position: relative;
+  width: min(500px, 100%);
+  aspect-ratio: 520 / 430;   /* igual al viewBox: no deforma las sigmoides */
+  background: var(--color-corp);
+  box-shadow: var(--shadow-md);   /* va dentro del panel, que ya lleva la -lg */
+  overflow: hidden;
+}
+
+.ty-brand-route__rails {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* El grosor lo pone --linea-peso (10.5px, y 6px en móvil): no se fija a mano. */
+.ty-brand-route .route-line { vector-effect: non-scaling-stroke; }
+
+.ty-rail--capital        { stroke: var(--color-amarillo); }
+.ty-rail--talento        { stroke: var(--color-verde); }
+.ty-rail--digitalizacion { stroke: var(--color-rosa); }
+.ty-rail--mercado        { stroke: var(--color-morado); }
+
+/* Entrada: los trazos se dibujan y las estaciones aparecen al paso, igual que
+   en /rutas. `pathLength=1000` normaliza los guiones porque `non-scaling-stroke`
+   los mide en px de pantalla, no en unidades del viewBox. */
+.ty-brand-route .route-line { stroke-dasharray: 1500 1500; stroke-dashoffset: 1500; }
+.ty-brand-route.is-visible .route-line { animation: draw 1.9s var(--ease) forwards; }
+.ty-brand-route.is-visible .ty-rail--digitalizacion { animation-delay: .18s; }
+.ty-brand-route.is-visible .ty-rail--mercado        { animation-delay: .36s; }
+.ty-brand-route.is-visible .ty-rail--capital        { animation-delay: .54s; }
+
+.ty-brand-route__hub,
+.ty-brand-route__station {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-blanco);
+  transform: translate(-50%, -50%);
+  scale: 0;
+}
+
+.ty-brand-route__station {
+  z-index: 3;
+  width: clamp(58px, 7vw, 78px);
+  height: clamp(58px, 7vw, 78px);
+  padding: 6px;   /* el anillo blanco alrededor del icono, sin borde */
+  box-shadow: 0 5px 14px rgba(26, 6, 70, .4);
+}
+
+.ty-brand-route__hub {
+  z-index: 2;
+  width: clamp(106px, 11vw, 142px);
+  height: clamp(106px, 11vw, 142px);
+  padding: clamp(22px, 2.4vw, 30px);
+  background: var(--color-morado);
+  /* Anillo como en .hero__dot del sistema: sombra sólida, no borde. */
+  box-shadow: 0 0 0 8px var(--color-blanco), 0 5px 14px rgba(26, 6, 70, .4);
+}
+
+.ty-brand-route__hub img { width: 100%; height: 100%; object-fit: contain; }
+
+.ty-brand-route.is-visible .ty-brand-route__hub     { animation: station-pop-hub .5s var(--ease) forwards .55s; }
+.ty-brand-route.is-visible .ty-brand-route__station { animation: station-pop-hub .5s var(--ease) forwards .8s; }
+.ty-brand-route.is-visible .ty-brand-route__station--digitalizacion { animation-delay: .95s; }
+.ty-brand-route.is-visible .ty-brand-route__station--mercado        { animation-delay: 1.1s; }
+
+/* Centro y estaciones caen sobre su propio trazo (coordenadas del viewBox). */
+.ty-brand-route__hub                     { left: 51.2%; top: 52.3%; }
+.ty-brand-route__station--capital        { left: 88%;   top: 16.3%; }
+.ty-brand-route__station--talento        { left: 11.5%; top: 30.7%; }
+.ty-brand-route__station--digitalizacion { left: 18.3%; top: 68.4%; }
+.ty-brand-route__station--mercado        { left: 82.7%; top: 67.9%; }
+
+/* ── Cómo te orienta el Diagnóstico ───────────────────────────────────── */
+/* Va pegada al hero, así que no necesita el arranque completo de .section: se
+   recorta solo por arriba. El resto de secciones sí conserva el ritmo del
+   sistema, porque ahí sí van una contra otra. */
+.ty-section--steps { background: var(--color-blanco); padding-top: clamp(32px, 4vw, 56px); }
+
+.ty-step {
+  display: flex;
+  gap: 20px;
+  padding: clamp(22px, 3vw, 30px);
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  box-shadow: var(--shadow-sm);
+}
+
+.ty-step__num {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--color-lavanda);
+  color: var(--color-corp);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.ty-step > div { min-width: 0; }
+.ty-step h3 { font-size: var(--text-h3); margin-bottom: 10px; }
+.ty-step p { color: var(--color-gris); line-height: 1.55; }
+
+.ty-center { display: flex; justify-content: center; margin-top: clamp(26px, 4vw, 42px); }
+
+/* ── ¿Prefieres explorar primero? ─────────────────────────────────────── */
+.ty-section--explore {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--color-menta) 45%, transparent), transparent 34%),
+    linear-gradient(270deg, color-mix(in srgb, var(--color-rosa-claro) 35%, transparent), transparent 36%),
+    var(--color-lavanda);
+}
+
+.ty-explore {
+  display: grid;
+  grid-template-columns: minmax(280px, .55fr) minmax(0, 1fr);
+  gap: clamp(26px, 5vw, 64px);
+  align-items: center;
+}
+
+.ty-explore h2 { font-size: var(--text-h2); }
+.ty-explore p { margin-top: 14px; max-width: 38ch; }
+
+.ty-action-card {
+  min-height: 118px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-texto-dark);
+  font-weight: 800;
+  transition: transform .25s var(--ease), border-color .25s, box-shadow .25s, background .25s, color .25s;
+}
+
+.ty-action-card::after {
+  content: "→";
+  color: var(--color-corp);
+  font-size: 22px;
+  line-height: 1;
+  transition: transform .25s var(--ease), color .25s;
+}
+
+.ty-action-card:hover,
+.ty-action-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--color-corp);
+  box-shadow: var(--shadow-md);
+  background: var(--color-corp);
+  color: var(--color-blanco);
+}
+
+/* Mismo foco que .btn del sistema. */
+.ty-action-card:focus-visible { outline: 3px solid var(--color-corp-40); outline-offset: 3px; }
+
+.ty-action-card:hover::after,
+.ty-action-card:focus-visible::after { transform: translateX(4px); color: var(--color-blanco); }
+
+/* ── Confianza ────────────────────────────────────────────────────────── */
+.ty-trust {
+  display: grid;
+  grid-template-columns: minmax(160px, .26fr) minmax(0, 1fr);
+  gap: clamp(18px, 4vw, 48px);
+  align-items: center;
+  padding: clamp(24px, 4vw, 44px);
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  border-left: 8px solid var(--color-verde);
+  box-shadow: var(--shadow-sm);
+}
+
+/* En la columna estrecha del callout, el h2 va a escala de h3. */
+.ty-trust h2 { font-size: var(--text-h3); }
+.ty-trust p { max-width: 74ch; }
+
+@media (max-width: 980px) {
+  .ty-hero__panel,
+  .ty-explore { grid-template-columns: 1fr; }
+
+  .ty-hero__visual { order: -1; }
+
+  .ty-hero h1,
+  .ty-hero h2 { max-width: none; }
+
+  /* El bloque de acciones pasa a ancho completo: caben las tres en fila hasta
+     620px, así que no se hereda el 2+1 huérfano de .grid-3. */
+  .ty-explore .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 620px) {
+  .ty-hero { padding-top: 20px; }
+
+  .ty-hero__panel { padding: 24px 20px; gap: 24px; }
+
+  .ty-brand-route { max-width: 330px; }
+
+  .ty-btn { width: 100%; min-width: 0; }
+
+  .ty-step { padding: 20px; gap: 14px; }
+
+  .ty-explore .grid-3 { grid-template-columns: 1fr; }
+
+  .ty-action-card { min-height: 82px; }
+
+  .ty-trust {
+    grid-template-columns: 1fr;
+    border-left-width: 1px;
+    border-top: 8px solid var(--color-verde);
+  }
+
+  /* Palabras largas en 320px: que partan antes de desbordar la caja. */
+  .ty-hero h1,
+  .ty-hero h2,
+  .ty-step h3,
+  .ty-copy p,
+  .ty-step p,
+  .ty-explore p,
+  .ty-trust p { overflow-wrap: anywhere; }
+}
