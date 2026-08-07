@@ -23,16 +23,20 @@
    `.site-header .nav` y aquí sobra. Con otra clase, ese bloque hace return.  */
 .ty-nav { display: flex; align-items: center; height: var(--header-h); }
 
+.ty-footer__lead {
+  max-width: 34ch;
+  color: rgba(255, 255, 255, .7);
+  font-size: 14px;
+}
+
 /* ═══ Módulo 1 · Hero ═══════════════════════════════════════════════════
    Sobre .hero--framed: foto a la derecha con corte recto, corporativo plano a
-   la izquierda, líneas de borde a borde. El bloque de texto va SIN caja: el
-   panel translúcido del sistema se anula, como ya hace .hero--rutas-hub.    */
+   la izquierda. El bloque de texto va SIN caja: el panel translúcido del
+   sistema se anula, como ya hace .hero--rutas-hub.
+
+   Sin trazos: se retiraron por decisión de diseño.                           */
 
 .ty-hero { min-height: clamp(560px, 54vw, 680px); }
-
-/* El texto sube para dejar libre la franja inferior por donde pasan las rutas.
-   Sin este colchón, las líneas cruzarían el CTA. */
-.ty-hero .hero__grid { padding-bottom: clamp(96px, 12vw, 180px); }
 
 .ty-hero .hero__copy {
   background: none;
@@ -44,10 +48,14 @@
   max-width: 34rem;
 }
 
-/* La foto ocupa la mitad derecha (regla base de .hero__bg). `object-position`
-   la encuadra a la derecha para que la persona quede en ese costado y su
-   mirada apunte al texto, no fuera del hero. */
-.ty-hero .hero__bg img { object-position: 62% 42%; }
+/* La foto ocupa la mitad derecha (regla base de .hero__bg). Va espejada: en el
+   original la persona está a la izquierda mirando a su derecha, y la dirección
+   de arte la pide a la derecha mirando hacia el titular. No hay texto ni
+   elementos legibles en el encuadre, así que el volteo es seguro. */
+.ty-hero .hero__bg img {
+  object-position: 50% 38%;
+  transform: scaleX(-1);
+}
 
 .ty-hero h1 { max-width: 15ch; margin-bottom: 14px; }
 
@@ -60,44 +68,6 @@
 
 .ty-hero .hero__sub { margin-bottom: 14px; }
 .ty-hero .hero__sub + .hero__sub { margin-bottom: 26px; }
-
-/* Colores de ruta. Los trazos y el grosor los pone el sistema
-   (.hero--framed .hero__lines .route-line con --linea-peso). */
-.ty-rail--capital        { stroke: var(--color-amarillo); }
-.ty-rail--talento        { stroke: var(--color-verde); }
-.ty-rail--digitalizacion { stroke: var(--color-rosa); }
-.ty-rail--mercado        { stroke: var(--color-morado); }
-
-/* Las líneas cruzan la foto, así que van por debajo del texto y con la
-   opacidad justa para no competir con la lectura ni con la persona. */
-.ty-hero__lines { z-index: 1; }
-
-/* `.reveal` es el gancho que observa script.js para añadir `is-visible`; aquí
-   solo interesa esa señal, no su desplazamiento, así que se anula el transform
-   y queda el fundido. */
-.ty-hero__lines.reveal { transform: none; }
-.ty-hero__lines.reveal.is-visible { opacity: .92; }
-
-/* Estación del cruce. Blanca siempre, por regla de marca: el punto de estación
-   nunca toma el color de la ruta. Sustituye al var(--ruta) del sistema. */
-.ty-hero .ty-hero__dot {
-  left: 50%;
-  top: 89.3%;   /* (600,500) del viewBox */
-  width: clamp(30px, 3.4vw, 44px);
-  height: clamp(30px, 3.4vw, 44px);
-  background: var(--color-blanco);
-  box-shadow: 0 5px 14px rgba(26, 6, 70, .4);
-}
-
-/* Entrada: los trazos se dibujan como en /rutas. */
-.ty-hero__lines .route-line { stroke-dasharray: 1500 1500; stroke-dashoffset: 1500; }
-.ty-hero__lines.is-visible .route-line { animation: draw 1.9s var(--ease) forwards; }
-.ty-hero__lines.is-visible .ty-rail--talento        { animation-delay: .16s; }
-.ty-hero__lines.is-visible .ty-rail--digitalizacion { animation-delay: .32s; }
-.ty-hero__lines.is-visible .ty-rail--mercado        { animation-delay: .48s; }
-
-.ty-hero__dot { scale: 0; }
-.ty-hero__lines.is-visible .ty-hero__dot { animation: station-pop-hub .5s var(--ease) forwards 1.1s; }
 
 /* ═══ Módulo 2 · Cómo te orienta el Diagnóstico ═════════════════════════ */
 .ty-section--steps { padding-block: clamp(40px, 5vw, 76px) clamp(44px, 5.5vw, 84px); }
@@ -154,68 +124,17 @@
 .ty-action p { color: var(--color-gris); line-height: 1.55; margin-bottom: 24px; }
 .ty-action__btn { margin-top: auto; }
 
-/* ═══ Módulo 4 · Red de conexiones ══════════════════════════════════════
-   Sin recuadro: el fondo ES la pieza. Las cuatro rutas cruzan de borde a
-   borde, se cruzan en una estación blanca y un pulso las recorre en continuo,
-   siempre en horizontal y en el mismo sentido — el movimiento de un metro.
-
-   Nota: la regla de "objetos reales, no vectores" del documento se refiere a
-   las animaciones de vehículos. Una red de conexiones no es fotografiable, así
-   que se resuelve con el propio sistema de líneas de la marca.               */
-.ty-section--red {
+/* ═══ Módulo 4 · Empresas en movimiento ═════════════════════════════════
+   Reutiliza el tren fotográfico y el desplazamiento de /suscripcion sobre el
+   morado corporativo, sin reintroducir líneas de ruta detrás del texto.      */
+.ty-section--train {
   position: relative;
   overflow: hidden;
-  /* Generoso a propósito: las dos franjas de trazos van al 8-22% y al 81-93%
-     del alto, así que el texto necesita ese colchón para no tocarlas cuando
-     crece a cuatro o cinco líneas en pantallas angostas. */
-  padding-block: clamp(104px, 12vw, 150px);
-  /* Corporativo, no morado profundo, por dos razones: es comunicación
-     institucional sobre Valor Pyme —donde el documento pide privilegiar el
-     color corporativo— y sobre morado el trazo de Mercado (#330559) quedaba
-     en 1:1 contra el fondo, es decir, invisible. */
+  padding: clamp(64px, 8vw, 104px) 0 0;
   background: var(--color-corp);
 }
 
-.ty-red__fondo { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-
-/* `none` para que las dos franjas queden siempre a la misma altura relativa
-   —arriba y abajo— y el texto conserve el centro libre a cualquier alto. El
-   grosor lo salva `non-scaling-stroke`, que hereda de .route-line. */
-.ty-red__fondo svg { width: 100%; height: 100%; display: block; }
-
-/* A plena opacidad, como en el hero. Bajarla los volvía oliva y granate sobre
-   el morado: dejaban de ser los colores del brandbook. La sutileza se consigue
-   sacándolos de la zona de lectura, no destiñéndolos. */
-.ty-red__trazos .route-line { vector-effect: non-scaling-stroke; }
-
-.ty-red__estacion { fill: var(--color-blanco); }
-
-.ty-red__pulso {
-  fill: none;
-  stroke: var(--color-blanco);
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  opacity: .9;
-  stroke-dasharray: 60 1320;
-  animation: ty-pulso 12s linear infinite;
-}
-
-.ty-red__pulso--b { animation-delay: 3s; }
-.ty-red__pulso--c { animation-delay: 6s; }
-.ty-red__pulso--d { animation-delay: 9s; }
-
-@keyframes ty-pulso {
-  from { stroke-dashoffset: 1380; }
-  to   { stroke-dashoffset: -60; }
-}
-
-/* El reset global de movimiento reducido acorta la duración a .001ms, que en
-   un bucle infinito produce un parpadeo. Aquí se apaga del todo. */
-@media (prefers-reduced-motion: reduce) {
-  .ty-red__pulso { animation: none !important; opacity: 0; }
-}
-
-.ty-red__texto {
+.ty-train__texto {
   position: relative;
   z-index: 1;
   max-width: 30ch;
@@ -226,6 +145,33 @@
   font-size: var(--text-h2);
   line-height: 1.12;
   color: var(--color-texto-light);
+}
+
+.ty-train {
+  position: relative;
+  height: clamp(150px, 17vw, 245px);
+  margin-top: clamp(44px, 6vw, 76px);
+  overflow: hidden;
+}
+
+.ty-train img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  transform: translateX(-50%);
+  animation: ty-train-advance 9s ease-in-out infinite alternate;
+}
+
+@keyframes ty-train-advance {
+  from { transform: translateX(calc(-50% - 90px)); }
+  to   { transform: translateX(calc(-50% + 90px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ty-train img { animation: none !important; }
 }
 
 /* ── Responsive ───────────────────────────────────────────────────────── */
@@ -250,12 +196,13 @@
 @media (max-width: 620px) {
   .ty-btn { width: 100%; min-width: 0; }
   .ty-hero .hero__cta .btn { flex: 1; }
-  .ty-red__texto { font-size: var(--text-h3); max-width: none; }
+  .ty-train { height: 150px; }
+  .ty-train__texto { font-size: var(--text-h3); max-width: none; }
 
   /* Palabras largas en 320px: que partan antes de desbordar la caja. */
   .ty-hero h1,
   .ty-hero__deck,
   .ty-step h3,
   .ty-action h3,
-  .ty-red__texto { overflow-wrap: anywhere; }
+  .ty-train__texto { overflow-wrap: anywhere; }
 }
