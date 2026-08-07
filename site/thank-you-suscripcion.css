@@ -30,11 +30,8 @@
 }
 
 /* ═══ Módulo 1 · Hero ═══════════════════════════════════════════════════
-   Sobre .hero--framed: foto a la derecha con corte recto, corporativo plano a
-   la izquierda. El bloque de texto va SIN caja: el panel translúcido del
-   sistema se anula, como ya hace .hero--rutas-hub.
-
-   Sin trazos: se retiraron por decisión de diseño.                           */
+   Fotografía limpia, sin líneas sobre la persona. Los cuatro íconos oficiales
+   identifican las rutas sin reinterpretar el sistema gráfico del brandbook. */
 
 .ty-hero { min-height: clamp(560px, 54vw, 680px); }
 
@@ -48,13 +45,27 @@
   max-width: 34rem;
 }
 
-/* La foto ocupa la mitad derecha (regla base de .hero__bg). Va espejada: en el
-   original la persona está a la izquierda mirando a su derecha, y la dirección
-   de arte la pide a la derecha mirando hacia el titular. No hay texto ni
-   elementos legibles en el encuadre, así que el volteo es seguro. */
+/* La foto ocupa la mitad derecha (regla base de .hero__bg). La emprendedora ya
+   mira hacia el titular, así que se conserva la orientación original. */
 .ty-hero .hero__bg img {
-  object-position: 50% 38%;
-  transform: scaleX(-1);
+  object-position: 68% 50%;
+}
+
+.ty-hero .hero__bg::after { z-index: 2; pointer-events: none; }
+
+.ty-route-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  margin-bottom: 22px;
+  list-style: none;
+}
+
+.ty-route-icons img {
+  width: clamp(38px, 4vw, 48px);
+  height: auto;
+  filter: drop-shadow(0 5px 10px rgba(26, 6, 70, .18));
 }
 
 .ty-hero h1 { max-width: 15ch; margin-bottom: 14px; }
