@@ -30,8 +30,7 @@
 }
 
 /* ═══ Módulo 1 · Hero ═══════════════════════════════════════════════════
-   Fotografía limpia, sin líneas sobre la persona. Los cuatro íconos oficiales
-   identifican las rutas sin reinterpretar el sistema gráfico del brandbook. */
+   Fotografía y copy limpios, sin elementos gráficos sobre la persona.        */
 
 .ty-hero { min-height: clamp(560px, 54vw, 680px); }
 
@@ -52,21 +51,6 @@
 }
 
 .ty-hero .hero__bg::after { z-index: 2; pointer-events: none; }
-
-.ty-route-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0;
-  margin-bottom: 22px;
-  list-style: none;
-}
-
-.ty-route-icons img {
-  width: clamp(38px, 4vw, 48px);
-  height: auto;
-  filter: drop-shadow(0 5px 10px rgba(26, 6, 70, .18));
-}
 
 .ty-hero h1 { max-width: 15ch; margin-bottom: 14px; }
 
