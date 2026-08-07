@@ -10,11 +10,12 @@
 <meta property="og:description" content="Confirmación de suscripción a Valor Pyme. Tu siguiente paso: hacer el Diagnóstico y descubrir qué ruta necesita tu pyme.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.valorpyme.cl/thank-you-suscripcion">
+<meta property="og:image" content="assets/photos/brand/split-digitalizacion.jpg">
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css?v=103">
-<link rel="stylesheet" href="thank-you-suscripcion.css?v=4">
+<link rel="stylesheet" href="thank-you-suscripcion.css?v=5">
 </head>
 <body class="ty-page">
 
@@ -25,48 +26,49 @@
 </header>
 
 <main>
-  <section class="ty-hero" aria-labelledby="ty-title">
-    <div class="container">
-      <div class="ty-hero__panel">
-        <div class="ty-hero__copy reveal">
-          <h1 id="ty-title">¡Tu registro fue exitoso!</h1>
-          <h2>Siguiente paso recomendado: descubre qué ruta debería seguir tu pyme</h2>
-          <div class="ty-copy">
-            <p class="lead">Para aprovechar mejor Valor Pyme, tu siguiente paso es realizar el Diagnóstico. Sus 31 preguntas te ayudarán a identificar qué área de tu negocio necesita mayor atención.</p>
-            <p class="lead">Al terminar, sabrás si te conviene comenzar por la Ruta Capital, Mercado, Digitalización o Gestión y Talento.</p>
-          </div>
-          <a class="btn ty-btn" href="/#diagnostico">Hacer mi diagnóstico</a>
-        </div>
+  <!-- ═══ Módulo 1 · Hero ═══════════════════════════════════════════════
+       Patrón .hero--framed del sistema, el mismo de /ruta-capital y
+       /ruta-mercado: foto a media pantalla con corte recto, color de marca
+       plano al otro lado, líneas full-bleed por encima y estación blanca. -->
+  <section class="hero hero--framed ty-hero" aria-labelledby="ty-title">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="assets/photos/brand/split-digitalizacion.jpg" alt="" width="2400" height="1792" fetchpriority="high">
+    </div>
 
-        <div class="ty-hero__visual">
-          <div class="ty-brand-route reveal d1" aria-hidden="true">
-            <svg class="ty-brand-route__rails" viewBox="0 0 520 430" preserveAspectRatio="none" focusable="false">
-              <path class="route-line ty-rail--capital" pathLength="1000" d="M-20 66 H118 C170 66 178 134 230 134 H315 C372 134 388 70 452 70 H540"></path>
-              <path class="route-line ty-rail--talento" pathLength="1000" d="M-20 132 H104 C174 132 192 226 260 226 H540"></path>
-              <path class="route-line ty-rail--digitalizacion" pathLength="1000" d="M-20 294 H142 C202 294 210 224 272 224 H382 C432 224 454 172 540 172"></path>
-              <path class="route-line ty-rail--mercado" pathLength="1000" d="M-20 366 H152 C230 366 246 292 322 292 H540"></path>
-            </svg>
-            <span class="ty-brand-route__station ty-brand-route__station--capital">
-              <img class="route-ico" src="assets/icons/rutas/ruta-capital.png" alt="" width="78" height="78">
-            </span>
-            <span class="ty-brand-route__station ty-brand-route__station--talento">
-              <img class="route-ico" src="assets/icons/rutas/ruta-talento.png" alt="" width="78" height="78">
-            </span>
-            <span class="ty-brand-route__station ty-brand-route__station--digitalizacion">
-              <img class="route-ico" src="assets/icons/rutas/ruta-digitalizacion.png" alt="" width="78" height="78">
-            </span>
-            <span class="ty-brand-route__station ty-brand-route__station--mercado">
-              <img class="route-ico" src="assets/icons/rutas/ruta-mercado.png" alt="" width="78" height="78">
-            </span>
-            <span class="ty-brand-route__hub">
-              <img src="assets/logos/isotipo-white.svg" alt="" width="80" height="80">
-            </span>
-          </div>
+    <!-- Las cuatro rutas cruzan de borde a borde y pasan todas por (600,500):
+         "estás aquí, el Diagnóstico elige el camino". Los controles están
+         espejados respecto a ese punto, así que convergen con tangente continua
+         y no se forma ningún ángulo ajeno al sistema.
+
+         Van por la franja inferior a propósito: por la izquierda pasan bajo el
+         bloque de texto y por la derecha cruzan el escritorio, nunca la cara
+         (brand-kit §5.4). Así acompañan sin competir con la lectura. -->
+    <div class="hero__lines ty-hero__lines reveal" aria-hidden="true">
+      <svg viewBox="0 0 1200 560" preserveAspectRatio="none" focusable="false">
+        <path class="route-line ty-rail--capital"        pathLength="1000" d="M-40 556 C 240 556 360 520 600 500 C 840 480 1000 330 1240 306"></path>
+        <path class="route-line ty-rail--talento"        pathLength="1000" d="M-40 520 C 220 520 350 508 600 500 C 850 492 1010 400 1240 386"></path>
+        <path class="route-line ty-rail--digitalizacion" pathLength="1000" d="M-40 476 C 240 476 360 494 600 500 C 840 506 1020 470 1240 462"></path>
+        <path class="route-line ty-rail--mercado"        pathLength="1000" d="M-40 452 C 240 452 360 482 600 500 C 840 518 1020 548 1240 556"></path>
+      </svg>
+      <span class="hero__dot ty-hero__dot"></span>
+    </div>
+
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <h1 id="ty-title" class="reveal">¡Tu registro fue exitoso!</h1>
+        <h2 class="ty-hero__deck reveal d1">Siguiente paso recomendado: descubre qué ruta debería seguir tu pyme</h2>
+        <p class="hero__sub reveal d1">Para aprovechar mejor Valor Pyme, tu siguiente paso es realizar el Diagnóstico. Sus 31 preguntas te ayudarán a identificar qué área de tu negocio necesita mayor atención.</p>
+        <p class="hero__sub reveal d2">Al terminar, sabrás si te conviene comenzar por la Ruta Capital, Mercado, Digitalización o Gestión y Talento.</p>
+        <div class="hero__cta reveal d3">
+          <a class="btn btn--onfill" href="/#diagnostico">Hacer mi diagnóstico
+            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ═══ Módulo 2 · Cómo te orienta el Diagnóstico ═════════════════════ -->
   <section class="section ty-section--steps" aria-labelledby="ty-steps-title">
     <div class="container">
       <div class="section-head center reveal">
@@ -75,24 +77,18 @@
       <div class="grid-3">
         <article class="ty-step reveal">
           <span class="ty-step__num" aria-hidden="true">1</span>
-          <div>
-            <h3>Cuéntanos sobre tu pyme</h3>
-            <p>Responde preguntas sobre tu negocio y sus desafíos actuales.</p>
-          </div>
+          <h3>Cuéntanos sobre tu pyme</h3>
+          <p>Responde preguntas sobre tu negocio y sus desafíos actuales.</p>
         </article>
         <article class="ty-step reveal d1">
           <span class="ty-step__num" aria-hidden="true">2</span>
-          <div>
-            <h3>Detecta qué debes fortalecer</h3>
-            <p>Identifica el área que requiere mayor atención.</p>
-          </div>
+          <h3>Detecta qué debes fortalecer</h3>
+          <p>Identifica el área que requiere mayor atención.</p>
         </article>
         <article class="ty-step reveal d2">
           <span class="ty-step__num" aria-hidden="true">3</span>
-          <div>
-            <h3>Sigue una ruta recomendada</h3>
-            <p>Explora soluciones, recursos y partners relacionados con tus necesidades.</p>
-          </div>
+          <h3>Sigue una ruta recomendada</h3>
+          <p>Explora soluciones, recursos y partners relacionados con tus necesidades.</p>
         </article>
       </div>
       <div class="ty-center">
@@ -101,34 +97,64 @@
     </div>
   </section>
 
+  <!-- ═══ Módulo 3 · ¿Prefieres explorar primero? ═══════════════════════
+       Color de marca plano (lavanda del brandbook). Sin degradados pastel. -->
   <section class="section ty-section--explore" aria-labelledby="ty-explore-title">
     <div class="container">
-      <div class="ty-explore">
-        <div class="ty-explore__copy reveal">
-          <h2 id="ty-explore-title">¿Prefieres explorar primero?</h2>
-          <p class="lead">También puedes conocer las opciones disponibles en Valor Pyme.</p>
-        </div>
-        <div class="grid-3 reveal d1">
-          <a class="ty-action-card" href="/rutas">
-            <span>Explorar las Rutas</span>
+      <div class="section-head center reveal">
+        <h2 id="ty-explore-title">¿Prefieres explorar primero?</h2>
+        <p class="lead">También puedes conocer las opciones disponibles en Valor Pyme.</p>
+      </div>
+      <div class="grid-3">
+        <article class="ty-action reveal">
+          <h3>Explorar las Rutas</h3>
+          <p>Las cuatro rutas de Valor Pyme y las estaciones que las componen.</p>
+          <a class="btn btn--ghost ty-action__btn" href="/rutas">Ver las Rutas
+            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="ty-action-card" href="/recursos">
-            <span>Ver Recursos</span>
+        </article>
+        <article class="ty-action reveal d1">
+          <h3>Ver Recursos</h3>
+          <p>Guías, plantillas y herramientas prácticas para aplicar en tu negocio.</p>
+          <a class="btn btn--ghost ty-action__btn" href="/recursos">Ver Recursos
+            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="ty-action-card" href="/foro">
-            <span>Conocer el Foro</span>
+        </article>
+        <article class="ty-action reveal d2">
+          <h3>Conocer el Foro</h3>
+          <p>Conversaciones con otras pymes que están resolviendo lo mismo que tú.</p>
+          <a class="btn btn--ghost ty-action__btn" href="/foro">Ir al Foro
+            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section ty-section--trust" aria-labelledby="ty-trust-title">
+  <!-- ═══ Módulo 4 · Red de conexiones ══════════════════════════════════
+       Sin recuadro. El fondo es la red viva: las rutas cruzan de borde a
+       borde y un pulso las recorre en continuo, muy por debajo del texto. -->
+  <section class="section ty-section--red" aria-labelledby="ty-red-title">
+    <div class="ty-red__fondo" aria-hidden="true">
+      <svg viewBox="0 0 1200 360" preserveAspectRatio="none" focusable="false">
+        <g class="ty-red__trazos">
+          <path class="route-line ty-rail--capital"        d="M-40 30  C 240 30  320 74  620 74  H1240"></path>
+          <path class="route-line ty-rail--talento"        d="M-40 86  C 260 86  340 38  620 38  H1240"></path>
+          <path class="route-line ty-rail--digitalizacion" d="M-40 336 H560 C840 336 900 292 1240 292"></path>
+          <path class="route-line ty-rail--mercado"        d="M-40 292 H560 C840 292 900 336 1240 336"></path>
+        </g>
+        <g class="ty-red__pulsos">
+          <path class="ty-red__pulso"                  d="M-40 30  C 240 30  320 74  620 74  H1240"></path>
+          <path class="ty-red__pulso ty-red__pulso--b" d="M-40 86  C 260 86  340 38  620 38  H1240"></path>
+          <path class="ty-red__pulso ty-red__pulso--c" d="M-40 336 H560 C840 336 900 292 1240 292"></path>
+          <path class="ty-red__pulso ty-red__pulso--d" d="M-40 292 H560 C840 292 900 336 1240 336"></path>
+        </g>
+        <circle class="ty-red__estacion" cx="430" cy="56"  r="11"></circle>
+        <circle class="ty-red__estacion" cx="870" cy="314" r="11"></circle>
+      </svg>
+    </div>
     <div class="container">
-      <div class="ty-trust reveal">
-        <h2 id="ty-trust-title">Estás dentro de la red</h2>
-        <p class="lead">Valor Pyme conecta a las pymes con rutas, soluciones, partners y una comunidad para aprender y avanzar.</p>
-      </div>
+      <p class="ty-red__texto reveal" id="ty-red-title">Valor Pyme conecta a las pymes con rutas, soluciones, partners y una comunidad para aprender y avanzar.</p>
     </div>
   </section>
 </main>

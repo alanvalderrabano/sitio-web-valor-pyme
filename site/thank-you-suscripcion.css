@@ -4,14 +4,14 @@
 
    Solo composición. Los tokens, la retícula (.container), el ritmo de sección
    (.section), el encabezado (.section-head), las rejillas (.grid-3), el botón
-   (.btn) y el sistema de líneas (.route-line) vienen de styles.css: aquí no se
-   redefine nada que el sistema ya resuelva.
+   (.btn), el hero (.hero--framed) y el sistema de líneas (.route-line) vienen
+   de styles.css: aquí no se redefine nada que el sistema ya resuelva.
+
+   Color: sin degradados. Solo color de marca plano — corporativo para lo
+   institucional, lavanda y morado profundo para las bandas.
    ===================================================================== */
 
-.ty-page {
-  background:
-    linear-gradient(180deg, var(--color-soft) 0%, var(--color-blanco) 38%, var(--color-soft) 100%);
-}
+.ty-page { background: var(--color-blanco); }
 
 /* ── Header reducido ──────────────────────────────────────────────────────
    Es una página de conversión: solo el logo, sin menú, sin barra superior y
@@ -23,143 +23,99 @@
    `.site-header .nav` y aquí sobra. Con otra clase, ese bloque hace return.  */
 .ty-nav { display: flex; align-items: center; height: var(--header-h); }
 
-/* ── Hero ─────────────────────────────────────────────────────────────────
-   El padding inferior es corto a propósito: la sección siguiente ya aporta el
-   suyo, y el cambio de fondo a blanco marca el corte. Con los dos completos se
-   sumaban 236px de vacío entre el panel y el primer título. */
-.ty-hero { padding-block: clamp(30px, 5vw, 72px) clamp(20px, 2.6vw, 36px); }
+/* ═══ Módulo 1 · Hero ═══════════════════════════════════════════════════
+   Sobre .hero--framed: foto a la derecha con corte recto, corporativo plano a
+   la izquierda, líneas de borde a borde. El bloque de texto va SIN caja: el
+   panel translúcido del sistema se anula, como ya hace .hero--rutas-hub.    */
 
-.ty-hero__panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, .82fr);
-  gap: clamp(28px, 5vw, 72px);
-  align-items: center;
-  padding: clamp(28px, 5vw, 64px);
-  background: var(--color-blanco);
-  border: 1px solid var(--color-borde);
-  box-shadow: var(--shadow-lg);
+.ty-hero { min-height: clamp(560px, 54vw, 680px); }
+
+/* El texto sube para dejar libre la franja inferior por donde pasan las rutas.
+   Sin este colchón, las líneas cruzarían el CTA. */
+.ty-hero .hero__grid { padding-bottom: clamp(96px, 12vw, 180px); }
+
+.ty-hero .hero__copy {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  max-width: 34rem;
 }
 
-.ty-hero__copy { max-width: 700px; min-width: 0; }
+/* La foto ocupa la mitad derecha (regla base de .hero__bg). `object-position`
+   la encuadra a la derecha para que la persona quede en ese costado y su
+   mirada apunte al texto, no fuera del hero. */
+.ty-hero .hero__bg img { object-position: 62% 42%; }
 
-/* El color de los títulos ya lo da el sistema (--color-texto-dark = morado). */
-.ty-hero h1 { font-size: var(--text-h1); max-width: 16ch; margin-bottom: 18px; }
-.ty-hero h2 { font-size: var(--text-h3); max-width: 26ch; margin-bottom: 22px; }
+.ty-hero h1 { max-width: 15ch; margin-bottom: 14px; }
 
-.ty-copy { display: grid; gap: 14px; margin-bottom: 28px; }
-.ty-btn { min-width: 220px; }
-
-/* ── Mapa de rutas ────────────────────────────────────────────────────────
-   La misma pieza que el hero de /rutas (.hero--rutas-hub): fondo corporativo
-   PLANO, trazos de `.route-line` y estaciones blancas. Sin degradado, sin
-   cuadrícula y sin marco interior: el sistema gráfico de la marca son sigmoides
-   sobre color plano (brand-kit §5.2), no un plano técnico.
-
-   Sobre el corporativo, el trazo de Mercado (#330559) queda en 2.47:1. Es el
-   mismo valor que ya usa /rutas y el gráfico es decorativo —va aria-hidden y su
-   contenido está escrito al lado—, pero si se quisiera superar 3:1 habría que
-   invertirlo a blanco, como hace el CTA de Mercado sobre fondo oscuro
-   (styles.css: body[data-ruta="mercado"] .hero .btn--ruta).                   */
-.ty-hero__visual { display: grid; place-items: center; min-width: 0; }
-
-.ty-brand-route {
-  position: relative;
-  width: min(500px, 100%);
-  aspect-ratio: 520 / 430;   /* igual al viewBox: no deforma las sigmoides */
-  background: var(--color-corp);
-  box-shadow: var(--shadow-md);   /* va dentro del panel, que ya lleva la -lg */
-  overflow: hidden;
+.ty-hero__deck {
+  font-size: var(--text-h3);
+  color: var(--ruta-ink);
+  max-width: 26ch;
+  margin-bottom: 18px;
 }
 
-.ty-brand-route__rails {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-}
+.ty-hero .hero__sub { margin-bottom: 14px; }
+.ty-hero .hero__sub + .hero__sub { margin-bottom: 26px; }
 
-/* El grosor lo pone --linea-peso (10.5px, y 6px en móvil): no se fija a mano. */
-.ty-brand-route .route-line { vector-effect: non-scaling-stroke; }
-
+/* Colores de ruta. Los trazos y el grosor los pone el sistema
+   (.hero--framed .hero__lines .route-line con --linea-peso). */
 .ty-rail--capital        { stroke: var(--color-amarillo); }
 .ty-rail--talento        { stroke: var(--color-verde); }
 .ty-rail--digitalizacion { stroke: var(--color-rosa); }
 .ty-rail--mercado        { stroke: var(--color-morado); }
 
-/* Entrada: los trazos se dibujan y las estaciones aparecen al paso, igual que
-   en /rutas. `pathLength=1000` normaliza los guiones porque `non-scaling-stroke`
-   los mide en px de pantalla, no en unidades del viewBox. */
-.ty-brand-route .route-line { stroke-dasharray: 1500 1500; stroke-dashoffset: 1500; }
-.ty-brand-route.is-visible .route-line { animation: draw 1.9s var(--ease) forwards; }
-.ty-brand-route.is-visible .ty-rail--digitalizacion { animation-delay: .18s; }
-.ty-brand-route.is-visible .ty-rail--mercado        { animation-delay: .36s; }
-.ty-brand-route.is-visible .ty-rail--capital        { animation-delay: .54s; }
+/* Las líneas cruzan la foto, así que van por debajo del texto y con la
+   opacidad justa para no competir con la lectura ni con la persona. */
+.ty-hero__lines { z-index: 1; }
 
-.ty-brand-route__hub,
-.ty-brand-route__station {
-  position: absolute;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
+/* `.reveal` es el gancho que observa script.js para añadir `is-visible`; aquí
+   solo interesa esa señal, no su desplazamiento, así que se anula el transform
+   y queda el fundido. */
+.ty-hero__lines.reveal { transform: none; }
+.ty-hero__lines.reveal.is-visible { opacity: .92; }
+
+/* Estación del cruce. Blanca siempre, por regla de marca: el punto de estación
+   nunca toma el color de la ruta. Sustituye al var(--ruta) del sistema. */
+.ty-hero .ty-hero__dot {
+  left: 50%;
+  top: 89.3%;   /* (600,500) del viewBox */
+  width: clamp(30px, 3.4vw, 44px);
+  height: clamp(30px, 3.4vw, 44px);
   background: var(--color-blanco);
-  transform: translate(-50%, -50%);
-  scale: 0;
-}
-
-.ty-brand-route__station {
-  z-index: 3;
-  width: clamp(58px, 7vw, 78px);
-  height: clamp(58px, 7vw, 78px);
-  padding: 6px;   /* el anillo blanco alrededor del icono, sin borde */
   box-shadow: 0 5px 14px rgba(26, 6, 70, .4);
 }
 
-.ty-brand-route__hub {
-  z-index: 2;
-  width: clamp(106px, 11vw, 142px);
-  height: clamp(106px, 11vw, 142px);
-  padding: clamp(22px, 2.4vw, 30px);
-  background: var(--color-morado);
-  /* Anillo como en .hero__dot del sistema: sombra sólida, no borde. */
-  box-shadow: 0 0 0 8px var(--color-blanco), 0 5px 14px rgba(26, 6, 70, .4);
-}
+/* Entrada: los trazos se dibujan como en /rutas. */
+.ty-hero__lines .route-line { stroke-dasharray: 1500 1500; stroke-dashoffset: 1500; }
+.ty-hero__lines.is-visible .route-line { animation: draw 1.9s var(--ease) forwards; }
+.ty-hero__lines.is-visible .ty-rail--talento        { animation-delay: .16s; }
+.ty-hero__lines.is-visible .ty-rail--digitalizacion { animation-delay: .32s; }
+.ty-hero__lines.is-visible .ty-rail--mercado        { animation-delay: .48s; }
 
-.ty-brand-route__hub img { width: 100%; height: 100%; object-fit: contain; }
+.ty-hero__dot { scale: 0; }
+.ty-hero__lines.is-visible .ty-hero__dot { animation: station-pop-hub .5s var(--ease) forwards 1.1s; }
 
-.ty-brand-route.is-visible .ty-brand-route__hub     { animation: station-pop-hub .5s var(--ease) forwards .55s; }
-.ty-brand-route.is-visible .ty-brand-route__station { animation: station-pop-hub .5s var(--ease) forwards .8s; }
-.ty-brand-route.is-visible .ty-brand-route__station--digitalizacion { animation-delay: .95s; }
-.ty-brand-route.is-visible .ty-brand-route__station--mercado        { animation-delay: 1.1s; }
-
-/* Centro y estaciones caen sobre su propio trazo (coordenadas del viewBox). */
-.ty-brand-route__hub                     { left: 51.2%; top: 52.3%; }
-.ty-brand-route__station--capital        { left: 88%;   top: 16.3%; }
-.ty-brand-route__station--talento        { left: 11.5%; top: 30.7%; }
-.ty-brand-route__station--digitalizacion { left: 18.3%; top: 68.4%; }
-.ty-brand-route__station--mercado        { left: 82.7%; top: 67.9%; }
-
-/* ── Cómo te orienta el Diagnóstico ───────────────────────────────────── */
-/* Va pegada al hero, así que no necesita el arranque completo de .section: se
-   recorta solo por arriba. El resto de secciones sí conserva el ritmo del
-   sistema, porque ahí sí van una contra otra. */
-.ty-section--steps { background: var(--color-blanco); padding-top: clamp(32px, 4vw, 56px); }
+/* ═══ Módulo 2 · Cómo te orienta el Diagnóstico ═════════════════════════ */
+.ty-section--steps { padding-block: clamp(40px, 5vw, 76px) clamp(44px, 5.5vw, 84px); }
 
 .ty-step {
   display: flex;
-  gap: 20px;
-  padding: clamp(22px, 3vw, 30px);
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 32px);
   background: var(--color-blanco);
   border: 1px solid var(--color-borde);
-  box-shadow: var(--shadow-sm);
 }
 
 .ty-step__num {
-  flex: 0 0 auto;
   width: 44px;
   height: 44px;
   display: grid;
   place-items: center;
+  margin-bottom: 18px;
   background: var(--color-lavanda);
   color: var(--color-corp);
   font-family: var(--font-display);
@@ -167,126 +123,139 @@
   font-size: 20px;
 }
 
-.ty-step > div { min-width: 0; }
 .ty-step h3 { font-size: var(--text-h3); margin-bottom: 10px; }
 .ty-step p { color: var(--color-gris); line-height: 1.55; }
 
 .ty-center { display: flex; justify-content: center; margin-top: clamp(26px, 4vw, 42px); }
+.ty-btn { min-width: 220px; }
 
-/* ── ¿Prefieres explorar primero? ─────────────────────────────────────── */
+/* ═══ Módulo 3 · ¿Prefieres explorar primero? ═══════════════════════════
+   Lavanda plano del brandbook. Antes había un degradado menta + rosa claro:
+   ni los colores eran vivos ni la combinación estaba permitida.            */
 .ty-section--explore {
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--color-menta) 45%, transparent), transparent 34%),
-    linear-gradient(270deg, color-mix(in srgb, var(--color-rosa-claro) 35%, transparent), transparent 36%),
-    var(--color-lavanda);
+  padding-block: clamp(48px, 6vw, 88px);
+  background: var(--color-lavanda);
 }
 
-.ty-explore {
-  display: grid;
-  grid-template-columns: minmax(280px, .55fr) minmax(0, 1fr);
-  gap: clamp(26px, 5vw, 64px);
-  align-items: center;
-}
-
-.ty-explore h2 { font-size: var(--text-h2); }
-.ty-explore p { margin-top: 14px; max-width: 38ch; }
-
-.ty-action-card {
-  min-height: 118px;
+/* Tarjetas alineadas: mismo eje central para título, texto y botón, y el
+   botón anclado abajo con `margin-top:auto` para que los tres caigan a la
+   misma altura aunque las descripciones tengan distinto largo. */
+.ty-action {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 22px;
-  background: var(--color-blanco);
-  border: 1px solid var(--color-borde);
-  box-shadow: var(--shadow-sm);
-  color: var(--color-texto-dark);
-  font-weight: 800;
-  transition: transform .25s var(--ease), border-color .25s, box-shadow .25s, background .25s, color .25s;
-}
-
-.ty-action-card::after {
-  content: "→";
-  color: var(--color-corp);
-  font-size: 22px;
-  line-height: 1;
-  transition: transform .25s var(--ease), color .25s;
-}
-
-.ty-action-card:hover,
-.ty-action-card:focus-visible {
-  transform: translateY(-4px);
-  border-color: var(--color-corp);
-  box-shadow: var(--shadow-md);
-  background: var(--color-corp);
-  color: var(--color-blanco);
-}
-
-/* Mismo foco que .btn del sistema. */
-.ty-action-card:focus-visible { outline: 3px solid var(--color-corp-40); outline-offset: 3px; }
-
-.ty-action-card:hover::after,
-.ty-action-card:focus-visible::after { transform: translateX(4px); color: var(--color-blanco); }
-
-/* ── Confianza ────────────────────────────────────────────────────────── */
-.ty-trust {
-  display: grid;
-  grid-template-columns: minmax(160px, .26fr) minmax(0, 1fr);
-  gap: clamp(18px, 4vw, 48px);
+  flex-direction: column;
   align-items: center;
-  padding: clamp(24px, 4vw, 44px);
+  text-align: center;
+  padding: clamp(26px, 3vw, 36px);
   background: var(--color-blanco);
   border: 1px solid var(--color-borde);
-  border-left: 8px solid var(--color-verde);
-  box-shadow: var(--shadow-sm);
 }
 
-/* En la columna estrecha del callout, el h2 va a escala de h3. */
-.ty-trust h2 { font-size: var(--text-h3); }
-.ty-trust p { max-width: 74ch; }
+.ty-action h3 { font-size: var(--text-h3); margin-bottom: 12px; }
+.ty-action p { color: var(--color-gris); line-height: 1.55; margin-bottom: 24px; }
+.ty-action__btn { margin-top: auto; }
 
-@media (max-width: 980px) {
-  .ty-hero__panel,
-  .ty-explore { grid-template-columns: 1fr; }
+/* ═══ Módulo 4 · Red de conexiones ══════════════════════════════════════
+   Sin recuadro: el fondo ES la pieza. Las cuatro rutas cruzan de borde a
+   borde, se cruzan en una estación blanca y un pulso las recorre en continuo,
+   siempre en horizontal y en el mismo sentido — el movimiento de un metro.
 
-  .ty-hero__visual { order: -1; }
+   Nota: la regla de "objetos reales, no vectores" del documento se refiere a
+   las animaciones de vehículos. Una red de conexiones no es fotografiable, así
+   que se resuelve con el propio sistema de líneas de la marca.               */
+.ty-section--red {
+  position: relative;
+  overflow: hidden;
+  /* Generoso a propósito: las dos franjas de trazos van al 8-22% y al 81-93%
+     del alto, así que el texto necesita ese colchón para no tocarlas cuando
+     crece a cuatro o cinco líneas en pantallas angostas. */
+  padding-block: clamp(104px, 12vw, 150px);
+  /* Corporativo, no morado profundo, por dos razones: es comunicación
+     institucional sobre Valor Pyme —donde el documento pide privilegiar el
+     color corporativo— y sobre morado el trazo de Mercado (#330559) quedaba
+     en 1:1 contra el fondo, es decir, invisible. */
+  background: var(--color-corp);
+}
 
-  .ty-hero h1,
-  .ty-hero h2 { max-width: none; }
+.ty-red__fondo { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 
-  /* El bloque de acciones pasa a ancho completo: caben las tres en fila hasta
-     620px, así que no se hereda el 2+1 huérfano de .grid-3. */
-  .ty-explore .grid-3 { grid-template-columns: repeat(3, 1fr); }
+/* `none` para que las dos franjas queden siempre a la misma altura relativa
+   —arriba y abajo— y el texto conserve el centro libre a cualquier alto. El
+   grosor lo salva `non-scaling-stroke`, que hereda de .route-line. */
+.ty-red__fondo svg { width: 100%; height: 100%; display: block; }
+
+/* A plena opacidad, como en el hero. Bajarla los volvía oliva y granate sobre
+   el morado: dejaban de ser los colores del brandbook. La sutileza se consigue
+   sacándolos de la zona de lectura, no destiñéndolos. */
+.ty-red__trazos .route-line { vector-effect: non-scaling-stroke; }
+
+.ty-red__estacion { fill: var(--color-blanco); }
+
+.ty-red__pulso {
+  fill: none;
+  stroke: var(--color-blanco);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  opacity: .9;
+  stroke-dasharray: 60 1320;
+  animation: ty-pulso 12s linear infinite;
+}
+
+.ty-red__pulso--b { animation-delay: 3s; }
+.ty-red__pulso--c { animation-delay: 6s; }
+.ty-red__pulso--d { animation-delay: 9s; }
+
+@keyframes ty-pulso {
+  from { stroke-dashoffset: 1380; }
+  to   { stroke-dashoffset: -60; }
+}
+
+/* El reset global de movimiento reducido acorta la duración a .001ms, que en
+   un bucle infinito produce un parpadeo. Aquí se apaga del todo. */
+@media (prefers-reduced-motion: reduce) {
+  .ty-red__pulso { animation: none !important; opacity: 0; }
+}
+
+.ty-red__texto {
+  position: relative;
+  z-index: 1;
+  max-width: 30ch;
+  margin-inline: auto;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-h2);
+  line-height: 1.12;
+  color: var(--color-texto-light);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  /* La foto pasa a fondo completo y el texto se apoya sobre ella: hace falta
+     un velo de marca —morado sólido degradando a transparente— para que el
+     blanco siga siendo legible. Construido con un solo color oficial. */
+  /* El escalón mínimo es 66%: por debajo, un píxel claro de la foto deja el
+     texto blanco en 4.4:1 y baja de AA. A 66% el peor caso queda en 5.8:1. */
+  .ty-hero .hero__bg::after {
+    background: linear-gradient(180deg,
+      var(--color-morado) 0%,
+      color-mix(in srgb, var(--color-morado) 78%, transparent) 45%,
+      color-mix(in srgb, var(--color-morado) 66%, transparent) 100%);
+  }
+
+  .ty-hero .hero__copy { max-width: none; }
+  .ty-hero h1 { max-width: 18ch; }
+  .ty-hero__deck { max-width: none; }
 }
 
 @media (max-width: 620px) {
-  .ty-hero { padding-top: 20px; }
-
-  .ty-hero__panel { padding: 24px 20px; gap: 24px; }
-
-  .ty-brand-route { max-width: 330px; }
-
   .ty-btn { width: 100%; min-width: 0; }
-
-  .ty-step { padding: 20px; gap: 14px; }
-
-  .ty-explore .grid-3 { grid-template-columns: 1fr; }
-
-  .ty-action-card { min-height: 82px; }
-
-  .ty-trust {
-    grid-template-columns: 1fr;
-    border-left-width: 1px;
-    border-top: 8px solid var(--color-verde);
-  }
+  .ty-hero .hero__cta .btn { flex: 1; }
+  .ty-red__texto { font-size: var(--text-h3); max-width: none; }
 
   /* Palabras largas en 320px: que partan antes de desbordar la caja. */
   .ty-hero h1,
-  .ty-hero h2,
+  .ty-hero__deck,
   .ty-step h3,
-  .ty-copy p,
-  .ty-step p,
-  .ty-explore p,
-  .ty-trust p { overflow-wrap: anywhere; }
+  .ty-action h3,
+  .ty-red__texto { overflow-wrap: anywhere; }
 }
