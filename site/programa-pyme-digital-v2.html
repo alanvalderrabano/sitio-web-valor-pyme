@@ -15,9 +15,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css?v=103">
-<link rel="stylesheet" href="programa-v2.css?v=1">
+<link rel="stylesheet" href="programa-v2.css?v=2">
 </head>
-<body data-ruta="">
+<!-- El TED pertenece a la Ruta de Talento y Gestión: `data-ruta` resuelve --ruta,
+     --ruta-deep y --ruta-soft al verde de esa ruta (#00BD70) para todo el sistema
+     (indicadores, líneas, acentos). Ninguna otra ruta pinta en esta página. -->
+<body data-ruta="talento">
 
 <header class="site-header">
   <div class="site-header__top">
@@ -57,51 +60,58 @@
     <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
+
+<!-- El menú móvil faltaba en esta página: sin él, el botón hamburguesa no abría
+     nada por debajo de 900px (script.js necesita este bloque). -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/rutas">Rutas Pyme</a>
+  <a href="/ruta-capital" class="mobile-menu__sub">Ruta Capital</a>
+  <a href="/ruta-mercado" class="mobile-menu__sub">Ruta Mercado</a>
+  <a href="/ruta-digitalizacion" class="mobile-menu__sub">Ruta Digitalización</a>
+  <a href="/ruta-talento" class="mobile-menu__sub">Ruta Talento y Gestión</a>
+  <a href="#aliados">Alianzas</a>
+  <a href="/nosotros">Nosotros</a>
+  <span class="mobile-menu__label">Recursos</span>
+  <a href="/blog" class="mobile-menu__sub">Blog</a>
+  <a href="/foro" class="mobile-menu__sub">Foro</a>
+  <a href="/recursos" class="mobile-menu__sub">Recursos</a>
+  <a href="/contacto">Contacto</a>
+</div>
+
 <main class="ppd2">
 
 <!-- ══════════ HERO ══════════
-     Reconstruido capa por capa desde Hero.svg (1440x718) que entregó diseño.
-     El orden importa: la figura recortada va DESPUÉS de las curvas, por eso estas
-     pasan por detrás de ella. Los trazados son los del archivo, sin retocar.
+     Mix aprobado por el Equipo Fé: la caja clara de la v1 (lavanda, texto en morado
+     de marca) con la fotografía de la v2, que es la que gustó.
 
-     Las tres píldoras usan las palabras EXACTAS del párrafo de esta misma página
-     ("Mejora la gestión de ventas, automatiza procesos y amplía tu alcance en el
-     mercado digital"). El Figma las reescribía; aquí se respeta el texto original. -->
-<section class="ppd2-band ppd2-band--corp ppd2-hero" aria-label="Programa Pyme Digital">
-  <img class="ppd2-hero__escena" src="assets/photos/brand/ppd-hero-escena.jpg"
-       width="1942" height="872" alt="" aria-hidden="true" loading="eager">
-  <div class="ppd2-hero__velo" aria-hidden="true"></div>
+     Se retira todo lo que el equipo rechazó y NO se sustituye por nada equivalente:
+       · el velo/degradado morado sobre la foto
+       · las dos curvas decorativas del Hero.svg
+       · las tres píldoras flotantes sobre la imagen
+     La foto queda en formato CUADRADO (872x872, recorte de ppd-hero-escena.jpg) y
+     sin ningún elemento encima: ni marco, ni sombra, ni esquinas redondeadas
+     —el brandbook pide terminaciones rectas—, de modo que se integre por
+     alineación y no por decorado.
 
-  <svg class="ppd2-hero__lineas" viewBox="0 0 1440 718" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
-    <path d="M1094.97 398.061C786.031 398.061 786.03 51 477.087 51H-133M1095.49 398.061C1404.44 398.061 1404.44 51 1713.38 51H2323.47" stroke="#0BBB70" stroke-width="20" stroke-miterlimit="10"/>
-    <path d="M314 771.008C692.766 512.373 912.691 834.449 1291.46 575.815L2039.42 65.0763" stroke="#A6FFD9" stroke-width="20" stroke-miterlimit="10"/>
-  </svg>
-
-  <img class="ppd2-hero__figura" src="assets/photos/brand/ppd-hero-figura.webp"
-       width="1942" height="872" alt="Emprendedora revisando la gestión de su negocio en una tablet" loading="eager">
-
+     El indicador de ruta usa el componente `.eyebrow` del sistema: su línea toma
+     `--ruta`, que con data-ruta="talento" es el verde #00BD70. -->
+<section class="ppd2-hero" aria-label="Programa Pyme Digital">
   <div class="ppd2-hero__wrap">
     <div class="ppd2-hero__copy">
-      <h1 class="reveal">Programa <em>Pyme Digital:</em> Digitaliza tu pyme y crece sin límites</h1>
+      <p class="eyebrow reveal">Ruta Talento y Gestión</p>
+      <h1 class="reveal">Programa Pyme Digital: Digitaliza tu pyme y crece sin límites</h1>
       <p class="ppd2-hero__sub reveal d1"><strong>El programa está diseñado para ayudarte a crecer y digitalizar tu negocio mediante herramientas, talleres y asesorías personalizadas con expertos de Pyme UC.</strong></p>
       <p class="ppd2-hero__sub reveal d1">Mejora la gestión de ventas, automatiza procesos y amplía tu alcance en el mercado digital.</p>
       <div class="ppd2-hero__cta reveal d2">
-        <a href="/descarga-test-de-digitalizacion" class="ppd2-btn">¡Inicia el test ahora! <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="/descarga-test-de-digitalizacion" class="btn btn--xl">¡Inicia el test ahora! <svg class="arrow" width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
-  </div>
 
-  <ul class="ppd2-pills" role="list">
-    <li class="ppd2-pill ppd2-pill--1">Automatiza procesos
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9l2.1 2.1m10 10 2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </li>
-    <li class="ppd2-pill ppd2-pill--2">Amplía tu alcance en el mercado digital
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18" stroke="currentColor" stroke-width="2"/></svg>
-    </li>
-    <li class="ppd2-pill ppd2-pill--3">Mejora la gestión de ventas
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 17 6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </li>
-  </ul>
+    <div class="ppd2-hero__media reveal d1">
+      <img src="assets/photos/brand/ppd-hero-cuadrada.jpg" width="872" height="872"
+           alt="Emprendedora revisando la gestión de su negocio en una tablet" loading="eager">
+    </div>
+  </div>
 </section>
 
 <!-- ══════════ 3 SIMPLES PASOS ══════════
@@ -168,44 +178,34 @@
 </section>
 
 <!-- ══════════ ¡REALIZA EL TEST AHORA! ══════════
-     DIVERGENCIA: el Figma enseña el test dentro de un mockup de navegador con los
-     semáforos de macOS. Es un recurso de presentación; aquí va una captura real del
-     test. Y las 3 tarjetas no se montan sobre la imagen: en el diseño están puestas
-     a mano sobre un lienzo fijo y a cualquier otro ancho se descolocan. -->
-<section class="ppd2-band ppd2-band--corp" id="realiza-el-test">
-  <div class="ppd2-test-fondo" aria-hidden="true"></div>
+     Del mix: vuelve el bloque centrado sobre lavanda de la versión 1, con las tres
+     tarjetas de "recibirás". Se retiran la banda morada, el mosaico de fondo y la
+     captura del test que traía la v2. -->
+<section class="ppd2-band ppd2-band--lavanda" id="realiza-el-test">
   <div class="ppd2-wrap">
-    <div class="ppd2-test">
-      <div class="reveal">
-        <div class="ppd2-head">
-          <h2>¡Realiza el test ahora!</h2>
-          <p>Aprovecha esta oportunidad y realiza el test. Te tomará menos de 5 minutos y obtendrás información valiosa para mejorar tu negocio.</p>
-        </div>
-        <p style="margin-top:28px"><a href="/descarga-test-de-digitalizacion" class="ppd2-btn">¡Descubre tu nivel de digitalización! <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
-        <p class="ppd2-recibe__label">Cuando realices el test, recibirás:</p>
-        <ul class="ppd2-recibe" role="list">
-          <li><span class="ppd2-recibe__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 11h6m-6 4h4M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Diagnóstico personalizado</li>
-          <li><span class="ppd2-recibe__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 11v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Talleres Gratuitos</li>
-          <li><span class="ppd2-recibe__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16M4 5v14h16V5M8 19v-6h8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Herramientas Digitales</li>
-        </ul>
-      </div>
-      <div class="ppd2-test__shot reveal d1">
-        <img src="assets/photos/brand/ted-preview.jpg" width="1400" height="845"
-             alt="Vista del Test de Digitalización de Valor Pyme" loading="lazy">
-      </div>
+    <div class="ppd2-cta reveal">
+      <h2>¡Realiza el test ahora!</h2>
+      <p>Aprovecha esta oportunidad y realiza el test. Te tomará menos de 5 minutos y obtendrás información valiosa para mejorar tu negocio.</p>
+      <a href="/descarga-test-de-digitalizacion" class="btn btn--lg">¡Descubre tu nivel de digitalización! <svg class="arrow" width="17" height="17" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p class="ppd2-recibe__label">Cuando realices el test, recibirás:</p>
+      <ul class="ppd2-recibe" role="list">
+        <li><span class="ppd2-recibe__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 11h6m-6 4h4M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Diagnóstico personalizado</li>
+        <li><span class="ppd2-recibe__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 11v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Talleres Gratuitos</li>
+        <li><span class="ppd2-recibe__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16M4 5v14h16V5M8 19v-6h8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Herramientas Digitales</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- ══════════ TESTIMONIO ══════════
-     Del rediseño: banda verde con la tarjeta blanca.
-     DIVERGENCIA: el título va en morado profundo y no en blanco — sobre el verde el
-     blanco da 2.47 de contraste. El vídeo sigue sin pista de audio (20 s mudos), por
-     eso no lleva subtítulos: no hay nada hablado que transcribir. -->
-<section class="ppd2-band ppd2-band--verde" id="testimonios">
+     Del mix: vuelve el bloque a dos columnas sobre blanco de la versión 1 —cita a la
+     izquierda, vídeo a la derecha— en lugar de la banda verde con tarjeta de la v2.
+     El clip no tiene pista de audio (20 s de imagen muda), así que no lleva
+     subtítulos: no hay nada hablado que transcribir. -->
+<section class="ppd2-band ppd2-band--blanco" id="testimonios">
   <div class="ppd2-wrap">
     <div class="ppd2-head ppd2-head--center reveal"><h2>Testimonios de Nuestros Clientes</h2></div>
-    <div class="ppd2-testi__card reveal">
+    <div class="ppd2-testi reveal">
       <figure class="ppd2-quote">
         <span class="ppd2-quote__mark" aria-hidden="true">&ldquo;</span>
         <blockquote>Estas capacitaciones son muy valiosas para nuestro desarrollo como empresarios, dado que desde nuestra distinta expertise nos vemos enfrentados a algunos desafíos que no son propios de nuestro conocimiento previo y necesitamos ir desarrollando competencias que nos permitan crecer</blockquote>

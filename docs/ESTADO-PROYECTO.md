@@ -178,14 +178,37 @@ tumba el POST entero** — con él, todo lo demás del envío.
 
 | Publicado en Cloudflare | |
 |---|---|
-| `/programa-pyme-digital-v2` | landing con la dirección visual del rediseño |
-| `/cupo-registrado-taller-ppd-v2` | TYP con propuesta visual |
+| `/programa-pyme-digital-v2` | landing — **mix aprobado por el Equipo Fé** (ver abajo) |
+| `/cupo-registrado-taller-ppd-v2` | TYP con propuesta visual · fondo verde de ruta |
 | `/design-system` | página de sistema, lee del CSS real · `noindex` |
 | `/descarga-test-de-digitalizacion` | vista previa del TED, sin backend |
 
 **En HubSpot:** `Valor Pyme 2026/ted2026/` con los 14 campos de perfilamiento y las mejoras de UX.
 
 **Sin pushear:** el commit `cd6f328` está solo en local.
+
+### Programa Pyme Digital · mix del Equipo Fé (2026-08-07)
+
+`/programa-pyme-digital-v2` deja de ser "la v2" y pasa a ser **la propuesta final**: un mix de las
+dos versiones. La v1 (`/programa-pyme-digital`) queda intacta como referencia.
+
+- **De la v1:** hero claro sobre lavanda, "¡Realiza el test ahora!" centrado y testimonios a dos
+  columnas sobre blanco.
+- **De la v2:** los 3 pasos con numerales y curvas conectoras, y los beneficios sobre menta.
+- **Rechazado por el equipo y eliminado del hero** (sin sustituto equivalente): el degradado morado
+  sobre la foto, las curvas decorativas y las píldoras flotantes. La fotografía se conserva, en
+  **formato cuadrado**: `assets/photos/brand/ppd-hero-cuadrada.jpg`, recorte 872×872 de
+  `ppd-hero-escena.jpg`.
+- **CTA:** `btn--xl` en el hero y `btn--lg` más abajo (modificadores nuevos en `styles.css`; solo
+  cambian tamaño, aire y sombra — el color de acción sigue siendo el morado corporativo).
+- **Ruta:** ambas páginas declaran `data-ruta="talento"`, así `--ruta` = `#00BD70`. En la TYP el
+  filo del grupo "apanio" pasó de rosa (Ruta Digitalización) a verde profundo para no mezclar rutas.
+- **TYP:** el hero mantiene la composición aprobada —mosaico del brandbook con el desvanecido
+  hacia abajo— pero en el **verde de ruta**: fondo `#00BD70` y patrón en menta `#A6FFD9`
+  (`patron-mosaico.svg`, no hizo falta asset nuevo; 2.11:1, la misma sutileza que tenía el rosa
+  claro sobre rosa). El disco del visto va en `#00733E` (blanco sobre `#00BD70` daba 2.47:1).
+- Ambas páginas **no tenían el bloque `.mobile-menu`**: el botón hamburguesa no abría nada por
+  debajo de 900px. Añadido.
 
 ### Lo hecho en el TED
 

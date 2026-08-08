@@ -15,9 +15,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css?v=103">
-<link rel="stylesheet" href="typ-v2.css?v=1">
+<link rel="stylesheet" href="typ-v2.css?v=3">
 </head>
-<body data-ruta="">
+<!-- El taller TED pertenece a la Ruta de Talento y Gestión: `data-ruta` resuelve
+     --ruta al verde #00BD70 y --ruta-deep a #00733E para toda la página. -->
+<body data-ruta="talento">
 
 <header class="site-header">
   <div class="site-header__top">
@@ -57,12 +59,34 @@
     <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
+
+<!-- El menú móvil faltaba en esta página: sin él, el botón hamburguesa no abría
+     nada por debajo de 900px (script.js necesita este bloque). -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/rutas">Rutas Pyme</a>
+  <a href="/ruta-capital" class="mobile-menu__sub">Ruta Capital</a>
+  <a href="/ruta-mercado" class="mobile-menu__sub">Ruta Mercado</a>
+  <a href="/ruta-digitalizacion" class="mobile-menu__sub">Ruta Digitalización</a>
+  <a href="/ruta-talento" class="mobile-menu__sub">Ruta Talento y Gestión</a>
+  <a href="#aliados">Alianzas</a>
+  <a href="/nosotros">Nosotros</a>
+  <span class="mobile-menu__label">Recursos</span>
+  <a href="/blog" class="mobile-menu__sub">Blog</a>
+  <a href="/foro" class="mobile-menu__sub">Foro</a>
+  <a href="/recursos" class="mobile-menu__sub">Recursos</a>
+  <a href="/contacto">Contacto</a>
+</div>
+
 <main class="typ">
 
 <!-- ══════════ CONFIRMACIÓN ══════════
      El original resuelve este momento con un h2 verde pequeño sobre fondo blanco
-     y la foto al lado. Aquí ocupa una banda propia en menta: el usuario acaba de
-     inscribirse y es lo primero que tiene que leer. Texto literal del original. -->
+     y la foto al lado. Aquí ocupa una banda propia: el usuario acaba de
+     inscribirse y es lo primero que tiene que leer. Texto literal del original.
+
+     El fondo es el verde de la Ruta de Talento y Gestión (#00BD70) con el mosaico
+     del brandbook en menta encima: misma composición que la propuesta aprobada,
+     cambiando el rosa por el verde de esta ruta. -->
 <section class="typ-hero" aria-label="Confirmación de inscripción">
   <div class="typ-hero__wrap">
     <div class="typ-hero__panel reveal">
@@ -76,6 +100,9 @@
            enlace sigue pendiente de que HubSpot indique el calendario. -->
       <div class="typ-agendar">
         <p>¡Te invitamos a agendar el taller en tu calendario! 📆</p>
+        <!-- Tamaño normal a propósito: la columna de texto de esta barra mide
+             ~190px dentro del panel, y con `btn--lg` el titular caía en tres
+             líneas apretadas. Aquí la jerarquía la da el bloque, no el tamaño. -->
         <a href="#" class="btn">Agendar ahora <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
