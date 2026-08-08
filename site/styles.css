@@ -147,6 +147,13 @@ p { margin: 0; }
 .btn--onfill { background:#fff; color: var(--color-morado); }
 .btn--onfill:hover { background: var(--color-morado); color:#fff; }
 .btn--sm { height: 40px; padding: 10px 18px; font-size: 14px; }
+/* Escalones de tamaño del MISMO botón, para dar jerarquía cuando en una página
+   conviven varios CTA: `--xl` es la acción principal (hero) y `--lg` la que la
+   repite más abajo. Solo cambian tamaño, aire y peso de sombra — nunca el color:
+   la acción del sitio es siempre el morado corporativo. */
+.btn--lg { height: 56px; padding: 16px 30px; font-size: 17px; box-shadow: 0 8px 22px rgba(97,38,255,.22); }
+.btn--xl { height: 62px; padding: 19px 36px; font-size: 19px; letter-spacing: .01em; box-shadow: 0 12px 30px rgba(97,38,255,.28); }
+.btn--lg:hover, .btn--xl:hover { box-shadow: var(--shadow-lg); }
 
 .link-more { font-weight: 700; color: var(--color-corp); display: inline-flex; gap: 8px; align-items: center; }
 .link-more .arrow { transition: transform .25s var(--ease); }
