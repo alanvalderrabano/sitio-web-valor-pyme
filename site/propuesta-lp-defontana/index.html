@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digitaliza tu pyme con Defontana — Beneficio exclusivo Valor Pyme</title>
+<meta name="description" content="Suscríbete gratis a Valor Pyme y accede a descuentos de entre 15% y 30% en productos Defontana Digital para ordenar y simplificar la gestión de tu negocio.">
+<meta name="robots" content="noindex"><!-- propuesta de diseño, no producción -->
+<meta property="og:title" content="Digitaliza tu pyme con Defontana — Beneficio exclusivo Valor Pyme">
+<meta property="og:description" content="Descuentos de 15% a 30% en productos Defontana Digital para miembros de la comunidad Valor Pyme.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#6126FF">
+<link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css?v=3">
+<script>document.documentElement.className += " js";</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ============================ 01 · HEADER ============================ -->
+<!-- UX: el wireframe no contempla CTA en el header. En una landing de captura
+     el acceso al formulario debe estar siempre a un clic. -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="cobrand" href="#hero" aria-label="Valor Pyme en alianza con Defontana">
+      <img class="cobrand__logo" src="assets/logos/logo-horizontal-dark.svg" alt="Valor Pyme">
+      <span class="cobrand__x" aria-hidden="true">×</span>
+      <span class="cobrand__partner">Defontana</span>
+    </a>
+    <div class="header__cta">
+      <span class="header__note">Suscripción gratuita</span>
+      <a class="btn btn--sm" href="#formulario" data-cta="header">Quiero mi descuento</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ========================= 02 · HERO + FORM ======================== -->
+  <section class="hero" id="hero">
+    <!-- Cintas del sistema gráfico: cambian de nivel con curvas S, cap redondeado
+         y puntos crema en los cruces (Brandbook, pp. 49-52). Ocupan la banda
+         inferior para no competir con el titular. -->
+    <svg class="hero__net" viewBox="0 0 1280 934" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <g fill="none" stroke-width="15" stroke-linecap="round">
+        <path d="M-60 920 H520 C620 920 620 752 720 752 H1340" stroke="#FFFFFF" opacity=".16"/>
+        <path d="M-60 740 H380 C480 740 480 872 580 872 H820 C920 872 920 800 1020 800 H1340" stroke="#FF2B5E" opacity=".9"/>
+        <path d="M-60 800 H120 C220 800 220 740 320 740 H460 C560 740 560 830 660 830 H1340" stroke="#FFF21C" opacity=".92"/>
+        <path d="M-60 872 H240 C340 872 340 792 440 792 H700 C800 792 800 862 900 862 H1340" stroke="#A6FFD9" opacity=".9"/>
+      </g>
+      <g fill="#FFE3CC">
+        <circle cx="320" cy="740" r="15"/>
+        <circle cx="580" cy="872" r="12"/>
+        <circle cx="900" cy="862" r="13"/>
+      </g>
+      <circle cx="900" cy="862" r="24" fill="none" stroke="#FFE3CC" stroke-width="1.5" opacity=".55"/>
+    </svg>
+
+    <div class="container hero__grid">
+
+      <div class="hero__copy">
+        <span class="tag tag--ghost"><span class="tag__dot"></span>Beneficio exclusivo Valor Pyme</span>
+
+        <h1>Digitaliza tu pyme con Defontana</h1>
+
+        <p class="lead">
+          Suscríbete gratis a Valor Pyme y accede a descuentos de entre 15% y 30%
+          en productos Defontana Digital para ordenar y simplificar la gestión de tu negocio.
+        </p>
+
+        <!-- El descuento es el argumento comercial principal: se jerarquiza como bloque -->
+        <div class="hero__deal">
+          <div class="hero__deal-figure">15%&nbsp;–&nbsp;30%</div>
+          <div class="hero__deal-text">
+            <strong>de descuento mensual</strong>
+            en Facturación, POS, Asistencia, CRM y Certificado Digital SII.
+          </div>
+        </div>
+
+        <ul class="trust">
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Suscripción 100% gratuita</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Sin compromiso de compra</li>
+          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Activación en menos de 3 minutos</li>
+        </ul>
+      </div>
+
+
+      <!-- Mobile: la banda de cintas se convierte en un elemento de flujo que
+           separa el argumento del formulario. En desktop corre de fondo. -->
+      <svg class="hero__band" viewBox="0 0 390 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <g fill="none" stroke-width="9" stroke-linecap="round">
+          <path d="M-20 116 H260 C310 116 310 40 360 40 H410" stroke="#FFFFFF" opacity=".18"/>
+          <path d="M-20 24 H90 C140 24 140 92 190 92 H410" stroke="#FF2B5E" opacity=".92"/>
+          <path d="M-20 60 H40 C90 60 90 20 140 20 H230 C280 20 280 76 330 76 H410" stroke="#FFF21C" opacity=".95"/>
+          <path d="M-20 100 H150 C200 100 200 52 250 52 H410" stroke="#A6FFD9" opacity=".92"/>
+        </g>
+        <g fill="#FFE3CC">
+          <circle cx="140" cy="20" r="9"/>
+          <circle cx="190" cy="92" r="8"/>
+        </g>
+      </svg>
+
+      <!-- --------------------------- Formulario ------------------------ -->
+      <div class="form-card" id="formulario">
+        <div class="form-card__accent" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+        <div class="form-card__head">
+          <h2>Únete gratis y accede a tu descuento</h2>
+          <p>Completa el formulario y te enviamos el acceso al beneficio Defontana.</p>
+        </div>
+
+        <div class="form-card__body">
+          <form id="lead-form" novalidate>
+            <div class="form-grid">
+
+              <div class="field field--wide" data-field>
+                <label class="field__label" for="nombre">Nombre y apellido <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="nombre" name="nombre" type="text" autocomplete="name"
+                       placeholder="Ej: María González" required>
+                <span class="field__error" data-error>Ingresa tu nombre y apellido.</span>
+              </div>
+
+              <div class="field field--wide" data-field>
+                <label class="field__label" for="email">Correo electrónico <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="email" name="email" type="email" inputmode="email" autocomplete="email"
+                       placeholder="nombre@tuempresa.cl" required>
+                <span class="field__error" data-error>Revisa el formato de tu correo.</span>
+              </div>
+
+              <div class="field" data-field>
+                <label class="field__label" for="telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel"
+                       placeholder="+56 9 1234 5678" required>
+                <span class="field__error" data-error>Ingresa un teléfono válido.</span>
+              </div>
+
+              <div class="field" data-field>
+                <label class="field__label" for="rut">RUT de tu pyme <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="rut" name="rut" type="text" inputmode="text"
+                       placeholder="76.543.210-K" maxlength="12" required>
+                <span class="field__error" data-error>El RUT no es válido.</span>
+              </div>
+
+              <!-- UX: el paso 2 del flujo es "elige tu solución". Se adelanta al
+                   formulario y se sincroniza con las tarjetas de la sección siguiente. -->
+              <div class="field field--wide" data-field>
+                <label class="field__label" for="solucion">¿Qué solución te interesa?</label>
+                <select class="select" id="solucion" name="solucion">
+                  <option value="">Aún no lo sé</option>
+                  <option value="factura-pro">Factura Pro — facturación electrónica</option>
+                  <option value="pos-pro">POS Pro — ventas e inventario</option>
+                  <option value="control-asistencia">Control de Asistencia — turnos y jornada</option>
+                  <option value="crm-empresas">CRM Empresas — clientes y cotizaciones</option>
+                  <option value="certificado-sii">Certificado Digital SII — 30% de descuento</option>
+                </select>
+                <span class="field__hint">Puedes cambiarla después, al activar el beneficio.</span>
+              </div>
+
+              <div class="field field--wide" data-field>
+                <label class="check">
+                  <input type="checkbox" id="consentimiento" name="consentimiento" required>
+                  <span class="check__box" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg>
+                  </span>
+                  <span class="check__text">
+                    Acepto los <a href="#">términos</a> y la <a href="#">política de privacidad</a>,
+                    y que Valor Pyme comparta mis datos con Defontana para activar el beneficio.
+                  </span>
+                </label>
+                <span class="field__error" data-error>Necesitamos tu autorización para continuar.</span>
+              </div>
+
+            </div>
+
+            <button class="btn btn--lg btn--full" type="submit">
+              Quiero acceder al beneficio
+              <svg class="btn__arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+                <path d="M1 7h15M11 1.5 16.5 7 11 12.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/>
+              </svg>
+            </button>
+
+            <p class="form-card__foot">Sin costo · No compartimos tus datos con terceros ajenos al beneficio.</p>
+          </form>
+        </div>
+
+        <!-- Estado de éxito: cierra el ciclo sin sacar al usuario de la página -->
+        <div class="form-success" role="status" aria-live="polite">
+          <div class="form-success__icon">
+            <svg width="30" height="30" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>
+          </div>
+          <h2>Ya eres parte de Valor Pyme</h2>
+          <p>Te enviamos a tu correo el acceso al beneficio Defontana y los pasos para activarlo.</p>
+          <a class="btn btn--ghost" href="#necesidades">Ver las soluciones disponibles</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================== 03 · NECESIDADES ======================== -->
+  <!-- UX: en el Figma es una lista informativa. Aquí es un selector: elegir una
+       tarjeta precarga el formulario, uniendo descubrimiento y conversión. -->
+  <section class="section" id="necesidades">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <span class="eyebrow">Elige tu solución</span>
+        <h2>¿Qué necesitas ordenar en tu pyme?</h2>
+        <p class="lead">Comienza por el desafío que hoy te quita más tiempo o control. Selecciona una opción y la dejamos lista en tu formulario.</p>
+      </div>
+
+      <fieldset class="needs">
+        <legend class="sr-only">Selecciona la solución que necesita tu pyme</legend>
+
+        <div class="needs__grid">
+
+          <div class="need reveal" style="--accent:#6126FF; --accent-ink:#fff;">
+            <input type="radio" name="need" id="need-1" value="factura-pro" data-label="Factura Pro">
+            <label class="need__card" for="need-1">
+              <div class="need__top">
+                <h3>Quiero facturar sin miedo a equivocarme</h3>
+                <span class="need__mark" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg></span>
+              </div>
+              <p class="need__desc">Emite facturas y boletas electrónicas y mantén tus documentos tributarios más ordenados.</p>
+              <div class="need__foot">
+                <span class="need__product">Factura Pro</span>
+                <span class="need__off">15% dcto. mensual</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="need reveal" style="--accent:#FF2B5E; --accent-ink:#1B0630;">
+            <input type="radio" name="need" id="need-2" value="pos-pro" data-label="POS Pro">
+            <label class="need__card" for="need-2">
+              <div class="need__top">
+                <h3>Quiero controlar las ventas y el inventario de mi local</h3>
+                <span class="need__mark" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg></span>
+              </div>
+              <p class="need__desc">Centraliza caja, mercadería y documentos tributarios para tener mayor control de cada transacción.</p>
+              <div class="need__foot">
+                <span class="need__product">POS Pro</span>
+                <span class="need__off">15% dcto. mensual</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="need reveal" style="--accent:#00BD70; --accent-ink:#1B0630;">
+            <input type="radio" name="need" id="need-3" value="control-asistencia" data-label="Control de Asistencia">
+            <label class="need__card" for="need-3">
+              <div class="need__top">
+                <h3>Quiero ordenar los horarios y turnos de mi equipo</h3>
+                <span class="need__mark" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg></span>
+              </div>
+              <p class="need__desc">Registra la asistencia de tus colaboradores con una solución certificada por la Dirección del Trabajo.</p>
+              <div class="need__foot">
+                <span class="need__product">Control de Asistencia</span>
+                <span class="need__off">15% dcto. mensual</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="need reveal" style="--accent:#FF8500; --accent-ink:#1B0630;">
+            <input type="radio" name="need" id="need-4" value="crm-empresas" data-label="CRM Empresas">
+            <label class="need__card" for="need-4">
+              <div class="need__top">
+                <h3>Quiero dejar de depender de múltiples planillas</h3>
+                <span class="need__mark" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg></span>
+              </div>
+              <p class="need__desc">Centraliza clientes, cotizaciones y oportunidades para dar mejor seguimiento a tus ventas.</p>
+              <div class="need__foot">
+                <span class="need__product">CRM Empresas</span>
+                <span class="need__off">15% dcto. mensual</span>
+              </div>
+            </label>
+          </div>
+
+        </div>
+      </fieldset>
+
+      <!-- Certificado Digital SII: 30% ≠ 15%. Se separa visualmente por eso. -->
+      <aside class="sii reveal">
+        <div class="sii__badge">30%</div>
+        <div>
+          <h3>¿Necesitas operar y firmar electrónicamente ante el SII?</h3>
+          <p>Accede también a un 30% de descuento en Certificado Digital SII, el mayor beneficio de esta alianza.</p>
+        </div>
+        <a class="btn btn--invert btn--sm" href="#formulario" data-cta="sii" data-preselect="certificado-sii">Sumar a mi solicitud</a>
+      </aside>
+
+      <div class="needs__actions reveal">
+        <a class="btn btn--lg" href="#formulario" data-cta="necesidades">
+          Quiero mi descuento
+          <svg class="btn__arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+            <path d="M1 7h15M11 1.5 16.5 7 11 12.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/>
+          </svg>
+        </a>
+        <p class="hint" id="need-hint">Puedes activar más de una solución después de suscribirte.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================== 04 · PASOS =========================== -->
+  <section class="section section--alt" id="pasos">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>Activa tu beneficio en 3 pasos</h2>
+        <p class="lead">Un flujo corto, sin trámites y sin costo para tu pyme.</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <div class="step__num">1</div>
+          <div class="step__body">
+            <h3>Únete a Valor Pyme</h3>
+            <p>Completa gratuitamente el formulario con los datos de tu negocio.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <div class="step__num">2</div>
+          <div class="step__body">
+            <h3>Elige tu solución</h3>
+            <p>Selecciona el producto Defontana que necesita tu pyme.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <div class="step__num">3</div>
+          <div class="step__body">
+            <h3>Activa tu descuento</h3>
+            <p>Continúa en Defontana y accede al beneficio exclusivo.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="steps__actions reveal">
+        <a class="btn btn--lg" href="#formulario" data-cta="pasos">
+          Suscribirme gratis
+          <svg class="btn__arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+            <path d="M1 7h15M11 1.5 16.5 7 11 12.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================= 05 · VALOR PYME ======================== -->
+  <section class="section" id="valor-pyme">
+    <div class="container about__grid">
+
+      <div class="about__copy reveal">
+        <span class="eyebrow">La comunidad</span>
+        <h2>Un beneficio exclusivo de Valor Pyme</h2>
+        <p style="margin-top:var(--sp-5)">
+          Valor Pyme es una comunidad gratuita que conecta a emprendedores y pymes de Chile
+          con herramientas, formación, oportunidades y soluciones para enfrentar los desafíos
+          de sus negocios. Al suscribirte accedes al beneficio Defontana y a otros apoyos:
+        </p>
+
+        <!-- UX: los 5 ejes ya estaban en el párrafo del Figma. Extraerlos los
+             hace escaneables y conecta con las rutas del sitio principal. -->
+        <ul class="about__ejes">
+          <li class="eje">Digitalización</li>
+          <li class="eje">Financiamiento</li>
+          <li class="eje">Mercado</li>
+          <li class="eje">Talento</li>
+          <li class="eje">Gestión</li>
+        </ul>
+
+        <a class="btn btn--ghost btn--lg" href="#formulario" data-cta="valor-pyme">Quiero ser parte de Valor Pyme</a>
+      </div>
+
+      <figure class="about__media reveal">
+        <img src="assets/photos/comunidad-valor-pyme.jpg" width="760" height="646" loading="lazy" decoding="async"
+             alt="Dueña de una pyme de retail detrás del mostrador de su tienda">
+        <figcaption>Comunidad Valor Pyme · emprendedores y pymes de Chile</figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ============================ 06 · FAQ =========================== -->
+  <section class="section section--alt" id="faq">
+    <div class="container container--narrow">
+
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Antes de suscribirte</span>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+
+      <!-- UX: en el Figma las respuestas están siempre visibles y compiten con
+           el CTA final. Acordeón: la primera abierta, el resto bajo demanda. -->
+      <div class="faq reveal">
+        <div class="faq__item is-open">
+          <h3><button class="faq__q" type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1">
+            ¿Tiene costo suscribirme?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button></h3>
+          <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div class="faq__a-inner">No. Ser parte de la comunidad Valor Pyme es gratuito, y también lo es acceder al beneficio Defontana.</div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+            ¿Necesito registrarme para obtener el descuento?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button></h3>
+          <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div class="faq__a-inner">Sí. El beneficio Defontana es exclusivo para miembros de Valor Pyme, por lo que primero debes completar tu suscripción gratuita.</div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+            ¿Qué ocurre después de completar el formulario?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button></h3>
+          <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div class="faq__a-inner">Recibirás un correo de confirmación, podrás elegir tu producto Defontana y continuar con la activación del beneficio directamente en su plataforma.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="faq__more reveal">¿Tienes otra duda? <a href="#">Escríbenos y te respondemos.</a></p>
+
+    </div>
+  </section>
+
+  <!-- ========================= 07 · CTA FINAL ========================= -->
+  <section class="cta-final" id="cta-final">
+    <svg class="cta-final__net" viewBox="0 0 1280 535" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <g fill="none" stroke-width="13" stroke-linecap="round">
+        <path d="M-60 44 H300 C400 44 400 -20 500 -20" stroke="#FFF21C" opacity=".85"/>
+        <path d="M1340 40 H980 C880 40 880 -24 780 -24" stroke="#A6FFD9" opacity=".8"/>
+        <path d="M-60 442 H200 C300 442 300 500 400 500 H1340" stroke="#FFE3CC" opacity=".8"/>
+        <path d="M-60 512 H460 C560 512 560 462 660 462 H1340" stroke="#A6FFD9" opacity=".85"/>
+        <path d="M-60 478 H760 C860 478 860 524 960 524 H1340" stroke="#FFFFFF" opacity=".28"/>
+      </g>
+      <g fill="#FFE3CC">
+        <circle cx="400" cy="500" r="12"/>
+        <circle cx="660" cy="462" r="11"/>
+      </g>
+    </svg>
+
+    <div class="container">
+      <h2>Digitaliza tu pyme y comienza a tener mayor control</h2>
+      <p>Únete gratis a Valor Pyme y accede a descuentos exclusivos en productos Defontana Digital.</p>
+
+      <div class="cta-final__actions">
+        <a class="btn btn--lg btn--invert" href="#formulario" data-cta="final">
+          Quiero acceder al beneficio
+          <svg class="btn__arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+            <path d="M1 7h15M11 1.5 16.5 7 11 12.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/>
+          </svg>
+        </a>
+      </div>
+
+      <ul class="trust">
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Gratis, para siempre</li>
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Sin tarjeta de crédito</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ 08 · FOOTER =========================== -->
+<!-- UX: el wireframe termina en el CTA. Una landing pública necesita cierre
+     legal y salidas mínimas de navegación. -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/logos/logo-horizontal-white.svg" alt="Valor Pyme">
+        <p>Una red de soluciones para el viaje de las pymes de Chile. Cada ruta, una estación más cerca de tu crecimiento.</p>
+      </div>
+      <div>
+        <h4>El beneficio</h4>
+        <ul>
+          <li><a href="#necesidades">Soluciones Defontana</a></li>
+          <li><a href="#pasos">Cómo activarlo</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Valor Pyme</h4>
+        <ul>
+          <li><a href="#valor-pyme">Qué es la comunidad</a></li>
+          <li><a href="#">Rutas y beneficios</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> Valor Pyme · Chile</span>
+      <span>Términos y condiciones · Política de privacidad</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================= 09 · BARRA CTA MÓVIL ======================= -->
+<div class="mobile-bar" id="mobile-bar">
+  <div class="mobile-bar__txt">
+    <strong>Descuento 15% – 30%</strong>
+    <span>Suscripción gratuita</span>
+  </div>
+  <a class="btn btn--sm" href="#formulario" data-cta="mobile-bar">Suscribirme</a>
+</div>
+
+<script src="script.js?v=2" defer></script>
+</body>
+</html>
