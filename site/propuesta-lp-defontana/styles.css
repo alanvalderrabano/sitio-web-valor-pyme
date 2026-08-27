@@ -392,12 +392,11 @@ h4 { font-size: var(--t-h4); }
   white-space: nowrap;
 }
 .header__cta { display: flex; align-items: center; gap: var(--sp-4); }
-.header__note { font-size: var(--t-xs); font-weight: 700; color: var(--vp-verde); }
 
 @media (max-width: 720px) {
   .cobrand__logo { height: 24px; }
   .cobrand__partner { font-size: .75rem; padding: 6px 9px; }
-  .header__cta .btn, .header__note { display: none; }
+  .header__cta .btn { display: none; }
 }
 
 /* =========================== 05. HERO + FORM =========================== */
@@ -429,26 +428,9 @@ h4 { font-size: var(--t-h4); }
   max-width: 46ch; line-height: 1.55;
 }
 
-/* Bloque de descuento: el dato de mayor valor comercial, jerarquizado */
-.hero__deal {
-  display: inline-flex; align-items: stretch; gap: 0;
-  margin-top: var(--sp-8);
-  border: 1px solid rgba(255,255,255,.24);
-  background: rgba(255,255,255,.06);
-}
-.hero__deal-figure {
-  display: grid; place-items: center; padding: 14px 20px; white-space: nowrap;
-  background: var(--vp-menta); color: #04492F;
-  font-family: var(--font-display); font-weight: 900; font-size: 1.5rem; line-height: 1;
-  letter-spacing: -0.02em;
-}
-.hero__deal-text {
-  display: grid; align-content: center; padding: 10px 20px;
-  max-width: 34ch;
-  font-size: var(--t-xs); line-height: 1.45; color: rgba(255,255,255,.9);
-}
-.hero__deal-text strong { color: #fff; font-size: var(--t-sm); }
 
+
+.hero__descuento { margin-top: var(--sp-8); }
 .hero .trust { margin-top: var(--sp-6); color: rgba(255,255,255,.75); }
 .hero .trust svg { color: var(--vp-menta); }
 
@@ -509,8 +491,6 @@ h4 { font-size: var(--t-h4); }
   }
   .hero__grid { grid-template-columns: 1fr; gap: var(--sp-8); }
   .hero__copy h1 { max-width: 18ch; }
-  .hero__deal { display: flex; width: 100%; }
-  .hero__deal-figure { font-size: 1.25rem; }
 }
 
 /* ========================== 06. NECESIDADES ============================ */
@@ -578,7 +558,7 @@ h4 { font-size: var(--t-h4); }
 /* Banda Certificado Digital SII: 30% — se diferencia del resto (15%) */
 .sii {
   margin-top: var(--sp-5);
-  display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+  display: grid; grid-template-columns: auto 1fr; align-items: center;
   gap: var(--sp-5);
   padding: clamp(20px, 2.2vw, 26px) clamp(22px, 2.4vw, 30px);
   background: var(--vp-morado); color: #fff; border-radius: var(--radius);
@@ -591,11 +571,6 @@ h4 { font-size: var(--t-h4); }
 }
 .sii h3 { color: #fff; font-size: var(--t-h4); }
 .sii p { margin-top: 4px; font-size: var(--t-sm); color: rgba(255,255,255,.78); max-width: 62ch; }
-.sii .btn { flex: none; }
-@media (max-width: 860px) {
-  .sii { grid-template-columns: auto 1fr; }
-  .sii .btn { grid-column: 1 / -1; width: 100%; }
-}
 @media (max-width: 520px) {
   .sii { grid-template-columns: 1fr; gap: var(--sp-4); }
   .sii__badge { justify-self: start; }
@@ -651,21 +626,7 @@ h4 { font-size: var(--t-h4); }
   gap: clamp(32px, 5vw, 72px); align-items: center;
 }
 .about__copy p { color: var(--ink-muted); font-size: var(--t-lead); max-width: 52ch; }
-.about__ejes {
-  display: flex; flex-wrap: wrap; gap: var(--sp-2);
-  margin-top: var(--sp-6);
-}
-.eje {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 14px; background: #fff; border: 1px solid var(--line);
-  font-size: var(--t-xs); font-weight: 700; color: var(--vp-morado);
-}
-.eje::before { content: ""; width: 8px; height: 8px; background: var(--accent); }
-.eje:nth-child(1) { --accent: var(--vp-amarillo); }
-.eje:nth-child(2) { --accent: var(--vp-rosa); }
-.eje:nth-child(3) { --accent: var(--vp-morado); }
-.eje:nth-child(4) { --accent: var(--vp-verde); }
-.eje:nth-child(5) { --accent: var(--vp-corp); }
+
 .about__copy .btn { margin-top: var(--sp-8); }
 
 .about__media {
@@ -726,11 +687,7 @@ h4 { font-size: var(--t-h4); }
 .faq__a { overflow: hidden; height: 0; transition: height var(--dur) var(--ease); }
 .faq__a-inner { padding-bottom: var(--sp-6); color: var(--ink-muted); font-size: var(--t-sm); max-width: 68ch; }
 
-.faq__more {
-  margin-top: var(--sp-8); display: flex; flex-wrap: wrap; gap: var(--sp-3);
-  align-items: center; font-size: var(--t-sm); color: var(--ink-muted);
-}
-.faq__more a { color: var(--vp-corp); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
 
 /* ============================ 10. CTA FINAL =========================== */
 .cta-final {

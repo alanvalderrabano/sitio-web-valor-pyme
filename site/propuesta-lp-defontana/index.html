@@ -13,7 +13,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 <script>document.documentElement.className += " js";</script>
 </head>
 <body>
@@ -31,7 +31,6 @@
       <span class="cobrand__partner">Defontana</span>
     </a>
     <div class="header__cta">
-      <span class="header__note">Suscripción gratuita</span>
       <a class="btn btn--sm" href="#formulario" data-cta="header">Quiero mi descuento</a>
     </div>
   </div>
@@ -71,14 +70,8 @@
           en productos Defontana Digital para ordenar y simplificar la gestión de tu negocio.
         </p>
 
-        <!-- El descuento es el argumento comercial principal: se jerarquiza como bloque -->
-        <div class="hero__deal">
-          <div class="hero__deal-figure">15%&nbsp;–&nbsp;30%</div>
-          <div class="hero__deal-text">
-            <strong>de descuento mensual</strong>
-            en Facturación, POS, Asistencia, CRM y Certificado Digital SII.
-          </div>
-        </div>
+        <!-- Etiqueta del Figma, sin enumerar productos -->
+        <span class="tag tag--menta hero__descuento">15% a 30% de descuento</span>
 
         <ul class="trust">
           <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Suscripción 100% gratuita</li>
@@ -209,7 +202,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Elige tu solución</span>
         <h2>¿Qué necesitas ordenar en tu pyme?</h2>
-        <p class="lead">Comienza por el desafío que hoy te quita más tiempo o control. Selecciona una opción y la dejamos lista en tu formulario.</p>
+        <p class="lead">Comienza por el desafío que hoy te quita más tiempo o control.</p>
       </div>
 
       <fieldset class="needs">
@@ -285,9 +278,8 @@
         <div class="sii__badge">30%</div>
         <div>
           <h3>¿Necesitas operar y firmar electrónicamente ante el SII?</h3>
-          <p>Accede también a un 30% de descuento en Certificado Digital SII, el mayor beneficio de esta alianza.</p>
+          <p>Accede también a un 30% de descuento en Certificado Digital SII.</p>
         </div>
-        <a class="btn btn--invert btn--sm" href="#formulario" data-cta="sii" data-preselect="certificado-sii">Sumar a mi solicitud</a>
       </aside>
 
       <div class="needs__actions reveal">
@@ -310,7 +302,6 @@
       <div class="section-head reveal">
         <span class="eyebrow">Cómo funciona</span>
         <h2>Activa tu beneficio en 3 pasos</h2>
-        <p class="lead">Un flujo corto, sin trámites y sin costo para tu pyme.</p>
       </div>
 
       <ol class="steps">
@@ -318,7 +309,7 @@
           <div class="step__num">1</div>
           <div class="step__body">
             <h3>Únete a Valor Pyme</h3>
-            <p>Completa gratuitamente el formulario con los datos de tu negocio.</p>
+            <p>Completa gratuitamente el formulario.</p>
           </div>
         </li>
         <li class="step reveal">
@@ -359,18 +350,9 @@
         <p style="margin-top:var(--sp-5)">
           Valor Pyme es una comunidad gratuita que conecta a emprendedores y pymes de Chile
           con herramientas, formación, oportunidades y soluciones para enfrentar los desafíos
-          de sus negocios. Al suscribirte accedes al beneficio Defontana y a otros apoyos:
+          de sus negocios. Al suscribirte podrás acceder al beneficio Defontana y descubrir
+          otros apoyos en digitalización, financiamiento, mercado, talento y gestión.
         </p>
-
-        <!-- UX: los 5 ejes ya estaban en el párrafo del Figma. Extraerlos los
-             hace escaneables y conecta con las rutas del sitio principal. -->
-        <ul class="about__ejes">
-          <li class="eje">Digitalización</li>
-          <li class="eje">Financiamiento</li>
-          <li class="eje">Mercado</li>
-          <li class="eje">Talento</li>
-          <li class="eje">Gestión</li>
-        </ul>
 
         <a class="btn btn--ghost btn--lg" href="#formulario" data-cta="valor-pyme">Quiero ser parte de Valor Pyme</a>
       </div>
@@ -402,7 +384,7 @@
             <span class="faq__icon" aria-hidden="true"></span>
           </button></h3>
           <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
-            <div class="faq__a-inner">No. Ser parte de la comunidad Valor Pyme es gratuito, y también lo es acceder al beneficio Defontana.</div>
+            <div class="faq__a-inner">No. Ser parte de la comunidad Valor Pyme es gratuito.</div>
           </div>
         </div>
 
@@ -412,7 +394,7 @@
             <span class="faq__icon" aria-hidden="true"></span>
           </button></h3>
           <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
-            <div class="faq__a-inner">Sí. El beneficio Defontana es exclusivo para miembros de Valor Pyme, por lo que primero debes completar tu suscripción gratuita.</div>
+            <div class="faq__a-inner">Sí. El beneficio Defontana es exclusivo para miembros de Valor Pyme.</div>
           </div>
         </div>
 
@@ -422,12 +404,10 @@
             <span class="faq__icon" aria-hidden="true"></span>
           </button></h3>
           <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
-            <div class="faq__a-inner">Recibirás un correo de confirmación, podrás elegir tu producto Defontana y continuar con la activación del beneficio directamente en su plataforma.</div>
+            <div class="faq__a-inner">Podrás elegir tu producto Defontana y continuar con la activación del beneficio.</div>
           </div>
         </div>
       </div>
-
-      <p class="faq__more reveal">¿Tienes otra duda? <a href="#">Escríbenos y te respondemos.</a></p>
 
     </div>
   </section>
@@ -461,11 +441,6 @@
           </svg>
         </a>
       </div>
-
-      <ul class="trust">
-        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Gratis, para siempre</li>
-        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Sin tarjeta de crédito</li>
-      </ul>
     </div>
   </section>
 
@@ -508,8 +483,7 @@
 <!-- ======================= 09 · BARRA CTA MÓVIL ======================= -->
 <div class="mobile-bar" id="mobile-bar">
   <div class="mobile-bar__txt">
-    <strong>Descuento 15% – 30%</strong>
-    <span>Suscripción gratuita</span>
+    <strong>15% a 30% de descuento</strong>
   </div>
   <a class="btn btn--sm" href="#formulario" data-cta="mobile-bar">Suscribirme</a>
 </div>
