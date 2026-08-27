@@ -735,7 +735,9 @@ h4 { font-size: var(--t-h4); }
 /* ============================ 10. CTA FINAL =========================== */
 .cta-final {
   position: relative; overflow: hidden; isolation: isolate;
-  background: var(--vp-morado);
+  /* Corporativo, como el hero: es el fondo sobre el que el Brandbook dibuja
+     las 4 rutas (p. 49). Sobre morado, la línea morada desaparece. */
+  background: var(--vp-corp);
   color: #fff; text-align: center;
   /* El extra abajo abre la banda donde corren las cintas del sistema gráfico */
   padding-block: clamp(64px, 8vw, 112px) clamp(112px, 13vw, 180px);
@@ -754,7 +756,7 @@ h4 { font-size: var(--t-h4); }
 .cta-final .trust svg { color: var(--vp-menta); }
 
 /* ============================== 11. FOOTER ============================= */
-.footer { background: var(--n-800); color: rgba(255,255,255,.72); padding-block: var(--sp-16) var(--sp-8); }
+.footer { background: var(--vp-morado); color: rgba(255,255,255,.72); padding-block: var(--sp-16) var(--sp-8); }
 .footer__grid {
   display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
   gap: clamp(28px, 4vw, 56px);

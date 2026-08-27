@@ -46,14 +46,16 @@ Toda la identidad viene del Brandbook.
 - **Color plano, sin degradados.** El Brandbook no usa un solo degradado: cada aplicación
   —impresa, packaging y digital— es un bloque de color plano con las cintas encima. La
   página 61, que es la aplicación web, muestra exactamente eso. Las superficies de color
-  aquí son tres: hero en corporativo `#6126FF`, CTA final en morado `#330559` y footer en
-  `#2F2927`, el gris cálido del propio Brandbook.
+  aquí son dos: corporativo `#6126FF` en el hero y en el CTA final, y morado `#330559`
+  en el footer.
 - **Sistema gráfico** (cap. 10): la "unidad mínima" es una línea que **cambia de nivel con
   una curva S suave**, con extremos redondeados. Cuatro unidades a distinta altura = las 4
   rutas. Están implementadas como cintas SVG (`stroke-linecap: round`, sin ángulos rectos)
-  en el hero y el CTA final, donde tienen escala para lucirse. A tamaño de marcador de
-  sección la curva se aplana y pierde sentido, así que ahí no se usa: los antetítulos
-  llevan la barra recta del sitio principal.
+  en el hero y sobre el footer, donde tienen escala para lucirse. **Las cintas son las 4
+  rutas** —amarillo Capital, morado Mercado, rosa Digitalización, verde Talento— sobre el
+  corporativo, que es el único fondo donde las cuatro se leen: es literalmente la
+  composición de la página 49. A tamaño de marcador de sección la curva se aplana y pierde
+  sentido, así que ahí no se usa: los antetítulos llevan la barra recta del sitio principal.
 - **El punto** `#FFE3CC`: color del logotipo y de los nodos que marcan "unión, partida,
   viaje, conexión" en los cruces de las cintas. No está en la carta Pantone del cap. 07;
   lo tomé de las páginas 49–52.
