@@ -8,84 +8,7 @@
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-  /* ---------------------------------------------------------------- Año --- */
-  $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
-
   var header = $('#header');
-
-  /* ------------------------------------------------------- FAQ (acordeón) --- */
-  /* Animación por altura real para que el acordeón no salte en mobile. */
-  $$('.faq__item').forEach(function (item) {
-    var btn    = $('.faq__q', item);
-    var panel  = $('.faq__a', item);
-    var inner  = $('.faq__a-inner', item);
-
-    var setHeight = function (open) {
-      panel.style.height = open ? inner.offsetHeight + 'px' : '0px';
-    };
-    setHeight(item.classList.contains('is-open'));
-
-    btn.addEventListener('click', function () {
-      var willOpen = !item.classList.contains('is-open');
-
-      // Comportamiento de acordeón: una respuesta a la vez.
-      $$('.faq__item.is-open').forEach(function (other) {
-        if (other === item) return;
-        other.classList.remove('is-open');
-        $('.faq__q', other).setAttribute('aria-expanded', 'false');
-        $('.faq__a', other).style.height = '0px';
-      });
-
-      item.classList.toggle('is-open', willOpen);
-      btn.setAttribute('aria-expanded', String(willOpen));
-      setHeight(willOpen);
-    });
-
-    // Recalcula si cambia el ancho (el texto puede pasar de 2 a 3 líneas).
-    window.addEventListener('resize', function () {
-      if (item.classList.contains('is-open')) setHeight(true);
-    });
-  });
-
-  /* ------------------------------- Selector de solución ↔ campo del formulario */
-  var selectSolucion = $('#solucion');
-  var needHint       = $('#need-hint');
-
-  var syncFromCard = function (value, label) {
-    if (selectSolucion) selectSolucion.value = value;
-    if (needHint) {
-      needHint.innerHTML = label
-        ? '<strong style="color:var(--vp-morado)">' + label + '</strong> quedó seleccionado en tu formulario.'
-        : 'Puedes activar más de una solución después de suscribirte.';
-    }
-  };
-
-  $$('.need input[type="radio"]').forEach(function (radio) {
-    radio.addEventListener('change', function () {
-      syncFromCard(radio.value, radio.getAttribute('data-label'));
-    });
-  });
-
-  // El select también manda: si el usuario lo cambia, se marca la tarjeta.
-  if (selectSolucion) {
-    selectSolucion.addEventListener('change', function () {
-      var match = $$('.need input[type="radio"]').filter(function (r) {
-        return r.value === selectSolucion.value;
-      })[0];
-      $$('.need input[type="radio"]').forEach(function (r) { r.checked = false; });
-      if (match) { match.checked = true; }
-    });
-  }
-
-  /* ------------------------------- CTA que preselecciona (Certificado SII) --- */
-  $$('[data-preselect]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      if (selectSolucion) {
-        selectSolucion.value = el.getAttribute('data-preselect');
-        selectSolucion.dispatchEvent(new Event('change'));
-      }
-    });
-  });
 
   /* ------------------------- Foco al formulario desde cualquier CTA interno --- */
   $$('a[href="#formulario"]').forEach(function (link) {
@@ -150,8 +73,7 @@
     nombre:         function (v) { return v.trim().length >= 3 && v.trim().indexOf(' ') > 0; },
     email:          function (v) { return isEmail(v); },
     telefono:       function (v) { return isPhone(v); },
-    rut:            function (v) { return isRut(v); },
-    consentimiento: function (_, el) { return el.checked; }
+    rut:            function (v) { return isRut(v); }
   };
 
   var validateOne = function (el) {
@@ -202,7 +124,6 @@
      mover un elemento de "bajo el viewport" a "sobre el viewport" sin frames
      intermedios, y el observer nunca dispararía.
      ========================================================================= */
-  var bar     = $('#mobile-bar');
   var pending = $$('.reveal');
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -224,20 +145,11 @@
     }
   };
 
-  /* La barra aparece solo cuando el formulario quedó fuera de vista. */
-  var updateBar = function () {
-    if (!bar || !card) return;
-    var r = card.getBoundingClientRect();
-    var formOut = r.bottom < 72 || r.top > window.innerHeight;
-    bar.classList.toggle('is-visible', formOut && window.scrollY > 400);
-  };
-
   var ticking = false;
 
   var frame = function () {
     header.classList.toggle('is-stuck', window.scrollY > 8);
     if (pending.length) revealVisible();
-    updateBar();
   };
 
   var request = function () {

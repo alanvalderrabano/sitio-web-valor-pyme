@@ -13,7 +13,7 @@
 <link rel="icon" href="assets/logos/isotipo-dark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 <script>document.documentElement.className += " js";</script>
 </head>
 <body>
@@ -43,19 +43,19 @@
     <!-- Cintas del sistema gráfico: cambian de nivel con curvas S, cap redondeado
          y puntos crema en los cruces (Brandbook, pp. 49-52). Ocupan la banda
          inferior para no competir con el titular. -->
-    <svg class="hero__net" viewBox="0 0 1280 934" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-      <g fill="none" stroke-width="15" stroke-linecap="round">
-        <path d="M-60 872 H240 C340 872 340 792 440 792 H700 C800 792 800 862 900 862 H1340" stroke="#330559"/>
-        <path d="M-60 920 H520 C620 920 620 752 720 752 H1340" stroke="#00BD70"/>
-        <path d="M-60 740 H380 C480 740 480 872 580 872 H820 C920 872 920 800 1020 800 H1340" stroke="#FF2B5E"/>
-        <path d="M-60 800 H120 C220 800 220 740 320 740 H460 C560 740 560 830 660 830 H1340" stroke="#FFF21C"/>
+    <svg class="hero__net" viewBox="0 0 1280 610" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <g fill="none" stroke-width="14" stroke-linecap="round">
+        <path d="M-60 592 H240 C340 592 340 540 440 540 H700 C800 540 800 586 900 586 H1340" stroke="#330559"/>
+        <path d="M-60 604 H520 C620 604 620 522 720 522 H1340" stroke="#00BD70"/>
+        <path d="M-60 512 H380 C480 512 480 592 580 592 H820 C920 592 920 552 1020 552 H1340" stroke="#FF2B5E"/>
+        <path d="M-60 548 H120 C220 548 220 508 320 508 H460 C560 508 560 566 660 566 H1340" stroke="#FFF21C"/>
       </g>
       <g fill="#FFE3CC">
-        <circle cx="320" cy="740" r="15"/>
-        <circle cx="580" cy="872" r="12"/>
-        <circle cx="900" cy="862" r="13"/>
+        <circle cx="320" cy="508" r="14"/>
+        <circle cx="580" cy="592" r="11"/>
+        <circle cx="900" cy="586" r="12"/>
       </g>
-      <circle cx="900" cy="862" r="24" fill="none" stroke="#FFE3CC" stroke-width="1.5" opacity=".55"/>
+      <circle cx="900" cy="586" r="22" fill="none" stroke="#FFE3CC" stroke-width="1.5" opacity=".55"/>
     </svg>
 
     <div class="container hero__grid">
@@ -73,11 +73,6 @@
         <!-- Etiqueta del Figma, sin enumerar productos -->
         <span class="tag tag--menta hero__descuento">15% a 30% de descuento</span>
 
-        <ul class="trust">
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Suscripción 100% gratuita</li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Sin compromiso de compra</li>
-          <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>Activación en menos de 3 minutos</li>
-        </ul>
       </div>
 
 
@@ -102,7 +97,6 @@
 
         <div class="form-card__head">
           <h2>Únete gratis y accede a tu descuento</h2>
-          <p>Completa el formulario y te enviamos el acceso al beneficio Defontana.</p>
         </div>
 
         <div class="form-card__body">
@@ -110,61 +104,33 @@
             <div class="form-grid">
 
               <div class="field field--wide" data-field>
-                <label class="field__label" for="nombre">Nombre y apellido <span class="req" aria-hidden="true">*</span></label>
+                <label class="field__label sr-only" for="nombre">Nombre y apellido</label>
                 <input class="input" id="nombre" name="nombre" type="text" autocomplete="name"
                        placeholder="Ej: María González" required>
                 <span class="field__error" data-error>Ingresa tu nombre y apellido.</span>
               </div>
 
               <div class="field field--wide" data-field>
-                <label class="field__label" for="email">Correo electrónico <span class="req" aria-hidden="true">*</span></label>
+                <label class="field__label sr-only" for="email">Correo electrónico</label>
                 <input class="input" id="email" name="email" type="email" inputmode="email" autocomplete="email"
                        placeholder="nombre@tuempresa.cl" required>
                 <span class="field__error" data-error>Revisa el formato de tu correo.</span>
               </div>
 
               <div class="field" data-field>
-                <label class="field__label" for="telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+                <label class="field__label sr-only" for="telefono">Teléfono</label>
                 <input class="input" id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel"
                        placeholder="+56 9 1234 5678" required>
                 <span class="field__error" data-error>Ingresa un teléfono válido.</span>
               </div>
 
               <div class="field" data-field>
-                <label class="field__label" for="rut">RUT de tu pyme <span class="req" aria-hidden="true">*</span></label>
+                <label class="field__label sr-only" for="rut">RUT de tu pyme</label>
                 <input class="input" id="rut" name="rut" type="text" inputmode="text"
                        placeholder="76.543.210-K" maxlength="12" required>
                 <span class="field__error" data-error>El RUT no es válido.</span>
               </div>
 
-              <!-- UX: el paso 2 del flujo es "elige tu solución". Se adelanta al
-                   formulario y se sincroniza con las tarjetas de la sección siguiente. -->
-              <div class="field field--wide" data-field>
-                <label class="field__label" for="solucion">¿Qué solución te interesa?</label>
-                <select class="select" id="solucion" name="solucion">
-                  <option value="">Aún no lo sé</option>
-                  <option value="factura-pro">Factura Pro — facturación electrónica</option>
-                  <option value="pos-pro">POS Pro — ventas e inventario</option>
-                  <option value="control-asistencia">Control de Asistencia — turnos y jornada</option>
-                  <option value="crm-empresas">CRM Empresas — clientes y cotizaciones</option>
-                  <option value="certificado-sii">Certificado Digital SII — 30% de descuento</option>
-                </select>
-                <span class="field__hint">Puedes cambiarla después, al activar el beneficio.</span>
-              </div>
-
-              <div class="field field--wide" data-field>
-                <label class="check">
-                  <input type="checkbox" id="consentimiento" name="consentimiento" required>
-                  <span class="check__box" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg>
-                  </span>
-                  <span class="check__text">
-                    Acepto los <a href="#">términos</a> y la <a href="#">política de privacidad</a>,
-                    y que Valor Pyme comparta mis datos con Defontana para activar el beneficio.
-                  </span>
-                </label>
-                <span class="field__error" data-error>Necesitamos tu autorización para continuar.</span>
-              </div>
 
             </div>
 
@@ -175,18 +141,17 @@
               </svg>
             </button>
 
-            <p class="form-card__foot">Sin costo · No compartimos tus datos con terceros ajenos al beneficio.</p>
           </form>
         </div>
 
-        <!-- Estado de éxito: cierra el ciclo sin sacar al usuario de la página -->
+        <!-- El wireframe no define estados. Se deja una confirmación mínima
+             para que el formulario del prototipo no quede sin respuesta. -->
         <div class="form-success" role="status" aria-live="polite">
           <div class="form-success__icon">
             <svg width="30" height="30" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.4"/></svg>
           </div>
           <h2>Ya eres parte de Valor Pyme</h2>
           <p>Te enviamos a tu correo el acceso al beneficio Defontana y los pasos para activarlo.</p>
-          <a class="btn btn--ghost" href="#necesidades">Ver las soluciones disponibles</a>
         </div>
       </div>
 
@@ -200,78 +165,35 @@
     <div class="container">
 
       <div class="section-head reveal">
-        <span class="eyebrow">Elige tu solución</span>
         <h2>¿Qué necesitas ordenar en tu pyme?</h2>
         <p class="lead">Comienza por el desafío que hoy te quita más tiempo o control.</p>
       </div>
 
-      <fieldset class="needs">
-        <legend class="sr-only">Selecciona la solución que necesita tu pyme</legend>
+      <div class="needs__grid">
+        <article class="need reveal" style="--accent:#6126FF;">
+          <h3>Quiero facturar sin miedo a equivocarme</h3>
+          <p class="need__desc">Emite facturas y boletas electrónicas y mantén tus documentos tributarios más ordenados.</p>
+          <p class="need__foot"><span class="need__product">Factura Pro</span> · 15% de descuento mensual</p>
+        </article>
 
-        <div class="needs__grid">
+        <article class="need reveal" style="--accent:#FF2B5E;">
+          <h3>Quiero controlar las ventas y el inventario de mi local</h3>
+          <p class="need__desc">Centraliza caja, mercadería y documentos tributarios para tener mayor control de cada transacción.</p>
+          <p class="need__foot"><span class="need__product">POS Pro</span> · 15% de descuento mensual</p>
+        </article>
 
-          <div class="need reveal" style="--accent:#6126FF; --accent-ink:#fff;">
-            <input type="radio" name="need" id="need-1" value="factura-pro" data-label="Factura Pro">
-            <label class="need__card" for="need-1">
-              <div class="need__top">
-                <h3>Quiero facturar sin miedo a equivocarme</h3>
-                <span class="need__mark" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg></span>
-              </div>
-              <p class="need__desc">Emite facturas y boletas electrónicas y mantén tus documentos tributarios más ordenados.</p>
-              <div class="need__foot">
-                <span class="need__product">Factura Pro</span>
-                <span class="need__off">15% dcto. mensual</span>
-              </div>
-            </label>
-          </div>
+        <article class="need reveal" style="--accent:#00BD70;">
+          <h3>Quiero ordenar los horarios y turnos de mi equipo</h3>
+          <p class="need__desc">Registra la asistencia de tus colaboradores con una solución certificada por la Dirección del Trabajo.</p>
+          <p class="need__foot"><span class="need__product">Control de Asistencia</span> · 15% de descuento mensual</p>
+        </article>
 
-          <div class="need reveal" style="--accent:#FF2B5E; --accent-ink:#1B0630;">
-            <input type="radio" name="need" id="need-2" value="pos-pro" data-label="POS Pro">
-            <label class="need__card" for="need-2">
-              <div class="need__top">
-                <h3>Quiero controlar las ventas y el inventario de mi local</h3>
-                <span class="need__mark" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg></span>
-              </div>
-              <p class="need__desc">Centraliza caja, mercadería y documentos tributarios para tener mayor control de cada transacción.</p>
-              <div class="need__foot">
-                <span class="need__product">POS Pro</span>
-                <span class="need__off">15% dcto. mensual</span>
-              </div>
-            </label>
-          </div>
-
-          <div class="need reveal" style="--accent:#00BD70; --accent-ink:#1B0630;">
-            <input type="radio" name="need" id="need-3" value="control-asistencia" data-label="Control de Asistencia">
-            <label class="need__card" for="need-3">
-              <div class="need__top">
-                <h3>Quiero ordenar los horarios y turnos de mi equipo</h3>
-                <span class="need__mark" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg></span>
-              </div>
-              <p class="need__desc">Registra la asistencia de tus colaboradores con una solución certificada por la Dirección del Trabajo.</p>
-              <div class="need__foot">
-                <span class="need__product">Control de Asistencia</span>
-                <span class="need__off">15% dcto. mensual</span>
-              </div>
-            </label>
-          </div>
-
-          <div class="need reveal" style="--accent:#FF8500; --accent-ink:#1B0630;">
-            <input type="radio" name="need" id="need-4" value="crm-empresas" data-label="CRM Empresas">
-            <label class="need__card" for="need-4">
-              <div class="need__top">
-                <h3>Quiero dejar de depender de múltiples planillas</h3>
-                <span class="need__mark" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg></span>
-              </div>
-              <p class="need__desc">Centraliza clientes, cotizaciones y oportunidades para dar mejor seguimiento a tus ventas.</p>
-              <div class="need__foot">
-                <span class="need__product">CRM Empresas</span>
-                <span class="need__off">15% dcto. mensual</span>
-              </div>
-            </label>
-          </div>
-
-        </div>
-      </fieldset>
+        <article class="need reveal" style="--accent:#FF8500;">
+          <h3>Quiero dejar de depender de múltiples planillas</h3>
+          <p class="need__desc">Centraliza clientes, cotizaciones y oportunidades para dar mejor seguimiento a tus ventas.</p>
+          <p class="need__foot"><span class="need__product">CRM Empresas</span> · 15% de descuento mensual</p>
+        </article>
+      </div>
 
       <!-- Certificado Digital SII: 30% ≠ 15%. Se separa visualmente por eso. -->
       <aside class="sii reveal">
@@ -289,7 +211,6 @@
             <path d="M1 7h15M11 1.5 16.5 7 11 12.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/>
           </svg>
         </a>
-        <p class="hint" id="need-hint">Puedes activar más de una solución después de suscribirte.</p>
       </div>
 
     </div>
@@ -300,7 +221,6 @@
     <div class="container">
 
       <div class="section-head reveal">
-        <span class="eyebrow">Cómo funciona</span>
         <h2>Activa tu beneficio en 3 pasos</h2>
       </div>
 
@@ -345,7 +265,6 @@
     <div class="container about__grid">
 
       <div class="about__copy reveal">
-        <span class="eyebrow">La comunidad</span>
         <h2>Un beneficio exclusivo de Valor Pyme</h2>
         <p style="margin-top:var(--sp-5)">
           Valor Pyme es una comunidad gratuita que conecta a emprendedores y pymes de Chile
@@ -371,41 +290,27 @@
     <div class="container container--narrow">
 
       <div class="section-head section-head--center reveal">
-        <span class="eyebrow">Antes de suscribirte</span>
         <h2>Preguntas frecuentes</h2>
       </div>
 
       <!-- UX: en el Figma las respuestas están siempre visibles y compiten con
            el CTA final. Acordeón: la primera abierta, el resto bajo demanda. -->
       <div class="faq reveal">
-        <div class="faq__item is-open">
-          <h3><button class="faq__q" type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1">
-            ¿Tiene costo suscribirme?
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button></h3>
-          <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
-            <div class="faq__a-inner">No. Ser parte de la comunidad Valor Pyme es gratuito.</div>
-          </div>
+        <div class="faq__item">
+          <h3 class="faq__q">¿Tiene costo suscribirme?</h3>
+          <p class="faq__a">No. Ser parte de la comunidad Valor Pyme es gratuito.</p>
         </div>
 
         <div class="faq__item">
-          <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
-            ¿Necesito registrarme para obtener el descuento?
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button></h3>
-          <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
-            <div class="faq__a-inner">Sí. El beneficio Defontana es exclusivo para miembros de Valor Pyme.</div>
-          </div>
+          <h3 class="faq__q">¿Necesito registrarme para obtener el descuento?</h3>
+          <p class="faq__a">Sí. El beneficio Defontana es exclusivo para miembros de Valor Pyme.</p>
         </div>
 
         <div class="faq__item">
-          <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
-            ¿Qué ocurre después de completar el formulario?
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button></h3>
-          <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
-            <div class="faq__a-inner">Podrás elegir tu producto Defontana y continuar con la activación del beneficio.</div>
-          </div>
+          <h3 class="faq__q">¿Qué ocurre después de completar el formulario?</h3>
+          <p class="faq__a">Podrás elegir tu producto Defontana y continuar con la activación del beneficio.</p>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -446,48 +351,6 @@
 
 </main>
 
-<!-- ============================ 08 · FOOTER =========================== -->
-<!-- UX: el wireframe termina en el CTA. Una landing pública necesita cierre
-     legal y salidas mínimas de navegación. -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <img class="footer__logo" src="assets/logos/logo-horizontal-white.svg" alt="Valor Pyme">
-        <p>Una red de soluciones para el viaje de las pymes de Chile. Cada ruta, una estación más cerca de tu crecimiento.</p>
-      </div>
-      <div>
-        <h4>El beneficio</h4>
-        <ul>
-          <li><a href="#necesidades">Soluciones Defontana</a></li>
-          <li><a href="#pasos">Cómo activarlo</a></li>
-          <li><a href="#faq">Preguntas frecuentes</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Valor Pyme</h4>
-        <ul>
-          <li><a href="#valor-pyme">Qué es la comunidad</a></li>
-          <li><a href="#">Rutas y beneficios</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© <span data-year>2026</span> Valor Pyme · Chile</span>
-      <span>Términos y condiciones · Política de privacidad</span>
-    </div>
-  </div>
-</footer>
-
-<!-- ======================= 09 · BARRA CTA MÓVIL ======================= -->
-<div class="mobile-bar" id="mobile-bar">
-  <div class="mobile-bar__txt">
-    <strong>15% a 30% de descuento</strong>
-  </div>
-  <a class="btn btn--sm" href="#formulario" data-cta="mobile-bar">Suscribirme</a>
-</div>
-
-<script src="script.js?v=2" defer></script>
+<script src="script.js?v=3" defer></script>
 </body>
 </html>
