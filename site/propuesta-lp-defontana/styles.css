@@ -404,7 +404,8 @@ h4 { font-size: var(--t-h4); }
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #6126FF 0%, #4B16DD 44%, #330559 100%);
+  /* Color plano: el Brandbook no usa degradados en ninguna aplicación (cap. 11) */
+  background: var(--vp-corp);
   color: #fff;
   padding-block: clamp(56px, 7vw, 96px);
   isolation: isolate;
@@ -415,13 +416,6 @@ h4 { font-size: var(--t-h4); }
   width: 100%; height: 100%;
   pointer-events: none;
 }
-.hero::after { /* glow menta, refuerza profundidad sin usar sombras */
-  content: ""; position: absolute; z-index: -2; inset: 0;
-  background:
-    radial-gradient(46rem 30rem at 88% 8%, rgba(166,255,217,.22), transparent 62%),
-    radial-gradient(38rem 26rem at 4% 92%, rgba(255,43,94,.26), transparent 58%);
-}
-
 .hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
@@ -688,8 +682,8 @@ h4 { font-size: var(--t-h4); }
 }
 .about__media figcaption {
   position: absolute; left: 0; right: 0; bottom: 0;
-  padding: var(--sp-8) var(--sp-6) var(--sp-5);
-  background: linear-gradient(180deg, transparent, rgba(27,6,48,.82));
+  padding: var(--sp-4) var(--sp-6);
+  background: rgba(27, 6, 48, .86);
   color: #fff; font-size: var(--t-xs); font-weight: 700;
   display: flex; align-items: center; gap: 10px;
 }
@@ -741,7 +735,7 @@ h4 { font-size: var(--t-h4); }
 /* ============================ 10. CTA FINAL =========================== */
 .cta-final {
   position: relative; overflow: hidden; isolation: isolate;
-  background: linear-gradient(120deg, #FF2B5E 0%, #6126FF 46%, #330559 100%);
+  background: var(--vp-morado);
   color: #fff; text-align: center;
   /* El extra abajo abre la banda donde corren las cintas del sistema gráfico */
   padding-block: clamp(64px, 8vw, 112px) clamp(112px, 13vw, 180px);
@@ -760,7 +754,7 @@ h4 { font-size: var(--t-h4); }
 .cta-final .trust svg { color: var(--vp-menta); }
 
 /* ============================== 11. FOOTER ============================= */
-.footer { background: var(--vp-morado); color: rgba(255,255,255,.72); padding-block: var(--sp-16) var(--sp-8); }
+.footer { background: var(--n-800); color: rgba(255,255,255,.72); padding-block: var(--sp-16) var(--sp-8); }
 .footer__grid {
   display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
   gap: clamp(28px, 4vw, 56px);

@@ -43,6 +43,11 @@ Toda la identidad viene del Brandbook.
 - **Tipografía de cuerpo**: **Arial**, la complementaria que el Brandbook define para web.
 - **Radios: 0px.** El Brandbook usa terminaciones rectas. Es la decisión que más aleja
   la página del aspecto "template genérico".
+- **Color plano, sin degradados.** El Brandbook no usa un solo degradado: cada aplicación
+  —impresa, packaging y digital— es un bloque de color plano con las cintas encima. La
+  página 61, que es la aplicación web, muestra exactamente eso. Las superficies de color
+  aquí son tres: hero en corporativo `#6126FF`, CTA final en morado `#330559` y footer en
+  `#2F2927`, el gris cálido del propio Brandbook.
 - **Sistema gráfico** (cap. 10): la "unidad mínima" es una línea que **cambia de nivel con
   una curva S suave**, con extremos redondeados. Cuatro unidades a distinta altura = las 4
   rutas. Están implementadas como cintas SVG (`stroke-linecap: round`, sin ángulos rectos)
