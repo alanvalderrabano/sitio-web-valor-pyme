@@ -76,7 +76,6 @@ versión y que no estaban contemplados:
 
 | Retirado | Estaba para |
 |---|---|
-| Franja de beneficios del hero | Reforzar gratuidad y rapidez. **Pendiente el contenido definitivo (punto 3).** |
 | Antetítulos de sección | Orientar en una página larga |
 | Selector de solución (tarjetas seleccionables + campo en el formulario) | Unir descubrimiento y conversión |
 | Casilla de consentimiento de datos | Tratamiento del RUT y traspaso a Defontana |
@@ -84,6 +83,12 @@ versión y que no estaban contemplados:
 | Acordeón del FAQ | Reducir ruido antes del CTA final |
 | Barra CTA fija en mobile | Acceso al formulario en una página de ~5.200 px |
 | Bajada y nota al pie del formulario | Contexto y confianza |
+
+**Excepción autorizada:** la franja de beneficios del hero —«Suscripción 100% gratuita»,
+«Sin compromiso de compra», «Activación en menos de 3 minutos»— se mantiene. Va en blanco
+pleno (6.5:1 sobre el corporativo; el blanco al 75% de la primera versión se quedaba en
+4.25:1) y con un beneficio por línea, para que no dependa de un salto que se rompa según el
+ancho: se comporta igual en 390, 768, 1280 y 1440.
 
 Se conservaron dos cosas que el wireframe no puede expresar, porque son estado o
 accesibilidad, no composición:
@@ -129,10 +134,11 @@ Verificado sin scroll horizontal en 390 / 768 / 1280 / 1440.
 
 ## 5. Pendientes para producción
 
-- **Logo de Defontana**: hoy es un lockup tipográfico. Reemplazar por el SVG oficial en `.cobrand__partner`.
 - **FG Futurist**: cargar el webfont cuando haya licencia; el `--font-display` ya lo tiene como primera opción.
 - **Envío del formulario**: `script.js` marca el punto exacto donde conectar HubSpot o la función serverless.
 - **Consentimiento de datos y enlaces legales**: retirados por fidelidad al wireframe; hay
   que resolverlos antes de publicar (ver riesgos abiertos en el punto 2).
-- **Franja de beneficios del hero**: a la espera del contenido definitivo (punto 3).
+
 - **Fotografía**: la imagen de comunidad es de la biblioteca del sitio, a modo de referencia de estilo.
+- **Logo de Defontana**: se usa `assets/logos/defontana.png`, la versión oficial a color. Si
+  existe un SVG, conviene cambiarlo para que escale sin pérdida.

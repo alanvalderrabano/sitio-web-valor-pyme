@@ -344,18 +344,14 @@ h4 { font-size: var(--t-h4); }
   font-family: var(--font-display); font-weight: 500; font-size: 1.05rem;
   color: var(--n-400); line-height: 1;
 }
-/* Marca aliada: reemplazar por el SVG oficial de Defontana cuando esté disponible */
-.cobrand__partner {
-  font-family: var(--font-display); font-weight: 800; font-size: .9375rem;
-  letter-spacing: .06em; text-transform: uppercase; color: var(--vp-morado);
-  padding: 7px 12px; border: 1.5px solid var(--n-200); line-height: 1;
-  white-space: nowrap;
-}
+/* Marca aliada: logo oficial a color. Se ajusta por altura, no por ancho,
+   para que ambas marcas compartan la misma línea óptica. */
+.cobrand__partner { height: 28px; width: auto; }
 .header__cta { display: flex; align-items: center; gap: var(--sp-4); }
 
 @media (max-width: 720px) {
-  .cobrand__logo { height: 24px; }
-  .cobrand__partner { font-size: .75rem; padding: 6px 9px; }
+  .cobrand__logo { height: 22px; }
+  .cobrand__partner { height: 18px; }
   .header__cta .btn { display: none; }
 }
 
@@ -391,6 +387,20 @@ h4 { font-size: var(--t-h4); }
 
 
 .hero__descuento { margin-top: var(--sp-8); }
+
+/* Franja de beneficios (punto 3): única excepción al wireframe.
+   Texto en blanco pleno —6.5:1 sobre el corporativo; el blanco al 75%
+   que tenía antes se quedaba en 4.25:1— y una fila por beneficio, para
+   que no dependa de un salto de línea que se rompe según el ancho. */
+.hero__beneficios {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: 1px solid rgba(255, 255, 255, .28);
+  display: grid; gap: 10px;
+  font-size: var(--t-sm); line-height: 1.35; color: #fff;
+}
+.hero__beneficios li { display: flex; align-items: flex-start; gap: 10px; }
+.hero__beneficios svg { flex: none; margin-top: 2px; color: var(--vp-menta); }
 
 /* --- Tarjeta de formulario --- */
 .form-card {
@@ -440,13 +450,21 @@ h4 { font-size: var(--t-h4); }
 /* Banda de cintas como elemento de flujo (solo mobile/tablet) */
 .hero__band { display: none; }
 
+@media (min-width: 901px) {
+  /* Abre la banda inferior donde corren las cintas, sin apretar la franja */
+  .hero { padding-bottom: clamp(128px, 15vw, 200px); }
+}
+
 @media (max-width: 900px) {
   .hero__net { display: none; }
   .hero__band {
     display: block;
+    order: 1;                          /* cierra el hero, no lo parte en dos */
     width: 100vw; max-width: none; height: 104px;
     margin-inline: calc(50% - 50vw);   /* full-bleed dentro del container */
   }
+  /* La banda hace de remate inferior: el padding del hero sobraría */
+  .hero { padding-bottom: 0; }
   .hero__grid { grid-template-columns: 1fr; gap: var(--sp-8); }
   .hero__copy h1 { max-width: 18ch; }
 }
