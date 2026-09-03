@@ -1,0 +1,36 @@
+[
+  { "id": "tag_text", "name": "tag_text", "label": "Etiqueta superior", "type": "text", "required": false,
+    "default": "Beneficio exclusivo Valor Pyme" },
+  { "id": "heading", "name": "heading", "label": "Título (H1)", "type": "text", "required": false,
+    "default": "Digitaliza tu pyme con Defontana" },
+  { "id": "subtext", "name": "subtext", "label": "Bajada", "type": "richtext", "required": false,
+    "default": "<p>Suscríbete gratis a Valor Pyme y accede a descuentos de entre 15% y 30% en productos Defontana Digital para ordenar y simplificar la gestión de tu negocio.</p>" },
+  { "id": "discount_text", "name": "discount_text", "label": "Etiqueta de descuento", "type": "text", "required": false,
+    "default": "15% a 30% de descuento" },
+
+  { "id": "show_benefits", "name": "show_benefits", "label": "Mostrar franja de beneficios", "type": "boolean", "display": "toggle", "default": true },
+  { "id": "benefits", "name": "benefits", "label": "Franja de beneficios", "type": "group",
+    "occurrence": { "min": 0, "max": 5, "default": 3 },
+    "default": [
+      { "text": "Suscripción 100% gratuita" },
+      { "text": "Sin compromiso de compra" },
+      { "text": "Activación en menos de 3 minutos" }
+    ],
+    "children": [
+      { "id": "text", "name": "text", "label": "Beneficio", "type": "text", "required": false, "default": "" }
+    ] },
+
+  { "id": "form_heading", "name": "form_heading", "label": "Título del formulario", "type": "text", "required": false,
+    "default": "Únete gratis y accede a tu descuento" },
+  { "id": "form", "name": "form", "label": "Formulario", "type": "form", "required": false,
+    "help_text": "Configura los placeholders de cada campo en el formulario de HubSpot: el diseño oculta las etiquetas y solo muestra placeholders.",
+    "default": { "form_id": "", "response_type": "inline", "message": "<p>Gracias. Te enviamos a tu correo el acceso al beneficio Defontana.</p>" } },
+
+  { "id": "bg_color", "name": "bg_color", "label": "Color de fondo", "type": "color", "required": false,
+    "default": { "color": "#6126FF", "opacity": 100 } },
+  { "id": "show_lines", "name": "show_lines", "label": "Mostrar líneas del sistema gráfico", "type": "boolean", "display": "toggle", "default": true },
+  { "id": "line_1", "name": "line_1", "label": "Línea 1 · Mercado", "type": "color", "required": false, "default": { "color": "#330559", "opacity": 100 } },
+  { "id": "line_2", "name": "line_2", "label": "Línea 2 · Talento", "type": "color", "required": false, "default": { "color": "#00BD70", "opacity": 100 } },
+  { "id": "line_3", "name": "line_3", "label": "Línea 3 · Digitalización", "type": "color", "required": false, "default": { "color": "#FF2B5E", "opacity": 100 } },
+  { "id": "dot_color", "name": "dot_color", "label": "Color de los puntos", "type": "color", "required": false, "default": { "color": "#FFE3CC", "opacity": 100 } }
+]

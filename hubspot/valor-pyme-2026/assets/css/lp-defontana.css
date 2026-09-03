@@ -1,0 +1,755 @@
+/* =============================================================================
+   VALOR PYME × DEFONTANA — Landing "Suscríbete"
+   Propuesta de diseño de alta fidelidad (HTML/CSS)
+
+   Fuentes de verdad:
+   · Estructura y contenido ....... Figma "Wireframe LP Defontana · Desktop + Mobile"
+   · Identidad visual ............. Brandbook OK Valor Pyme 2026
+   · Consistencia de producto ..... sitio/styles.css (sistema ya implementado)
+
+   Índice
+   00. Tokens
+   01. Reset y base
+   02. Utilidades de layout
+   03. Componentes: botones, badges, eyebrow, cards, inputs
+   04. Header
+   05. Hero + Formulario
+   06. Necesidades (selector de solución)
+   07. Pasos
+   08. Valor Pyme
+   09. FAQ
+   10. CTA final
+   11. Footer
+   12. Barra CTA móvil
+   13. Animación de entrada
+   ========================================================================== */
+
+/* Display: FG Futurist (tipografía corporativa, pendiente licencia web).
+   Fallback oficial del sistema Valor Pyme = Rubik (geométrica, gestos redondeados).
+   Body: Arial — tipografía complementaria definida en el Brandbook (p.25). */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap');
+
+/* ============================== 00. TOKENS ============================== */
+:root {
+  /* --- Color corporativo (Brandbook p.26 · Pantone 2725 C) --- */
+  --vpd-vp-corp:            #6126FF;
+  --vpd-vp-corp-700:        #4B16DD;
+  --vpd-vp-corp-12:         rgba(97, 38, 255, .12);
+  --vpd-vp-corp-40:         rgba(97, 38, 255, .40);
+
+  /* --- Primarios --- */
+  --vpd-vp-morado:          #330559;   /* Pantone 2745 C */
+  --vpd-vp-verde:           #00BD70;   /* Pantone 2414 C */
+  --vpd-vp-rosa:            #FF2B5E;   /* Pantone 1925 C */
+  --vpd-vp-amarillo:        #FFF21C;   /* Pantone 102 C  */
+
+  /* --- Secundarios --- */
+  --vpd-vp-naranja:         #FF8500;   /* Pantone 1505 C */
+  --vpd-vp-menta:           #A6FFD9;   /* Pantone 331 C  */
+  --vpd-vp-rosa-claro:      #FFB8DE;   /* Pantone 182 C  */
+  --vpd-vp-crema:           #FFE3CC;   /* color del logotipo y de los puntos del sistema gráfico */
+  --vpd-vp-blanco:          #FFFFFF;
+
+  /* --- Neutros derivados (no definidos en Brandbook · criterio de sistema) --- */
+  --vpd-n-900:              #1B0630;
+  --vpd-n-800:              #2F2927;
+  --vpd-n-600:              #595E6B;
+  --vpd-n-400:              #9EA2AE;
+  --vpd-n-200:              #E7E3F0;
+  --vpd-n-100:              #F1EDFA;
+  --vpd-n-050:              #F7F5FC;
+  --vpd-lavanda:            #EFE9FF;
+
+  /* --- Roles semánticos --- */
+  --vpd-bg:                 var(--vpd-vp-blanco);
+  --vpd-bg-alt:             var(--vpd-n-050);
+  --vpd-ink:                var(--vpd-n-800);
+  --vpd-ink-strong:         var(--vpd-vp-morado);
+  --vpd-ink-muted:          var(--vpd-n-600);
+  --vpd-ink-invert:         var(--vpd-vp-blanco);
+  --vpd-line:               var(--vpd-n-200);
+
+  /* --- Tipografía --- */
+  --vpd-font-display: 'FG Futurist', 'Rubik', Arial, sans-serif;
+  --vpd-font-body:    Arial, 'Helvetica Neue', Helvetica, sans-serif;
+
+  --vpd-t-display:  clamp(2.125rem, 1.35rem + 3.4vw, 3.25rem);  /* 34 → 52 */
+  --vpd-t-h2:       clamp(1.75rem,  1.29rem + 2.0vw, 2.25rem);  /* 28 → 36 */
+  --vpd-t-h3:       clamp(1.25rem,  1.10rem + 0.6vw, 1.4375rem);/* 20 → 23 */
+  --vpd-t-h4:       clamp(1.0625rem,1.00rem + 0.3vw, 1.1875rem);/* 17 → 19 */
+  --vpd-t-lead:     clamp(1rem,     0.94rem + 0.3vw, 1.1875rem);/* 16 → 19 */
+  --vpd-t-body:     1rem;
+  --vpd-t-sm:       0.9375rem;
+  --vpd-t-xs:       0.8125rem;
+  --vpd-t-tag:      0.75rem;
+
+  --vpd-lh-tight:   1.05;
+  --vpd-lh-snug:    1.25;
+  --vpd-lh-body:    1.6;
+  --vpd-ls-display: -0.02em;
+  --vpd-ls-tag:     .12em;
+
+  /* --- Espaciado (escala de 4) --- */
+  --vpd-sp-1: 4px;   --vpd-sp-2: 8px;   --vpd-sp-3: 12px;  --vpd-sp-4: 16px;
+  --vpd-sp-5: 20px;  --vpd-sp-6: 24px;  --vpd-sp-8: 32px;  --vpd-sp-10: 40px;
+  --vpd-sp-12: 48px; --vpd-sp-16: 64px; --vpd-sp-20: 80px; --vpd-sp-24: 96px;
+
+  --vpd-section-y:  clamp(64px, 7.5vw, 112px);
+  --vpd-section-y-sm: clamp(48px, 5.5vw, 80px);
+
+  /* --- Radios: el Brandbook define terminaciones rectas --- */
+  --vpd-radius: 0;
+
+  /* --- Layout --- */
+  --vpd-maxw:   1200px;
+  --vpd-maxw-narrow: 880px;
+  --vpd-pad-x:  clamp(20px, 5vw, 64px);
+  --vpd-header-h: 72px;
+
+  /* --- Elevación (mínima: el sistema se apoya en bordes y contraste) --- */
+  --vpd-shadow-card:  0 1px 0 rgba(51, 5, 89, .04);
+  --vpd-shadow-hover: 0 18px 40px -18px rgba(51, 5, 89, .28);
+  --vpd-shadow-form:  0 32px 64px -32px rgba(27, 6, 48, .45);
+
+  --vpd-ease: cubic-bezier(.22, .61, .36, 1);
+  --vpd-dur:  .28s;
+
+  /* --- Acento por bloque (cada card lo sobrescribe) --- */
+  --vpd-accent: var(--vpd-vp-corp);
+  --vpd-accent-ink: #FFFFFF;
+}
+
+/* ============================ 01. RESET Y BASE ========================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--vpd-header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--vpd-bg);
+  color: var(--vpd-ink);
+  font-family: var(--vpd-font-body);
+  font-size: var(--vpd-t-body);
+  line-height: var(--vpd-lh-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a  { color: inherit; text-decoration: none; }
+p, figure { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+legend { padding: 0; }
+button { cursor: pointer; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--vpd-font-display);
+  font-weight: 800;
+  color: var(--vpd-ink-strong);
+  line-height: var(--vpd-lh-tight);
+  letter-spacing: var(--vpd-ls-display);
+}
+h3, h4 { line-height: var(--vpd-lh-snug); letter-spacing: -0.01em; }
+h1, h2, h3 { text-wrap: balance; }
+
+h1 { font-size: var(--vpd-t-display); }
+h2 { font-size: var(--vpd-t-h2); }
+h3 { font-size: var(--vpd-t-h3); }
+h4 { font-size: var(--vpd-t-h4); }
+
+:focus-visible {
+  outline: 3px solid var(--vpd-vp-corp);
+  outline-offset: 3px;
+}
+
+.vpd-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.vpd-skip-link {
+  position: absolute; left: var(--vpd-sp-4); top: -100px; z-index: 200;
+  background: var(--vpd-vp-morado); color: #fff; padding: 12px 20px; font-weight: 700;
+  transition: top .2s var(--vpd-ease);
+}
+.vpd-skip-link:focus { top: var(--vpd-sp-4); }
+
+/* ========================= 02. UTILIDADES DE LAYOUT ===================== */
+.vpd-container {
+  width: 100%;
+  max-width: var(--vpd-maxw);
+  margin-inline: auto;
+  padding-inline: var(--vpd-pad-x);
+}
+.vpd-container--narrow { max-width: var(--vpd-maxw-narrow); }
+
+.vpd-section { padding-block: var(--vpd-section-y); position: relative; }
+.vpd-section--alt { background: var(--vpd-bg-alt); }
+.vpd-section--tight { padding-block: var(--vpd-section-y-sm); }
+
+/* Encabezado de sección: mismo ritmo en todas las secciones */
+.vpd-section-head { max-width: 44rem; margin-bottom: clamp(32px, 4vw, 56px); }
+.vpd-section-head > * + * { margin-top: var(--vpd-sp-4); }
+.vpd-section-head .vpd-lead { font-size: var(--vpd-t-lead); color: var(--vpd-ink-muted); max-width: 58ch; }
+.vpd-section-head--center { margin-inline: auto; text-align: center; }
+
+
+
+/* ============================ 03. COMPONENTES ========================== */
+
+/* --- Eyebrow / Tag --------------------------------------------------- */
+.vpd-tag {
+  display: inline-flex; align-items: center; gap: var(--vpd-sp-2);
+  padding: 7px 14px;
+  font-family: var(--vpd-font-display);
+  font-size: var(--vpd-t-tag); font-weight: 700;
+  letter-spacing: var(--vpd-ls-tag); text-transform: uppercase;
+  line-height: 1;
+  border: 1px solid currentColor;
+  color: var(--vpd-vp-morado);
+}
+.vpd-tag--solid   { background: var(--vpd-vp-morado); border-color: var(--vpd-vp-morado); color: #fff; }
+.vpd-tag--menta   { background: var(--vpd-vp-menta); border-color: var(--vpd-vp-menta); color: #04492F; }
+.vpd-tag--verde   { background: var(--vpd-vp-verde); border-color: var(--vpd-vp-verde); color: var(--vpd-n-900); }
+.vpd-tag--amarillo{ background: var(--vpd-vp-amarillo); border-color: var(--vpd-vp-amarillo); color: var(--vpd-vp-morado); }
+.vpd-tag--vpd-ghost   { color: rgba(255,255,255,.86); border-color: rgba(255,255,255,.34); }
+.vpd-tag__dot { width: 7px; height: 7px; background: currentColor; }
+
+/* --- Botones --------------------------------------------------------- */
+.vpd-btn {
+  --vpd-btn-bg: var(--vpd-vp-corp);
+  --vpd-btn-ink: #fff;
+  --vpd-btn-border: var(--vpd-vp-corp);
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 54px; padding: 15px 28px;
+  font-family: var(--vpd-font-display); font-weight: 700; font-size: 1rem; line-height: 1;
+  text-align: center;
+  background: var(--vpd-btn-bg); color: var(--vpd-btn-ink);
+  border: 2px solid var(--vpd-btn-border); border-radius: var(--vpd-radius);
+  transition: background var(--vpd-dur) var(--vpd-ease), color var(--vpd-dur) var(--vpd-ease),
+              border-color var(--vpd-dur) var(--vpd-ease), transform var(--vpd-dur) var(--vpd-ease),
+              box-shadow var(--vpd-dur) var(--vpd-ease);
+}
+.vpd-btn:hover {
+  --vpd-btn-bg: var(--vpd-vp-morado); --vpd-btn-border: var(--vpd-vp-morado);
+  transform: translateY(-2px);
+  box-shadow: var(--vpd-shadow-hover);
+}
+.vpd-btn:active { transform: translateY(0); }
+.vpd-btn .vpd-btn__arrow { transition: transform var(--vpd-dur) var(--vpd-ease); }
+.vpd-btn:hover .vpd-btn__arrow { transform: translateX(5px); }
+
+.vpd-btn--lg   { min-height: 60px; padding: 18px 34px; font-size: 1.0625rem; }
+@media (max-width: 560px) {
+  .vpd-btn     { padding-inline: 20px; }
+  .vpd-btn--lg { font-size: 1rem; padding-inline: 22px; }
+  /* En mobile los CTA principales ocupan el ancho: objetivo táctil máximo */
+  .vpd-needs__actions > .vpd-btn,
+  .vpd-steps__actions > .vpd-btn,
+  .vpd-about__copy > .vpd-btn,
+  .vpd-cta-final__actions > .vpd-btn { width: 100%; }
+  .vpd-needs__actions, .vpd-steps__actions { flex-direction: column; align-items: stretch; }
+}
+.vpd-btn--full { width: 100%; }
+
+.vpd-btn--vpd-ghost {
+  --vpd-btn-bg: transparent; --vpd-btn-ink: var(--vpd-vp-morado); --vpd-btn-border: var(--vpd-n-200);
+}
+.vpd-btn--vpd-ghost:hover {
+  --vpd-btn-bg: transparent; --vpd-btn-ink: var(--vpd-vp-corp); --vpd-btn-border: var(--vpd-vp-corp);
+  box-shadow: none;
+}
+
+.vpd-btn--vpd-invert {
+  --vpd-btn-bg: #fff; --vpd-btn-ink: var(--vpd-vp-morado); --vpd-btn-border: #fff;
+}
+.vpd-btn--vpd-invert:hover {
+  --vpd-btn-bg: var(--vpd-vp-amarillo); --vpd-btn-border: var(--vpd-vp-amarillo); --vpd-btn-ink: var(--vpd-vp-morado);
+}
+
+.vpd-btn--sm { min-height: 44px; padding: 12px 20px; font-size: .9375rem; border-width: 2px; }
+
+
+
+/* --- Card base ------------------------------------------------------- */
+.vpd-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--vpd-line);
+  border-radius: var(--vpd-radius);
+  box-shadow: var(--vpd-shadow-card);
+  transition: border-color var(--vpd-dur) var(--vpd-ease), transform var(--vpd-dur) var(--vpd-ease),
+              box-shadow var(--vpd-dur) var(--vpd-ease);
+}
+
+/* --- Campos de formulario ------------------------------------------- */
+.vpd-field { display: flex; flex-direction: column; gap: 6px; }
+.vpd-field__label {
+  font-size: var(--vpd-t-xs); font-weight: 700; color: var(--vpd-vp-morado);
+  letter-spacing: .01em;
+}
+.vpd-field__label .vpd-req { color: var(--vpd-vp-rosa); }
+.vpd-field__hint { font-size: var(--vpd-t-xs); color: var(--vpd-n-400); }
+
+.vpd-input, .vpd-select {
+  width: 100%; min-height: 52px; padding: 14px 16px;
+  background: #fff;
+  border: 1.5px solid var(--vpd-n-200); border-radius: var(--vpd-radius);
+  font-size: var(--vpd-t-sm); color: var(--vpd-ink);
+  transition: border-color .2s var(--vpd-ease), box-shadow .2s var(--vpd-ease);
+}
+.vpd-input::placeholder { color: var(--vpd-n-400); }
+.vpd-input:hover, .vpd-select:hover { border-color: var(--vpd-n-400); }
+.vpd-input:focus, .vpd-select:focus {
+  outline: none; border-color: var(--vpd-vp-corp);
+  box-shadow: 0 0 0 3px var(--vpd-vp-corp-12);
+}
+
+.vpd-field.vpd-is-invalid .vpd-input,
+.vpd-field.vpd-is-invalid .vpd-select { border-color: var(--vpd-vp-rosa); box-shadow: 0 0 0 3px rgba(255,43,94,.12); }
+.vpd-field__error {
+  display: none; align-items: center; gap: 6px;
+  font-size: var(--vpd-t-xs); font-weight: 700; color: var(--vpd-vp-rosa);
+}
+.vpd-field.vpd-is-invalid .vpd-field__error { display: flex; }
+
+
+
+/* ============================== 04. HEADER ============================= */
+.vpd-header {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--vpd-header-h);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--vpd-line);
+  transition: box-shadow var(--vpd-dur) var(--vpd-ease);
+}
+.vpd-header.vpd-is-stuck { box-shadow: 0 8px 24px -18px rgba(27,6,48,.5); }
+.vpd-header__inner {
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--vpd-sp-4);
+}
+
+/* Lockup de co-branding: Valor Pyme × Defontana */
+.vpd-cobrand { display: flex; align-items: center; gap: clamp(10px, 2vw, 18px); }
+.vpd-cobrand__logo { height: 30px; width: auto; }
+.vpd-cobrand__x {
+  font-family: var(--vpd-font-display); font-weight: 500; font-size: 1.05rem;
+  color: var(--vpd-n-400); line-height: 1;
+}
+/* Marca aliada: logo oficial a color. Se ajusta por altura, no por ancho,
+   para que ambas marcas compartan la misma línea óptica. */
+.vpd-cobrand__partner { height: 28px; width: auto; }
+.vpd-header__cta { display: flex; align-items: center; gap: var(--vpd-sp-4); }
+
+@media (max-width: 720px) {
+  .vpd-cobrand__logo { height: 22px; }
+  .vpd-cobrand__partner { height: 18px; }
+  .vpd-header__cta .vpd-btn { display: none; }
+}
+
+/* =========================== 05. HERO + FORM =========================== */
+.vpd-hero {
+  position: relative;
+  overflow: hidden;
+  /* Color plano: el Brandbook no usa degradados en ninguna aplicación (cap. 11) */
+  background: var(--vpd-vp-corp);
+  color: #fff;
+  padding-block: clamp(56px, 7vw, 96px);
+  isolation: isolate;
+}
+/* Sistema gráfico del Brandbook: red de líneas y "estaciones" */
+.vpd-hero__net {
+  position: absolute; inset: 0; z-index: -1;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.vpd-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.vpd-hero__copy h1 { color: #fff; margin-block: var(--vpd-sp-5) var(--vpd-sp-5); max-width: 14ch; }
+.vpd-hero__copy .vpd-lead {
+  font-size: var(--vpd-t-lead); color: rgba(255,255,255,.86);
+  max-width: 46ch; line-height: 1.55;
+}
+
+
+
+.vpd-hero__descuento { margin-top: var(--vpd-sp-8); }
+
+/* Franja de beneficios (punto 3): única excepción al wireframe.
+   Texto en blanco pleno —6.5:1 sobre el corporativo; el blanco al 75%
+   que tenía antes se quedaba en 4.25:1— y una fila por beneficio, para
+   que no dependa de un salto de línea que se rompe según el ancho. */
+.vpd-hero__beneficios {
+  margin-top: var(--vpd-sp-6);
+  padding-top: var(--vpd-sp-5);
+  border-top: 1px solid rgba(255, 255, 255, .28);
+  display: grid; gap: 10px;
+  font-size: var(--vpd-t-sm); line-height: 1.35; color: #fff;
+}
+.vpd-hero__beneficios li { display: flex; align-items: flex-start; gap: 10px; }
+.vpd-hero__beneficios svg { flex: none; margin-top: 2px; color: var(--vpd-vp-menta); }
+
+/* --- Tarjeta de formulario --- */
+.vpd-form-card {
+  background: #fff;
+  border-radius: var(--vpd-radius);
+  box-shadow: var(--vpd-shadow-form);
+  overflow: hidden;
+}
+.vpd-form-card__head {
+  padding: var(--vpd-sp-6) clamp(24px, 3vw, 32px) var(--vpd-sp-5);
+  border-bottom: 1px solid var(--vpd-line);
+}
+.vpd-form-card__head h2 { font-size: var(--vpd-t-h3); }
+.vpd-form-card__head p { margin-top: 6px; font-size: var(--vpd-t-xs); color: var(--vpd-ink-muted); }
+.vpd-form-card__accent { display: flex; height: 5px; }
+.vpd-form-card__accent span { flex: 1; }
+.vpd-form-card__accent span:nth-child(1) { background: var(--vpd-vp-corp); }
+.vpd-form-card__accent span:nth-child(2) { background: var(--vpd-vp-rosa); }
+.vpd-form-card__accent span:nth-child(3) { background: var(--vpd-vp-verde); }
+.vpd-form-card__accent span:nth-child(4) { background: var(--vpd-vp-amarillo); }
+
+.vpd-form-card__body { padding: var(--vpd-sp-6) clamp(24px, 3vw, 32px) clamp(24px, 3vw, 32px); }
+.vpd-form-grid { display: grid; gap: var(--vpd-sp-4); }
+@media (min-width: 480px) {
+  .vpd-form-grid { grid-template-columns: 1fr 1fr; }
+  .vpd-form-grid .vpd-field--wide { grid-column: 1 / -1; }
+}
+.vpd-form-card .vpd-btn { margin-top: var(--vpd-sp-5); }
+.vpd-form-card__foot {
+  margin-top: var(--vpd-sp-4);
+  font-size: var(--vpd-t-xs); color: var(--vpd-n-400); text-align: center;
+}
+
+/* Estado de éxito */
+.vpd-form-success { display: none; padding: clamp(32px, 4vw, 48px); text-align: center; }
+.vpd-form-card.vpd-is-done .vpd-form-card__body,
+.vpd-form-card.vpd-is-done .vpd-form-card__head { display: none; }
+.vpd-form-card.vpd-is-done .vpd-form-success { display: block; }
+.vpd-form-success__icon {
+  width: 64px; height: 64px; margin: 0 auto var(--vpd-sp-5);
+  display: grid; place-items: center;
+  background: var(--vpd-vp-verde); color: var(--vpd-n-900);
+}
+.vpd-form-success p { margin-top: var(--vpd-sp-3); color: var(--vpd-ink-muted); font-size: var(--vpd-t-sm); }
+.vpd-form-success .vpd-btn { margin-top: var(--vpd-sp-6); }
+
+/* Banda de cintas como elemento de flujo (solo mobile/tablet) */
+.vpd-hero__band { display: none; }
+
+@media (min-width: 901px) {
+  /* Abre la banda inferior donde corren las cintas, sin apretar la franja */
+  .vpd-hero { padding-bottom: clamp(128px, 15vw, 200px); }
+}
+
+@media (max-width: 900px) {
+  .vpd-hero__net { display: none; }
+  .vpd-hero__band {
+    display: block;
+    order: 1;                          /* cierra el hero, no lo parte en dos */
+    width: 100vw; max-width: none; height: 104px;
+    margin-inline: calc(50% - 50vw);   /* full-bleed dentro del container */
+  }
+  /* La banda hace de remate inferior: el padding del hero sobraría */
+  .vpd-hero { padding-bottom: 0; }
+  .vpd-hero__grid { grid-template-columns: 1fr; gap: var(--vpd-sp-8); }
+  .vpd-hero__copy h1 { max-width: 18ch; }
+}
+
+/* ========================== 06. NECESIDADES ============================ */
+.vpd-needs__grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--vpd-sp-5);
+}
+@media (max-width: 860px) { .vpd-needs__grid { grid-template-columns: 1fr; } }
+
+.vpd-need {
+  position: relative;
+  display: flex; flex-direction: column; gap: var(--vpd-sp-3);
+  padding: clamp(22px, 2.4vw, 30px);
+  background: #fff; border: 1.5px solid var(--vpd-line); border-radius: var(--vpd-radius);
+}
+.vpd-need::before { /* barra de acento superior */
+  content: ""; position: absolute; left: -1.5px; top: -1.5px;
+  width: 56px; height: 5px; background: var(--vpd-accent);
+}
+.vpd-need h3 { max-width: 26ch; }
+.vpd-need__desc { color: var(--vpd-ink-muted); font-size: var(--vpd-t-sm); max-width: 46ch; }
+.vpd-need__foot {
+  margin-top: auto; padding-top: var(--vpd-sp-4); border-top: 1px solid var(--vpd-line);
+  font-size: var(--vpd-t-sm); color: var(--vpd-ink-muted);
+}
+.vpd-need__product { font-family: var(--vpd-font-display); font-weight: 800; color: var(--vpd-accent); }
+
+/* Banda Certificado Digital SII: 30% — se diferencia del resto (15%) */
+.vpd-sii {
+  margin-top: var(--vpd-sp-5);
+  display: grid; grid-template-columns: auto 1fr; align-items: center;
+  gap: var(--vpd-sp-5);
+  padding: clamp(20px, 2.2vw, 26px) clamp(22px, 2.4vw, 30px);
+  background: var(--vpd-vp-morado); color: #fff; border-radius: var(--vpd-radius);
+}
+.vpd-sii__badge {
+  display: grid; place-items: center; padding: 12px 16px;
+  background: var(--vpd-vp-amarillo); color: var(--vpd-vp-morado);
+  font-family: var(--vpd-font-display); font-weight: 900; font-size: 1.35rem; line-height: 1;
+  letter-spacing: -0.02em;
+}
+.vpd-sii h3 { color: #fff; font-size: var(--vpd-t-h4); }
+.vpd-sii p { margin-top: 4px; font-size: var(--vpd-t-sm); color: rgba(255,255,255,.78); max-width: 62ch; }
+@media (max-width: 520px) {
+  .vpd-sii { grid-template-columns: 1fr; gap: var(--vpd-sp-4); }
+  .vpd-sii__badge { justify-self: start; }
+}
+
+.vpd-needs__actions {
+  margin-top: var(--vpd-sp-10);
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--vpd-sp-4) var(--vpd-sp-6);
+}
+
+/* ============================== 07. PASOS ============================== */
+.vpd-steps { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--vpd-sp-6); }
+.vpd-steps::before { /* riel del sistema gráfico */
+  content: ""; position: absolute; top: 26px; left: 16.66%; right: 16.66%; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--vpd-n-200) 0 10px, transparent 10px 18px);
+  z-index: 0;
+}
+.vpd-step { position: relative; z-index: 1; }
+.vpd-step__num {
+  width: 54px; height: 54px; display: grid; place-items: center;
+  background: var(--vpd-vp-corp); color: #fff;
+  font-family: var(--vpd-font-display); font-weight: 900; font-size: 1.35rem; line-height: 1;
+  margin-bottom: var(--vpd-sp-5);
+  box-shadow: 0 0 0 8px var(--vpd-bg-alt);
+}
+.vpd-step:nth-child(2) .vpd-step__num { background: var(--vpd-vp-rosa); }
+.vpd-step:nth-child(3) .vpd-step__num { background: var(--vpd-vp-verde); color: var(--vpd-n-900); }
+.vpd-step h3 { font-size: var(--vpd-t-h4); }
+.vpd-step p { margin-top: var(--vpd-sp-2); color: var(--vpd-ink-muted); font-size: var(--vpd-t-sm); max-width: 32ch; }
+
+@media (max-width: 780px) {
+  /* Mobile: el flujo se lee como línea de tiempo vertical, no como 3 cards apiladas */
+  .vpd-steps { grid-template-columns: 1fr; gap: 0; }
+  .vpd-steps::before { display: none; }
+  .vpd-step { display: grid; grid-template-columns: 54px 1fr; gap: var(--vpd-sp-5); padding-bottom: var(--vpd-sp-8); }
+  /* Un segmento de riel por paso: siempre une un número con el siguiente */
+  .vpd-step:not(:last-child)::before {
+    content: ""; position: absolute; left: 26px; top: 54px; bottom: 0; width: 2px;
+    background: repeating-linear-gradient(180deg, var(--vpd-n-200) 0 10px, transparent 10px 18px);
+  }
+  .vpd-step:last-child { padding-bottom: 0; }
+  .vpd-step__num { margin-bottom: 0; }
+  .vpd-step__body { padding-top: 6px; }
+  .vpd-step p { max-width: none; }
+}
+
+.vpd-steps__actions { margin-top: var(--vpd-sp-10); display: flex; flex-wrap: wrap; gap: var(--vpd-sp-4); align-items: center; }
+
+/* =========================== 08. VALOR PYME ============================ */
+.vpd-about__grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .82fr);
+  gap: clamp(32px, 5vw, 72px); align-items: center;
+}
+.vpd-about__copy p { color: var(--vpd-ink-muted); font-size: var(--vpd-t-lead); max-width: 52ch; }
+
+.vpd-about__copy .vpd-btn { margin-top: var(--vpd-sp-8); }
+
+.vpd-about__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--vpd-n-100);
+  overflow: hidden;
+  margin: 0;
+}
+.vpd-about__media img { width: 100%; height: 100%; object-fit: cover; }
+.vpd-about__media::before { /* las líneas interactúan con la fotografía (Brandbook p.52) */
+  content: ""; position: absolute; left: 0; top: 0; width: 7px; height: 100%; z-index: 1;
+  background: linear-gradient(180deg, var(--vpd-vp-amarillo) 0 25%, var(--vpd-vp-rosa) 25% 50%, var(--vpd-vp-verde) 50% 75%, var(--vpd-vp-corp) 75% 100%);
+}
+.vpd-about__media figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: var(--vpd-sp-4) var(--vpd-sp-6);
+  background: rgba(27, 6, 48, .86);
+  color: #fff; font-size: var(--vpd-t-xs); font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+}
+.vpd-about__media figcaption::before {
+  content: ""; flex: none; width: 18px; height: 3px; background: var(--vpd-vp-menta);
+}
+
+@media (max-width: 900px) {
+  .vpd-about__grid { grid-template-columns: 1fr; }
+  .vpd-about__media { order: -1; aspect-ratio: 16 / 10; }
+}
+
+/* =============================== 09. FAQ ============================== */
+/* Estático: en el wireframe las tres respuestas están siempre visibles. */
+.vpd-faq { border-top: 1px solid var(--vpd-line); }
+.vpd-faq__item { border-bottom: 1px solid var(--vpd-line); padding-block: var(--vpd-sp-6); }
+.vpd-faq__q { font-size: var(--vpd-t-h4); color: var(--vpd-ink-strong); line-height: var(--vpd-lh-snug); }
+.vpd-faq__a { margin-top: var(--vpd-sp-3); color: var(--vpd-ink-muted); font-size: var(--vpd-t-sm); max-width: 68ch; }
+
+/* ============================ 10. CTA FINAL =========================== */
+.vpd-cta-final {
+  position: relative; overflow: hidden; isolation: isolate;
+  /* Corporativo, como el hero: es el fondo sobre el que el Brandbook dibuja
+     las 4 rutas (p. 49). Sobre morado, la línea morada desaparece. */
+  background: var(--vpd-vp-corp);
+  color: #fff; text-align: center;
+  /* El extra abajo abre la banda donde corren las cintas del sistema gráfico */
+  padding-block: clamp(64px, 8vw, 112px) clamp(112px, 13vw, 180px);
+}
+.vpd-cta-final__net { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; }
+.vpd-cta-final h2 { color: #fff; margin-inline: auto; max-width: 20ch; }
+.vpd-cta-final p {
+  margin: var(--vpd-sp-5) auto 0; max-width: 58ch;
+  font-size: var(--vpd-t-lead); color: rgba(255,255,255,.86);
+}
+.vpd-cta-final__actions {
+  margin-top: var(--vpd-sp-8);
+  display: flex; flex-wrap: wrap; gap: var(--vpd-sp-4); justify-content: center;
+}
+
+
+
+
+
+/* Decoración de líneas: solo donde el lienzo es suficientemente ancho */
+/* En lienzo angosto la banda de cintas se recorta desde abajo y sigue leyéndose;
+   el CTA final es demasiado bajo para que quepa el recorrido, así que se apaga. */
+@media (max-width: 900px) {
+  .vpd-cta-final__net { display: none; }
+}
+
+/* ======================== 13. ANIMACIÓN DE ENTRADA ==================== */
+/* La animación es un extra: sin JS el contenido se ve igual.
+   La clase .js la agrega un script inline en el <head>. */
+.vpd-anim .vpd-reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--vpd-ease), transform .6s var(--vpd-ease); }
+.vpd-anim .vpd-reveal.vpd-is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+  .vpd-anim .vpd-reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* =====================================================================
+   Formulario de HubSpot dentro de la tarjeta del hero
+   El módulo usa un campo `form`, así que el markup lo genera HubSpot.
+   Estas reglas lo alinean con el diseño aprobado: solo placeholders,
+   mismos campos, mismo botón. Los placeholders se configuran en el
+   formulario de HubSpot, no aquí.
+   ===================================================================== */
+.vpd-form-card .hs-form-field { margin-bottom: var(--vpd-sp-4); }
+
+/* El wireframe no muestra labels: se ocultan sin sacarlas del DOM,
+   para que los lectores de pantalla las sigan anunciando. */
+.vpd-form-card .hs-form-field > label {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.vpd-form-card .hs-form-field > label.hs-error-msg {
+  position: static; width: auto; height: auto; margin: 6px 0 0; clip: auto;
+}
+
+.vpd-form-card .hs-input:not([type="checkbox"]):not([type="radio"]) {
+  width: 100%; min-height: 52px; padding: 14px 16px;
+  background: #fff;
+  border: 1.5px solid var(--vpd-n-200); border-radius: var(--vpd-radius);
+  font-family: var(--vpd-font-body); font-size: var(--vpd-t-sm); color: var(--vpd-ink);
+  transition: border-color .2s var(--vpd-ease), box-shadow .2s var(--vpd-ease);
+}
+.vpd-form-card .hs-input::placeholder { color: var(--vpd-n-400); }
+.vpd-form-card .hs-input:hover { border-color: var(--vpd-n-400); }
+.vpd-form-card .hs-input:focus {
+  outline: none; border-color: var(--vpd-vp-corp);
+  box-shadow: 0 0 0 3px var(--vpd-vp-corp-12);
+}
+.vpd-form-card .hs-form-field.hs-error .hs-input { border-color: var(--vpd-vp-rosa); }
+.vpd-form-card .hs-error-msg,
+.vpd-form-card .hs-error-msgs label {
+  display: block; margin-top: 6px;
+  font-size: var(--vpd-t-xs); font-weight: 700; color: var(--vpd-vp-rosa);
+}
+.vpd-form-card .hs-error-msgs { list-style: none; margin: 0; padding: 0; }
+
+/* HubSpot agrupa los campos en .form-columns-1 / .form-columns-2 según el
+   ancho que elija el admin en el editor del formulario. Se reescribe su
+   maquetación con grid para que coincida con el diseño: teléfono y RUT
+   comparten fila y el resto va a ancho completo. */
+.vpd-form-card .form-columns-1 .hs-form-field,
+.vpd-form-card .form-columns-2 .hs-form-field,
+.vpd-form-card .form-columns-3 .hs-form-field {
+  width: 100% !important; float: none !important; padding: 0 !important;
+}
+.vpd-form-card .form-columns-2,
+.vpd-form-card .form-columns-3 { display: grid; gap: 0 var(--vpd-sp-4); }
+.vpd-form-card .form-columns-2 { grid-template-columns: 1fr 1fr; }
+.vpd-form-card .form-columns-3 { grid-template-columns: repeat(3, 1fr); }
+.vpd-form-card .hs-form-field .input { margin-right: 0 !important; }
+@media (max-width: 479px) {
+  .vpd-form-card .form-columns-2,
+  .vpd-form-card .form-columns-3 { grid-template-columns: 1fr; }
+}
+
+.vpd-form-card .hs_submit .actions { margin: var(--vpd-sp-5) 0 0; padding: 0; }
+.vpd-form-card .hs-button {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; min-height: 60px; padding: 18px 28px;
+  font-family: var(--vpd-font-display); font-weight: 700; font-size: 1rem; line-height: 1;
+  background: var(--vpd-vp-corp); color: #fff;
+  border: 2px solid var(--vpd-vp-corp); border-radius: var(--vpd-radius);
+  cursor: pointer;
+  transition: background var(--vpd-dur) var(--vpd-ease), border-color var(--vpd-dur) var(--vpd-ease),
+              transform var(--vpd-dur) var(--vpd-ease), box-shadow var(--vpd-dur) var(--vpd-ease);
+}
+.vpd-form-card .hs-button:hover {
+  background: var(--vpd-vp-morado); border-color: var(--vpd-vp-morado);
+  transform: translateY(-2px); box-shadow: var(--vpd-shadow-hover);
+}
+.vpd-form-card .hs-button:focus-visible { outline: 3px solid var(--vpd-vp-corp-40); outline-offset: 3px; }
+
+/* Consentimiento y textos legales del formulario */
+.vpd-form-card .hs-form-booleancheckbox-display,
+.vpd-form-card .legal-consent-container {
+  font-size: var(--vpd-t-xs); line-height: 1.5; color: var(--vpd-ink-muted);
+}
+.vpd-form-card .legal-consent-container a {
+  color: var(--vpd-vp-corp); text-decoration: underline; text-underline-offset: 2px;
+}
+
+/* Mensaje tras el envío */
+.vpd-form-card .submitted-message {
+  padding: clamp(24px, 3vw, 32px);
+  font-size: var(--vpd-t-sm); color: var(--vpd-ink-muted);
+}
+
+/* =====================================================================
+   Enganches que solo existen en la versión HubSpot
+   ===================================================================== */
+/* El párrafo llega envuelto por el campo richtext */
+.vpd-about__body { margin-top: var(--vpd-sp-5); }
+
+/* Posición de la imagen, editable desde el módulo */
+.vpd-about__grid--invert .vpd-about__copy { order: 2; }
+.vpd-about__grid--invert .vpd-about__media { order: 1; }
+@media (max-width: 900px) {
+  .vpd-about__grid--invert .vpd-about__copy,
+  .vpd-about__grid--invert .vpd-about__media { order: initial; }
+}

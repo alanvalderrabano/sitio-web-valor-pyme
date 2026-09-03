@@ -1,0 +1,11 @@
+[
+  { "id": "logo", "name": "logo", "label": "Logo Valor Pyme", "type": "image", "required": false,
+    "default": { "src": "", "alt": "Valor Pyme" } },
+  { "id": "partner_logo", "name": "partner_logo", "label": "Logo de la marca aliada", "type": "image", "required": false,
+    "help_text": "Si se deja vacío se usa el logo de Defontana del theme.",
+    "default": { "src": "", "alt": "Defontana" } },
+  { "id": "show_cta", "name": "show_cta", "label": "Mostrar botón", "type": "boolean", "display": "toggle", "default": true },
+  { "id": "cta_text", "name": "cta_text", "label": "Texto del botón", "type": "text", "required": false, "default": "Quiero mi descuento" },
+  { "id": "cta_url", "name": "cta_url", "label": "Enlace del botón", "type": "url", "required": false,
+    "default": { "type": "EXTERNAL", "href": "#formulario" } }
+]

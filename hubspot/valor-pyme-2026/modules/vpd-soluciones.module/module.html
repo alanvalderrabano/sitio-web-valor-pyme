@@ -1,0 +1,60 @@
+{# MÓDULO · LP Defontana · Soluciones
+   Tarjetas informativas (no seleccionables) + banda del Certificado Digital SII,
+   que se separa del resto porque su descuento es distinto. #}
+{# El módulo carga su propio CSS/JS: así funciona aunque se use en
+   otra plantilla que no sea la de esta landing. HubSpot deduplica. #}
+{{ require_css(get_asset_url('../../assets/css/lp-defontana.css')) }}
+{{ require_js(get_asset_url('../../assets/js/lp-defontana.js'), 'footer') }}
+
+<section class="vpd-section" id="necesidades">
+  <div class="vpd-container">
+
+    {% if module.heading or module.subtext %}
+    <div class="vpd-section-head vpd-reveal">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+      {% if module.subtext %}<p class="vpd-lead">{{ module.subtext }}</p>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if module.cards %}
+    <div class="vpd-needs__grid">
+      {% for card in module.cards %}
+      <article class="vpd-need vpd-reveal" style="--vpd-accent:{{ card.accent.color }};">
+        {% if card.title %}<h3>{{ card.title }}</h3>{% endif %}
+        {% if card.description %}<p class="vpd-need__desc">{{ card.description }}</p>{% endif %}
+        {% if card.product or card.offer %}
+        <p class="vpd-need__foot">
+          {% if card.product %}<span class="vpd-need__product">{{ card.product }}</span>{% endif %}
+          {% if card.product and card.offer %} · {% endif %}{{ card.offer }}
+        </p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if module.show_sii %}
+    <aside class="vpd-sii vpd-reveal" style="background:{{ module.sii_bg.color }}">
+      {% if module.sii_badge %}
+      <div class="vpd-sii__badge" style="background:{{ module.sii_badge_bg.color }}">{{ module.sii_badge }}</div>
+      {% endif %}
+      <div>
+        {% if module.sii_heading %}<h3>{{ module.sii_heading }}</h3>{% endif %}
+        {% if module.sii_text %}<p>{{ module.sii_text }}</p>{% endif %}
+      </div>
+    </aside>
+    {% endif %}
+
+    {% if module.cta_text %}
+    <div class="vpd-needs__actions vpd-reveal">
+      <a class="vpd-btn vpd-btn--lg" href="{{ module.cta_url.href }}">
+        {{ module.cta_text }}
+        <svg class="vpd-btn__arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+          <path d="M1 7h15M11 1.5 16.5 7 11 12.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/>
+        </svg>
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</section>

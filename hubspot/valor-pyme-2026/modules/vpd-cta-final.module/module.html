@@ -1,0 +1,38 @@
+{# MÓDULO · LP Defontana · CTA final
+   Cierra la página con el mismo gesto del hero: tres cintas y dos puntos. #}
+{# El módulo carga su propio CSS/JS: así funciona aunque se use en
+   otra plantilla que no sea la de esta landing. HubSpot deduplica. #}
+{{ require_css(get_asset_url('../../assets/css/lp-defontana.css')) }}
+{{ require_js(get_asset_url('../../assets/js/lp-defontana.js'), 'footer') }}
+
+<section class="vpd-cta-final" id="cta-final"{% if module.bg_color.color %} style="background:{{ module.bg_color.color }}"{% endif %}>
+
+  {% if module.show_lines %}
+  <svg class="vpd-cta-final__net" viewBox="0 0 1280 535" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke-width="8" stroke-linecap="round">
+      <path d="M-60 500 H180 C280 500 280 444 380 444 H640 C740 444 740 494 840 494 H1340" stroke="{{ module.line_1.color }}"/>
+      <path d="M-60 518 H460 C560 518 560 442 660 442 H1340" stroke="{{ module.line_2.color }}"/>
+      <path d="M-60 440 H300 C400 440 400 500 500 500 H760 C860 500 860 466 960 466 H1340" stroke="{{ module.line_3.color }}"/>
+    </g>
+    <g fill="{{ module.dot_color.color }}">
+      <circle cx="350" cy="448" r="9"/>
+      <circle cx="531" cy="500" r="9"/>
+    </g>
+  </svg>
+  {% endif %}
+
+  <div class="vpd-container">
+    {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+    {% if module.subtext %}<p>{{ module.subtext }}</p>{% endif %}
+    {% if module.cta_text %}
+    <div class="vpd-cta-final__actions">
+      <a class="vpd-btn vpd-btn--lg vpd-btn--invert" href="{{ module.cta_url.href }}">
+        {{ module.cta_text }}
+        <svg class="vpd-btn__arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true">
+          <path d="M1 7h15M11 1.5 16.5 7 11 12.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/>
+        </svg>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</section>

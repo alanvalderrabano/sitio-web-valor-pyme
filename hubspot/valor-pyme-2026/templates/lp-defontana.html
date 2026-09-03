@@ -1,0 +1,56 @@
+<!--
+  templateType: page
+  label: LP · Valor Pyme × Defontana
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   LANDING · Valor Pyme × Defontana
+   Cada sección es un módulo independiente dentro de un dnd_area,
+   así el admin puede reordenar, quitar o duplicar bloques.
+
+   No carga styles.css del theme a propósito: esta landing trae su
+   propio sistema (lp-defontana.css) y no usa el header/footer del
+   sitio. Además todas sus clases y variables van con prefijo vpd-,
+   así que tampoco chocan si se mezclan en otra página.
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/lp-defontana.css') }}">
+</head>
+<body class="vpd-page">
+
+  {% dnd_area "contenido", label="Contenido de la landing" %}
+    {% dnd_section full_width=true %}
+      {% dnd_module path="../modules/vpd-header" %}{% end_dnd_module %}
+    {% end_dnd_section %}
+    {% dnd_section full_width=true %}
+      {% dnd_module path="../modules/vpd-hero" %}{% end_dnd_module %}
+    {% end_dnd_section %}
+    {% dnd_section full_width=true %}
+      {% dnd_module path="../modules/vpd-soluciones" %}{% end_dnd_module %}
+    {% end_dnd_section %}
+    {% dnd_section full_width=true %}
+      {% dnd_module path="../modules/vpd-pasos" %}{% end_dnd_module %}
+    {% end_dnd_section %}
+    {% dnd_section full_width=true %}
+      {% dnd_module path="../modules/vpd-comunidad" %}{% end_dnd_module %}
+    {% end_dnd_section %}
+    {% dnd_section full_width=true %}
+      {% dnd_module path="../modules/vpd-faq" %}{% end_dnd_module %}
+    {% end_dnd_section %}
+    {% dnd_section full_width=true %}
+      {% dnd_module path="../modules/vpd-cta-final" %}{% end_dnd_module %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+
+  <script src="{{ get_asset_url('../assets/js/lp-defontana.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>

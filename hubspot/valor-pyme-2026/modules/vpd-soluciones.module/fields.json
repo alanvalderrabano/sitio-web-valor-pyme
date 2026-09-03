@@ -1,0 +1,50 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false,
+    "default": "¿Qué necesitas ordenar en tu pyme?" },
+  { "id": "subtext", "name": "subtext", "label": "Bajada", "type": "text", "required": false,
+    "default": "Comienza por el desafío que hoy te quita más tiempo o control." },
+
+  { "id": "cards", "name": "cards", "label": "Tarjetas de solución", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 4 },
+    "default": [
+      { "title": "Quiero facturar sin miedo a equivocarme",
+        "description": "Emite facturas y boletas electrónicas y mantén tus documentos tributarios más ordenados.",
+        "product": "Factura Pro", "offer": "15% de descuento mensual",
+        "accent": { "color": "#6126FF", "opacity": 100 } },
+      { "title": "Quiero controlar las ventas y el inventario de mi local",
+        "description": "Centraliza caja, mercadería y documentos tributarios para tener mayor control de cada transacción.",
+        "product": "POS Pro", "offer": "15% de descuento mensual",
+        "accent": { "color": "#FF2B5E", "opacity": 100 } },
+      { "title": "Quiero ordenar los horarios y turnos de mi equipo",
+        "description": "Registra la asistencia de tus colaboradores con una solución certificada por la Dirección del Trabajo.",
+        "product": "Control de Asistencia", "offer": "15% de descuento mensual",
+        "accent": { "color": "#00BD70", "opacity": 100 } },
+      { "title": "Quiero dejar de depender de múltiples planillas",
+        "description": "Centraliza clientes, cotizaciones y oportunidades para dar mejor seguimiento a tus ventas.",
+        "product": "CRM Empresas", "offer": "15% de descuento mensual",
+        "accent": { "color": "#FF8500", "opacity": 100 } }
+    ],
+    "children": [
+      { "id": "title", "name": "title", "label": "Título", "type": "text", "required": false, "default": "" },
+      { "id": "description", "name": "description", "label": "Descripción", "type": "text", "required": false, "default": "" },
+      { "id": "product", "name": "product", "label": "Producto", "type": "text", "required": false, "default": "" },
+      { "id": "offer", "name": "offer", "label": "Descuento", "type": "text", "required": false, "default": "15% de descuento mensual" },
+      { "id": "accent", "name": "accent", "label": "Color de acento", "type": "color", "required": false,
+        "default": { "color": "#6126FF", "opacity": 100 } }
+    ] },
+
+  { "id": "show_sii", "name": "show_sii", "label": "Mostrar banda Certificado Digital", "type": "boolean", "display": "toggle", "default": true },
+  { "id": "sii_badge", "name": "sii_badge", "label": "Badge", "type": "text", "required": false, "default": "30%" },
+  { "id": "sii_heading", "name": "sii_heading", "label": "Título de la banda", "type": "text", "required": false,
+    "default": "¿Necesitas operar y firmar electrónicamente ante el SII?" },
+  { "id": "sii_text", "name": "sii_text", "label": "Texto de la banda", "type": "text", "required": false,
+    "default": "Accede también a un 30% de descuento en Certificado Digital SII." },
+  { "id": "sii_bg", "name": "sii_bg", "label": "Fondo de la banda", "type": "color", "required": false,
+    "default": { "color": "#330559", "opacity": 100 } },
+  { "id": "sii_badge_bg", "name": "sii_badge_bg", "label": "Fondo del badge", "type": "color", "required": false,
+    "default": { "color": "#FFF21C", "opacity": 100 } },
+
+  { "id": "cta_text", "name": "cta_text", "label": "Texto del botón", "type": "text", "required": false, "default": "Quiero mi descuento" },
+  { "id": "cta_url", "name": "cta_url", "label": "Enlace del botón", "type": "url", "required": false,
+    "default": { "type": "EXTERNAL", "href": "#formulario" } }
+]

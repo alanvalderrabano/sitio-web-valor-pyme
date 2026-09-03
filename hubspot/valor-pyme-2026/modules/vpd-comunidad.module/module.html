@@ -1,0 +1,26 @@
+{# MÓDULO · LP Defontana · Comunidad
+   En mobile la imagen sube por delante del texto y hace de ancla visual. #}
+{# El módulo carga su propio CSS/JS: así funciona aunque se use en
+   otra plantilla que no sea la de esta landing. HubSpot deduplica. #}
+{{ require_css(get_asset_url('../../assets/css/lp-defontana.css')) }}
+{{ require_js(get_asset_url('../../assets/js/lp-defontana.js'), 'footer') }}
+
+<section class="vpd-section" id="valor-pyme">
+  <div class="vpd-container vpd-about__grid{% if module.media_position == 'left' %} vpd-about__grid--invert{% endif %}">
+
+    <div class="vpd-about__copy vpd-reveal">
+      {% if module.heading %}<h2>{{ module.heading }}</h2>{% endif %}
+      {% if module.intro %}<div class="vpd-about__body">{{ module.intro }}</div>{% endif %}
+      {% if module.cta_text %}
+      <a class="vpd-btn vpd-btn--ghost vpd-btn--lg" href="{{ module.cta_url.href }}">{{ module.cta_text }}</a>
+      {% endif %}
+    </div>
+
+    <figure class="vpd-about__media vpd-reveal">
+      <img src="{{ module.image.src or get_asset_url('../../assets/img/lp-defontana/comunidad.jpg') }}"
+           alt="{{ module.image.alt }}" loading="lazy" decoding="async">
+      {% if module.caption %}<figcaption>{{ module.caption }}</figcaption>{% endif %}
+    </figure>
+
+  </div>
+</section>

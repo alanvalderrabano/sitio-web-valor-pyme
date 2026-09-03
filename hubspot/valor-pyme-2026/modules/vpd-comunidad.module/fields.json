@@ -1,0 +1,18 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false,
+    "default": "Un beneficio exclusivo de Valor Pyme" },
+  { "id": "intro", "name": "intro", "label": "Párrafo", "type": "richtext", "required": false,
+    "default": "<p>Valor Pyme es una comunidad gratuita que conecta a emprendedores y pymes de Chile con herramientas, formación, oportunidades y soluciones para enfrentar los desafíos de sus negocios. Al suscribirte podrás acceder al beneficio Defontana y descubrir otros apoyos en digitalización, financiamiento, mercado, talento y gestión.</p>" },
+  { "id": "cta_text", "name": "cta_text", "label": "Texto del botón", "type": "text", "required": false,
+    "default": "Quiero ser parte de Valor Pyme" },
+  { "id": "cta_url", "name": "cta_url", "label": "Enlace del botón", "type": "url", "required": false,
+    "default": { "type": "EXTERNAL", "href": "#formulario" } },
+  { "id": "image", "name": "image", "label": "Imagen de comunidad", "type": "image", "required": false,
+    "help_text": "Fotografía documental de dueños de pyme, según el estilo del Brandbook.",
+    "default": { "src": "", "alt": "Dueña de una pyme detrás del mostrador de su tienda" } },
+  { "id": "caption", "name": "caption", "label": "Pie de foto", "type": "text", "required": false,
+    "default": "Comunidad Valor Pyme · emprendedores y pymes de Chile" },
+  { "id": "media_position", "name": "media_position", "label": "Posición de la imagen", "type": "choice",
+    "display": "select", "required": false, "default": "right",
+    "choices": [["right", "A la derecha"], ["left", "A la izquierda"]] }
+]
