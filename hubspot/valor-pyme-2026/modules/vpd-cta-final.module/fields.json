@@ -1,0 +1,17 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false,
+    "default": "Digitaliza tu pyme y comienza a tener mayor control" },
+  { "id": "subtext", "name": "subtext", "label": "Bajada", "type": "text", "required": false,
+    "default": "Únete gratis a Valor Pyme y accede a descuentos exclusivos en productos Defontana Digital." },
+  { "id": "cta_text", "name": "cta_text", "label": "Texto del botón", "type": "text", "required": false,
+    "default": "Quiero acceder al beneficio" },
+  { "id": "cta_url", "name": "cta_url", "label": "Enlace del botón", "type": "url", "required": false,
+    "default": { "type": "EXTERNAL", "href": "#formulario" } },
+  { "id": "bg_color", "name": "bg_color", "label": "Color de fondo", "type": "color", "required": false,
+    "default": { "color": "#6126FF", "opacity": 100 } },
+  { "id": "show_lines", "name": "show_lines", "label": "Mostrar líneas del sistema gráfico", "type": "boolean", "display": "toggle", "default": true },
+  { "id": "line_1", "name": "line_1", "label": "Línea 1 · Mercado", "type": "color", "required": false, "default": { "color": "#330559", "opacity": 100 } },
+  { "id": "line_2", "name": "line_2", "label": "Línea 2 · Talento", "type": "color", "required": false, "default": { "color": "#00BD70", "opacity": 100 } },
+  { "id": "line_3", "name": "line_3", "label": "Línea 3 · Digitalización", "type": "color", "required": false, "default": { "color": "#FF2B5E", "opacity": 100 } },
+  { "id": "dot_color", "name": "dot_color", "label": "Color de los puntos", "type": "color", "required": false, "default": { "color": "#FFE3CC", "opacity": 100 } }
+]

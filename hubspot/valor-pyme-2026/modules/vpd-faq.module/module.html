@@ -1,0 +1,29 @@
+{# MÓDULO · LP Defontana · Preguntas frecuentes
+   Estático, como el wireframe: las respuestas están siempre visibles. #}
+{# El módulo carga su propio CSS/JS: así funciona aunque se use en
+   otra plantilla que no sea la de esta landing. HubSpot deduplica. #}
+{{ require_css(get_asset_url('../../assets/css/lp-defontana.css')) }}
+{{ require_js(get_asset_url('../../assets/js/lp-defontana.js'), 'footer') }}
+
+<section class="vpd-section vpd-section--alt" id="faq"{% if module.bg_color.color %} style="background:{{ module.bg_color.color }}"{% endif %}>
+  <div class="vpd-container vpd-container--narrow">
+
+    {% if module.heading %}
+    <div class="vpd-section-head vpd-section-head--center vpd-reveal">
+      <h2>{{ module.heading }}</h2>
+    </div>
+    {% endif %}
+
+    {% if module.items %}
+    <div class="vpd-faq vpd-reveal">
+      {% for item in module.items %}
+      <div class="vpd-faq__item">
+        {% if item.question %}<h3 class="vpd-faq__q">{{ item.question }}</h3>{% endif %}
+        {% if item.answer %}<p class="vpd-faq__a">{{ item.answer }}</p>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

@@ -1,0 +1,9 @@
+{
+  "label": "Defontana · Soluciones",
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "host_template_types": ["PAGE"],
+  "is_available_for_new_content": true,
+  "global": false,
+  "categories": ["text"],
+  "smart_type": "NOT_SMART"
+}

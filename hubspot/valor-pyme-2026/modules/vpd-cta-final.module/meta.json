@@ -1,0 +1,9 @@
+{
+  "label": "Defontana · CTA final",
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "host_template_types": ["PAGE"],
+  "is_available_for_new_content": true,
+  "global": false,
+  "categories": ["forms_and_buttons"],
+  "smart_type": "NOT_SMART"
+}

@@ -1,0 +1,29 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false,
+    "default": "Activa tu beneficio en 3 pasos" },
+  { "id": "bg_color", "name": "bg_color", "label": "Color de fondo", "type": "color", "required": false,
+    "default": { "color": "#F7F5FC", "opacity": 100 } },
+  { "id": "steps", "name": "steps", "label": "Pasos", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 3 },
+    "default": [
+      { "number": "1", "title": "Únete a Valor Pyme", "description": "Completa gratuitamente el formulario.",
+        "color": { "color": "#6126FF", "opacity": 100 } },
+      { "number": "2", "title": "Elige tu solución", "description": "Selecciona el producto Defontana que necesita tu pyme.",
+        "color": { "color": "#FF2B5E", "opacity": 100 } },
+      { "number": "3", "title": "Activa tu descuento", "description": "Continúa en Defontana y accede al beneficio exclusivo.",
+        "color": { "color": "#00BD70", "opacity": 100 } }
+    ],
+    "children": [
+      { "id": "number", "name": "number", "label": "Número", "type": "text", "required": false, "default": "" },
+      { "id": "title", "name": "title", "label": "Título", "type": "text", "required": false, "default": "" },
+      { "id": "description", "name": "description", "label": "Descripción", "type": "text", "required": false, "default": "" },
+      { "id": "color", "name": "color", "label": "Color del número", "type": "color", "required": false,
+        "default": { "color": "#6126FF", "opacity": 100 } },
+      { "id": "dark_ink", "name": "dark_ink", "label": "Número en tinta oscura", "type": "boolean", "display": "toggle",
+        "help_text": "Actívalo en colores claros (verde, amarillo): el número blanco no alcanza contraste sobre ellos.",
+        "default": false }
+    ] },
+  { "id": "cta_text", "name": "cta_text", "label": "Texto del botón", "type": "text", "required": false, "default": "Suscribirme gratis" },
+  { "id": "cta_url", "name": "cta_url", "label": "Enlace del botón", "type": "url", "required": false,
+    "default": { "type": "EXTERNAL", "href": "#formulario" } }
+]

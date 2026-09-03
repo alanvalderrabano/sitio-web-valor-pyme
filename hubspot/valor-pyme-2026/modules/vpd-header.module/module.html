@@ -1,0 +1,24 @@
+{# MÓDULO · LP Defontana · Header co-marca (Valor Pyme × aliado) #}
+{# El módulo carga su propio CSS/JS: así funciona aunque se use en
+   otra plantilla que no sea la de esta landing. HubSpot deduplica. #}
+{{ require_css(get_asset_url('../../assets/css/lp-defontana.css')) }}
+{{ require_js(get_asset_url('../../assets/js/lp-defontana.js'), 'footer') }}
+
+<header class="vpd-header">
+  <div class="vpd-container vpd-header__inner">
+    <a class="vpd-cobrand" href="{{ module.cta_url.href }}" aria-label="Valor Pyme en alianza con {{ module.partner_logo.alt or 'Defontana' }}">
+      <img class="vpd-cobrand__logo"
+           src="{{ module.logo.src or get_asset_url('../../assets/img/logos/logo-horizontal-dark.svg') }}"
+           alt="{{ module.logo.alt or 'Valor Pyme' }}">
+      <span class="vpd-cobrand__x" aria-hidden="true">×</span>
+      <img class="vpd-cobrand__partner"
+           src="{{ module.partner_logo.src or get_asset_url('../../assets/logos/partners/defontana.png') }}"
+           alt="{{ module.partner_logo.alt or 'Defontana' }}">
+    </a>
+    {% if module.show_cta and module.cta_text %}
+    <div class="vpd-header__cta">
+      <a class="vpd-btn vpd-btn--sm" href="{{ module.cta_url.href }}">{{ module.cta_text }}</a>
+    </div>
+    {% endif %}
+  </div>
+</header>

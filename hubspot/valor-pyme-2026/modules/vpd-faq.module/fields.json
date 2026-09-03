@@ -1,0 +1,19 @@
+[
+  { "id": "heading", "name": "heading", "label": "Título (H2)", "type": "text", "required": false, "default": "Preguntas frecuentes" },
+  { "id": "bg_color", "name": "bg_color", "label": "Color de fondo", "type": "color", "required": false,
+    "default": { "color": "#F7F5FC", "opacity": 100 } },
+  { "id": "items", "name": "items", "label": "Preguntas", "type": "group",
+    "occurrence": { "min": 0, "max": null, "default": 3 },
+    "default": [
+      { "question": "¿Tiene costo suscribirme?",
+        "answer": "No. Ser parte de la comunidad Valor Pyme es gratuito." },
+      { "question": "¿Necesito registrarme para obtener el descuento?",
+        "answer": "Sí. El beneficio Defontana es exclusivo para miembros de Valor Pyme." },
+      { "question": "¿Qué ocurre después de completar el formulario?",
+        "answer": "Podrás elegir tu producto Defontana y continuar con la activación del beneficio." }
+    ],
+    "children": [
+      { "id": "question", "name": "question", "label": "Pregunta", "type": "text", "required": false, "default": "" },
+      { "id": "answer", "name": "answer", "label": "Respuesta", "type": "text", "required": false, "default": "" }
+    ] }
+]

@@ -1,0 +1,9 @@
+{
+  "label": "Defontana · Header co-marca",
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "host_template_types": ["PAGE"],
+  "is_available_for_new_content": true,
+  "global": false,
+  "categories": ["media"],
+  "smart_type": "NOT_SMART"
+}

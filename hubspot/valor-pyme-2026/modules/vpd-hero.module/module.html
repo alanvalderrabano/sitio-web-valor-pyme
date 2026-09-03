@@ -1,0 +1,87 @@
+{# MÓDULO · LP Defontana · Hero + formulario
+   Las cintas son el sistema gráfico del Brandbook (cap. 10): tres rutas con
+   curva S y puntos en los cruces. La geometría es fija; los colores, editables. #}
+{# El módulo carga su propio CSS/JS: así funciona aunque se use en
+   otra plantilla que no sea la de esta landing. HubSpot deduplica. #}
+{{ require_css(get_asset_url('../../assets/css/lp-defontana.css')) }}
+{{ require_js(get_asset_url('../../assets/js/lp-defontana.js'), 'footer') }}
+
+<section class="vpd-hero" id="hero"{% if module.bg_color.color %} style="background:{{ module.bg_color.color }}"{% endif %}>
+
+  {% if module.show_lines %}
+  <svg class="vpd-hero__net" viewBox="0 0 1280 732" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+    <g fill="none" stroke-width="8" stroke-linecap="round">
+      <path d="M-60 700 H240 C340 700 340 640 440 640 H700 C800 640 800 696 900 696 H1340" stroke="{{ module.line_1.color }}"/>
+      <path d="M-60 722 H520 C620 722 620 638 720 638 H1340" stroke="{{ module.line_2.color }}"/>
+      <path d="M-60 632 H380 C480 632 480 700 580 700 H820 C920 700 920 668 1020 668 H1340" stroke="{{ module.line_3.color }}"/>
+    </g>
+    <g fill="{{ module.dot_color.color }}">
+      <circle cx="430" cy="640" r="9"/>
+      <circle cx="580" cy="700" r="9"/>
+    </g>
+  </svg>
+  {% endif %}
+
+  <div class="vpd-container vpd-hero__grid">
+
+    <div class="vpd-hero__copy">
+      {% if module.tag_text %}
+      <span class="vpd-tag vpd-tag--ghost"><span class="vpd-tag__dot"></span>{{ module.tag_text }}</span>
+      {% endif %}
+
+      {% if module.heading %}<h1>{{ module.heading }}</h1>{% endif %}
+      {% if module.subtext %}<div class="vpd-lead">{{ module.subtext }}</div>{% endif %}
+
+      {% if module.discount_text %}
+      <span class="vpd-tag vpd-tag--menta vpd-hero__descuento">{{ module.discount_text }}</span>
+      {% endif %}
+
+      {% if module.show_benefits and module.benefits %}
+      <ul class="vpd-hero__beneficios">
+        {% for item in module.benefits %}
+          {% if item.text %}
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" stroke="currentColor" stroke-width="2.6"/></svg>{{ item.text }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+
+    {# En mobile la banda de cintas es un elemento de flujo y cierra el hero #}
+    {% if module.show_lines %}
+    <svg class="vpd-hero__band" viewBox="0 0 390 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <g fill="none" stroke-width="6" stroke-linecap="round">
+        <path d="M-20 96 H40 C90 96 90 30 140 30 H250 C300 30 300 74 350 74 H410" stroke="{{ module.line_1.color }}"/>
+        <path d="M-20 112 H150 C200 112 200 54 250 54 H410" stroke="{{ module.line_2.color }}"/>
+        <path d="M-20 26 H90 C140 26 140 92 190 92 H410" stroke="{{ module.line_3.color }}"/>
+      </g>
+      <g fill="{{ module.dot_color.color }}">
+        <circle cx="120" cy="40" r="7"/>
+        <circle cx="195" cy="92" r="7"/>
+      </g>
+    </svg>
+    {% endif %}
+
+    <div class="vpd-form-card" id="formulario">
+      <div class="vpd-form-card__accent" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+      {% if module.form_heading %}
+      <div class="vpd-form-card__head">
+        <h2>{{ module.form_heading }}</h2>
+      </div>
+      {% endif %}
+
+      <div class="vpd-form-card__body">
+        {% form
+          form_to_use="{{ module.form.form_id }}"
+          response_response_type="{{ module.form.response_type }}"
+          response_message="{{ module.form.message }}"
+          response_redirect_id="{{ module.form.redirect_id }}"
+          response_redirect_url="{{ module.form.redirect_url }}"
+          gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+        %}
+      </div>
+    </div>
+
+  </div>
+</section>
