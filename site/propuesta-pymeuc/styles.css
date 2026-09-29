@@ -30,6 +30,8 @@
   --sp:clamp(56px,7vw,104px);      /* alto de sección */
   --sp-head:clamp(28px,3.4vw,44px);/* bajo el encabezado de sección */
   --gap:24px;                      /* entre tarjetas */
+  --sp-h2:clamp(14px,1.4vw,18px);  /* entre un h2 y su texto */
+  --sp-h3:12px;                    /* entre un h3 y su texto */
   --gap-xl:clamp(30px,4.5vw,64px); /* entre imagen y texto en bloques de dos columnas */
   --pad-card:26px 24px;            /* interior de tarjeta */
 }
@@ -122,7 +124,7 @@ section[id],#top{scroll-margin-top:110px}
 .destacados{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap)}
 .dest{display:flex;flex-direction:column;background:#fff;border:1px solid var(--borde);border-top:5px solid var(--rosa-txt)}
 .dest__main{padding:var(--pad-card)}
-.dest h3{margin-bottom:16px;text-wrap:balance}
+.dest h3{margin-bottom:var(--sp-h3);text-wrap:balance}
 .dest__dirigido{font-size:15px;color:var(--gris);border-left:3px solid var(--borde);padding-left:12px;margin-bottom:18px}
 .dest__label{font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--morado);margin-bottom:8px}
 .dest__d{font-size:15px;color:var(--gris);margin-bottom:12px}
@@ -135,7 +137,7 @@ section[id],#top{scroll-margin-top:110px}
   text-transform:uppercase;padding:5px 10px;background:var(--lavanda);color:var(--corp);margin-bottom:14px}
 .card__tag--free{background:#D9FBEC;color:#00713F}
 .card__hook{font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--rosa-txt);margin:0 0 8px}
-.card h3{margin-bottom:12px;text-wrap:balance}
+.card h3{margin-bottom:var(--sp-h3);text-wrap:balance}
 .card__d{font-size:15px;color:var(--gris);margin-bottom:16px}
 .card__meta{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--negro)}
 .card__meta li{display:flex;gap:9px;align-items:flex-start}
@@ -155,7 +157,7 @@ section[id],#top{scroll-margin-top:110px}
 .razones li{background:var(--soft);border:1px solid var(--borde);padding:var(--pad-card)}
 .razon__ico{display:block;width:46px;height:46px;background:var(--corp);margin-bottom:18px;
   -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
-.razones h3{margin-bottom:10px;font-size:19px}
+.razones h3{margin-bottom:var(--sp-h3);font-size:19px}
 .razones p{font-size:15px;color:var(--gris);margin:0}
 
 /* ---------- acerca ---------- */
@@ -163,7 +165,7 @@ section[id],#top{scroll-margin-top:110px}
 .acerca__img{margin:0}
 .acerca__img img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .acerca__logo{height:44px;width:auto;margin-bottom:18px}
-.acerca__txt h2{margin-bottom:14px}
+.acerca__txt h2,.beneficios__txt h2{margin-bottom:var(--sp-h2)}
 .acerca__txt p{font-size:var(--t-lead);color:var(--gris)}
 .acerca__txt p:last-child{margin-bottom:0}
 
@@ -178,7 +180,7 @@ section[id],#top{scroll-margin-top:110px}
 .pasos li{position:relative;padding:var(--pad-card);background:var(--soft);border-left:5px solid var(--verde)}
 .paso__n{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--morado);
   color:#fff;font-family:var(--f-display);font-weight:800;font-size:20px;margin-bottom:18px}
-.pasos h3{margin-bottom:10px}
+.pasos h3{margin-bottom:var(--sp-h3)}
 .pasos p{font-size:15px;color:var(--gris);margin:0}
 
 /* ---------- formulario ---------- */
