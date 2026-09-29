@@ -1,8 +1,13 @@
 /* Contenido textual de https://www.valorpyme.cl/cursos-mentorias-pyme-uc
-   Copiado literal de la página de referencia. Lo único que cambia es el diseño. */
+   Todos los textos están copiados literal de la página de referencia.
+   Lo único propio de la propuesta es el diseño y el orden de las secciones.
 
-window.PROXIMOS = [
+   `opcion` guarda el valor exacto con que cada programa aparece en el
+   desplegable del formulario; es null cuando la página no lo incluye. */
+
+window.CURSOS = [
   {
+    destacado: true, filtro: 'fecha', opcion: null,
     titulo: 'IA para tu Pyme: de las herramientas a los agentes',
     dirigido: 'Directivos de pymes que buscan impulsar su competitividad.',
     clases: 'Clases Online (15 y 22 oct, 9-12 hrs) | Híbrido (29 oct, 9-11 hrs).',
@@ -12,6 +17,7 @@ window.PROXIMOS = [
     dcto: '20% dcto Comunidad Valor Pyme'
   },
   {
+    destacado: true, filtro: 'fecha', opcion: null,
     titulo: 'Curso "Gestión del Marketing para Pymes"',
     dirigido: 'Empresarios, directivos o gerentes de pymes interesados en mejorar la competitividad y gestión de su empresa.',
     clases: 'Clases Online, en vivo: Del 30 de septiembre al 04 de noviembre',
@@ -19,72 +25,62 @@ window.PROXIMOS = [
     nota: '',
     valor: '550.000',
     dcto: '20% Dcto Comunidad Valor Pyme'
-  }
-];
-
-window.MAS = [
+  },
   {
+    destacado: false, filtro: 'gratis', opcion: 'Taller Digitalización de Proceso',
     titulo: 'Taller Digitalización de Proceso',
     hook: '¿Tus procesos te ayudan a avanzar o te hacen perder tiempo?',
     d: 'Aprende a identificar oportunidades de mejora y adquiere herramientas para diseñar o rediseñar procesos más eficientes y alineados con los objetivos de tu negocio.',
     modalidad: 'Online sincrónico y gratuito',
-    fecha: '30 de Octubre del 2026',
-    hora: '9:00 hrs',
-    valor: ''
+    fecha: '30 de Octubre del 2026', hora: '9:00 hrs', valor: ''
   },
   {
+    destacado: false, filtro: 'gratis', opcion: 'Taller Marketing digital e Ecommerce.',
     titulo: 'Taller Marketing digital e Ecommerce',
     hook: '¿Estás aprovechando los canales digitales para hacer crecer tu negocio?',
     d: 'Aprende las claves para fortalecer tu presencia online, llegar a tus clientes y desarrollar una estrategia digital más efectiva.',
     modalidad: 'Online sincrónico y gratuito',
-    fecha: '06 de Octubre del 2026',
-    hora: '14:00 hrs',
-    valor: ''
+    fecha: '06 de Octubre del 2026', hora: '14:00 hrs', valor: ''
   },
   {
+    destacado: false, filtro: 'gratis', opcion: 'Taller Modelo de Negocios.',
     titulo: 'Taller Modelo de Negocios',
     hook: '¿Tu modelo de negocio está preparado para crecer?',
     d: 'Analiza cómo funciona tu empresa, detecta oportunidades de mejora y fortalece las bases para crecer de manera sostenible.',
     modalidad: 'Online sincrónico y gratuito',
-    fecha: '20 de Octubre del 2026',
-    hora: '12:30 hrs',
-    valor: ''
+    fecha: '20 de Octubre del 2026', hora: '12:30 hrs', valor: ''
   },
   {
+    destacado: false, filtro: 'ritmo', opcion: 'Curso Gestión Empresarial Exitosa para Pyme',
     titulo: 'Curso Gestión Empresarial Exitosa para Pyme',
     hook: '¿Quieres gestionar tu empresa con más herramientas y mejores decisiones?',
     d: 'Fortalece tus conocimientos en áreas clave del negocio como estrategia, marketing, finanzas y gestión de personas.',
     modalidad: 'Online asincrónico',
-    fecha: '',
-    hora: '',
-    valor: '$49 dólares'
+    fecha: '', hora: '', valor: '$49 dólares'
   },
   {
+    destacado: false, filtro: 'ritmo', opcion: 'Curso Planificación y Gestión Estratégica para Pymes.',
     titulo: 'Curso Planificación y Gestión Estratégica para Pymes.',
     hook: '¿Tienes claro hacia dónde va tu empresa y cómo llegar?',
     d: 'Aprende a definir objetivos, tomar decisiones estratégicas y utilizar herramientas que te permitan construir e implementar una estrategia para hacer crecer tu negocio.',
     modalidad: 'Online asincrónico',
-    fecha: '',
-    hora: '',
-    valor: '$49 dólares'
+    fecha: '', hora: '', valor: '$49 dólares'
   },
   {
+    destacado: false, filtro: 'ritmo', opcion: 'Curso Escalamiento Exitoso e Innovación en los Negocios',
     titulo: 'Curso Escalamiento Exitoso e Innovación en los Negocios',
     hook: '¿Tu empresa está preparada para dar el siguiente paso?',
     d: 'Aprende estrategias y herramientas para impulsar su crecimiento, incorporar la innovación y explorar nuevas oportunidades de mercado e internacionalización.',
     modalidad: 'Online asincrónico',
-    fecha: '',
-    hora: '',
-    valor: '$49 dólares'
+    fecha: '', hora: '', valor: '$49 dólares'
   },
   {
+    destacado: false, filtro: 'ritmo', opcion: 'Curso Claves para el Éxito de la Transformación Digital en Pymes.',
     titulo: 'Curso Claves para el Éxito de la Transformación Digital en Pymes.',
     hook: '¿Tu empresa está aprovechando realmente las oportunidades digitales?',
     d: 'Aprende las claves para avanzar en su transformación digital, mejorar su competitividad y aprovechar la tecnología para impulsar su crecimiento.',
     modalidad: 'Online asincrónico',
-    fecha: '',
-    hora: '',
-    valor: '$49 dólares'
+    fecha: '', hora: '', valor: '$49 dólares'
   }
 ];
 

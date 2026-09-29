@@ -19,31 +19,49 @@ Lo único que cambia es el diseño, para que la página se vea como el sitio act
 > Las clases propias llevan prefijo `puc-` donde colisionaban con las del sitio
 > (`btn`, `hero`, `eyebrow`, `lead`), para que el CSS global no las pise.
 
-## Estructura (misma que la página de referencia)
+## Estructura
 
 1. Hero — *Fortalece las capacidades que impulsan el crecimiento de tu Pyme*
-2. Acerca de Pyme UC
-3. Desarrolla nuevas capacidades para hacer crecer tu Pyme
-4. Beneficios exclusivos para la comunidad
-5. Conoce los próximos talleres y mentorías
-6. Más cursos, talleres y mentorías
+2. Franja de cifras
+3. **Catálogo** — *Conoce los próximos talleres y mentorías*, con el subtítulo
+   *Más cursos, talleres y mentorías* y filtros
+4. Acerca de Pyme UC
+5. Desarrolla nuevas capacidades para hacer crecer tu Pyme
+6. Beneficios exclusivos para la comunidad
 7. Fortalece la gestión y crecimiento de tu Pyme en 3 simples pasos:
 8. Contacta a Pyme UC — los 14 campos del formulario, con sus etiquetas y opciones
+
+El catálogo sube al tercer lugar: en la página actual hay que pasar cuatro
+secciones antes de ver un programa, y los programas son el producto de la página.
 
 ## Qué cambia (solo diseño)
 
 - **Tipografía, color y espaciado del sitio**: Rubik para títulos, paleta del
   brandbook, esquinas rectas y el sistema de líneas de rutas en el hero.
 - **Header y footer reales** del sitio, con su navegación y menú móvil.
-- **Tarjetas con jerarquía**: modalidad, pregunta gancho, descripción, fecha,
-  hora y valor en posiciones fijas, para poder comparar programas de un vistazo.
-  Los dos programas pagados usan una tarjeta más amplia con su información
-  separada en dos columnas.
-- **Formulario legible**: los 14 campos se mantienen, agrupados en dos columnas
+- **Catálogo unificado**: los nueve programas en un mismo sistema de tarjetas,
+  con filtros por *Gratuitos / Con fecha / Online asincrónico*. Los dos encabezados
+  de la página original se conservan: el de la sección y el del segundo grupo.
+- **Tarjetas comparables**: modalidad, pregunta, descripción, fecha, hora y valor
+  siempre en la misma posición. Los dos programas pagados usan una tarjeta más
+  amplia partida en dos columnas.
+- **Cada "Inscribirme" preselecciona su programa** en el desplegable del
+  formulario. Cuando el programa no está entre las opciones (ver más abajo), la
+  página lo dice en vez de dejar el campo vacío sin explicación.
+- **Formulario legible**: los 14 campos se mantienen completos, en dos columnas
   cuando la etiqueta es corta y a ancho completo cuando es larga, con validación
   en línea y foco en el primer campo con error.
-- **Móvil diseñado por breakpoint**, no encogido: una columna, imágenes con
-  proporción propia y botones a ancho completo.
+- **Móvil diseñado por breakpoint**, no encogido: una columna, filtros en
+  carrusel, cifras en 2×2 y botones a ancho completo.
+
+### Textos que no vienen de la referencia
+
+Todo el contenido es literal salvo estos elementos de interfaz, que no existen
+en la página original porque son parte del diseño propuesto: la franja de cifras
+(9 / 3 / 20% / 100%, datos tomados de la propia página), las etiquetas de los
+filtros y su contador, la etiqueta *Destacado*, la palabra *Gratuito* como
+precio, el aviso de programa elegido y los mensajes de validación. Si prefieren
+quitar alguno, se saca sin tocar el resto.
 
 ## Hallazgo en la página en producción
 
