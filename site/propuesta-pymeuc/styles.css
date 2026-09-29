@@ -258,12 +258,10 @@ section[id],#top{scroll-margin-top:110px}
   /* Filtros en carrusel horizontal: no se apilan en varias líneas.
      El tirón negativo iguala el padding del contenedor para que el primer
      chip arranque alineado con el título. */
-  /* Sin scroll-snap: el snap arrastraba el carrusel 20px y el primer chip
-     dejaba de alinearse con el título de la sección. */
-  .filtros{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
-    margin-inline:calc(var(--pad-x) * -1);padding:0 var(--pad-x) 4px}
-  .filtros::-webkit-scrollbar{display:none}
-  .chip{flex:none}
+  /* Los filtros bajan de línea en vez de desplazarse: en el carrusel el
+     último chip quedaba cortado contra el borde de la pantalla. */
+  .filtros{flex-wrap:wrap;gap:8px}
+  .chip{padding:10px 14px;font-size:14px}
 
   .cards{grid-template-columns:1fr}
 

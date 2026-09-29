@@ -198,6 +198,23 @@ section[id],#top{scroll-margin-top:110px}
 .puc-form__sel--aviso{background:#FFF1E0;border-left-color:#B45A00}
 
 .puc-form{background:#fff;padding:clamp(24px,3vw,38px)}
+
+/* HubSpot limita cada fieldset a 500px y los campos al 95%, así que el
+   formulario nunca llenaba el bloque. Su hoja se inyecta después de esta
+   y empata en especificidad: por eso van con !important. */
+.puc-form fieldset{max-width:none !important;width:100% !important;margin:0;padding:0;border:0}
+.puc-form fieldset .hs-form-field{width:100% !important;float:none !important}
+.puc-form .hs-form-field > .input{margin:0 !important}
+.puc-form .hs-input:not([type=checkbox]):not([type=radio]){width:100% !important}
+
+/* Las columnas que se eligen en el editor de formularios, con separación
+   pareja. En rejilla no hacen falta floats ni limpiarlos. */
+.puc-form fieldset.form-columns-2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.puc-form fieldset.form-columns-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 18px}
+
+.puc-form .hs-submit{margin-top:6px}
+.puc-form .hs-submit .hs-field-desc{margin-bottom:12px}
+.puc-form .actions{margin:0;padding:0}
 .puc-form .hs-form-field{margin-bottom:18px}
 .puc-form .hs-form-field > label{display:block;font-family:var(--f-display);font-weight:600;
   font-size:14px;color:var(--morado);margin-bottom:7px}
@@ -276,15 +293,10 @@ section[id],#top{scroll-margin-top:110px}
   .puc-cifra:nth-child(2n){border-right:0}
   .puc-cifra:nth-child(n+3){border-bottom:0}
 
-  /* Filtros en carrusel horizontal: no se apilan en varias líneas.
-     El tirón negativo iguala el padding del contenedor para que el primer
-     chip arranque alineado con el título. */
-  /* Sin scroll-snap: el snap arrastraba el carrusel 20px y el primer chip
-     dejaba de alinearse con el título de la sección. */
-  .puc-filtros{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
-    margin-inline:calc(var(--pad-x,20px) * -1);padding:0 var(--pad-x,20px) 4px}
-  .puc-filtros::-webkit-scrollbar{display:none}
-  .puc-chip{flex:none}
+  /* Los filtros bajan de línea en vez de desplazarse: con tres chips el
+     carrusel dejaba "Online asincrónico" cortado contra el borde. */
+  .puc-filtros{flex-wrap:wrap;gap:8px}
+  .puc-chip{padding:10px 14px;font-size:14px}
 
   .puc-cards{grid-template-columns:1fr}
 
@@ -292,8 +304,10 @@ section[id],#top{scroll-margin-top:110px}
   .puc-razones li{display:grid;grid-template-columns:46px 1fr;gap:0 16px}
   .puc-razon__ico{grid-row:span 2;margin:0}
 
-  /* En móvil HubSpot apila los campos; solo ajustamos el interior */
+  /* En móvil todo el formulario va a una columna */
   .puc-form{padding:22px 20px}
+  .puc-form fieldset.form-columns-2,
+  .puc-form fieldset.form-columns-3{grid-template-columns:1fr}
 }
 
 /* ---------- ícono de las tarjetas de capacidades ----------------------
