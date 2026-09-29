@@ -13,11 +13,10 @@
       </div>
       {% endif %}
     </div>
-    {% if module.imagen.src %}
     <figure class="puc-hero__img">
-      <img src="{{ module.imagen.src }}" alt="{{ module.imagen.alt }}" loading="eager">
+      <img src="{{ module.imagen.src or get_asset_url('../../assets/img/pymeuc/hero.png') }}"
+           alt="{{ module.imagen.alt }}" loading="eager">
     </figure>
-    {% endif %}
   </div>
   {% if module.lineas %}
   <svg class="puc-hero__rutas" viewBox="0 0 1280 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true">

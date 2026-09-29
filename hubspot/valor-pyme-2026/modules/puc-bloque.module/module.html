@@ -2,27 +2,28 @@
 {% require_js %}<script src="{{ get_asset_url('../../assets/js/pymeuc.js') }}" defer></script>{% end_require_js %}
 
 {# MÓDULO · Pyme UC · Bloque de imagen y texto (sirve para "Acerca de" y "Beneficios") #}
+{# El logo acompaña al bloque "Acerca de" (imagen a la izquierda). Si el admin
+   sube uno propio, se respeta en cualquier posición. #}
+{% set logo_src = module.logo.src or (get_asset_url('../../assets/img/pymeuc/pymeuc.png') if module.posicion != 'derecha' else '') %}
 <section class="puc-s puc-sec{% if module.fondo == 'suave' %} puc-sec--soft{% endif %}" id="{{ module.seccion_id }}">
   <div class="puc-wrap {% if module.posicion == 'derecha' %}puc-beneficios{% else %}puc-acerca{% endif %}">
     {% if module.posicion == 'derecha' %}
       <div class="puc-beneficios__txt">
-        {% if module.logo.src %}<img class="puc-acerca__logo" src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" loading="lazy">{% endif %}
+        {% if logo_src %}<img class="puc-acerca__logo" src="{{ logo_src }}" alt="{{ module.logo.alt }}" loading="lazy">{% endif %}
         <h2>{{ module.titulo }}</h2>
         {{ module.texto }}
       </div>
-      {% if module.imagen.src %}
       <figure class="puc-beneficios__img">
-        <img src="{{ module.imagen.src }}" alt="{{ module.imagen.alt }}" loading="lazy">
+        <img src="{{ module.imagen.src or get_asset_url('../../assets/img/pymeuc/beneficios.png') }}"
+             alt="{{ module.imagen.alt }}" loading="lazy">
       </figure>
-      {% endif %}
     {% else %}
-      {% if module.imagen.src %}
       <figure class="puc-acerca__img">
-        <img src="{{ module.imagen.src }}" alt="{{ module.imagen.alt }}" loading="lazy">
+        <img src="{{ module.imagen.src or get_asset_url('../../assets/img/pymeuc/red.jpg') }}"
+             alt="{{ module.imagen.alt }}" loading="lazy">
       </figure>
-      {% endif %}
       <div class="puc-acerca__txt">
-        {% if module.logo.src %}<img class="puc-acerca__logo" src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" loading="lazy">{% endif %}
+        {% if logo_src %}<img class="puc-acerca__logo" src="{{ logo_src }}" alt="{{ module.logo.alt }}" loading="lazy">{% endif %}
         <h2>{{ module.titulo }}</h2>
         {{ module.texto }}
       </div>

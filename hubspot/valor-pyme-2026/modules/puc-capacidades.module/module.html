@@ -5,12 +5,21 @@
 <section class="puc-s puc-sec{% if module.fondo == 'suave' %} puc-sec--soft{% endif %}" id="{{ module.seccion_id }}">
   <div class="puc-wrap">
     <header class="puc-sec__head"><h2>{{ module.titulo }}</h2></header>
+    {# Respaldo por posición: si el admin no sube ícono, se usa el del theme.
+       A partir de la quinta tarjeta no hay respaldo y el hueco queda vacío. #}
+    {% set iconos_base = [
+      get_asset_url('../../assets/img/pymeuc/ico-vision.png'),
+      get_asset_url('../../assets/img/pymeuc/ico-profes.png'),
+      get_asset_url('../../assets/img/pymeuc/ico-conve.png'),
+      get_asset_url('../../assets/img/pymeuc/ico-comu.png')
+    ] %}
     <ul class="puc-razones">
       {% for i in module.items %}
+      {% set ico = i.item_icono.src or (iconos_base[loop.index0] if loop.index0 < 4 else '') %}
       <li>
-        {% if i.item_icono.src %}
+        {% if ico %}
           <span class="puc-razon__ico puc-razon__ico--img" aria-hidden="true"
-                style="-webkit-mask-image:url({{ i.item_icono.src }});mask-image:url({{ i.item_icono.src }})"></span>
+                style="-webkit-mask-image:url({{ ico }});mask-image:url({{ ico }})"></span>
         {% endif %}
         <h3>{{ i.item_titulo }}</h3>
         <p>{{ i.item_texto }}</p>

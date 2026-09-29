@@ -40,6 +40,9 @@
 
 .puc-s{font-family:var(--f-body);font-size:16px;line-height:1.6;color:var(--negro);-webkit-font-smoothing:antialiased}
 .puc-s img{max-width:100%;height:auto;display:block}
+/* [hidden] es display:none del navegador y cualquier display propio le gana.
+   Con el atributo dentro del selector recupera la prioridad. */
+.puc-s [hidden],.puc-s[hidden]{display:none}
 .puc-s h1,.puc-s h2,.puc-s h3{font-family:var(--f-display);font-weight:800;line-height:1.12;
   margin:0;color:var(--morado);letter-spacing:-.01em}
 .puc-s h1{font-size:var(--t-h1);text-wrap:balance}
