@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursos y mentorías Pyme UC · Valor Pyme</title>
+<meta name="description" content="Talleres, cursos y mentorías de Pyme UC para fortalecer la gestión de tu empresa. Programas gratuitos y con descuento para la comunidad Valor Pyme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vp-header.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#catalogo">Ir al catálogo de programas</a>
+
+<!-- ===== HEADER GLOBAL DEL SITIO (markup y estilos de valorpyme.cl) ===== -->
+<header class="site-header">
+  <div class="site-header__top">
+    <div class="container site-header__top-inner">
+      <a href="https://www.valorpyme.cl/suscripcion" class="btn btn--sm nav__cta desktop">Suscríbete</a><a href="https://www.valorpyme.cl/diagnostico-de-madurez-empresarial" class="btn btn--sm nav__cta desktop">Encuentra tu ruta</a>
+    </div>
+  </div>
+  <div class="container nav">
+    <a class="nav__logo" href="https://www.valorpyme.cl/" aria-label="Valor Pyme — inicio"><img src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/logos/logo-horizontal-dark.svg" alt="Valor Pyme"></a>
+    <nav class="nav__menu" aria-label="Principal">
+      <div class="nav__item">
+        <a class="nav__item-link" href="https://www.valorpyme.cl/rutas" aria-haspopup="true">Rutas Pyme
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown" role="menu">
+          <a class="drop-route" href="https://www.valorpyme.cl/ruta-capital" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/ruta-capital.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Capital</span><span class="drop-route__d">Acceso financiero y bancarización</span></span></a>
+          <a class="drop-route" href="https://www.valorpyme.cl/ruta-mercado" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/ruta-mercado.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Mercado</span><span class="drop-route__d">Nuevos clientes y logística</span></span></a>
+          <a class="drop-route" href="https://www.valorpyme.cl/ruta-digitalizacion" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/ruta-digitalizacion.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Digitalización</span><span class="drop-route__d">Automatiza y profesionaliza</span></span></a>
+          <a class="drop-route" href="https://www.valorpyme.cl/ruta-talento" role="menuitem"><span class="drop-route__dot has-ico"><img class="route-ico" src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/icons/rutas/ruta-talento.png" alt="" width="38" height="38"></span><span><span class="drop-route__t">Ruta Talento y Gestión</span><span class="drop-route__d">Forma a tu equipo</span></span></a>
+        </div>
+      </div>
+      <a href="https://www.valorpyme.cl/alianzas-estrategicas-valor-pyme">Beneficios y Soluciones</a>
+      <a href="https://www.valorpyme.cl/nosotros">Nosotros</a>
+      <div class="nav__item">
+        <button type="button" class="nav__item-link" aria-haspopup="true">Recursos
+          <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="dropdown dropdown--community" role="menu">
+          <a class="drop-route drop-route--simple" href="https://www.valorpyme.cl/blog" role="menuitem"><span><span class="drop-route__t">Blog</span><span class="drop-route__d">Artículos y novedades</span></span></a>
+          <a class="drop-route drop-route--simple" href="https://www.valorpyme.cl/foro-comunidad-pyme" role="menuitem"><span><span class="drop-route__t">Foro</span><span class="drop-route__d">Conversaciones de la comunidad</span></span></a>
+          <a class="drop-route drop-route--simple" href="https://www.valorpyme.cl/recursos" role="menuitem"><span><span class="drop-route__t">Recursos</span><span class="drop-route__d">Guías y herramientas</span></span></a>
+        </div>
+      </div>
+      <a href="https://www.valorpyme.cl/ponte-en-contacto">Contacto</a>
+    </nav>
+    <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- Menú móvil del sitio (lo abre .nav__burger vía vp-header.js) -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://www.valorpyme.cl/rutas">Rutas Pyme</a>
+  <a href="https://www.valorpyme.cl/ruta-capital" class="mobile-menu__sub">Ruta Capital</a><a href="https://www.valorpyme.cl/ruta-mercado" class="mobile-menu__sub">Ruta Mercado</a><a href="https://www.valorpyme.cl/ruta-digitalizacion" class="mobile-menu__sub">Ruta Digitalización</a><a href="https://www.valorpyme.cl/ruta-talento" class="mobile-menu__sub">Ruta Talento y Gestión</a>
+  <a href="https://www.valorpyme.cl/alianzas-estrategicas-valor-pyme">Beneficios y Soluciones</a>
+  <a href="https://www.valorpyme.cl/nosotros">Nosotros</a>
+  <span class="mobile-menu__label">Recursos</span>
+  <a href="https://www.valorpyme.cl/blog" class="mobile-menu__sub">Blog</a><a href="https://www.valorpyme.cl/foro-comunidad-pyme" class="mobile-menu__sub">Foro</a><a href="https://www.valorpyme.cl/recursos" class="mobile-menu__sub">Recursos</a>
+  <a href="https://www.valorpyme.cl/ponte-en-contacto">Contacto</a>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="puc-hero">
+  <div class="wrap puc-hero__grid">
+    <div class="puc-hero__txt">
+      <p class="puc-eyebrow puc-eyebrow--light">Alianza Valor Pyme · Pyme UC</p>
+      <h1>Fortalece las capacidades que impulsan el crecimiento de tu Pyme</h1>
+      <p class="puc-lead">Talleres, cursos y mentorías dictados por profesores y mentores de la Universidad Católica,
+        diseñados para empresarios y equipos de pymes que quieren tomar mejores decisiones.</p>
+      <p class="puc-hero__note">Gratis para la comunidad Valor Pyme en los talleres en vivo · hasta 20&nbsp;% de descuento en los programas pagados.</p>
+      <div class="puc-hero__cta">
+        <a class="puc-btn puc-btn--verde" href="#catalogo">Ver los 9 programas</a>
+        <a class="puc-btn puc-btn--ghost" href="#pasos">Cómo participar</a>
+      </div>
+    </div>
+    <figure class="puc-hero__img">
+      <img src="assets/hero.png" alt="Empresaria pyme participando en una sesión de formación de Pyme UC" width="720" height="560">
+    </figure>
+  </div>
+  <svg class="puc-hero__rutas" viewBox="0 0 1280 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="none" stroke-width="6" stroke-linecap="round">
+      <path d="M-60 96 H300 C400 96 400 48 500 48 H1340" stroke="#FF2B5E"/>
+      <path d="M-60 116 H560 C660 116 660 44 760 44 H1340" stroke="#00BD70"/>
+      <path d="M-60 60 H180 C280 60 280 104 380 104 H1340" stroke="#6126FF"/>
+    </g>
+  </svg>
+</section>
+
+<!-- ============ CIFRAS ============ -->
+<section class="cifras" aria-label="Resumen del programa">
+  <div class="wrap cifras__in">
+    <div class="cifra"><b>9</b><span>programas disponibles</span></div>
+    <div class="cifra"><b>3</b><span>talleres 100&nbsp;% gratuitos</span></div>
+    <div class="cifra"><b>20%</b><span>de descuento comunidad</span></div>
+    <div class="cifra"><b>100%</b><span>online, desde donde estés</span></div>
+  </div>
+</section>
+
+<!-- ============ CATÁLOGO ============ -->
+<section class="sec" id="catalogo">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="puc-eyebrow">Catálogo</p>
+      <h2>Elige el programa que tu pyme necesita hoy</h2>
+      <p class="sec__sub">Todos los talleres, cursos y mentorías en un solo lugar. Filtra por lo que más te acomoda
+        y postula directo al programa que te interesa.</p>
+    </header>
+
+    <div class="filtros" role="group" aria-label="Filtrar programas">
+      <button class="chip is-on" data-f="todos" aria-pressed="true">Todos <i>9</i></button>
+      <button class="chip" data-f="gratis" aria-pressed="false">Gratuitos <i>3</i></button>
+      <button class="chip" data-f="fecha" aria-pressed="false">Con fecha en vivo <i>5</i></button>
+      <button class="chip" data-f="ritmo" aria-pressed="false">Online a tu ritmo <i>4</i></button>
+    </div>
+
+    <p class="conteo" aria-live="polite" id="conteo"></p>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ ============ -->
+<section class="sec sec--soft" id="porque">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="puc-eyebrow">Por qué Pyme UC</p>
+      <h2>Desarrolla nuevas capacidades para hacer crecer tu Pyme</h2>
+    </header>
+    <ul class="razones">
+      <li><span class="razon__ico" data-i="vision" aria-hidden="true"></span>
+        <h3>Visión estratégica</h3>
+        <p>Contenidos que conectan estrategia, finanzas, marketing y personas para que decidas con la foto completa del negocio.</p></li>
+      <li><span class="razon__ico" data-i="profes" aria-hidden="true"></span>
+        <h3>Profesores de excelencia</h3>
+        <p>Académicos de la Universidad Católica y mentores con experiencia real dirigiendo y acompañando empresas.</p></li>
+      <li><span class="razon__ico" data-i="conve" aria-hidden="true"></span>
+        <h3>Conveniencia</h3>
+        <p>Formatos online en vivo o a tu ritmo, pensados para compatibilizar el aprendizaje con la operación diaria.</p></li>
+      <li><span class="razon__ico" data-i="comu" aria-hidden="true"></span>
+        <h3>Comunidad</h3>
+        <p>Aprende junto a otros empresarios pyme que enfrentan los mismos desafíos y amplía tu red de contactos.</p></li>
+    </ul>
+
+    <div class="acerca">
+      <figure class="acerca__img">
+        <img src="assets/red.jpg" alt="Empresarios pyme trabajando en red durante una actividad de Pyme UC" width="640" height="460" loading="lazy">
+      </figure>
+      <div class="acerca__txt">
+        <img class="acerca__logo" src="assets/pymeuc.png" alt="Pyme UC" width="164" height="44" loading="lazy">
+        <h3>Acerca de Pyme UC</h3>
+        <p>Pyme UC es la iniciativa de la Universidad Católica dedicada a fortalecer las capacidades de gestión
+          de las pequeñas y medianas empresas de Chile, a través de formación, mentorías y vinculación con el mundo académico.</p>
+        <p>Como parte de la alianza con Valor Pyme, accedes además a la <b>Red de Mentores exalumnos UC</b>:
+          profesionales que acompañan de forma voluntaria a empresarios pyme en los desafíos concretos de su negocio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PASOS ============ -->
+<section class="sec" id="pasos">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="puc-eyebrow">Cómo participar</p>
+      <h2>Fortalece la gestión de tu Pyme en 3 simples pasos</h2>
+    </header>
+    <ol class="pasos">
+      <li><span class="paso__n">1</span><h3>Únete a Valor Pyme</h3>
+        <p>Crea tu cuenta gratuita y activa los beneficios de la comunidad, incluidos los descuentos de Pyme UC.</p></li>
+      <li><span class="paso__n">2</span><h3>Explora el catálogo</h3>
+        <p>Revisa los programas disponibles y elige el que responde al desafío que tienes hoy en tu empresa.</p></li>
+      <li><span class="paso__n">3</span><h3>Comienza a aprender</h3>
+        <p>Postula en un formulario breve y recibe por correo el acceso y las instrucciones de tu programa.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FORM ============ -->
+<section class="sec sec--dark" id="contacto">
+  <div class="wrap form__grid">
+    <div class="form__aside">
+      <p class="puc-eyebrow puc-eyebrow--light">Postulación</p>
+      <h2>Reserva tu cupo</h2>
+      <p class="puc-lead">Te contactamos por correo con los pasos para activar tu programa. Sin costo de postulación
+        y sin compromiso.</p>
+      <ul class="ticks">
+        <li>Respuesta dentro de 2 días hábiles</li>
+        <li>Cupos limitados por sesión</li>
+        <li>Puedes postular a más de un programa</li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate>
+      <p class="form__sel" id="elegido" hidden></p>
+
+      <div class="f">
+        <label for="programa">Programa de interés <em>*</em></label>
+        <select id="programa" name="programa" required></select>
+      </div>
+      <div class="f2">
+        <div class="f"><label for="nombre">Nombre y apellido <em>*</em></label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required></div>
+        <div class="f"><label for="empresa">Nombre de tu empresa <em>*</em></label>
+          <input id="empresa" name="empresa" type="text" autocomplete="organization" required></div>
+      </div>
+      <div class="f2">
+        <div class="f"><label for="email">Correo electrónico <em>*</em></label>
+          <input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div class="f"><label for="fono">Teléfono <em>*</em></label>
+          <input id="fono" name="fono" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678" required></div>
+      </div>
+
+      <div class="f f--check">
+        <input id="ok" name="ok" type="checkbox" required>
+        <label for="ok">Acepto que Valor Pyme y Pyme UC me contacten por este medio y he leído los
+          <a href="#" target="_blank" rel="noopener">términos y condiciones</a> y la
+          <a href="#" target="_blank" rel="noopener">política de privacidad</a>. <em>*</em></label>
+      </div>
+
+      <button class="puc-btn puc-btn--verde puc-btn--full" type="submit">Enviar postulación</button>
+      <p class="form__ok" id="ok-msg" role="status" hidden>¡Listo! Recibimos tu postulación. Te escribiremos a tu correo.</p>
+      <p class="form__legal">Solo pedimos lo mínimo para contactarte. El resto lo conversamos después.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER GLOBAL DEL SITIO (markup y estilos de valorpyme.cl) ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="https://www.valorpyme.cl/hubfs/BNO%20-%20Sitio26/logos/logo-horizontal-white.svg" alt="Valor Pyme">
+        <p style="color:rgba(255,255,255,.7);font-size:14px;max-width:34ch">Una red de soluciones para el viaje de las pymes de Chile. Cada ruta, una estación más cerca de tu crecimiento.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/valorpyme.cl" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8.4h2.83l.42-3.28H13.5V7.72c0-.95.26-1.6 1.63-1.6h1.74V3.19c-.3-.04-1.33-.13-2.53-.13-2.5 0-4.22 1.53-4.22 4.34v2.42H7.28v3.28h2.84v8.4h3.38z"/></svg></a>
+          <a href="https://www.instagram.com/valorpyme.cl" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/valor-pyme/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Rutas</h4><a href="https://www.valorpyme.cl/rutas">Ver todas las rutas</a><a href="https://www.valorpyme.cl/ruta-capital">Ruta Capital</a><a href="https://www.valorpyme.cl/ruta-mercado">Ruta Mercado</a><a href="https://www.valorpyme.cl/ruta-digitalizacion">Ruta Digitalización</a><a href="https://www.valorpyme.cl/ruta-talento">Ruta Talento y Gestión</a></div>
+      <div><h4>Programa</h4><a href="https://www.valorpyme.cl/nosotros">Nosotros</a><a href="https://www.valorpyme.cl/alianzas-estrategicas-valor-pyme">Aliados</a><a href="https://www.valorpyme.cl/foro-comunidad-pyme">Comunidad</a><a href="https://www.valorpyme.cl/recursos">Recursos</a></div>
+      <div><h4>Súmate</h4><a href="https://www.valorpyme.cl/suscripcion">Suscribirme</a><a href="https://www.valorpyme.cl/diagnostico-de-madurez-empresarial">Diagnóstico</a><a href="https://www.valorpyme.cl/ponte-en-contacto">Contacto</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year>2026</span> Valor Pyme · Chile</span><span>Términos · Privacidad</span></div>
+  </div>
+</footer>
+
+<script src="vp-header.js" defer></script>
+<script src="cursos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
