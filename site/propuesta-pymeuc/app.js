@@ -1,201 +1,121 @@
 /* =====================================================================
-   PYME UC × VALOR PYME — catálogo y formulario
-   Todo se genera desde window.CURSOS (cursos.js): las tarjetas y el
-   desplegable del formulario leen la MISMA lista, así no pueden
-   desincronizarse como ocurre hoy en la página en producción.
+   PYME UC × VALOR PYME
+   Render de tarjetas y formulario. Todos los textos vienen de cursos.js,
+   copiados literalmente de la página de referencia.
    ===================================================================== */
 (function () {
   'use strict';
 
-  var CURSOS = window.CURSOS || [];
-  var cont   = document.getElementById('cards');
-  var conteo = document.getElementById('conteo');
-  var sel    = document.getElementById('programa');
-  var elegido= document.getElementById('elegido');
-
-  /* ---------- utilidades ---------- */
-  function plata(v, moneda) {
-    if (!v) return 'Gratis';
-    if (moneda === 'USD') return 'USD $' + v;
-    return '$' + v.toLocaleString('es-CL');
-  }
-  function final(c) {
-    return c.dcto ? Math.round(c.precio * (1 - c.dcto / 100)) : c.precio;
-  }
   function esc(s) {
-    return String(s || '').replace(/[&<>"]/g, function (m) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (m) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m];
     });
   }
 
-  /* ---------- filtros ---------- */
-  var FILTROS = {
-    todos:  function ()  { return true; },
-    gratis: function (c) { return c.precio === 0; },
-    fecha:  function (c) { return c.mod !== 'async'; },
-    ritmo:  function (c) { return c.mod === 'async'; }
-  };
-
-  /* ---------- tarjeta ---------- */
-  function meta(c) {
-    var li = [];
-    if (c.fecha) li.push('<li><img class="card__ico" src="assets/icon-calendar.svg" alt="" aria-hidden="true"><b>' + esc(c.fecha) + '</b></li>');
-    if (c.hora)  li.push('<li><img class="card__ico" src="assets/icon-clock.svg" alt="" aria-hidden="true"><b>' + esc(c.hora) + '</b></li>');
-    if (!c.fecha && !c.hora) li.push('<li><img class="card__ico" src="assets/icon-clock.svg" alt="" aria-hidden="true"><b>Empiezas cuando quieras, a tu propio ritmo</b></li>');
-    return '<ul class="card__meta">' + li.join('') + '</ul>';
+  /* ---------- próximos talleres y mentorías ---------- */
+  function destacado(c) {
+    return '<article class="dest">' +
+      '<div class="dest__main">' +
+        '<h3>' + esc(c.titulo) + '</h3>' +
+        '<p class="dest__dirigido"><b>Dirigido a:</b> ' + esc(c.dirigido) + '</p>' +
+        '<p class="dest__label">¿Qué aprenderás?</p>' +
+        '<p class="dest__d">' + esc(c.aprenderas) + '</p>' +
+        (c.nota ? '<p class="dest__nota">' + esc(c.nota) + '</p>' : '') +
+      '</div>' +
+      '<div class="dest__side">' +
+        '<p class="dest__clases"><img class="card__ico" src="assets/icon-calendar.svg" alt="" aria-hidden="true">' +
+          esc(c.clases) + '</p>' +
+        '<div class="dest__valor">' +
+          '<span class="dest__valor-l">Valor</span>' +
+          '<span class="ahora">' + esc(c.valor) + '</span>' +
+          (c.dcto ? '<span class="off">' + esc(c.dcto) + '</span>' : '') +
+        '</div>' +
+        '<a class="puc-btn puc-btn--verde puc-btn--full" href="#contacto">Inscribirme</a>' +
+      '</div>' +
+    '</article>';
   }
 
-  function precio(c) {
-    if (c.precio === 0) {
-      return '<div class="card__precio"><span class="gratis">Gratis</span></div>';
-    }
-    var f = final(c);
-    var h = '<div class="card__precio"><span class="ahora">' + plata(f, c.moneda) + '</span>';
-    if (c.dcto) {
-      h += '<span class="antes">' + plata(c.precio, c.moneda) + '</span>' +
-           '<span class="off">−' + c.dcto + '% comunidad</span>';
-    }
-    return h + '</div>';
-  }
+  /* ---------- más cursos, talleres y mentorías ---------- */
+  function tarjeta(c) {
+    var gratis = /gratuito/i.test(c.modalidad);
+    var meta = [];
+    if (c.fecha) meta.push('<li><img class="card__ico" src="assets/icon-calendar.svg" alt="" aria-hidden="true">' + esc(c.fecha) + '</li>');
+    if (c.hora)  meta.push('<li><img class="card__ico" src="assets/icon-clock.svg" alt="" aria-hidden="true">' + esc(c.hora) + '</li>');
 
-  function tarjeta(c, i) {
-    var free = c.precio === 0;
-    var cls  = 'card' + (c.destacado ? ' card--top' : (free ? ' card--free' : ''));
-    var tag  = c.destacado ? '<span class="card__tag card__tag--top">Destacado</span>'
-             : free        ? '<span class="card__tag card__tag--free">Taller gratuito</span>'
-                           : '<span class="card__tag">' + esc(c.modTxt) + '</span>';
-
-    var cuerpo =
-      tag +
+    return '<article class="card' + (gratis ? ' card--free' : '') + '">' +
+      '<span class="card__tag' + (gratis ? ' card__tag--free' : '') + '">' + esc(c.modalidad) + '</span>' +
       '<p class="card__hook">' + esc(c.hook) + '</p>' +
-      '<h3>' + esc(c.t) + '</h3>' +
+      '<h3>' + esc(c.titulo) + '</h3>' +
       '<p class="card__d">' + esc(c.d) + '</p>' +
-      (c.para ? '<p class="card__para">Para ' + esc(c.para) + '</p>' : '');
-
-    var pie =
+      (meta.length ? '<ul class="card__meta">' + meta.join('') + '</ul>' : '') +
       '<div class="card__foot">' +
-        (c.destacado ? '' : '') +
-        precio(c) +
-        '<button class="puc-btn ' + (free ? 'puc-btn--verde' : 'puc-btn--line') + ' puc-btn--full" data-i="' + i + '">' +
-          (free ? 'Reservar mi cupo' : 'Quiero este programa') +
-        '</button>' +
-        (c.nota ? '<p class="card__nota">' + esc(c.nota) + '</p>' : '') +
-      '</div>';
+        (c.valor
+          ? '<div class="card__precio"><span class="card__valor-l">Valor:</span><span class="ahora">' + esc(c.valor) + '</span></div>'
+          : '<div class="card__precio"><span class="gratis">Gratuito</span></div>') +
+        '<a class="puc-btn ' + (gratis ? 'puc-btn--verde' : 'puc-btn--line') + ' puc-btn--full" href="#contacto">Inscribirme</a>' +
+      '</div>' +
+    '</article>';
+  }
 
-    if (c.destacado) {
-      return '<article class="' + cls + '">' +
-               '<div>' + cuerpo + '<p class="card__nota" style="margin:0">' + esc(c.modTxt) + '</p></div>' +
-               '<div class="card__side">' + meta(c) + pie + '</div>' +
-             '</article>';
+  document.getElementById('destacados').innerHTML = (window.PROXIMOS || []).map(destacado).join('');
+  document.getElementById('cards').innerHTML = (window.MAS || []).map(tarjeta).join('');
+
+  /* ---------- formulario ---------- */
+  var campos = document.getElementById('campos');
+
+  function campo(f) {
+    var req = f.req ? ' <em>*</em>' : '';
+    var attrReq = f.req ? ' required' : '';
+    var control;
+    if (f.tipo === 'select') {
+      control = '<select id="' + f.n + '" name="' + f.n + '"' + attrReq + '>' +
+        '<option value="">Selecciona</option>' +
+        f.o.map(function (o) { return '<option value="' + esc(o) + '">' + esc(o) + '</option>'; }).join('') +
+        '</select>';
+    } else {
+      control = '<input id="' + f.n + '" name="' + f.n + '" type="' + f.tipo + '"' + attrReq + '>';
     }
-    return '<article class="' + cls + '">' + cuerpo + meta(c) + pie + '</article>';
+    return '<div class="f' + (f.ancho === 'medio' ? ' f--medio' : '') + '">' +
+      '<label for="' + f.n + '">' + esc(f.l) + req + '</label>' + control + '</div>';
   }
 
-  /* ---------- render ---------- */
-  var actual = 'todos';
-
-  function pinta() {
-    var test = FILTROS[actual] || FILTROS.todos;
-    var html = '', n = 0;
-    CURSOS.forEach(function (c, i) {
-      if (!test(c)) return;
-      n++;
-      html += tarjeta(c, i);
-    });
-    cont.innerHTML = html;
-    conteo.textContent = n === CURSOS.length
-      ? 'Mostrando los ' + n + ' programas disponibles.'
-      : 'Mostrando ' + n + ' de ' + CURSOS.length + ' programas.';
-  }
-
-  document.querySelectorAll('.chip').forEach(function (b) {
-    b.addEventListener('click', function () {
-      document.querySelectorAll('.chip').forEach(function (o) {
-        o.classList.remove('is-on');
-        o.setAttribute('aria-pressed', 'false');
-      });
-      b.classList.add('is-on');
-      b.setAttribute('aria-pressed', 'true');
-      actual = b.dataset.f;
-      pinta();
-    });
-  });
-
-  /* ---------- CTA de tarjeta → preselecciona el programa en el form ---------- */
-  cont.addEventListener('click', function (e) {
-    var b = e.target.closest('button[data-i]');
-    if (!b) return;
-    var c = CURSOS[+b.dataset.i];
-    if (!c) return;
-    sel.value = c.t;
-    elegido.hidden = false;
-    elegido.innerHTML = 'Estás postulando a <b>' + esc(c.t) + '</b>. Puedes cambiarlo abajo.';
-    document.getElementById('contacto').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    window.setTimeout(function () { document.getElementById('nombre').focus({ preventScroll: true }); }, 500);
-  });
-
-  /* ---------- desplegable del formulario: mismo origen que las tarjetas ---------- */
-  function opciones() {
-    var h = '<option value="">Selecciona un programa</option>';
-    var grupos = [
-      ['Talleres gratuitos', function (c) { return c.precio === 0; }],
-      ['Cursos online a tu ritmo', function (c) { return c.mod === 'async'; }],
-      ['Programas con descuento comunidad', function (c) { return c.precio > 0 && c.mod !== 'async'; }]
-    ];
-    grupos.forEach(function (g) {
-      var items = CURSOS.filter(g[1]);
-      if (!items.length) return;
-      h += '<optgroup label="' + g[0] + '">';
-      items.forEach(function (c) { h += '<option value="' + esc(c.t) + '">' + esc(c.t) + '</option>'; });
-      h += '</optgroup>';
-    });
-    h += '<option value="__otro">Todavía no lo tengo claro, quiero orientación</option>';
-    sel.innerHTML = h;
-  }
+  campos.innerHTML = (window.FORM || []).map(campo).join('');
 
   /* ---------- validación ---------- */
   var form = document.getElementById('form');
   var okMsg = document.getElementById('ok-msg');
 
-  function error(campo, msg) {
-    campo.setAttribute('aria-invalid', 'true');
-    var p = campo.parentNode.querySelector('.form__err');
-    if (!p) {
-      p = document.createElement('p');
-      p.className = 'form__err';
-      campo.parentNode.appendChild(p);
-    }
+  function error(el, msg) {
+    el.setAttribute('aria-invalid', 'true');
+    var p = el.parentNode.querySelector('.form__err');
+    if (!p) { p = document.createElement('p'); p.className = 'form__err'; el.parentNode.appendChild(p); }
     p.textContent = msg;
   }
-  function limpia(campo) {
-    campo.removeAttribute('aria-invalid');
-    var p = campo.parentNode.querySelector('.form__err');
+  function limpia(el) {
+    el.removeAttribute('aria-invalid');
+    var p = el.parentNode.querySelector('.form__err');
     if (p) p.remove();
   }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var malo = null;
-    [
-      [sel, 'Elige el programa que te interesa'],
-      [document.getElementById('nombre'), 'Escribe tu nombre'],
-      [document.getElementById('empresa'), 'Escribe el nombre de tu empresa'],
-      [document.getElementById('email'), 'Escribe un correo válido'],
-      [document.getElementById('fono'), 'Escribe tu teléfono']
-    ].forEach(function (par) {
-      var campo = par[0], v = campo.value.trim();
-      var mal = !v || (campo.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
-      if (mal) { error(campo, par[1]); if (!malo) malo = campo; }
-      else limpia(campo);
+    var primero = null;
+
+    (window.FORM || []).forEach(function (f) {
+      var el = document.getElementById(f.n);
+      var v = el.value.trim();
+      var mal = (f.req && !v) || (f.tipo === 'email' && v && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
+      if (mal) {
+        error(el, f.tipo === 'email' && v ? 'Escribe un correo válido' : 'Este campo es obligatorio');
+        if (!primero) primero = el;
+      } else limpia(el);
     });
 
-    var ok = document.getElementById('ok');
-    if (!ok.checked) {
-      error(ok, 'Necesitamos tu autorización para contactarte');
-      if (!malo) malo = ok;
-    } else limpia(ok);
+    var ok = document.getElementById('consentimiento');
+    if (!ok.checked) { error(ok, 'Necesitamos tu autorización'); if (!primero) primero = ok; }
+    else limpia(ok);
 
-    if (malo) { malo.focus(); return; }
+    if (primero) { primero.focus(); return; }
     okMsg.hidden = false;
     form.querySelector('button[type=submit]').disabled = true;
   });
@@ -203,8 +123,4 @@
   form.addEventListener('input', function (e) {
     if (e.target.getAttribute('aria-invalid')) limpia(e.target);
   });
-
-  /* ---------- arranque ---------- */
-  opciones();
-  pinta();
 })();

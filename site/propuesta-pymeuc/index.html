@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a class="skip" href="#catalogo">Ir al catálogo de programas</a>
+<a class="skip" href="#talleres">Ir a los talleres y mentorías</a>
 
 <!-- ===== HEADER GLOBAL DEL SITIO (markup y estilos de valorpyme.cl) ===== -->
 <header class="site-header">
@@ -70,14 +70,14 @@
 <section class="puc-hero">
   <div class="wrap puc-hero__grid">
     <div class="puc-hero__txt">
-      <p class="puc-eyebrow puc-eyebrow--light">Alianza Valor Pyme · Pyme UC</p>
       <h1>Fortalece las capacidades que impulsan el crecimiento de tu Pyme</h1>
-      <p class="puc-lead">Talleres, cursos y mentorías dictados por profesores y mentores de la Universidad Católica,
-        diseñados para empresarios y equipos de pymes que quieren tomar mejores decisiones.</p>
-      <p class="puc-hero__note">Gratis para la comunidad Valor Pyme en los talleres en vivo · hasta 20&nbsp;% de descuento en los programas pagados.</p>
+      <p class="puc-lead">El programa Pyme UC entrega capacitación en gestión de negocios y asesorías
+        personalizadas con profesionales expertos de la Red de Mentores exalumnos UC.</p>
+      <p class="puc-lead">Los cursos y mentorías que ofrece el programa, están dirigidas a emprendedores
+        y empresarios de pequeñas y medianas empresas, enfocándose en potenciar sus capacidades de
+        gestión y la competitividad de sus negocios.</p>
       <div class="puc-hero__cta">
-        <a class="puc-btn puc-btn--verde" href="#catalogo">Ver los 9 programas</a>
-        <a class="puc-btn puc-btn--ghost" href="#pasos">Cómo participar</a>
+        <a class="puc-btn puc-btn--verde" href="#talleres">Explorar talleres y mentorías</a>
       </div>
     </div>
     <figure class="puc-hero__img">
@@ -93,96 +93,55 @@
   </svg>
 </section>
 
-<!-- ============ CIFRAS ============ -->
-<section class="cifras" aria-label="Resumen del programa">
-  <div class="wrap cifras__in">
-    <div class="cifra"><b>9</b><span>programas disponibles</span></div>
-    <div class="cifra"><b>3</b><span>talleres 100&nbsp;% gratuitos</span></div>
-    <div class="cifra"><b>20%</b><span>de descuento comunidad</span></div>
-    <div class="cifra"><b>100%</b><span>online, desde donde estés</span></div>
+<!-- ============ ACERCA DE PYME UC ============ -->
+<section class="sec sec--soft" id="acerca">
+  <div class="wrap acerca">
+    <figure class="acerca__img">
+      <img src="assets/red.jpg" alt="Red empresarial Pyme UC: capacitación, mentorías, seminarios y networking" width="640" height="460" loading="lazy">
+    </figure>
+    <div class="acerca__txt">
+      <img class="acerca__logo" src="assets/pymeuc.png" alt="Facultad de Economía y Administración UC" width="164" height="44" loading="lazy">
+      <h2>Acerca de Pyme UC</h2>
+      <p>El programa Pyme UC de la Facultad de Economía y Administración UC está orientado a apoyar el
+        desarrollo de emprendedores y pequeñas empresas mediante formación, acompañamiento y herramientas
+        prácticas. En alianza con Valor Pyme, impulsa oportunidades de aprendizaje orientadas a fortalecer
+        capacidades clave para enfrentar los desafíos actuales de las Pymes.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============ CATÁLOGO ============ -->
-<section class="sec" id="catalogo">
+<!-- ============ DESARROLLA NUEVAS CAPACIDADES ============ -->
+<section class="sec" id="capacidades">
   <div class="wrap">
     <header class="sec__head">
-      <p class="puc-eyebrow">Catálogo</p>
-      <h2>Elige el programa que tu pyme necesita hoy</h2>
-      <p class="sec__sub">Todos los talleres, cursos y mentorías en un solo lugar. Filtra por lo que más te acomoda
-        y postula directo al programa que te interesa.</p>
-    </header>
-
-    <div class="filtros" role="group" aria-label="Filtrar programas">
-      <button class="chip is-on" data-f="todos" aria-pressed="true">Todos <i>9</i></button>
-      <button class="chip" data-f="gratis" aria-pressed="false">Gratuitos <i>3</i></button>
-      <button class="chip" data-f="fecha" aria-pressed="false">Con fecha en vivo <i>5</i></button>
-      <button class="chip" data-f="ritmo" aria-pressed="false">Online a tu ritmo <i>4</i></button>
-    </div>
-
-    <p class="conteo" aria-live="polite" id="conteo"></p>
-    <div class="cards" id="cards"></div>
-  </div>
-</section>
-
-<!-- ============ POR QUÉ ============ -->
-<section class="sec sec--soft" id="porque">
-  <div class="wrap">
-
-    <!-- 1 · Acerca de Pyme UC -->
-    <div class="acerca">
-      <figure class="acerca__img">
-        <img src="assets/red.jpg" alt="Empresarios pyme trabajando en red durante una actividad de Pyme UC" width="640" height="460" loading="lazy">
-      </figure>
-      <div class="acerca__txt">
-        <img class="acerca__logo" src="assets/pymeuc.png" alt="Pyme UC" width="164" height="44" loading="lazy">
-        <p class="puc-eyebrow">La alianza</p>
-        <h2>Acerca de Pyme UC</h2>
-        <p>El programa Pyme UC de la Facultad de Economía y Administración UC está orientado a apoyar
-          el desarrollo de emprendedores y pequeñas empresas mediante formación, acompañamiento y
-          herramientas prácticas. En alianza con Valor Pyme, impulsa oportunidades de aprendizaje
-          orientadas a fortalecer capacidades clave para enfrentar los desafíos actuales de las Pymes.</p>
-      </div>
-    </div>
-
-    <!-- 2 · Desarrolla nuevas capacidades -->
-    <header class="sec__head sec__head--mid">
-      <p class="puc-eyebrow">Por qué Pyme UC</p>
       <h2>Desarrolla nuevas capacidades para hacer crecer tu Pyme</h2>
     </header>
     <ul class="razones">
       <li><span class="razon__ico" data-i="vision" aria-hidden="true"></span>
         <h3>Visión estratégica</h3>
-        <p>Contenidos que conectan estrategia, finanzas, marketing y personas para que decidas con la foto completa del negocio.</p></li>
+        <p>Adquiere una perspectiva integral del negocio y potencia tu capacidad de análisis y toma de decisiones.</p></li>
       <li><span class="razon__ico" data-i="profes" aria-hidden="true"></span>
         <h3>Profesores de excelencia</h3>
-        <p>Académicos de la Universidad Católica y mentores con experiencia real dirigiendo y acompañando empresas.</p></li>
+        <p>Capacítate con profesores de la Escuela de Administración UC.</p></li>
       <li><span class="razon__ico" data-i="conve" aria-hidden="true"></span>
         <h3>Conveniencia</h3>
-        <p>Formatos online en vivo o a tu ritmo, pensados para compatibilizar el aprendizaje con la operación diaria.</p></li>
+        <p>Participa en talleres y mentorías personalizadas con profesionales expertos UC.</p></li>
       <li><span class="razon__ico" data-i="comu" aria-hidden="true"></span>
         <h3>Comunidad</h3>
-        <p>Aprende junto a otros empresarios pyme que enfrentan los mismos desafíos y amplía tu red de contactos.</p></li>
+        <p>Forma parte de una comunidad colaborativa, donde podrás intercambiar experiencias con otros empresarios.</p></li>
     </ul>
   </div>
 </section>
 
 <!-- ============ BENEFICIOS EXCLUSIVOS ============ -->
-<section class="sec" id="beneficios">
+<section class="sec sec--soft" id="beneficios">
   <div class="wrap beneficios">
     <div class="beneficios__txt">
-      <p class="puc-eyebrow">Comunidad Valor Pyme</p>
       <h2>Beneficios exclusivos para la comunidad</h2>
       <p>Como parte de la comunidad Valor Pyme, podrás acceder a instancias formativas junto a Pyme UC,
         orientadas a desarrollar capacidades y habilidades para acompañar el crecimiento sostenible de tu negocio.</p>
       <p>Estas oportunidades buscan acercar formación práctica y herramientas útiles para enfrentar los
         desafíos actuales del entorno empresarial.</p>
-      <ul class="beneficios__lista">
-        <li>Talleres en vivo sin costo</li>
-        <li>Hasta 20&nbsp;% de descuento en los programas pagados</li>
-        <li>Acceso a la Red de Mentores exalumnos UC</li>
-      </ul>
-      <a class="puc-btn puc-btn--line" href="#catalogo">Ver los programas disponibles</a>
     </div>
     <figure class="beneficios__img">
       <img src="assets/beneficios.png" alt="Empresaria pyme participando en una instancia formativa de Pyme UC" width="568" height="430" loading="lazy">
@@ -190,69 +149,58 @@
   </div>
 </section>
 
-<!-- ============ PASOS ============ -->
+<!-- ============ PRÓXIMOS TALLERES Y MENTORÍAS ============ -->
+<section class="sec" id="talleres">
+  <div class="wrap">
+    <header class="sec__head">
+      <h2>Conoce los próximos talleres y mentorías</h2>
+    </header>
+    <div class="destacados" id="destacados"></div>
+  </div>
+</section>
+
+<!-- ============ MÁS CURSOS ============ -->
+<section class="sec sec--soft" id="mas-cursos">
+  <div class="wrap">
+    <header class="sec__head">
+      <h2>Más cursos, talleres y mentorías</h2>
+    </header>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<!-- ============ 3 PASOS ============ -->
 <section class="sec" id="pasos">
   <div class="wrap">
     <header class="sec__head">
-      <p class="puc-eyebrow">Cómo participar</p>
-      <h2>Fortalece la gestión de tu Pyme en 3 simples pasos</h2>
+      <h2>Fortalece la gestión y crecimiento de tu Pyme en 3 simples pasos:</h2>
     </header>
     <ol class="pasos">
       <li><span class="paso__n">1</span><h3>Únete a Valor Pyme</h3>
-        <p>Crea tu cuenta gratuita y activa los beneficios de la comunidad, incluidos los descuentos de Pyme UC.</p></li>
-      <li><span class="paso__n">2</span><h3>Explora el catálogo</h3>
-        <p>Revisa los programas disponibles y elige el que responde al desafío que tienes hoy en tu empresa.</p></li>
-      <li><span class="paso__n">3</span><h3>Comienza a aprender</h3>
-        <p>Postula en un formulario breve y recibe por correo el acceso y las instrucciones de tu programa.</p></li>
+        <p>Completa tus datos para formar parte de la comunidad.</p></li>
+      <li><span class="paso__n">2</span><h3>Explora las oportunidades disponibles</h3>
+        <p>Conoce programas, mentorías y contenidos impulsados junto a Pyme UC.</p></li>
+      <li><span class="paso__n">3</span><h3>Comienza tu proceso de aprendizaje</h3>
+        <p>Accede a herramientas y formación pensadas para apoyar el crecimiento de tu Pyme.</p></li>
     </ol>
   </div>
 </section>
 
-<!-- ============ FORM ============ -->
+<!-- ============ FORMULARIO ============ -->
 <section class="sec sec--dark" id="contacto">
-  <div class="wrap form__grid">
-    <div class="form__aside">
-      <p class="puc-eyebrow puc-eyebrow--light">Postulación</p>
-      <h2>Reserva tu cupo</h2>
-      <p class="puc-lead">Te contactamos por correo con los pasos para activar tu programa. Sin costo de postulación
-        y sin compromiso.</p>
-      <ul class="ticks">
-        <li>Respuesta dentro de 2 días hábiles</li>
-        <li>Cupos limitados por sesión</li>
-        <li>Puedes postular a más de un programa</li>
-      </ul>
-    </div>
-
+  <div class="wrap form__wrap">
+    <header class="sec__head form__head">
+      <h2>Contacta a Pyme UC</h2>
+    </header>
     <form class="form" id="form" novalidate>
-      <p class="form__sel" id="elegido" hidden></p>
-
-      <div class="f">
-        <label for="programa">Programa de interés <em>*</em></label>
-        <select id="programa" name="programa" required></select>
-      </div>
-      <div class="f2">
-        <div class="f"><label for="nombre">Nombre y apellido <em>*</em></label>
-          <input id="nombre" name="nombre" type="text" autocomplete="name" required></div>
-        <div class="f"><label for="empresa">Nombre de tu empresa <em>*</em></label>
-          <input id="empresa" name="empresa" type="text" autocomplete="organization" required></div>
-      </div>
-      <div class="f2">
-        <div class="f"><label for="email">Correo electrónico <em>*</em></label>
-          <input id="email" name="email" type="email" autocomplete="email" required></div>
-        <div class="f"><label for="fono">Teléfono <em>*</em></label>
-          <input id="fono" name="fono" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678" required></div>
-      </div>
-
+      <div class="form__campos" id="campos"></div>
       <div class="f f--check">
-        <input id="ok" name="ok" type="checkbox" required>
-        <label for="ok">Acepto que Valor Pyme y Pyme UC me contacten por este medio y he leído los
-          <a href="#" target="_blank" rel="noopener">términos y condiciones</a> y la
-          <a href="#" target="_blank" rel="noopener">política de privacidad</a>. <em>*</em></label>
+        <input id="consentimiento" name="consentimiento" type="checkbox" required>
+        <label for="consentimiento">Al registrarse en esta plataforma, autorizas el tratamiento de datos
+          ingresados bajo la normativa vigente. <em>*</em></label>
       </div>
-
-      <button class="puc-btn puc-btn--verde puc-btn--full" type="submit">Enviar postulación</button>
-      <p class="form__ok" id="ok-msg" role="status" hidden>¡Listo! Recibimos tu postulación. Te escribiremos a tu correo.</p>
-      <p class="form__legal">Solo pedimos lo mínimo para contactarte. El resto lo conversamos después.</p>
+      <button class="puc-btn puc-btn--verde puc-btn--full" type="submit">Enviar</button>
+      <p class="form__ok" id="ok-msg" role="status" hidden>¡Listo! Recibimos tus datos. Te escribiremos a tu correo.</p>
     </form>
   </div>
 </section>
