@@ -1,0 +1,275 @@
+[
+  {
+    "id": "seccion_id",
+    "name": "seccion_id",
+    "label": "ID de la sección",
+    "type": "text",
+    "default": "mas-cursos-pymeuc"
+  },
+  {
+    "id": "titulo",
+    "name": "titulo",
+    "label": "Título",
+    "type": "text",
+    "default": "Más cursos, talleres y mentorías"
+  },
+  {
+    "id": "fondo",
+    "name": "fondo",
+    "label": "Fondo de la sección",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "blanco",
+        "Blanco"
+      ],
+      [
+        "suave",
+        "Lila suave"
+      ]
+    ],
+    "default": "suave"
+  },
+  {
+    "id": "ancla_formulario",
+    "name": "ancla_formulario",
+    "label": "Ancla del formulario",
+    "type": "text",
+    "default": "#formulario-pymeuc"
+  },
+  {
+    "id": "mostrar_filtros",
+    "name": "mostrar_filtros",
+    "label": "Mostrar los filtros",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "id": "texto_todos",
+    "name": "texto_todos",
+    "label": "Texto del filtro \"todos\"",
+    "type": "text",
+    "default": "Todos"
+  },
+  {
+    "id": "texto_gratis",
+    "name": "texto_gratis",
+    "label": "Texto del filtro de gratuitos",
+    "type": "text",
+    "default": "Gratuitos"
+  },
+  {
+    "id": "texto_ritmo",
+    "name": "texto_ritmo",
+    "label": "Texto del filtro asincrónico",
+    "type": "text",
+    "default": "Online asincrónico"
+  },
+  {
+    "id": "etiqueta_gratis",
+    "name": "etiqueta_gratis",
+    "label": "Palabra que se muestra como precio cuando es gratuito",
+    "type": "text",
+    "default": "Gratuito"
+  },
+  {
+    "id": "programas",
+    "name": "programas",
+    "label": "Programas",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 7
+    },
+    "default": [
+      {
+        "p_titulo": "Taller Digitalización de Proceso",
+        "p_hook": "¿Tus procesos te ayudan a avanzar o te hacen perder tiempo?",
+        "p_desc": "<p>Aprende a identificar oportunidades de mejora y adquiere herramientas para diseñar o rediseñar procesos más eficientes y alineados con los objetivos de tu negocio.</p>",
+        "p_modalidad": "Online sincrónico y gratuito",
+        "p_filtro": "gratis",
+        "p_fecha": "30 de Octubre del 2026",
+        "p_hora": "9:00 hrs",
+        "p_etiqueta_valor": "Valor:",
+        "p_valor": "",
+        "p_cta": "Inscribirme",
+        "p_programa_form": "Taller Digitalización de Proceso"
+      },
+      {
+        "p_titulo": "Taller Marketing digital e Ecommerce",
+        "p_hook": "¿Estás aprovechando los canales digitales para hacer crecer tu negocio?",
+        "p_desc": "<p>Aprende las claves para fortalecer tu presencia online, llegar a tus clientes y desarrollar una estrategia digital más efectiva.</p>",
+        "p_modalidad": "Online sincrónico y gratuito",
+        "p_filtro": "gratis",
+        "p_fecha": "06 de Octubre del 2026",
+        "p_hora": "14:00 hrs",
+        "p_etiqueta_valor": "Valor:",
+        "p_valor": "",
+        "p_cta": "Inscribirme",
+        "p_programa_form": "Taller Marketing digital e Ecommerce."
+      },
+      {
+        "p_titulo": "Taller Modelo de Negocios",
+        "p_hook": "¿Tu modelo de negocio está preparado para crecer?",
+        "p_desc": "<p>Analiza cómo funciona tu empresa, detecta oportunidades de mejora y fortalece las bases para crecer de manera sostenible.</p>",
+        "p_modalidad": "Online sincrónico y gratuito",
+        "p_filtro": "gratis",
+        "p_fecha": "20 de Octubre del 2026",
+        "p_hora": "12:30 hrs",
+        "p_etiqueta_valor": "Valor:",
+        "p_valor": "",
+        "p_cta": "Inscribirme",
+        "p_programa_form": "Taller Modelo de Negocios."
+      },
+      {
+        "p_titulo": "Curso Gestión Empresarial Exitosa para Pyme",
+        "p_hook": "¿Quieres gestionar tu empresa con más herramientas y mejores decisiones?",
+        "p_desc": "<p>Fortalece tus conocimientos en áreas clave del negocio como estrategia, marketing, finanzas y gestión de personas.</p>",
+        "p_modalidad": "Modalidad: Online asincrónico",
+        "p_filtro": "ritmo",
+        "p_fecha": "",
+        "p_hora": "",
+        "p_etiqueta_valor": "Valor:",
+        "p_valor": "$49 dólares",
+        "p_cta": "Inscribirme",
+        "p_programa_form": "Curso Gestión Empresarial Exitosa para Pyme"
+      },
+      {
+        "p_titulo": "Curso Planificación y Gestión Estratégica para Pymes.",
+        "p_hook": "¿Tienes claro hacia dónde va tu empresa y cómo llegar?",
+        "p_desc": "<p>Aprende a definir objetivos, tomar decisiones estratégicas y utilizar herramientas que te permitan construir e implementar una estrategia para hacer crecer tu negocio.</p>",
+        "p_modalidad": "Modalidad: Online asincrónico",
+        "p_filtro": "ritmo",
+        "p_fecha": "",
+        "p_hora": "",
+        "p_etiqueta_valor": "Valor:",
+        "p_valor": "$49 dólares",
+        "p_cta": "Inscribirme",
+        "p_programa_form": "Curso Planificación y Gestión Estratégica para Pymes."
+      },
+      {
+        "p_titulo": "Curso Escalamiento Exitoso e Innovación en los Negocios",
+        "p_hook": "¿Tu empresa está preparada para dar el siguiente paso?",
+        "p_desc": "<p>Aprende estrategias y herramientas para impulsar su crecimiento, incorporar la innovación y explorar nuevas oportunidades de mercado e internacionalización.</p>",
+        "p_modalidad": "Modalidad: Online asincrónico",
+        "p_filtro": "ritmo",
+        "p_fecha": "",
+        "p_hora": "",
+        "p_etiqueta_valor": "Valor:",
+        "p_valor": "$49 dólares",
+        "p_cta": "Inscribirme",
+        "p_programa_form": "Curso Escalamiento Exitoso e Innovación en los Negocios"
+      },
+      {
+        "p_titulo": "Curso Claves para el Éxito de la Transformación Digital en Pymes.",
+        "p_hook": "¿Tu empresa está aprovechando realmente las oportunidades digitales?",
+        "p_desc": "<p>Aprende las claves para avanzar en su transformación digital, mejorar su competitividad y aprovechar la tecnología para impulsar su crecimiento.</p>",
+        "p_modalidad": "Modalidad: Online asincrónico",
+        "p_filtro": "ritmo",
+        "p_fecha": "",
+        "p_hora": "",
+        "p_etiqueta_valor": "Valor:",
+        "p_valor": "$49 dólares",
+        "p_cta": "Inscribirme",
+        "p_programa_form": "Curso Claves para el Éxito de la Transformación Digital en Pymes."
+      }
+    ],
+    "children": [
+      {
+        "id": "p_titulo",
+        "name": "p_titulo",
+        "label": "Título",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "p_modalidad",
+        "name": "p_modalidad",
+        "label": "Modalidad (se muestra como etiqueta)",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "p_filtro",
+        "name": "p_filtro",
+        "label": "Filtro al que pertenece",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "gratis",
+            "Gratuito"
+          ],
+          [
+            "ritmo",
+            "Online asincrónico"
+          ],
+          [
+            "otros",
+            "Sin clasificar"
+          ]
+        ],
+        "default": "otros"
+      },
+      {
+        "id": "p_hook",
+        "name": "p_hook",
+        "label": "Pregunta de entrada",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "p_desc",
+        "name": "p_desc",
+        "label": "Descripción",
+        "type": "richtext",
+        "default": ""
+      },
+      {
+        "id": "p_fecha",
+        "name": "p_fecha",
+        "label": "Fecha (opcional)",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "p_hora",
+        "name": "p_hora",
+        "label": "Hora (opcional)",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "p_etiqueta_valor",
+        "name": "p_etiqueta_valor",
+        "label": "Etiqueta del precio",
+        "type": "text",
+        "default": "Valor:"
+      },
+      {
+        "id": "p_valor",
+        "name": "p_valor",
+        "label": "Precio (vacío = gratuito)",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "p_cta",
+        "name": "p_cta",
+        "label": "Texto del botón",
+        "type": "text",
+        "default": "Inscribirme"
+      },
+      {
+        "id": "p_programa_form",
+        "name": "p_programa_form",
+        "label": "Opción en el desplegable del formulario",
+        "type": "text",
+        "default": "",
+        "help_text": "Valor EXACTO con el que este programa aparece en el desplegable \"¿En cuál iniciativa te gustaría Participar?\" del formulario. Si se deja vacío, la página avisa que ese programa no está entre las opciones."
+      }
+    ]
+  }
+]

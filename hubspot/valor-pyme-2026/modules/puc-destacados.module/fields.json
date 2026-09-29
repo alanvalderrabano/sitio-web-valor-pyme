@@ -1,0 +1,170 @@
+[
+  {
+    "id": "seccion_id",
+    "name": "seccion_id",
+    "label": "ID de la sección",
+    "type": "text",
+    "default": "talleres-pymeuc"
+  },
+  {
+    "id": "titulo",
+    "name": "titulo",
+    "label": "Título",
+    "type": "text",
+    "default": "Conoce los próximos talleres y mentorías"
+  },
+  {
+    "id": "fondo",
+    "name": "fondo",
+    "label": "Fondo de la sección",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "blanco",
+        "Blanco"
+      ],
+      [
+        "suave",
+        "Lila suave"
+      ]
+    ],
+    "default": "blanco"
+  },
+  {
+    "id": "ancla_formulario",
+    "name": "ancla_formulario",
+    "label": "Ancla del formulario",
+    "type": "text",
+    "default": "#formulario-pymeuc",
+    "help_text": "A dónde lleva el botón de cada programa."
+  },
+  {
+    "id": "programas",
+    "name": "programas",
+    "label": "Programas",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 2
+    },
+    "default": [
+      {
+        "d_titulo": "IA para tu Pyme: de las herramientas a los agentes",
+        "d_etiqueta_dirigido": "Dirigido a:",
+        "d_dirigido": "Directivos de pymes que buscan impulsar su competitividad.",
+        "d_etiqueta_aprender": "¿Qué aprenderás?",
+        "d_aprenderas": "<p>A aplicar IA generativa de forma segura, automatizar tareas, analizar datos de tu negocio y diseñar agentes personalizados con el contexto de tu empresa.</p>",
+        "d_nota": "(Req: Suscripción a herramienta de IA, aprox. USD 20/mes).",
+        "d_clases": "Clases Online (15 y 22 oct, 9-12 hrs) | Híbrido (29 oct, 9-11 hrs).",
+        "d_etiqueta_valor": "Valor",
+        "d_valor": "$165.000",
+        "d_dcto": "20% dcto Comunidad Valor Pyme",
+        "d_cta": "Inscribirme",
+        "d_programa_form": ""
+      },
+      {
+        "d_titulo": "Curso \"Gestión del Marketing para Pymes\"",
+        "d_etiqueta_dirigido": "Dirigido a:",
+        "d_dirigido": "Empresarios, directivos o gerentes de pymes interesados en mejorar la competitividad y gestión de su empresa.",
+        "d_etiqueta_aprender": "¿Qué aprenderás?",
+        "d_aprenderas": "<p>En este curso aprenderás a gestionar estratégicamente el marketing y la comunicación de tu pyme, adquiriendo herramientas que te permitirán tomar mejores decisiones, crear una oferta de valor atractiva y conectar de manera efectiva con tus clientes.</p>",
+        "d_nota": "",
+        "d_clases": "Clases Online, en vivo: Del 30 de septiembre al 04 de noviembre",
+        "d_etiqueta_valor": "Valor",
+        "d_valor": "550.000",
+        "d_dcto": "20% Dcto Comunidad Valor Pyme",
+        "d_cta": "Inscribirme",
+        "d_programa_form": ""
+      }
+    ],
+    "children": [
+      {
+        "id": "d_titulo",
+        "name": "d_titulo",
+        "label": "Título",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "d_etiqueta_dirigido",
+        "name": "d_etiqueta_dirigido",
+        "label": "Etiqueta antes del público",
+        "type": "text",
+        "default": "Dirigido a:"
+      },
+      {
+        "id": "d_dirigido",
+        "name": "d_dirigido",
+        "label": "Dirigido a",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "d_etiqueta_aprender",
+        "name": "d_etiqueta_aprender",
+        "label": "Etiqueta de la descripción",
+        "type": "text",
+        "default": "¿Qué aprenderás?"
+      },
+      {
+        "id": "d_aprenderas",
+        "name": "d_aprenderas",
+        "label": "Qué aprenderás",
+        "type": "richtext",
+        "default": ""
+      },
+      {
+        "id": "d_nota",
+        "name": "d_nota",
+        "label": "Nota al pie (opcional)",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "d_clases",
+        "name": "d_clases",
+        "label": "Fechas y modalidad",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "d_etiqueta_valor",
+        "name": "d_etiqueta_valor",
+        "label": "Etiqueta del precio",
+        "type": "text",
+        "default": "Valor"
+      },
+      {
+        "id": "d_valor",
+        "name": "d_valor",
+        "label": "Precio",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "d_dcto",
+        "name": "d_dcto",
+        "label": "Etiqueta de descuento (opcional)",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "d_cta",
+        "name": "d_cta",
+        "label": "Texto del botón",
+        "type": "text",
+        "default": "Inscribirme"
+      },
+      {
+        "id": "d_programa_form",
+        "name": "d_programa_form",
+        "label": "Opción en el desplegable del formulario",
+        "type": "text",
+        "default": "",
+        "help_text": "Valor EXACTO con el que este programa aparece en el desplegable \"¿En cuál iniciativa te gustaría Participar?\" del formulario. Si se deja vacío, la página avisa que ese programa no está entre las opciones."
+      }
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+{% require_css %}<link rel="stylesheet" href="{{ get_asset_url('../../assets/css/pymeuc.css') }}">{% end_require_css %}
+{% require_js %}<script src="{{ get_asset_url('../../assets/js/pymeuc.js') }}" defer></script>{% end_require_js %}
+
+{# MÓDULO · Pyme UC · Franja de cifras #}
+<section class="puc-s puc-cifras" style="background:{{ module.fondo_color.color }}"
+         aria-label="{{ module.etiqueta_bloque }}">
+  <div class="puc-wrap puc-cifras__in">
+    {% for c in module.cifras %}
+    <div class="puc-cifra"><b>{{ c.numero }}</b><span>{{ c.glosa }}</span></div>
+    {% endfor %}
+  </div>
+</section>

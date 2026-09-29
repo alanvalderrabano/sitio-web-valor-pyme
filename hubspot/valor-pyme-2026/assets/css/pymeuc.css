@@ -1,0 +1,328 @@
+/* Todas las clases y variables van con prefijo puc-. Las reglas de elemento
+   están acotadas a .puc-s (raíz de cada módulo) para no afectar al header,
+   al footer ni a los demás módulos del theme. */
+/* =====================================================================
+   PYME UC × VALOR PYME — hoja de la página de cursos y mentorías
+   Tokens y lenguaje visual del brandbook Valor Pyme (esquinas rectas,
+   color plano, sistema de líneas de rutas, Rubik display + Arial body).
+   ===================================================================== */
+
+:root{
+  --morado:#330559; --verde:#00BD70; --rosa:#FF2B5E; --corp:#6126FF;
+  /* variantes para texto: el rosa y el verde de marca no llegan a AA sobre blanco */
+  --rosa-txt:#C2003A; --verde-txt:#00713F;
+  --lavanda:#EFE9FF; --soft:#F6F3FF; --crema:#FFE3CC;
+  --negro:#2F2927; --gris:#595959; --borde:#E7E3F0; --blanco:#fff;
+  /* El borde decorativo da 1.26:1; los controles necesitan 3:1 (WCAG 1.4.11) */
+  --borde-control:#857F99;
+
+  --f-display:'Rubik',Arial,sans-serif;
+  --f-body:Arial,'Helvetica Neue',Helvetica,sans-serif;
+
+  --t-h1:clamp(32px,4.4vw,54px);
+  --t-h2:clamp(26px,3.2vw,40px);
+  --t-h3:clamp(19px,1.6vw,22px);
+  --t-lead:clamp(16px,1.35vw,19px);
+
+
+  /* Escala de espacios: un solo valor por tipo de separación en toda la página */
+  --sp:clamp(56px,7vw,104px);      /* alto de sección */
+  --sp-head:clamp(28px,3.4vw,44px);/* bajo el encabezado de sección */
+  --gap:24px;                      /* entre tarjetas */
+  --sp-h2:clamp(14px,1.4vw,18px);  /* entre un h2 y su texto */
+  --sp-h3:12px;                    /* entre un h3 y su texto */
+  --gap-xl:clamp(30px,4.5vw,64px); /* entre imagen y texto en bloques de dos columnas */
+  --pad-card:26px 24px;            /* interior de tarjeta */
+}
+
+.puc-s,.puc-s *,.puc-s *::before,.puc-s *::after{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){.puc-s *{animation:none!important;transition:none!important}}
+
+.puc-s{font-family:var(--f-body);font-size:16px;line-height:1.6;color:var(--negro);-webkit-font-smoothing:antialiased}
+.puc-s img{max-width:100%;height:auto;display:block}
+/* [hidden] es display:none del navegador y cualquier display propio le gana.
+   Con el atributo dentro del selector recupera la prioridad. */
+.puc-s [hidden],.puc-s[hidden]{display:none}
+.puc-s h1,.puc-s h2,.puc-s h3{font-family:var(--f-display);font-weight:800;line-height:1.12;
+  margin:0;color:var(--morado);letter-spacing:-.01em}
+.puc-s h1{font-size:var(--t-h1);text-wrap:balance}
+.puc-s h2{font-size:var(--t-h2);text-wrap:balance}
+.puc-s h3{font-size:var(--t-h3);font-weight:700}
+.puc-s p{margin:0 0 1em}
+.puc-s a{color:var(--corp)}
+/* --maxw y --pad-x vienen del theme: mismo contenedor que el header y el footer */
+.puc-wrap{width:100%;max-width:var(--maxw,1240px);margin-inline:auto;
+  padding-inline:var(--pad-x,clamp(20px,5vw,80px))}
+
+.puc-skip{position:absolute;left:-9999px}
+.puc-skip:focus{left:16px;top:16px;z-index:99;background:var(--morado);color:#fff;padding:12px 18px}
+.puc-s :focus-visible{outline:3px solid var(--corp);outline-offset:2px}
+/* Sobre los bloques oscuros el morado no llega a 3:1 */
+.puc-hero :focus-visible,.puc-sec--dark :focus-visible{outline-color:var(--crema)}
+
+/* el header es sticky: los saltos por ancla no deben quedar tapados */
+section[id],#top{scroll-margin-top:110px}
+
+/* ---------- botones ---------- */
+.puc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--f-display);font-weight:700;font-size:16px;text-decoration:none;
+  padding:15px 28px;border:2px solid transparent;cursor:pointer;transition:.18s ease;white-space:nowrap}
+.puc-btn--verde{background:var(--verde);color:#06301e;border-color:var(--verde)}
+.puc-btn--verde:hover{background:#00a862;border-color:#00a862}
+.puc-btn--corp{background:var(--corp);color:#fff;border-color:var(--corp)}
+.puc-btn--corp:hover{background:#4d17d9;border-color:#4d17d9}
+.puc-btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.puc-btn--ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.puc-btn--line{background:transparent;color:var(--morado);border-color:var(--morado)}
+.puc-btn--line:hover{background:var(--morado);color:#fff}
+.puc-btn--sm{padding:11px 20px;font-size:15px}
+.puc-btn--full{width:100%;padding:17px 28px}
+
+/* ---------- eyebrow (línea + texto, igual que el resto del sitio) ---------- */
+.puc-eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:700;
+  font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--corp);margin:0 0 14px}
+.puc-eyebrow::before{content:"";width:22px;height:3px;background:currentColor;flex:none}
+.puc-eyebrow--light{color:var(--crema)}
+
+/* ---------- hero ---------- */
+.puc-hero{position:relative;background:var(--morado);color:#fff;overflow:hidden;padding:clamp(52px,6vw,84px) 0 clamp(96px,10vw,140px)}
+.puc-hero__grid{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px,5vw,64px);align-items:center}
+.puc-hero h1{color:#fff;max-width:17ch}
+.puc-hero .puc-lead{font-size:var(--t-lead);color:rgba(255,255,255,.9);max-width:46ch;margin-top:20px}
+.puc-hero__note{font-size:15px;color:var(--crema);border-left:3px solid var(--verde);padding-left:14px;max-width:44ch}
+.puc-hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.puc-hero__img{margin:0}
+.puc-hero__img img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.puc-hero__rutas{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(70px,8vw,120px);z-index:1}
+
+/* ---------- cifras ---------- */
+.puc-cifras{background:var(--lavanda)}
+.puc-cifras__in{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding-block:30px}
+.puc-cifra{text-align:center;padding:6px 12px;border-right:1px solid rgba(51,5,89,.14)}
+.puc-cifra:last-child{border-right:0}
+.puc-cifra b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(28px,3.2vw,40px);color:var(--morado);line-height:1}
+.puc-cifra span{display:block;font-size:14px;color:var(--gris);margin-top:6px}
+
+/* ---------- secciones ---------- */
+.puc-sec{padding:var(--sp) 0}
+.puc-sec--soft{background:var(--soft)}
+.puc-sec--dark{background:var(--morado);color:#fff}
+.puc-sec--dark h2{color:#fff}
+.puc-sec__head{max-width:62ch;margin-bottom:var(--sp-head)}
+
+/* ---------- filtros ---------- */
+.puc-filtros{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.puc-chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:600;font-size:15px;
+  padding:11px 18px;background:#fff;color:var(--morado);border:2px solid var(--borde-control);cursor:pointer;transition:.16s}
+.puc-chip i{font-style:normal;font-size:13px;font-weight:700;color:var(--gris)}
+.puc-chip:hover{border-color:var(--corp)}
+.puc-chip.puc-is-on{background:var(--morado);border-color:var(--morado);color:#fff}
+.puc-chip.puc-is-on i{color:var(--crema)}
+.puc-conteo{font-size:14px;color:var(--gris);margin:0 0 var(--gap)}
+
+/* ---------- tarjetas ---------- */
+.puc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.puc-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--borde);border-top:5px solid var(--corp);padding:var(--pad-card)}
+.puc-card--free{border-top-color:var(--verde)}
+/* Tarjeta destacada: los dos programas pagados, lado a lado */
+.puc-destacados{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap)}
+.puc-dest{display:flex;flex-direction:column;background:#fff;border:1px solid var(--borde);border-top:5px solid var(--rosa-txt)}
+.puc-dest__main{padding:var(--pad-card)}
+.puc-dest h3{margin-bottom:var(--sp-h3);text-wrap:balance}
+.puc-dest__dirigido{font-size:15px;color:var(--gris);border-left:3px solid var(--borde);padding-left:12px;margin-bottom:18px}
+.puc-dest__label{font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--morado);margin-bottom:8px}
+.puc-dest__d{font-size:15px;color:var(--gris);margin-bottom:12px}
+.puc-dest__nota{font-size:13px;color:var(--gris);margin:0}
+.puc-dest__side{margin-top:auto;background:var(--soft);padding:var(--pad-card)}
+.puc-dest__clases{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--negro);margin-bottom:16px}
+.puc-dest__valor{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+
+.puc-card__tag{display:inline-block;font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.07em;
+  text-transform:uppercase;padding:5px 10px;background:var(--lavanda);color:var(--corp);margin-bottom:14px}
+.puc-card__tag--free{background:#D9FBEC;color:#00713F}
+.puc-card__hook{font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--rosa-txt);margin:0 0 8px}
+.puc-card h3{margin-bottom:var(--sp-h3);text-wrap:balance}
+.puc-card__d{font-size:15px;color:var(--gris);margin-bottom:16px}
+.puc-card__meta{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--negro)}
+.puc-card__meta li{display:flex;gap:9px;align-items:flex-start}
+.puc-card__meta b{font-weight:400}
+.puc-card__ico{flex:none;width:17px;height:17px;margin-top:2px;opacity:.75}
+.puc-card__foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--borde)}
+.puc-card__precio{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.puc-card__valor-l{font-family:var(--f-display);font-weight:700;font-size:13px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gris)}
+.puc-ahora{font-family:var(--f-display);font-weight:800;font-size:26px;color:var(--morado);line-height:1}
+.puc-off{font-family:var(--f-display);font-weight:700;font-size:12px;background:var(--rosa-txt);color:#fff;padding:3px 8px}
+.puc-gratis{font-family:var(--f-display);font-weight:800;font-size:26px;color:var(--verde-txt);line-height:1}
+.puc-card__nota{font-size:13px;color:var(--gris);margin:12px 0 0}
+
+/* ---------- razones ---------- */
+.puc-razones{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.puc-razones li{background:var(--soft);border:1px solid var(--borde);padding:var(--pad-card)}
+.puc-razon__ico{display:block;width:46px;height:46px;background:var(--corp);margin-bottom:18px;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
+.puc-razones h3{margin-bottom:var(--sp-h3);font-size:19px}
+.puc-razones p{font-size:15px;color:var(--gris);margin:0}
+
+/* ---------- acerca ---------- */
+.puc-acerca{display:grid;grid-template-columns:.95fr 1.05fr;gap:var(--gap-xl);align-items:center}
+.puc-acerca__img{margin:0}
+.puc-acerca__img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.puc-acerca__logo{height:44px;width:auto;margin-bottom:18px}
+.puc-acerca__txt h2,.puc-beneficios__txt h2{margin-bottom:var(--sp-h2)}
+.puc-acerca__txt p{font-size:var(--t-lead);color:var(--gris)}
+.puc-acerca__txt p:last-child{margin-bottom:0}
+
+/* ---------- beneficios exclusivos ---------- */
+.puc-beneficios{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--gap-xl);align-items:center}
+.puc-beneficios__txt p{font-size:var(--t-lead);color:var(--gris)}
+.puc-beneficios__img{margin:0}
+.puc-beneficios__img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* ---------- pasos ---------- */
+.puc-pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.puc-pasos li{position:relative;padding:var(--pad-card);background:var(--soft);border-left:5px solid var(--verde)}
+.puc-paso__n{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--morado);
+  color:#fff;font-family:var(--f-display);font-weight:800;font-size:20px;margin-bottom:18px}
+.puc-pasos h3{margin-bottom:var(--sp-h3)}
+.puc-pasos p{font-size:15px;color:var(--gris);margin:0}
+
+/* ---------- formulario (markup propio de HubSpot) ----------------------
+   El formulario lo pinta HubSpot con {% form %}, así que aquí se le da el
+   aspecto del sistema en vez de escribir los campos a mano. El número de
+   columnas se decide en el editor de formularios de HubSpot. */
+.puc-form__wrap{max-width:880px;margin-inline:auto}
+.puc-form__head{text-align:center;max-width:none;margin-bottom:var(--sp-head)}
+.puc-form__sel{font-size:14px;color:var(--morado);background:var(--lavanda);
+  border-left:4px solid var(--corp);padding:12px 14px;margin:0 0 22px}
+.puc-form__sel--aviso{background:#FFF1E0;border-left-color:#B45A00}
+
+.puc-form{background:#fff;padding:clamp(24px,3vw,38px)}
+
+/* HubSpot limita cada fieldset a 500px y los campos al 95%, así que el
+   formulario nunca llenaba el bloque. Su hoja se inyecta después de esta
+   y empata en especificidad: por eso van con !important. */
+.puc-form fieldset{max-width:none !important;width:100% !important;margin:0;padding:0;border:0}
+.puc-form fieldset .hs-form-field{width:100% !important;float:none !important}
+.puc-form .hs-form-field > .input{margin:0 !important}
+.puc-form .hs-input:not([type=checkbox]):not([type=radio]){width:100% !important}
+
+/* Las columnas que se eligen en el editor de formularios, con separación
+   pareja. En rejilla no hacen falta floats ni limpiarlos. */
+.puc-form fieldset.form-columns-2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.puc-form fieldset.form-columns-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 18px}
+
+.puc-form .hs-submit{margin-top:6px}
+.puc-form .hs-submit .hs-field-desc{margin-bottom:12px}
+.puc-form .actions{margin:0;padding:0}
+.puc-form .hs-form-field{margin-bottom:18px}
+.puc-form .hs-form-field > label{display:block;font-family:var(--f-display);font-weight:600;
+  font-size:14px;color:var(--morado);margin-bottom:7px}
+.puc-form .hs-form-required{color:var(--rosa-txt);margin-left:2px}
+.puc-form .hs-field-desc{font-size:13px;color:var(--gris);margin:0 0 7px}
+
+.puc-form .hs-input:not([type=checkbox]):not([type=radio]){
+  width:100%;font-family:var(--f-body);font-size:16px;color:var(--negro);padding:13px 14px;
+  border:2px solid var(--borde-control);background:#fff;border-radius:0;transition:.16s}
+.puc-form textarea.hs-input{min-height:120px;resize:vertical}
+/* Las flechas del spinner descuadran la altura del campo de edad */
+.puc-form input[type=number].hs-input{-moz-appearance:textfield}
+.puc-form input[type=number].hs-input::-webkit-outer-spin-button,
+.puc-form input[type=number].hs-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.puc-form .hs-input:not([type=checkbox]):not([type=radio]):focus{
+  border-color:var(--corp);outline:none;box-shadow:0 0 0 3px rgba(97,38,255,.3)}
+.puc-form .hs-input.invalid{border-color:var(--rosa-txt);background:#FFF5F7}
+
+/* Casillas y opciones */
+.puc-form .inputs-list{list-style:none;margin:0;padding:0}
+.puc-form .inputs-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}
+.puc-form .inputs-list input[type=checkbox],
+.puc-form .inputs-list input[type=radio]{width:22px;height:22px;flex:none;margin:1px 0 0;accent-color:var(--corp)}
+.puc-form .inputs-list label{font-family:var(--f-body);font-weight:400;font-size:14px;
+  color:var(--gris);line-height:1.5;margin:0}
+.puc-form .hs-form-booleancheckbox-display{display:flex;gap:12px;align-items:flex-start}
+
+/* Errores y confirmación */
+.puc-form .hs-error-msgs{list-style:none;margin:6px 0 0;padding:0}
+.puc-form .hs-error-msgs label{font-size:13px;color:var(--rosa-txt);font-weight:400}
+.puc-form .submitted-message{padding:16px;background:#D9FBEC;color:#00713F;font-size:15px}
+
+/* Botón de envío, con el mismo lenguaje que el resto de la página */
+.puc-form .hs-button{display:inline-flex;align-items:center;justify-content:center;width:100%;
+  font-family:var(--f-display);font-weight:700;font-size:16px;padding:17px 28px;cursor:pointer;
+  background:var(--verde);color:#06301e;border:2px solid var(--verde);border-radius:0;transition:.18s}
+.puc-form .hs-button:hover{background:#00a862;border-color:#00a862}
+
+/* =====================================================================
+   TABLET  ≤ 1024
+   ===================================================================== */
+@media (max-width:1024px){
+  .puc-hero__grid{grid-template-columns:1fr;gap:var(--gap-xl)}
+  .puc-hero h1,.puc-hero .puc-lead{max-width:100%}
+  .puc-hero__img{order:-1}
+  .puc-hero__img img{aspect-ratio:16/9}
+
+  .puc-destacados{grid-template-columns:1fr}
+  .puc-cards{grid-template-columns:repeat(2,1fr)}
+  .puc-razones{grid-template-columns:repeat(2,1fr)}
+
+  .puc-acerca,.puc-beneficios{grid-template-columns:1fr}
+  .puc-beneficios__img{order:-1}
+
+  .puc-pasos{grid-template-columns:1fr}
+  .puc-pasos li{display:grid;grid-template-columns:44px 1fr;gap:0 18px}
+  .puc-paso__n{grid-row:span 2;margin:0}
+}
+
+/* =====================================================================
+   MÓVIL  ≤ 640 — diseñado para móvil, no encogido
+   ===================================================================== */
+@media (max-width:640px){
+  /* La escala de espacios baja de golpe: tarjetas, rejillas y padding a la vez */
+  :root{--gap:16px;--pad-card:22px 20px}
+  section[id]{scroll-margin-top:96px}
+
+  .puc-hero{padding-bottom:clamp(76px,16vw,110px)}
+  .puc-hero__cta{flex-direction:column;align-items:stretch}
+  .puc-hero__cta .puc-btn{width:100%}
+  .puc-hero__img img{aspect-ratio:3/2}
+
+  /* Las cifras se vuelven 2×2 con separadores horizontales */
+  .puc-cifras__in{grid-template-columns:1fr 1fr;gap:0;padding-block:22px}
+  .puc-cifra{border-right:1px solid rgba(51,5,89,.14);border-bottom:1px solid rgba(51,5,89,.14);padding:14px 8px}
+  .puc-cifra:nth-child(2n){border-right:0}
+  .puc-cifra:nth-child(n+3){border-bottom:0}
+
+  /* Los filtros bajan de línea en vez de desplazarse: con tres chips el
+     carrusel dejaba "Online asincrónico" cortado contra el borde. */
+  .puc-filtros{flex-wrap:wrap;gap:8px}
+  .puc-chip{padding:10px 14px;font-size:14px}
+
+  .puc-cards{grid-template-columns:1fr}
+
+  .puc-razones{grid-template-columns:1fr}
+  .puc-razones li{display:grid;grid-template-columns:46px 1fr;gap:0 16px}
+  .puc-razon__ico{grid-row:span 2;margin:0}
+
+  /* En móvil todo el formulario va a una columna */
+  .puc-form{padding:22px 20px}
+  .puc-form fieldset.form-columns-2,
+  .puc-form fieldset.form-columns-3{grid-template-columns:1fr}
+}
+
+/* ---------- ícono de las tarjetas de capacidades ----------------------
+   La imagen llega desde el campo del módulo y se aplica como máscara en
+   línea, así el ícono toma el color de marca sea cual sea el archivo. */
+.puc-razon__ico--img{-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center;
+  -webkit-mask-size:contain;mask-size:contain}
+
+/* ---------- texto enriquecido dentro de los módulos ------------------
+   Los campos richtext traen sus propios <p>; el último no lleva margen
+   para que no descuadre la altura de la tarjeta. */
+.puc-hero__texto p{font-size:var(--t-lead);color:rgba(255,255,255,.9);max-width:46ch;margin:0 0 16px}
+.puc-hero__texto p:last-child{margin-bottom:0}
+.puc-acerca__txt p,.puc-beneficios__txt p{font-size:var(--t-lead);color:var(--gris)}
+.puc-acerca__txt p:last-child,.puc-beneficios__txt p:last-child,
+.puc-dest__d p:last-child,.puc-card__d p:last-child{margin-bottom:0}
+.puc-dest__d p,.puc-card__d p{margin:0 0 .6em}

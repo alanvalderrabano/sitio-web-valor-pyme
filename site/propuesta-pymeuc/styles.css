@@ -1,0 +1,282 @@
+/* =====================================================================
+   PYME UC × VALOR PYME — Propuesta de mejora
+   Tokens y lenguaje visual del brandbook Valor Pyme (esquinas rectas,
+   color plano, sistema de líneas de rutas, Rubik display + Arial body).
+   ===================================================================== */
+
+:root{
+  --morado:#330559; --verde:#00BD70; --rosa:#FF2B5E; --corp:#6126FF;
+  /* variantes para texto: el rosa y el verde de marca no llegan a AA sobre blanco */
+  --rosa-txt:#C2003A; --verde-txt:#00713F;
+  --lavanda:#EFE9FF; --soft:#F6F3FF; --crema:#FFE3CC;
+  --negro:#2F2927; --gris:#595959; --borde:#E7E3F0; --blanco:#fff;
+  /* El borde decorativo da 1.26:1; los controles necesitan 3:1 (WCAG 1.4.11) */
+  --borde-control:#857F99;
+
+  --f-display:'Rubik',Arial,sans-serif;
+  --f-body:Arial,'Helvetica Neue',Helvetica,sans-serif;
+
+  --t-h1:clamp(32px,4.4vw,54px);
+  --t-h2:clamp(26px,3.2vw,40px);
+  --t-h3:clamp(19px,1.6vw,22px);
+  --t-lead:clamp(16px,1.35vw,19px);
+
+  /* Mismo contenedor que el header y el footer del sitio (.container de vp-header.css),
+     para que todo el contenido quede alineado con el logo y la navegación. */
+  --wrap:1240px;
+  --pad-x:clamp(20px,5vw,80px);
+
+  /* Escala de espacios: un solo valor por tipo de separación en toda la página */
+  --sp:clamp(56px,7vw,104px);      /* alto de sección */
+  --sp-head:clamp(28px,3.4vw,44px);/* bajo el encabezado de sección */
+  --gap:24px;                      /* entre tarjetas */
+  --sp-h2:clamp(14px,1.4vw,18px);  /* entre un h2 y su texto */
+  --sp-h3:12px;                    /* entre un h3 y su texto */
+  --gap-xl:clamp(30px,4.5vw,64px); /* entre imagen y texto en bloques de dos columnas */
+  --pad-card:26px 24px;            /* interior de tarjeta */
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+body{margin:0;font-family:var(--f-body);font-size:16px;line-height:1.6;color:var(--negro);background:var(--blanco);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;line-height:1.12;margin:0;color:var(--morado);letter-spacing:-.01em}
+h1{font-size:var(--t-h1);text-wrap:balance}
+h2{font-size:var(--t-h2);text-wrap:balance}
+h3{font-size:var(--t-h3);font-weight:700}
+p{margin:0 0 1em}
+a{color:var(--corp)}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad-x)}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;z-index:99;background:var(--morado);color:#fff;padding:12px 18px}
+:focus-visible{outline:3px solid var(--corp);outline-offset:2px}
+/* Sobre los bloques oscuros el morado no llega a 3:1 */
+.puc-hero :focus-visible,.sec--dark :focus-visible{outline-color:var(--crema)}
+
+/* el header es sticky: los saltos por ancla no deben quedar tapados */
+section[id],#top{scroll-margin-top:110px}
+
+/* ---------- botones ---------- */
+.puc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--f-display);font-weight:700;font-size:16px;text-decoration:none;
+  padding:15px 28px;border:2px solid transparent;cursor:pointer;transition:.18s ease;white-space:nowrap}
+.puc-btn--verde{background:var(--verde);color:#06301e;border-color:var(--verde)}
+.puc-btn--verde:hover{background:#00a862;border-color:#00a862}
+.puc-btn--corp{background:var(--corp);color:#fff;border-color:var(--corp)}
+.puc-btn--corp:hover{background:#4d17d9;border-color:#4d17d9}
+.puc-btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.puc-btn--ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.puc-btn--line{background:transparent;color:var(--morado);border-color:var(--morado)}
+.puc-btn--line:hover{background:var(--morado);color:#fff}
+.puc-btn--sm{padding:11px 20px;font-size:15px}
+.puc-btn--full{width:100%;padding:17px 28px}
+
+/* ---------- eyebrow (línea + texto, igual que el resto del sitio) ---------- */
+.puc-eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:700;
+  font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--corp);margin:0 0 14px}
+.puc-eyebrow::before{content:"";width:22px;height:3px;background:currentColor;flex:none}
+.puc-eyebrow--light{color:var(--crema)}
+
+/* ---------- hero ---------- */
+.puc-hero{position:relative;background:var(--morado);color:#fff;overflow:hidden;padding:clamp(52px,6vw,84px) 0 clamp(96px,10vw,140px)}
+.puc-hero__grid{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px,5vw,64px);align-items:center}
+.puc-hero h1{color:#fff;max-width:17ch}
+.puc-hero .puc-lead{font-size:var(--t-lead);color:rgba(255,255,255,.9);max-width:46ch;margin-top:20px}
+.puc-hero__note{font-size:15px;color:var(--crema);border-left:3px solid var(--verde);padding-left:14px;max-width:44ch}
+.puc-hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.puc-hero__img{margin:0}
+.puc-hero__img img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.puc-hero__rutas{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(70px,8vw,120px);z-index:1}
+
+/* ---------- cifras ---------- */
+.cifras{background:var(--lavanda)}
+.cifras__in{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding-block:30px}
+.cifra{text-align:center;padding:6px 12px;border-right:1px solid rgba(51,5,89,.14)}
+.cifra:last-child{border-right:0}
+.cifra b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(28px,3.2vw,40px);color:var(--morado);line-height:1}
+.cifra span{display:block;font-size:14px;color:var(--gris);margin-top:6px}
+
+/* ---------- secciones ---------- */
+.sec{padding:var(--sp) 0}
+.sec--soft{background:var(--soft)}
+.sec--dark{background:var(--morado);color:#fff}
+.sec--dark h2{color:#fff}
+.sec__head{max-width:62ch;margin-bottom:var(--sp-head)}
+
+/* ---------- filtros ---------- */
+.filtros{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:600;font-size:15px;
+  padding:11px 18px;background:#fff;color:var(--morado);border:2px solid var(--borde-control);cursor:pointer;transition:.16s}
+.chip i{font-style:normal;font-size:13px;font-weight:700;color:var(--gris)}
+.chip:hover{border-color:var(--corp)}
+.chip.is-on{background:var(--morado);border-color:var(--morado);color:#fff}
+.chip.is-on i{color:var(--crema)}
+.conteo{font-size:14px;color:var(--gris);margin:0 0 var(--gap)}
+
+/* ---------- tarjetas ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--borde);border-top:5px solid var(--corp);padding:var(--pad-card)}
+.card--free{border-top-color:var(--verde)}
+/* Tarjeta destacada: los dos programas pagados, lado a lado */
+.destacados{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap)}
+.dest{display:flex;flex-direction:column;background:#fff;border:1px solid var(--borde);border-top:5px solid var(--rosa-txt)}
+.dest__main{padding:var(--pad-card)}
+.dest h3{margin-bottom:var(--sp-h3);text-wrap:balance}
+.dest__dirigido{font-size:15px;color:var(--gris);border-left:3px solid var(--borde);padding-left:12px;margin-bottom:18px}
+.dest__label{font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--morado);margin-bottom:8px}
+.dest__d{font-size:15px;color:var(--gris);margin-bottom:12px}
+.dest__nota{font-size:13px;color:var(--gris);margin:0}
+.dest__side{margin-top:auto;background:var(--soft);padding:var(--pad-card)}
+.dest__clases{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--negro);margin-bottom:16px}
+.dest__valor{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+
+.card__tag{display:inline-block;font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.07em;
+  text-transform:uppercase;padding:5px 10px;background:var(--lavanda);color:var(--corp);margin-bottom:14px}
+.card__tag--free{background:#D9FBEC;color:#00713F}
+.card__hook{font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--rosa-txt);margin:0 0 8px}
+.card h3{margin-bottom:var(--sp-h3);text-wrap:balance}
+.card__d{font-size:15px;color:var(--gris);margin-bottom:16px}
+.card__meta{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--negro)}
+.card__meta li{display:flex;gap:9px;align-items:flex-start}
+.card__meta b{font-weight:400}
+.card__ico{flex:none;width:17px;height:17px;margin-top:2px;opacity:.75}
+.card__foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--borde)}
+.card__precio{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.card__valor-l{font-family:var(--f-display);font-weight:700;font-size:13px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gris)}
+.ahora{font-family:var(--f-display);font-weight:800;font-size:26px;color:var(--morado);line-height:1}
+.off{font-family:var(--f-display);font-weight:700;font-size:12px;background:var(--rosa-txt);color:#fff;padding:3px 8px}
+.gratis{font-family:var(--f-display);font-weight:800;font-size:26px;color:var(--verde-txt);line-height:1}
+.card__nota{font-size:13px;color:var(--gris);margin:12px 0 0}
+
+/* ---------- razones ---------- */
+.razones{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.razones li{background:var(--soft);border:1px solid var(--borde);padding:var(--pad-card)}
+.razon__ico{display:block;width:46px;height:46px;background:var(--corp);margin-bottom:18px;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
+.razones h3{margin-bottom:var(--sp-h3);font-size:19px}
+.razones p{font-size:15px;color:var(--gris);margin:0}
+
+/* ---------- acerca ---------- */
+.acerca{display:grid;grid-template-columns:.95fr 1.05fr;gap:var(--gap-xl);align-items:center}
+.acerca__img{margin:0}
+.acerca__img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.acerca__logo{height:44px;width:auto;margin-bottom:18px}
+.acerca__txt h2,.beneficios__txt h2{margin-bottom:var(--sp-h2)}
+.acerca__txt p{font-size:var(--t-lead);color:var(--gris)}
+.acerca__txt p:last-child{margin-bottom:0}
+
+/* ---------- beneficios exclusivos ---------- */
+.beneficios{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--gap-xl);align-items:center}
+.beneficios__txt p{font-size:var(--t-lead);color:var(--gris)}
+.beneficios__img{margin:0}
+.beneficios__img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* ---------- pasos ---------- */
+.pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.pasos li{position:relative;padding:var(--pad-card);background:var(--soft);border-left:5px solid var(--verde)}
+.paso__n{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--morado);
+  color:#fff;font-family:var(--f-display);font-weight:800;font-size:20px;margin-bottom:18px}
+.pasos h3{margin-bottom:var(--sp-h3)}
+.pasos p{font-size:15px;color:var(--gris);margin:0}
+
+/* ---------- formulario ---------- */
+.form{background:#fff;padding:clamp(24px,3vw,38px)}
+.f{margin-bottom:18px}
+.f label{display:block;font-family:var(--f-display);font-weight:600;font-size:14px;color:var(--morado);margin-bottom:7px}
+.f label em{font-style:normal;color:var(--rosa-txt)}
+.f input:not([type=checkbox]),.f select{
+  width:100%;font-family:var(--f-body);font-size:16px;color:var(--negro);padding:13px 14px;
+  border:2px solid var(--borde-control);background:#fff;transition:.16s}
+/* Sin flechas de spinner: descuadran la altura del campo de edad */
+.f input[type=number]{-moz-appearance:textfield}
+.f input[type=number]::-webkit-outer-spin-button,
+.f input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.f input:not([type=checkbox]):focus,.f select:focus{border-color:var(--corp);outline:none;
+  box-shadow:0 0 0 3px rgba(97,38,255,.3)}
+.f [aria-invalid=true]{border-color:var(--rosa-txt);background:#FFF5F7}
+.f--check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;margin:24px 0}
+.f--check input{width:22px;height:22px;accent-color:var(--corp);margin:1px 0 0}
+.f--check label{font-family:var(--f-body);font-weight:400;font-size:14px;color:var(--gris);line-height:1.5;margin:0}
+.f--check .form__err{grid-column:1/-1;margin-top:4px}
+.form__err{font-size:13px;color:var(--rosa-txt);margin:6px 0 0}
+.form__ok{margin:18px 0 0;padding:14px;background:#D9FBEC;color:#00713F;font-size:15px}
+
+/* ---------- campos del formulario ---------- */
+.form__wrap{max-width:880px;margin-inline:auto}
+.form__head{margin-bottom:var(--sp-head)}
+.form__sel{font-size:14px;color:var(--morado);background:var(--lavanda);border-left:4px solid var(--corp);padding:12px 14px;margin:0 0 22px}
+.form__sel--aviso{background:#FFF1E0;border-left-color:var(--naranja,#FF8500)}
+.form__head{text-align:center;max-width:none}
+.form__campos{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.form__campos .f{grid-column:span 2}
+.form__campos .f--medio{grid-column:span 1}
+
+/* =====================================================================
+   TABLET  ≤ 1024
+   ===================================================================== */
+@media (max-width:1024px){
+  .puc-hero__grid{grid-template-columns:1fr;gap:var(--gap-xl)}
+  .puc-hero h1,.puc-hero .puc-lead{max-width:100%}
+  .puc-hero__img{order:-1}
+  .puc-hero__img img{aspect-ratio:16/9}
+
+  .destacados{grid-template-columns:1fr}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .razones{grid-template-columns:repeat(2,1fr)}
+
+  .acerca,.beneficios{grid-template-columns:1fr}
+  .beneficios__img{order:-1}
+
+  .pasos{grid-template-columns:1fr}
+  .pasos li{display:grid;grid-template-columns:44px 1fr;gap:0 18px}
+  .paso__n{grid-row:span 2;margin:0}
+}
+
+/* =====================================================================
+   MÓVIL  ≤ 640 — diseñado para móvil, no encogido
+   ===================================================================== */
+@media (max-width:640px){
+  /* La escala de espacios baja de golpe: tarjetas, rejillas y padding a la vez */
+  :root{--gap:16px;--pad-card:22px 20px}
+  section[id]{scroll-margin-top:96px}
+
+  .puc-hero{padding-bottom:clamp(76px,16vw,110px)}
+  .puc-hero__cta{flex-direction:column;align-items:stretch}
+  .puc-hero__cta .puc-btn{width:100%}
+  .puc-hero__img img{aspect-ratio:3/2}
+
+  /* Las cifras se vuelven 2×2 con separadores horizontales */
+  .cifras__in{grid-template-columns:1fr 1fr;gap:0;padding-block:22px}
+  .cifra{border-right:1px solid rgba(51,5,89,.14);border-bottom:1px solid rgba(51,5,89,.14);padding:14px 8px}
+  .cifra:nth-child(2n){border-right:0}
+  .cifra:nth-child(n+3){border-bottom:0}
+
+  /* Filtros en carrusel horizontal: no se apilan en varias líneas.
+     El tirón negativo iguala el padding del contenedor para que el primer
+     chip arranque alineado con el título. */
+  /* Los filtros bajan de línea en vez de desplazarse: en el carrusel el
+     último chip quedaba cortado contra el borde de la pantalla. */
+  .filtros{flex-wrap:wrap;gap:8px}
+  .chip{padding:10px 14px;font-size:14px}
+
+  .cards{grid-template-columns:1fr}
+
+  .razones{grid-template-columns:1fr}
+  .razones li{display:grid;grid-template-columns:46px 1fr;gap:0 16px}
+  .razon__ico{grid-row:span 2;margin:0}
+
+  /* Formulario largo: una sola columna */
+  .form__campos{grid-template-columns:1fr}
+  .form__campos .f,.form__campos .f--medio{grid-column:span 1}
+}
+
+/* ---------- máscaras de íconos (Material Symbols del sitio original) ---------- */
+.razon__ico[data-i=vision]{-webkit-mask-image:url(assets/ico-vision.png);mask-image:url(assets/ico-vision.png)}
+.razon__ico[data-i=profes]{-webkit-mask-image:url(assets/ico-profes.png);mask-image:url(assets/ico-profes.png)}
+.razon__ico[data-i=conve] {-webkit-mask-image:url(assets/ico-conve.png); mask-image:url(assets/ico-conve.png)}
+.razon__ico[data-i=comu]  {-webkit-mask-image:url(assets/ico-comu.png);  mask-image:url(assets/ico-comu.png)}
+.razon__ico{-webkit-mask-size:contain;mask-size:contain}

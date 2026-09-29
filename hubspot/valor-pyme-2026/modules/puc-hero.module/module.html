@@ -1,0 +1,30 @@
+{% require_css %}<link rel="stylesheet" href="{{ get_asset_url('../../assets/css/pymeuc.css') }}">{% end_require_css %}
+{% require_js %}<script src="{{ get_asset_url('../../assets/js/pymeuc.js') }}" defer></script>{% end_require_js %}
+
+{# MÓDULO · Pyme UC · Hero #}
+<section class="puc-s puc-hero" style="background:{{ module.fondo_color.color }}">
+  <div class="puc-wrap puc-hero__grid">
+    <div class="puc-hero__txt">
+      <h1>{{ module.titulo }}</h1>
+      <div class="puc-hero__texto">{{ module.texto }}</div>
+      {% if module.cta_texto %}
+      <div class="puc-hero__cta">
+        <a class="puc-btn puc-btn--verde" href="{{ module.cta_url.href }}">{{ module.cta_texto }}</a>
+      </div>
+      {% endif %}
+    </div>
+    <figure class="puc-hero__img">
+      <img src="{{ module.imagen.src or get_asset_url('../../assets/img/pymeuc/hero.png') }}"
+           alt="{{ module.imagen.alt }}" loading="eager">
+    </figure>
+  </div>
+  {% if module.lineas %}
+  <svg class="puc-hero__rutas" viewBox="0 0 1280 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="none" stroke-width="6" stroke-linecap="round">
+      <path d="M-60 96 H300 C400 96 400 48 500 48 H1340" stroke="#FF2B5E"/>
+      <path d="M-60 116 H560 C660 116 660 44 760 44 H1340" stroke="#00BD70"/>
+      <path d="M-60 60 H180 C280 60 280 104 380 104 H1340" stroke="#6126FF"/>
+    </g>
+  </svg>
+  {% endif %}
+</section>

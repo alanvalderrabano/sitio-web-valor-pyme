@@ -1,0 +1,61 @@
+[
+  {
+    "id": "titulo",
+    "name": "titulo",
+    "label": "Título",
+    "type": "text",
+    "default": "Fortalece las capacidades que impulsan el crecimiento de tu Pyme"
+  },
+  {
+    "id": "texto",
+    "name": "texto",
+    "label": "Párrafos",
+    "type": "richtext",
+    "default": "<p>El programa Pyme UC entrega capacitación en gestión de negocios y asesorías personalizadas con profesionales expertos de la Red de Mentores exalumnos UC.</p><p>Los cursos y mentorías que ofrece el programa, están dirigidas a emprendedores y empresarios de pequeñas y medianas empresas, enfocándose en potenciar sus capacidades de gestión y la competitividad de sus negocios.</p>"
+  },
+  {
+    "id": "cta_texto",
+    "name": "cta_texto",
+    "label": "Texto del botón",
+    "type": "text",
+    "default": "Explorar talleres y mentorías"
+  },
+  {
+    "id": "cta_url",
+    "name": "cta_url",
+    "label": "Enlace del botón",
+    "type": "url",
+    "default": {
+      "type": "EXTERNAL",
+      "href": "#talleres-pymeuc"
+    }
+  },
+  {
+    "id": "imagen",
+    "name": "imagen",
+    "label": "Imagen",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Empresaria pyme participando en una sesión de formación de Pyme UC",
+      "loading": "lazy"
+    }
+  },
+  {
+    "id": "fondo_color",
+    "name": "fondo_color",
+    "label": "Color de fondo",
+    "type": "color",
+    "default": {
+      "color": "#330559",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "lineas",
+    "name": "lineas",
+    "label": "Mostrar las líneas de rutas al pie",
+    "type": "boolean",
+    "default": true
+  }
+]

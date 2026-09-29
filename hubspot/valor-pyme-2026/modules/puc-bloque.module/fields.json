@@ -1,0 +1,81 @@
+[
+  {
+    "id": "seccion_id",
+    "name": "seccion_id",
+    "label": "ID de la sección (para enlaces internos)",
+    "type": "text",
+    "default": "acerca-pymeuc"
+  },
+  {
+    "id": "titulo",
+    "name": "titulo",
+    "label": "Título",
+    "type": "text",
+    "default": "Acerca de Pyme UC"
+  },
+  {
+    "id": "texto",
+    "name": "texto",
+    "label": "Texto",
+    "type": "richtext",
+    "default": "<p>El programa Pyme UC de la Facultad de Economía y Administración UC está orientado a apoyar el desarrollo de emprendedores y pequeñas empresas mediante formación, acompañamiento y herramientas prácticas. En alianza con Valor Pyme, impulsa oportunidades de aprendizaje orientadas a fortalecer capacidades clave para enfrentar los desafíos actuales de las Pymes.</p>"
+  },
+  {
+    "id": "imagen",
+    "name": "imagen",
+    "label": "Imagen",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Red empresarial Pyme UC",
+      "loading": "lazy"
+    }
+  },
+  {
+    "id": "logo",
+    "name": "logo",
+    "label": "Logo sobre el texto (opcional)",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Pyme UC",
+      "loading": "lazy"
+    }
+  },
+  {
+    "id": "posicion",
+    "name": "posicion",
+    "label": "Posición de la imagen",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "izquierda",
+        "A la izquierda"
+      ],
+      [
+        "derecha",
+        "A la derecha"
+      ]
+    ],
+    "default": "izquierda"
+  },
+  {
+    "id": "fondo",
+    "name": "fondo",
+    "label": "Fondo de la sección",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "blanco",
+        "Blanco"
+      ],
+      [
+        "suave",
+        "Lila suave"
+      ]
+    ],
+    "default": "suave"
+  }
+]

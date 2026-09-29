@@ -1,0 +1,75 @@
+<!--
+  templateType: page
+  label: Pyme UC · Cursos y mentorías
+  isAvailableForNewContent: true
+  enableDomainStylesheets: false
+-->
+{# ============================================================
+   PYME UC · Cursos y mentorías
+
+   Sirve igual para una página del sitio y para una landing page:
+   los módulos puc-* están habilitados en ambos tipos de contenido.
+
+   Usa el header y el footer globales del theme (no se crean otros).
+   Cada sección es un módulo dentro de un dnd_area, así el admin
+   puede reordenar, quitar o duplicar bloques desde el editor.
+
+   La hoja pymeuc.css y el script pymeuc.js los pide cada módulo por
+   su cuenta con require_css/require_js, de modo que también se ven
+   bien si se sueltan en la plantilla flexible "Página VP2026".
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ get_asset_url('../assets/css/styles.css') }}">
+</head>
+<body class="hp" data-ruta="">
+  {% global_partial path="../partials/header.html" %}
+
+  <main>
+    {% dnd_area "contenido", label="Contenido de la página" %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-hero" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-cifras" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-bloque" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-capacidades" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-bloque",
+            seccion_id="beneficios-pymeuc",
+            titulo="Beneficios exclusivos para la comunidad",
+            posicion="derecha",
+            fondo="suave" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-destacados" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-programas" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-pasos" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+      {% dnd_section full_width=true %}
+        {% dnd_module path="../modules/puc-formulario" %}{% end_dnd_module %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+  </main>
+
+  {% global_partial path="../partials/footer.html" %}
+
+  <script src="{{ get_asset_url('../assets/js/main.js') }}" defer></script>
+  {{ standard_footer_includes }}
+</body>
+</html>
