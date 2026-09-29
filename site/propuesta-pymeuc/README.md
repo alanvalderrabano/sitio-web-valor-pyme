@@ -16,6 +16,20 @@ HTML + CSS + JS sin dependencias. Abrir `index.html` o servir la carpeta.
 > Las clases propias van con prefijo `puc-` donde colisionaban con las del sitio
 > (`btn`, `hero`, `eyebrow`, `lead`), para que el CSS global no las pise.
 
+## Estructura de la página
+
+1. Hero
+2. Cifras
+3. **Catálogo** (9 programas, filtrable)
+4. Acerca de Pyme UC
+5. Desarrolla nuevas capacidades para hacer crecer tu Pyme
+6. Beneficios exclusivos para la comunidad
+7. Fortalece la gestión de tu Pyme en 3 simples pasos
+8. Formulario de postulación
+
+Los textos de *Acerca de Pyme UC* y *Beneficios exclusivos* son los de la página
+en producción, sin cambios.
+
 ## Qué cambia respecto de la página actual
 
 1. **Catálogo unificado y filtrable.** Hoy los programas están repartidos en tres
