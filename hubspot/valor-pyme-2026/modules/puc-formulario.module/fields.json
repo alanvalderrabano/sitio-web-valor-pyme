@@ -1,0 +1,49 @@
+[
+  {
+    "id": "seccion_id",
+    "name": "seccion_id",
+    "label": "ID de la sección",
+    "type": "text",
+    "default": "formulario-pymeuc",
+    "help_text": "Es el ancla a la que apuntan los botones \"Inscribirme\" de los otros módulos."
+  },
+  {
+    "id": "titulo",
+    "name": "titulo",
+    "label": "Título",
+    "type": "text",
+    "default": "Contacta a Pyme UC"
+  },
+  {
+    "id": "fondo_color",
+    "name": "fondo_color",
+    "label": "Color de fondo",
+    "type": "color",
+    "default": {
+      "color": "#330559",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "campo_programa",
+    "name": "campo_programa",
+    "label": "Nombre interno del campo de iniciativa",
+    "type": "text",
+    "default": "en_cual_curso_te_gustaria_participar_",
+    "help_text": "Campo del formulario que se preselecciona al pulsar \"Inscribirme\". Si el formulario cambia de campo, actualízalo aquí."
+  },
+  {
+    "id": "form",
+    "name": "form",
+    "label": "Formulario HubSpot",
+    "required": false,
+    "locked": false,
+    "type": "form",
+    "display_width": null,
+    "default": {
+      "form_id": "",
+      "response_type": "inline",
+      "message": "¡Listo! Recibimos tus datos. Te escribiremos a tu correo."
+    }
+  }
+]

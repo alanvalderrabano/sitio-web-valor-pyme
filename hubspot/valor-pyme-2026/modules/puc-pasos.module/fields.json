@@ -1,0 +1,75 @@
+[
+  {
+    "id": "seccion_id",
+    "name": "seccion_id",
+    "label": "ID de la sección",
+    "type": "text",
+    "default": "pasos-pymeuc"
+  },
+  {
+    "id": "titulo",
+    "name": "titulo",
+    "label": "Título",
+    "type": "text",
+    "default": "Fortalece la gestión y crecimiento de tu Pyme en 3 simples pasos:"
+  },
+  {
+    "id": "fondo",
+    "name": "fondo",
+    "label": "Fondo de la sección",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "blanco",
+        "Blanco"
+      ],
+      [
+        "suave",
+        "Lila suave"
+      ]
+    ],
+    "default": "blanco"
+  },
+  {
+    "id": "pasos",
+    "name": "pasos",
+    "label": "Pasos",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 3
+    },
+    "default": [
+      {
+        "paso_titulo": "Únete a Valor Pyme",
+        "paso_texto": "Completa tus datos para formar parte de la comunidad."
+      },
+      {
+        "paso_titulo": "Explora las oportunidades disponibles",
+        "paso_texto": "Conoce programas, mentorías y contenidos impulsados junto a Pyme UC."
+      },
+      {
+        "paso_titulo": "Comienza tu proceso de aprendizaje",
+        "paso_texto": "Accede a herramientas y formación pensadas para apoyar el crecimiento de tu Pyme."
+      }
+    ],
+    "children": [
+      {
+        "id": "paso_titulo",
+        "name": "paso_titulo",
+        "label": "Título",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "paso_texto",
+        "name": "paso_texto",
+        "label": "Texto",
+        "type": "text",
+        "default": ""
+      }
+    ]
+  }
+]

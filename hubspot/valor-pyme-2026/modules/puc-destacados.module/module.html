@@ -1,0 +1,41 @@
+{% require_css %}<link rel="stylesheet" href="{{ get_asset_url('../../assets/css/pymeuc.css') }}">{% end_require_css %}
+{% require_js %}<script src="{{ get_asset_url('../../assets/js/pymeuc.js') }}" defer></script>{% end_require_js %}
+
+{# MÓDULO · Pyme UC · Programas destacados #}
+<section class="puc-s puc-sec{% if module.fondo == 'suave' %} puc-sec--soft{% endif %}" id="{{ module.seccion_id }}">
+  <div class="puc-wrap">
+    <header class="puc-sec__head"><h2>{{ module.titulo }}</h2></header>
+    <div class="puc-destacados">
+      {% for p in module.programas %}
+      <article class="puc-dest">
+        <div class="puc-dest__main">
+          <h3>{{ p.d_titulo }}</h3>
+          {% if p.d_dirigido %}
+          <p class="puc-dest__dirigido"><b>{{ p.d_etiqueta_dirigido }}</b> {{ p.d_dirigido }}</p>
+          {% endif %}
+          {% if p.d_etiqueta_aprender %}<p class="puc-dest__label">{{ p.d_etiqueta_aprender }}</p>{% endif %}
+          <div class="puc-dest__d">{{ p.d_aprenderas }}</div>
+          {% if p.d_nota %}<p class="puc-dest__nota">{{ p.d_nota }}</p>{% endif %}
+        </div>
+        <div class="puc-dest__side">
+          {% if p.d_clases %}
+          <p class="puc-dest__clases">
+            <img class="puc-card__ico" src="{{ get_asset_url('../../assets/img/icons/icon-calendar.svg') }}" alt="" aria-hidden="true">
+            <span>{{ p.d_clases }}</span>
+          </p>
+          {% endif %}
+          <p class="puc-dest__valor">
+            {% if p.d_etiqueta_valor %}<span class="puc-card__valor-l">{{ p.d_etiqueta_valor }}</span>{% endif %}
+            <span class="puc-ahora">{{ p.d_valor }}</span>
+            {% if p.d_dcto %}<span class="puc-off">{{ p.d_dcto }}</span>{% endif %}
+          </p>
+          <a class="puc-btn puc-btn--verde puc-btn--full" href="{{ module.ancla_formulario }}"
+             data-puc-inscribir data-titulo="{{ p.d_titulo|escape }}"
+             data-programa="{{ p.d_programa_form|escape }}"
+             aria-label="{{ p.d_cta }} en {{ p.d_titulo|escape }}">{{ p.d_cta }}</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

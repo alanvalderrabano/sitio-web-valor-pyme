@@ -1,0 +1,21 @@
+{% require_css %}<link rel="stylesheet" href="{{ get_asset_url('../../assets/css/pymeuc.css') }}">{% end_require_css %}
+{% require_js %}<script src="{{ get_asset_url('../../assets/js/pymeuc.js') }}" defer></script>{% end_require_js %}
+
+{# MÓDULO · Pyme UC · Tarjetas de capacidades #}
+<section class="puc-s puc-sec{% if module.fondo == 'suave' %} puc-sec--soft{% endif %}" id="{{ module.seccion_id }}">
+  <div class="puc-wrap">
+    <header class="puc-sec__head"><h2>{{ module.titulo }}</h2></header>
+    <ul class="puc-razones">
+      {% for i in module.items %}
+      <li>
+        {% if i.item_icono.src %}
+          <span class="puc-razon__ico puc-razon__ico--img" aria-hidden="true"
+                style="-webkit-mask-image:url({{ i.item_icono.src }});mask-image:url({{ i.item_icono.src }})"></span>
+        {% endif %}
+        <h3>{{ i.item_titulo }}</h3>
+        <p>{{ i.item_texto }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+{% require_css %}<link rel="stylesheet" href="{{ get_asset_url('../../assets/css/pymeuc.css') }}">{% end_require_css %}
+{% require_js %}<script src="{{ get_asset_url('../../assets/js/pymeuc.js') }}" defer></script>{% end_require_js %}
+
+{# MÓDULO · Pyme UC · Catálogo de programas
+   Las cuentas de cada filtro las calcula pymeuc.js contando las tarjetas
+   del DOM, así nunca quedan desfasadas si se agregan o quitan programas. #}
+<section class="puc-s puc-sec{% if module.fondo == 'suave' %} puc-sec--soft{% endif %}" id="{{ module.seccion_id }}" data-puc-filtros>
+  <div class="puc-wrap">
+    <header class="puc-sec__head"><h2>{{ module.titulo }}</h2></header>
+
+    {% if module.mostrar_filtros %}
+    <div class="puc-filtros" role="group" aria-label="Filtrar programas">
+      <button type="button" class="puc-chip is-on" data-f="todos" aria-pressed="true">{{ module.texto_todos }} <i></i></button>
+      <button type="button" class="puc-chip" data-f="gratis" aria-pressed="false">{{ module.texto_gratis }} <i></i></button>
+      <button type="button" class="puc-chip" data-f="ritmo" aria-pressed="false">{{ module.texto_ritmo }} <i></i></button>
+    </div>
+    <p class="puc-conteo" aria-live="polite" data-puc-conteo></p>
+    {% endif %}
+
+    <div class="puc-cards">
+      {% for p in module.programas %}
+      {% set gratis = not p.p_valor %}
+      <article class="puc-card{% if gratis %} puc-card--free{% endif %}" data-filtro="{{ p.p_filtro }}">
+        {% if p.p_modalidad %}
+        <span class="puc-card__tag{% if gratis %} puc-card__tag--free{% endif %}">{{ p.p_modalidad }}</span>
+        {% endif %}
+        {% if p.p_hook %}<p class="puc-card__hook">{{ p.p_hook }}</p>{% endif %}
+        <h3>{{ p.p_titulo }}</h3>
+        <div class="puc-card__d">{{ p.p_desc }}</div>
+        {% if p.p_fecha or p.p_hora %}
+        <ul class="puc-card__meta">
+          {% if p.p_fecha %}<li><img class="puc-card__ico" src="{{ get_asset_url('../../assets/img/icons/icon-calendar.svg') }}" alt="" aria-hidden="true">{{ p.p_fecha }}</li>{% endif %}
+          {% if p.p_hora %}<li><img class="puc-card__ico" src="{{ get_asset_url('../../assets/img/icons/icon-clock.svg') }}" alt="" aria-hidden="true">{{ p.p_hora }}</li>{% endif %}
+        </ul>
+        {% endif %}
+        <div class="puc-card__foot">
+          <div class="puc-card__precio">
+            {% if gratis %}
+              <span class="puc-gratis">{{ module.etiqueta_gratis }}</span>
+            {% else %}
+              {% if p.p_etiqueta_valor %}<span class="puc-card__valor-l">{{ p.p_etiqueta_valor }}</span>{% endif %}
+              <span class="puc-ahora">{{ p.p_valor }}</span>
+            {% endif %}
+          </div>
+          <a class="puc-btn {% if gratis %}puc-btn--verde{% else %}puc-btn--line{% endif %} puc-btn--full"
+             href="{{ module.ancla_formulario }}"
+             data-puc-inscribir data-titulo="{{ p.p_titulo|escape }}"
+             data-programa="{{ p.p_programa_form|escape }}"
+             aria-label="{{ p.p_cta }} en {{ p.p_titulo|escape }}">{{ p.p_cta }}</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

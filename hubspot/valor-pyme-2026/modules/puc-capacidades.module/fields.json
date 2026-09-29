@@ -1,0 +1,106 @@
+[
+  {
+    "id": "seccion_id",
+    "name": "seccion_id",
+    "label": "ID de la sección",
+    "type": "text",
+    "default": "capacidades-pymeuc"
+  },
+  {
+    "id": "titulo",
+    "name": "titulo",
+    "label": "Título",
+    "type": "text",
+    "default": "Desarrolla nuevas capacidades para hacer crecer tu Pyme"
+  },
+  {
+    "id": "fondo",
+    "name": "fondo",
+    "label": "Fondo de la sección",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "blanco",
+        "Blanco"
+      ],
+      [
+        "suave",
+        "Lila suave"
+      ]
+    ],
+    "default": "blanco"
+  },
+  {
+    "id": "items",
+    "name": "items",
+    "label": "Tarjetas",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 4
+    },
+    "default": [
+      {
+        "item_titulo": "Visión estratégica",
+        "item_texto": "Adquiere una perspectiva integral del negocio y potencia tu capacidad de análisis y toma de decisiones.",
+        "item_icono": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "item_titulo": "Profesores de excelencia",
+        "item_texto": "Capacítate con profesores de la Escuela de Administración UC.",
+        "item_icono": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "item_titulo": "Conveniencia",
+        "item_texto": "Participa en talleres y mentorías personalizadas con profesionales expertos UC.",
+        "item_icono": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "item_titulo": "Comunidad",
+        "item_texto": "Forma parte de una comunidad colaborativa, donde podrás intercambiar experiencias con otros empresarios.",
+        "item_icono": {
+          "src": "",
+          "alt": ""
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": "item_icono",
+        "name": "item_icono",
+        "label": "Ícono",
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        }
+      },
+      {
+        "id": "item_titulo",
+        "name": "item_titulo",
+        "label": "Título",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "item_texto",
+        "name": "item_texto",
+        "label": "Texto",
+        "type": "text",
+        "default": ""
+      }
+    ]
+  }
+]

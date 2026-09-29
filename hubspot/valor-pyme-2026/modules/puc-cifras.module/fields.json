@@ -1,0 +1,64 @@
+[
+  {
+    "id": "etiqueta_bloque",
+    "name": "etiqueta_bloque",
+    "label": "Nombre del bloque (solo para lectores de pantalla)",
+    "type": "text",
+    "default": "Resumen de los programas"
+  },
+  {
+    "id": "fondo_color",
+    "name": "fondo_color",
+    "label": "Color de fondo",
+    "type": "color",
+    "default": {
+      "color": "#EFE9FF",
+      "opacity": 100
+    }
+  },
+  {
+    "id": "cifras",
+    "name": "cifras",
+    "label": "Cifras",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": null,
+      "default": 4
+    },
+    "default": [
+      {
+        "numero": "9",
+        "glosa": "programas disponibles"
+      },
+      {
+        "numero": "3",
+        "glosa": "talleres gratuitos"
+      },
+      {
+        "numero": "20%",
+        "glosa": "dcto Comunidad Valor Pyme"
+      },
+      {
+        "numero": "100%",
+        "glosa": "online"
+      }
+    ],
+    "children": [
+      {
+        "id": "numero",
+        "name": "numero",
+        "label": "Número",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "glosa",
+        "name": "glosa",
+        "label": "Texto",
+        "type": "text",
+        "default": ""
+      }
+    ]
+  }
+]
