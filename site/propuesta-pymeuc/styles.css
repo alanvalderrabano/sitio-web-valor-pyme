@@ -232,7 +232,7 @@ section[id],#top{scroll-margin-top:110px}
   .beneficios__img{order:-1}
 
   .pasos{grid-template-columns:1fr}
-  .pasos li{display:grid;grid-template-columns:44px 1fr;gap:6px 18px}
+  .pasos li{display:grid;grid-template-columns:44px 1fr;gap:0 18px}
   .paso__n{grid-row:span 2;margin:0}
 }
 
@@ -268,7 +268,7 @@ section[id],#top{scroll-margin-top:110px}
   .cards{grid-template-columns:1fr}
 
   .razones{grid-template-columns:1fr}
-  .razones li{display:grid;grid-template-columns:46px 1fr;gap:4px 16px}
+  .razones li{display:grid;grid-template-columns:46px 1fr;gap:0 16px}
   .razon__ico{grid-row:span 2;margin:0}
 
   /* Formulario largo: una sola columna */
