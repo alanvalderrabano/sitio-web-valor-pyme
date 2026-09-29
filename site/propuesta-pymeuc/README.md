@@ -23,28 +23,23 @@ Lo único que cambia es el diseño, para que la página se vea como el sitio act
 
 1. Hero — *Fortalece las capacidades que impulsan el crecimiento de tu Pyme*
 2. Franja de cifras
-3. **Catálogo** — *Conoce los próximos talleres y mentorías*, con el subtítulo
-   *Más cursos, talleres y mentorías* y filtros
-4. Acerca de Pyme UC
-5. Desarrolla nuevas capacidades para hacer crecer tu Pyme
-6. Beneficios exclusivos para la comunidad
-7. Fortalece la gestión y crecimiento de tu Pyme en 3 simples pasos:
-8. Contacta a Pyme UC — los 14 campos del formulario, con sus etiquetas y opciones
-
-El catálogo sube al tercer lugar: en la página actual hay que pasar cuatro
-secciones antes de ver un programa, y los programas son el producto de la página.
+3. Acerca de Pyme UC
+4. Desarrolla nuevas capacidades para hacer crecer tu Pyme
+5. Beneficios exclusivos para la comunidad
+6. Conoce los próximos talleres y mentorías — los dos programas pagados, lado a lado
+7. Más cursos, talleres y mentorías — los otros siete, con filtros
+8. Fortalece la gestión y crecimiento de tu Pyme en 3 simples pasos:
+9. Contacta a Pyme UC — los 14 campos del formulario, con sus etiquetas y opciones
 
 ## Qué cambia (solo diseño)
 
 - **Tipografía, color y espaciado del sitio**: Rubik para títulos, paleta del
   brandbook, esquinas rectas y el sistema de líneas de rutas en el hero.
 - **Header y footer reales** del sitio, con su navegación y menú móvil.
-- **Catálogo unificado**: los nueve programas en un mismo sistema de tarjetas,
-  con filtros por *Gratuitos / Con fecha / Online asincrónico*. Los dos encabezados
-  de la página original se conservan: el de la sección y el del segundo grupo.
 - **Tarjetas comparables**: modalidad, pregunta, descripción, fecha, hora y valor
   siempre en la misma posición. Los dos programas pagados usan una tarjeta más
-  amplia partida en dos columnas.
+  alta, con la información práctica en una banda inferior.
+- **Filtros** en "Más cursos": *Todos 7 / Gratuitos 3 / Online asincrónico 4*.
 - **Cada "Inscribirme" preselecciona su programa** en el desplegable del
   formulario. Cuando el programa no está entre las opciones (ver más abajo), la
   página lo dice en vez de dejar el campo vacío sin explicación.
@@ -54,14 +49,22 @@ secciones antes de ver un programa, y los programas son el producto de la págin
 - **Móvil diseñado por breakpoint**, no encogido: una columna, filtros en
   carrusel, cifras en 2×2 y botones a ancho completo.
 
+### Márgenes
+
+El contenido usa el **mismo contenedor que el header y el footer del sitio**
+(`max-width: 1240px`, `padding-inline: clamp(20px, 5vw, 80px)`), así que todo
+—hero, cifras, tarjetas, formulario— queda alineado con el logo y la navegación.
+Los espacios salen de cuatro variables (`--sp`, `--sp-head`, `--gap`,
+`--pad-card`) en lugar de valores sueltos por bloque, y en móvil bajan de golpe
+redefiniendo las variables.
+
 ### Textos que no vienen de la referencia
 
-Todo el contenido es literal salvo estos elementos de interfaz, que no existen
-en la página original porque son parte del diseño propuesto: la franja de cifras
-(9 / 3 / 20% / 100%, datos tomados de la propia página), las etiquetas de los
-filtros y su contador, la etiqueta *Destacado*, la palabra *Gratuito* como
-precio, el aviso de programa elegido y los mensajes de validación. Si prefieren
-quitar alguno, se saca sin tocar el resto.
+Todo el contenido es literal salvo estos elementos de interfaz, que son parte del
+diseño propuesto: la franja de cifras (9 / 3 / 20% / 100%, datos tomados de la
+propia página), las etiquetas de los filtros y su contador, la palabra *Gratuito*
+como precio, el aviso de programa elegido y los mensajes de validación. Si
+prefieren quitar alguno, se saca sin tocar el resto.
 
 ## Hallazgo en la página en producción
 

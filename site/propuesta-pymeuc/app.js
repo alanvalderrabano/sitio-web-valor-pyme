@@ -20,38 +20,38 @@
     });
   }
 
-  /* ---------- filtros ---------- */
+  /* ---------- filtros (solo sobre "Más cursos, talleres y mentorías") ---------- */
   var esGratis = function (c) { return /gratuito/i.test(c.modalidad || ''); };
   var esRitmo  = function (c) { return /asincr/i.test(c.modalidad || ''); };
-  var esFecha  = function (c) { return !!(c.fecha || c.clases); };
 
   var FILTROS = {
     todos:  function ()  { return true; },
     gratis: esGratis,
-    fecha:  esFecha,
     ritmo:  esRitmo
   };
 
+  var DESTACADOS = CURSOS.filter(function (c) { return c.destacado; });
+  var RESTO      = CURSOS.filter(function (c) { return !c.destacado; });
+
   /* ---------- tarjeta destacada (los dos programas pagados) ---------- */
   function destacada(c, i) {
-    return '<article class="card card--top">' +
-      '<div>' +
-        '<span class="card__tag card__tag--top">Destacado</span>' +
+    return '<article class="dest">' +
+      '<div class="dest__main">' +
         '<h3>' + esc(c.titulo) + '</h3>' +
-        '<p class="card__para"><b>Dirigido a:</b> ' + esc(c.dirigido) + '</p>' +
-        '<p class="card__label">¿Qué aprenderás?</p>' +
-        '<p class="card__d">' + esc(c.aprenderas) + '</p>' +
-        (c.nota ? '<p class="card__nota">' + esc(c.nota) + '</p>' : '') +
+        '<p class="dest__dirigido"><b>Dirigido a:</b> ' + esc(c.dirigido) + '</p>' +
+        '<p class="dest__label">¿Qué aprenderás?</p>' +
+        '<p class="dest__d">' + esc(c.aprenderas) + '</p>' +
+        (c.nota ? '<p class="dest__nota">' + esc(c.nota) + '</p>' : '') +
       '</div>' +
-      '<div class="card__side">' +
-        '<ul class="card__meta"><li>' +
+      '<div class="dest__side">' +
+        '<p class="dest__clases">' +
           '<img class="card__ico" src="assets/icon-calendar.svg" alt="" aria-hidden="true">' +
-          esc(c.clases) + '</li></ul>' +
-        '<div class="card__precio">' +
-          '<span class="card__valor-l">Valor:</span>' +
+          '<span>' + esc(c.clases) + '</span></p>' +
+        '<p class="dest__valor">' +
+          '<span class="card__valor-l">Valor</span>' +
           '<span class="ahora">' + esc(c.valor) + '</span>' +
           (c.dcto ? '<span class="off">' + esc(c.dcto) + '</span>' : '') +
-        '</div>' +
+        '</p>' +
         '<button class="puc-btn puc-btn--verde puc-btn--full" data-i="' + i + '">Inscribirme</button>' +
       '</div>' +
     '</article>';
@@ -83,26 +83,25 @@
 
   /* ---------- render ---------- */
   var actual = 'todos';
+  var contDest = document.getElementById('destacados');
+
+  contDest.innerHTML = DESTACADOS
+    .map(function (c) { return destacada(c, CURSOS.indexOf(c)); }).join('');
 
   function pinta() {
     var test = FILTROS[actual] || FILTROS.todos;
-    var html = '', n = 0, subtitulo = false;
+    var html = '', n = 0;
 
-    CURSOS.forEach(function (c, i) {
+    RESTO.forEach(function (c) {
       if (!test(c)) return;
       n++;
-      // En "Todos" se conserva el segundo encabezado de la página original
-      if (actual === 'todos' && !c.destacado && !subtitulo) {
-        subtitulo = true;
-        html += '<h3 class="cards__grupo">Más cursos, talleres y mentorías</h3>';
-      }
-      html += c.destacado ? destacada(c, i) : tarjeta(c, i);
+      html += tarjeta(c, CURSOS.indexOf(c));
     });
 
     cont.innerHTML = html;
-    conteo.textContent = n === CURSOS.length
-      ? 'Mostrando los ' + n + ' programas disponibles.'
-      : 'Mostrando ' + n + ' de ' + CURSOS.length + ' programas.';
+    conteo.textContent = n === RESTO.length
+      ? 'Mostrando los ' + n + ' programas.'
+      : 'Mostrando ' + n + ' de ' + RESTO.length + ' programas.';
   }
 
   document.querySelectorAll('.chip').forEach(function (b) {
@@ -137,7 +136,7 @@
   /* ---------- "Inscribirme" lleva al formulario con el programa elegido ---------- */
   var sel = document.getElementById('en_cual_curso_te_gustaria_participar_');
 
-  cont.addEventListener('click', function (e) {
+  function alPulsar(e) {
     var b = e.target.closest('button[data-i]');
     if (!b) return;
     var c = CURSOS[+b.dataset.i];
@@ -159,7 +158,9 @@
     window.setTimeout(function () {
       document.getElementById('firstname').focus({ preventScroll: true });
     }, 500);
-  });
+  }
+  cont.addEventListener('click', alPulsar);
+  contDest.addEventListener('click', alPulsar);
 
   /* ---------- validación ---------- */
   var form = document.getElementById('form');

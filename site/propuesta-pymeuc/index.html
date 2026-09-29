@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a class="skip" href="#catalogo">Ir al catálogo de programas</a>
+<a class="skip" href="#talleres">Ir a los talleres y mentorías</a>
 
 <!-- ===== HEADER GLOBAL DEL SITIO (markup y estilos de valorpyme.cl) ===== -->
 <header class="site-header">
@@ -77,7 +77,7 @@
         y empresarios de pequeñas y medianas empresas, enfocándose en potenciar sus capacidades de
         gestión y la competitividad de sus negocios.</p>
       <div class="puc-hero__cta">
-        <a class="puc-btn puc-btn--verde" href="#catalogo">Explorar talleres y mentorías</a>
+        <a class="puc-btn puc-btn--verde" href="#talleres">Explorar talleres y mentorías</a>
       </div>
     </div>
     <figure class="puc-hero__img">
@@ -100,25 +100,6 @@
     <div class="cifra"><b>3</b><span>talleres gratuitos</span></div>
     <div class="cifra"><b>20%</b><span>dcto Comunidad Valor Pyme</span></div>
     <div class="cifra"><b>100%</b><span>online</span></div>
-  </div>
-</section>
-
-<!-- ============ CATÁLOGO ============ -->
-<section class="sec" id="catalogo">
-  <div class="wrap">
-    <header class="sec__head">
-      <h2>Conoce los próximos talleres y mentorías</h2>
-    </header>
-
-    <div class="filtros" role="group" aria-label="Filtrar programas">
-      <button class="chip is-on" data-f="todos" aria-pressed="true">Todos <i>9</i></button>
-      <button class="chip" data-f="gratis" aria-pressed="false">Gratuitos <i>3</i></button>
-      <button class="chip" data-f="fecha" aria-pressed="false">Con fecha <i>5</i></button>
-      <button class="chip" data-f="ritmo" aria-pressed="false">Online asincrónico <i>4</i></button>
-    </div>
-
-    <p class="conteo" aria-live="polite" id="conteo"></p>
-    <div class="cards" id="cards"></div>
   </div>
 </section>
 
@@ -178,6 +159,34 @@
   </div>
 </section>
 
+<!-- ============ PRÓXIMOS TALLERES Y MENTORÍAS ============ -->
+<section class="sec" id="talleres">
+  <div class="wrap">
+    <header class="sec__head">
+      <h2>Conoce los próximos talleres y mentorías</h2>
+    </header>
+    <div class="destacados" id="destacados"></div>
+  </div>
+</section>
+
+<!-- ============ MÁS CURSOS, TALLERES Y MENTORÍAS ============ -->
+<section class="sec sec--soft" id="mas-cursos">
+  <div class="wrap">
+    <header class="sec__head">
+      <h2>Más cursos, talleres y mentorías</h2>
+    </header>
+
+    <div class="filtros" role="group" aria-label="Filtrar programas">
+      <button class="chip is-on" data-f="todos" aria-pressed="true">Todos <i>7</i></button>
+      <button class="chip" data-f="gratis" aria-pressed="false">Gratuitos <i>3</i></button>
+      <button class="chip" data-f="ritmo" aria-pressed="false">Online asincrónico <i>4</i></button>
+    </div>
+
+    <p class="conteo" aria-live="polite" id="conteo"></p>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
 <!-- ============ 3 PASOS ============ -->
 <section class="sec" id="pasos">
   <div class="wrap">
@@ -197,7 +206,8 @@
 
 <!-- ============ FORMULARIO ============ -->
 <section class="sec sec--dark" id="contacto">
-  <div class="wrap form__wrap">
+  <div class="wrap">
+   <div class="form__wrap">
     <header class="sec__head form__head">
       <h2>Contacta a Pyme UC</h2>
     </header>
@@ -212,6 +222,7 @@
       <button class="puc-btn puc-btn--verde puc-btn--full" type="submit">Enviar</button>
       <p class="form__ok" id="ok-msg" role="status" hidden>¡Listo! Recibimos tus datos. Te escribiremos a tu correo.</p>
     </form>
+   </div>
   </div>
 </section>
 
