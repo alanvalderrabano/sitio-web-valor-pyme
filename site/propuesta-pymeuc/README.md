@@ -58,6 +58,15 @@ Los espacios salen de cuatro variables (`--sp`, `--sp-head`, `--gap`,
 `--pad-card`) en lugar de valores sueltos por bloque, y en móvil bajan de golpe
 redefiniendo las variables.
 
+### Accesibilidad
+
+Los controles del formulario llevan `autocomplete` donde corresponde, los
+mensajes de error se enlazan al campo con `aria-describedby`, cada botón
+*Inscribirme* dice a qué programa pertenece en su nombre accesible, el foco es
+visible en todos los controles (incluido el checkbox y los botones sobre fondo
+morado, donde el anillo pasa a crema para llegar a 3:1) y el borde de inputs,
+selects y chips usa un gris que alcanza 3:1 sobre blanco.
+
 ### Textos que no vienen de la referencia
 
 Todo el contenido es literal salvo estos elementos de interfaz, que son parte del

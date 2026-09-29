@@ -52,7 +52,8 @@
           '<span class="ahora">' + esc(c.valor) + '</span>' +
           (c.dcto ? '<span class="off">' + esc(c.dcto) + '</span>' : '') +
         '</p>' +
-        '<button class="puc-btn puc-btn--verde puc-btn--full" data-i="' + i + '">Inscribirme</button>' +
+        '<button class="puc-btn puc-btn--verde puc-btn--full" data-i="' + i + '"' +
+          ' aria-label="Inscribirme en ' + esc(c.titulo) + '">Inscribirme</button>' +
       '</div>' +
     '</article>';
   }
@@ -76,7 +77,8 @@
             ? '<span class="card__valor-l">Valor:</span><span class="ahora">' + esc(c.valor) + '</span>'
             : '<span class="gratis">Gratuito</span>') +
         '</div>' +
-        '<button class="puc-btn ' + (gratis ? 'puc-btn--verde' : 'puc-btn--line') + ' puc-btn--full" data-i="' + i + '">Inscribirme</button>' +
+        '<button class="puc-btn ' + (gratis ? 'puc-btn--verde' : 'puc-btn--line') + ' puc-btn--full"' +
+          ' data-i="' + i + '" aria-label="Inscribirme en ' + esc(c.titulo) + '">Inscribirme</button>' +
       '</div>' +
     '</article>';
   }
@@ -126,7 +128,8 @@
     var control = f.tipo === 'select'
       ? '<select id="' + f.n + '" name="' + f.n + '"' + attr + '><option value="">Selecciona</option>' +
         f.o.map(function (o) { return '<option value="' + esc(o) + '">' + esc(o) + '</option>'; }).join('') + '</select>'
-      : '<input id="' + f.n + '" name="' + f.n + '" type="' + f.tipo + '"' + attr + '>';
+      : '<input id="' + f.n + '" name="' + f.n + '" type="' + f.tipo + '"' +
+        (f.ac ? ' autocomplete="' + f.ac + '"' : '') + attr + '>';
     return '<div class="f' + (f.ancho === 'medio' ? ' f--medio' : '') + '">' +
       '<label for="' + f.n + '">' + esc(f.l) + req + '</label>' + control + '</div>';
   }
@@ -150,7 +153,7 @@
       // La página de referencia no ofrece este programa en el desplegable
       sel.value = '';
       elegido.innerHTML = 'Elegiste <b>' + esc(c.titulo) + '</b>, pero hoy no aparece entre las ' +
-        'iniciativas del formulario. Escríbelo al contactarnos.';
+        'iniciativas del desplegable. Envía el formulario igual y te contactamos por ese programa.';
       elegido.classList.add('form__sel--aviso');
     }
     elegido.hidden = false;
@@ -169,11 +172,18 @@
   function error(el, msg) {
     el.setAttribute('aria-invalid', 'true');
     var p = el.parentNode.querySelector('.form__err');
-    if (!p) { p = document.createElement('p'); p.className = 'form__err'; el.parentNode.appendChild(p); }
+    if (!p) {
+      p = document.createElement('p');
+      p.className = 'form__err';
+      p.id = el.id + '-err';
+      el.parentNode.appendChild(p);
+    }
     p.textContent = msg;
+    el.setAttribute('aria-describedby', p.id);
   }
   function limpia(el) {
     el.removeAttribute('aria-invalid');
+    el.removeAttribute('aria-describedby');
     var p = el.parentNode.querySelector('.form__err');
     if (p) p.remove();
   }
@@ -198,6 +208,7 @@
 
     if (primero) { primero.focus(); return; }
     okMsg.hidden = false;
+    okMsg.focus();
     form.querySelector('button[type=submit]').disabled = true;
   });
 

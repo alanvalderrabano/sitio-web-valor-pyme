@@ -55,7 +55,7 @@ window.CURSOS = [
     titulo: 'Curso Gestión Empresarial Exitosa para Pyme',
     hook: '¿Quieres gestionar tu empresa con más herramientas y mejores decisiones?',
     d: 'Fortalece tus conocimientos en áreas clave del negocio como estrategia, marketing, finanzas y gestión de personas.',
-    modalidad: 'Online asincrónico',
+    modalidad: 'Modalidad: Online asincrónico',
     fecha: '', hora: '', valor: '$49 dólares'
   },
   {
@@ -63,7 +63,7 @@ window.CURSOS = [
     titulo: 'Curso Planificación y Gestión Estratégica para Pymes.',
     hook: '¿Tienes claro hacia dónde va tu empresa y cómo llegar?',
     d: 'Aprende a definir objetivos, tomar decisiones estratégicas y utilizar herramientas que te permitan construir e implementar una estrategia para hacer crecer tu negocio.',
-    modalidad: 'Online asincrónico',
+    modalidad: 'Modalidad: Online asincrónico',
     fecha: '', hora: '', valor: '$49 dólares'
   },
   {
@@ -71,7 +71,7 @@ window.CURSOS = [
     titulo: 'Curso Escalamiento Exitoso e Innovación en los Negocios',
     hook: '¿Tu empresa está preparada para dar el siguiente paso?',
     d: 'Aprende estrategias y herramientas para impulsar su crecimiento, incorporar la innovación y explorar nuevas oportunidades de mercado e internacionalización.',
-    modalidad: 'Online asincrónico',
+    modalidad: 'Modalidad: Online asincrónico',
     fecha: '', hora: '', valor: '$49 dólares'
   },
   {
@@ -79,7 +79,7 @@ window.CURSOS = [
     titulo: 'Curso Claves para el Éxito de la Transformación Digital en Pymes.',
     hook: '¿Tu empresa está aprovechando realmente las oportunidades digitales?',
     d: 'Aprende las claves para avanzar en su transformación digital, mejorar su competitividad y aprovechar la tecnología para impulsar su crecimiento.',
-    modalidad: 'Online asincrónico',
+    modalidad: 'Modalidad: Online asincrónico',
     fecha: '', hora: '', valor: '$49 dólares'
   }
 ];
@@ -87,10 +87,10 @@ window.CURSOS = [
 /* Campos del formulario "Contacta a Pyme UC", con sus etiquetas y opciones
    exactamente como están en la página de referencia. */
 window.FORM = [
-  { n:'firstname', l:'Nombre', req:true, tipo:'text', ancho:'medio' },
-  { n:'lastname',  l:'Apellido', req:true, tipo:'text', ancho:'medio' },
-  { n:'email',     l:'Correo electrónico', req:true, tipo:'email', ancho:'medio' },
-  { n:'phone',     l:'Número de teléfono', req:false, tipo:'tel', ancho:'medio' },
+  { n:'firstname', l:'Nombre', req:true, tipo:'text', ancho:'medio', ac:'given-name' },
+  { n:'lastname',  l:'Apellido', req:true, tipo:'text', ancho:'medio', ac:'family-name' },
+  { n:'email',     l:'Correo electrónico', req:true, tipo:'email', ancho:'medio', ac:'email' },
+  { n:'phone',     l:'Número de teléfono', req:false, tipo:'tel', ancho:'medio', ac:'tel' },
   { n:'en_cual_curso_te_gustaria_participar_', l:'¿En cuál iniciativa te gustaría Participar?', req:false, tipo:'select', o:[
     'Mentorías de Aspectos Claves de tu Negocio',
     'Curso “ Gestión de Operaciones para Empresas Pequeñas y Medianas”',

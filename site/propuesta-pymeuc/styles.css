@@ -10,6 +10,8 @@
   --rosa-txt:#C2003A; --verde-txt:#00713F;
   --lavanda:#EFE9FF; --soft:#F6F3FF; --crema:#FFE3CC;
   --negro:#2F2927; --gris:#595959; --borde:#E7E3F0; --blanco:#fff;
+  /* El borde decorativo da 1.26:1; los controles necesitan 3:1 (WCAG 1.4.11) */
+  --borde-control:#857F99;
 
   --f-display:'Rubik',Arial,sans-serif;
   --f-body:Arial,'Helvetica Neue',Helvetica,sans-serif;
@@ -49,6 +51,8 @@ a{color:var(--corp)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:16px;top:16px;z-index:99;background:var(--morado);color:#fff;padding:12px 18px}
 :focus-visible{outline:3px solid var(--corp);outline-offset:2px}
+/* Sobre los bloques oscuros el morado no llega a 3:1 */
+.puc-hero :focus-visible,.sec--dark :focus-visible{outline-color:var(--crema)}
 
 /* el header es sticky: los saltos por ancla no deben quedar tapados */
 section[id],#top{scroll-margin-top:110px}
@@ -103,7 +107,7 @@ section[id],#top{scroll-margin-top:110px}
 /* ---------- filtros ---------- */
 .filtros{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
 .chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:600;font-size:15px;
-  padding:11px 18px;background:#fff;color:var(--morado);border:2px solid var(--borde);cursor:pointer;transition:.16s}
+  padding:11px 18px;background:#fff;color:var(--morado);border:2px solid var(--borde-control);cursor:pointer;transition:.16s}
 .chip i{font-style:normal;font-size:13px;font-weight:700;color:var(--gris)}
 .chip:hover{border-color:var(--corp)}
 .chip.is-on{background:var(--morado);border-color:var(--morado);color:#fff}
@@ -182,14 +186,20 @@ section[id],#top{scroll-margin-top:110px}
 .f{margin-bottom:18px}
 .f label{display:block;font-family:var(--f-display);font-weight:600;font-size:14px;color:var(--morado);margin-bottom:7px}
 .f label em{font-style:normal;color:var(--rosa-txt)}
-.f input[type=text],.f input[type=email],.f input[type=tel],.f select{
+.f input:not([type=checkbox]),.f select{
   width:100%;font-family:var(--f-body);font-size:16px;color:var(--negro);padding:13px 14px;
-  border:2px solid var(--borde);background:#fff;transition:.16s}
-.f input:focus,.f select:focus{border-color:var(--corp);outline:none}
+  border:2px solid var(--borde-control);background:#fff;transition:.16s}
+/* Sin flechas de spinner: descuadran la altura del campo de edad */
+.f input[type=number]{-moz-appearance:textfield}
+.f input[type=number]::-webkit-outer-spin-button,
+.f input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.f input:not([type=checkbox]):focus,.f select:focus{border-color:var(--corp);outline:none;
+  box-shadow:0 0 0 3px rgba(97,38,255,.3)}
 .f [aria-invalid=true]{border-color:var(--rosa-txt);background:#FFF5F7}
 .f--check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;margin:24px 0}
 .f--check input{width:22px;height:22px;accent-color:var(--corp);margin:1px 0 0}
 .f--check label{font-family:var(--f-body);font-weight:400;font-size:14px;color:var(--gris);line-height:1.5;margin:0}
+.f--check .form__err{grid-column:1/-1;margin-top:4px}
 .form__err{font-size:13px;color:var(--rosa-txt);margin:6px 0 0}
 .form__ok{margin:18px 0 0;padding:14px;background:#D9FBEC;color:#00713F;font-size:15px}
 
